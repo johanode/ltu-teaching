@@ -1,0 +1,302 @@
+# Funktionssäkerhet
+
+Funktionssäkerhet beskriver sannolikheten att ett system fungerar utan fel under en given tid och under givna förhållanden.
+
+Man skiljer mellan två typer av system:
+
+## Icke-reparerbara system
+
+- System som inte repareras efter fel
+- Exempel: glödlampor, säkringar
+
+Viktigt mått:
+- **MTTF (Mean Time To Failure)**
+
+## Reparerbara system
+
+- System som kan repareras och åter tas i drift
+- Exempel: maskiner, fordon, produktionssystem
+
+Viktigt mått:
+- **MTBF (Mean Time Between Failures)**
+
+---
+
+# Kvantifiering av driftsäkerhet
+
+För att analysera driftsäkerhet krävs data:
+
+- Feltider
+- Reparationstider
+- Väntetider
+
+Utifrån dessa kan man ställa frågor som:
+
+- Vilken sannolikhetsfördelning beskriver felen?
+- Vad är medeltiden till fel?
+- Vad är medelreparationstiden?
+- Vad är tillgängligheten?
+
+:contentReference[oaicite:0]{index=0}
+
+---
+
+# Sannolikhetsfunktioner
+
+För att beskriva funktionssäkerhet används flera matematiska funktioner:
+
+## Täthetsfunktion (PDF)
+
+$$
+f(x)
+$$
+
+Beskriver sannolikhetstätheten för fel vid tidpunkt \(x\).
+
+---
+
+## Fördelningsfunktion (CDF)
+
+$$
+F(x)
+$$
+
+Beskriver sannolikheten att ett fel inträffar före tid \(x\).
+
+---
+
+## Funktionssannolikhet (Reliability function)
+
+$$
+R(x)
+$$
+
+Beskriver sannolikheten att systemet fortfarande fungerar vid tid \(x\).
+
+---
+
+## Samband
+
+$$
+R(x) + F(x) = 1
+$$
+
+---
+
+## Felintensitet (Hazard function)
+
+$$
+\lambda(x)
+$$
+
+Beskriver den momentana risken för fel.
+
+---
+
+# Exponentialfördelning
+
+En av de viktigaste modellerna inom driftsäkerhet.
+
+## Antagande
+
+- Felintensiteten är konstant:
+
+$$
+\lambda(x) = \lambda
+$$
+
+---
+
+## Funktioner
+
+Funktionssannolikhet:
+
+$$
+R(x) = e^{-\lambda x}
+$$
+
+Felsannolikhet:
+
+$$
+F(x) = 1 - e^{-\lambda x}
+$$
+
+Täthetsfunktion:
+
+$$
+f(x) = \lambda e^{-\lambda x}
+$$
+
+---
+
+## Samband med MTTF
+
+$$
+MTTF = \frac{1}{\lambda}
+$$
+
+---
+
+# Exempel: sannolikhet att fungera
+
+Vi har fem pumpar med tider till fel:
+
+- 7, 15, 9, 3, 4 timmar
+
+Vi vill beräkna sannolikheten att en pump fungerar i 5 timmar.
+
+---
+
+## Steg 1: medelvärde
+
+$$
+MTTF = \frac{7 + 15 + 9 + 3 + 4}{5} = 7.6
+$$
+
+---
+
+## Steg 2: felintensitet
+
+$$
+\lambda = \frac{1}{7.6} \approx 0.13
+$$
+
+---
+
+## Steg 3: funktionssannolikhet
+
+$$
+R(5) = e^{-0.13 \cdot 5} \approx 0.52
+$$
+
+Alltså:
+
+- 52 % sannolikhet att pumpen fungerar i 5 timmar :contentReference[oaicite:1]{index=1}
+
+---
+
+# Badkarskurvan
+
+Felintensiteten i många system följer tre faser:
+
+## 1. Begynnelseperiod
+
+- Höga initiala fel
+- Felintensiteten minskar
+
+Orsak:
+- tillverkningsfel
+- svaga komponenter
+
+---
+
+## 2. Slumpmässig period
+
+- Konstant felintensitet
+- Exponentialfördelning gäller
+
+---
+
+## 3. Slitageperiod
+
+- Felintensiteten ökar
+- Komponenter åldras
+
+---
+
+# Olika typer av funktionssäkerhet
+
+Funktionssäkerhet kan delas in i:
+
+## Teknisk
+
+- Elektriska komponenter (generatorer, transformatorer)
+- Mekaniska komponenter (lager, turbiner)
+- Infrastruktur (rör, dammar)
+
+---
+
+## Hård- och mjukvara
+
+- Hårdvara: fysiska system
+- Mjukvara:
+  - ökande betydelse
+  - kan både förbättras och försämras över tid
+
+---
+
+## Mänsklig
+
+- Operatörens påverkan
+- Beslutsfattande
+- Organisation och kultur
+
+---
+
+# Normalfördelning
+
+Fel kan ibland beskrivas med normalfördelning.
+
+Egenskaper:
+
+- Symmetrisk fördelning
+- Beskrivs med medelvärde och standardavvikelse
+
+Exempel:
+
+- MTTF ≈ 10 dagar
+- Standardavvikelse ≈ 3
+
+---
+
+# Weibullfördelning
+
+En mycket flexibel modell.
+
+Parametrar:
+
+- α (skala)
+- β (form)
+
+---
+
+## Tolkning av β
+
+- β < 1 → avtagande felintensitet  
+- β = 1 → konstant felintensitet (exponentialfall)  
+- β > 1 → ökande felintensitet (slitage)
+
+---
+
+## Funktioner
+
+Funktionssannolikhet:
+
+$$
+R(x) = e^{-(x/\alpha)^\beta}
+$$
+
+Felsannolikhet:
+
+$$
+F(x) = 1 - e^{-(x/\alpha)^\beta}
+$$
+
+---
+
+## Exempel
+
+En tonerkassett har:
+
+- α = 16 dygn  
+- β = 6  
+
+Sannolikheten att den fungerar i 12 dygn:
+
+$$
+R(12) \approx 0.84
+$$
+
+Alltså:
+
+- 84 % sannolikhet att den håller i 12 dygn :contentReference[oaicite:2]{index=2}

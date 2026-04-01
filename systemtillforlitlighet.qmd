@@ -1,0 +1,218 @@
+---
+title: "Systemtillförlitlighet"
+format: html
+---
+
+# Systemtillförlitlighet
+
+Hittills har vi studerat enskilda komponenters funktionssäkerhet.  
+I praktiken består system av flera komponenter som samverkar.
+
+Systemets totala funktionssäkerhet beror därför på:
+
+- varje komponents tillförlitlighet
+- hur komponenterna är kopplade
+
+---
+
+# Typer av system
+
+De vanligaste typerna av system är:
+
+1. Seriekopplade system  
+2. Parallellkopplade system  
+3. Blandade system  
+4. Standby-system  
+
+---
+
+# Seriekopplade system
+
+## Princip
+
+Ett system är seriekopplat om **alla komponenter måste fungera** för att systemet ska fungera.
+
+Exempel:
+
+- Turbin → Generator → Transformator
+
+Om en komponent fallerar → hela systemet fallerar.
+
+---
+
+## Funktionssäkerhet
+
+Systemets funktionssannolikhet ges av:
+
+R_s = R_1 * R_2 * R_3
+
+Allmänt:
+
+R_s = Π R_i
+
+---
+
+## Tolkning
+
+- Fler komponenter → lägre tillförlitlighet  
+- Den svagaste komponenten påverkar systemet mest  
+
+---
+
+# Parallellkopplade system
+
+## Princip
+
+Ett system är parallellkopplat om **minst en komponent fungerar**.
+
+Exempel:
+
+- två pumpar
+- dubbla generatorer
+
+---
+
+## Funktionssäkerhet
+
+Systemets tillförlitlighet:
+
+R_s = 1 - Π (1 - R_i)
+
+---
+
+## Tolkning
+
+Fördelar:
+
+- minskar risken för totalstopp  
+- ökar tillgänglighet  
+
+Nackdelar:
+
+- högre kostnad  
+- mer underhåll  
+
+---
+
+## Viktig aspekt
+
+Vid parallella system måste man även beakta:
+
+- kapacitet (full eller reducerad drift)
+- redundansnivå
+
+---
+
+# Redundans
+
+Redundans innebär att flera komponenter utför samma funktion.
+
+Syfte:
+
+- minska konsekvensen av fel  
+- öka systemets tillförlitlighet  
+
+---
+
+# Blandade system
+
+De flesta verkliga system är en kombination av:
+
+- serie- och parallellkopplingar
+
+---
+
+## Beräkningsmetod
+
+1. Identifiera delsystem  
+2. Beräkna tillförlitlighet för varje delsystem  
+3. Kombinera dessa stegvis  
+
+---
+
+# Exempel: blandat system
+
+Systemet består av:
+
+- två krossar (parallellkopplade)
+- en truck (seriekopplad med krossarna)
+
+Data:
+
+- Kross 1: MTBF = 1000 h  
+- Kross 2: MTBF = 1000 h  
+- Truck: MTBF = 200 h  
+
+Drifttid: 50 timmar
+
+---
+
+## Steg 1: beräkna komponenters tillförlitlighet
+
+För exponentialfördelning:
+
+R(x) = e^(-λx)
+
+där:
+
+λ = 1 / MTBF
+
+---
+
+### Krossar
+
+λ = 0.001
+
+R_k1 = R_k2 ≈ 0.95
+
+---
+
+### Truck
+
+λ = 0.005
+
+R_t ≈ 0.78
+
+---
+
+## Steg 2: parallell del (krossar)
+
+R_p = 1 - (1 - 0.95)(1 - 0.95) = 0.98
+
+---
+
+## Steg 3: serie med truck
+
+R_s = 0.78 * 0.98 ≈ 0.76
+
+---
+
+## Resultat
+
+- Systemets tillförlitlighet ≈ 76 %
+
+---
+
+## Tolkning
+
+Trots att krossarna har hög tillförlitlighet:
+
+Trucken dominerar systemets prestanda
+
+---
+
+# Slutsatser
+
+- Systemstruktur påverkar tillförlitlighet kraftigt  
+- Seriekoppling minskar tillförlitlighet  
+- Parallellkoppling ökar tillförlitlighet  
+- En svag komponent kan dominera hela systemet  
+
+---
+
+# Sammanfattning
+
+- System består av flera komponenter  
+- Kopplingsstruktur avgör total funktionssäkerhet  
+- Redundans är ett viktigt verktyg  
+- Analys görs stegvis från komponent → system

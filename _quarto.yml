@@ -1,0 +1,14 @@
+project:
+  type: book
+
+book:
+  title: "Driftsäkerhet"
+  chapters:
+    - index.qmd
+    - rams.qmd
+    - funktionssakerhet.qmd
+    - systemtillforlitlighet.qmd
+
+format:
+  html:
+    theme: cosmo

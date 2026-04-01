@@ -1,0 +1,216 @@
+# Driftsäkerhet
+
+Driftsäkerhet omfattar flera centrala egenskaper hos ett system:
+
+- Tillgänglighet (Availability, A)
+- Funktionssäkerhet (Reliability)
+- Underhållsmässighet (Maintainability)
+- Underhållssäkerhet (Supportability)
+
+Dessa sammanfattas i begreppet **RAMS**.
+
+RAMS används för att beskriva ett systems prestanda ur ett driftsäkerhetsperspektiv och inkluderar ibland även:
+
+- Safety
+- Security
+- Sustainability
+
+---
+
+# RAMS och dess komponenter
+
+Driftsäkerhet påverkas av:
+
+- Hur ofta fel uppstår (Reliability)
+- Hur snabbt fel kan åtgärdas (Maintainability)
+- Hur organisation och resurser påverkar åtgärdstid (Supportability)
+
+En hög driftsäkerhet innebär:
+
+- Lägre produktionskostnader
+- Färre driftstörningar
+
+En låg driftsäkerhet innebär:
+
+- Stora störningar
+- Låg tillgänglighet
+
+---
+
+# Tillgänglighet
+
+Tillgänglighet beskriver ett systems tillstånd över tid.
+
+Man skiljer mellan:
+
+- Tillgänglig tid (Up Time, UT)
+- Otillgänglig tid (Down Time, DT)
+
+Tillgängligheten definieras som:
+
+$$
+A = \frac{UT}{UT + DT}
+$$
+
+---
+
+## Exempel: maskin
+
+En lastare ska köras kontinuerligt under ett dygn.
+
+Under detta dygn står maskinen still i 2 timmar på grund av en krånglande växellåda.
+
+Tillgänglig tid:
+- 22 timmar
+
+Total tid:
+- 24 timmar
+
+Tillgänglighet:
+
+$$
+A = \frac{22}{24}
+$$
+
+---
+
+# OEE (Overall Equipment Effectiveness)
+
+Tillgänglighet är en del av ett större effektivitetsmått:
+
+$$
+OEE = Availability \times Performance \times Quality
+$$
+
+På svenska:
+
+$$
+TAK = Tillgänglighet \times Anläggningseffektivitet \times Kvalitetsutbyte
+$$
+
+Ett relaterat mått:
+
+- **TEEP (Total Effective Equipment Productivity)**
+
+$$
+TEEP = Loading \times OEE
+$$
+
+där:
+
+$$
+Loading = \frac{Scheduled\ time}{Calendar\ time}
+$$
+
+---
+
+# Tillgänglighetens uppbyggnad
+
+Tillgänglighet påverkas av flera typer av tid:
+
+- Produktionstid
+- Reparationstid
+- Väntetid
+- Logistisk tid
+- Administrativ tid
+
+---
+
+## Avhjälpande underhåll
+
+Vid fel sker följande steg:
+
+1. Fel uppstår
+2. Maskin stoppas
+3. Transport till verkstad
+4. Väntan på reservdelar
+5. Reparation
+6. Återstart
+
+Den totala tiden består av:
+
+- Aktiv reparationstid
+- Väntetider (logistik, resurser)
+
+---
+
+## Förebyggande underhåll
+
+Även planerat underhåll påverkar tillgängligheten:
+
+- Produktion stoppas
+- Underhåll utförs
+- System återstartas
+
+---
+
+# Hur kan tillgänglighet förbättras?
+
+Man kan minska nedtiden genom att:
+
+- Detektera fel tidigt
+- Minska administrativa väntetider
+- Förbättra logistik
+- Utföra reparationer snabbare
+- Optimera förebyggande underhåll
+
+---
+
+# Tre typer av tillgänglighet
+
+## Konstruktiv tillgänglighet (Ak)
+
+- Baserad på konstruktion
+- Inkluderar endast:
+  - MTBF
+  - MTTR
+- Exkluderar:
+  - väntetider
+  - organisation
+
+---
+
+## Materialtillgänglighet (Am)
+
+- Inkluderar:
+  - förebyggande underhåll
+  - avhjälpande underhåll
+- Exkluderar:
+  - väntetider
+
+Begrepp:
+
+- MTBM (Mean Time Between Maintenance)
+- MAMT (Mean Active Maintenance Time)
+
+---
+
+## Operativ tillgänglighet (Ao)
+
+Den mest realistiska modellen.
+
+Inkluderar:
+
+- Fel
+- Reparation
+- Väntetider
+- Organisation
+
+Begrepp:
+
+$$
+MDT = MAMT + MWT
+$$
+
+---
+
+# Tolkning av Ak, Am och Ao
+
+- Ak → teknisk potential
+- Am → påverkan av underhållsstrategi
+- Ao → verklig drift
+
+Stor skillnad mellan Am och Ao tyder på:
+
+- ineffektiv organisation
+- brister i resurser eller planering

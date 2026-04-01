@@ -1,0 +1,28 @@
+---
+title: "Driftsäkerhet"
+format: html
+---
+
+# Driftsäkerhet
+
+Det här är en liten samling om driftsäkerhet, uppdelad i tre delar:
+
+1. **RAMS och tillgänglighet**  
+2. **Funktionssäkerhet och sannolikhetsmodeller**  
+3. **Systemtillförlitlighet**
+
+## Kapitel
+
+- [RAMS och tillgänglighet](rams.qmd)
+- [Funktionssäkerhet](funktionssakerhet.qmd)
+- [Systemtillförlitlighet](systemtillforlitlighet.qmd)
+
+## Så previewar du allt
+
+Det här projektet är tänkt att köras som en **Quarto book**. När filerna ligger i samma mapp som `_quarto.yml` kör du:
+
+```bash
+quarto preview
+```
+
+Då öppnas hela boken, och alla ändringar uppdateras automatiskt.
