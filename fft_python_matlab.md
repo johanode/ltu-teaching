@@ -119,7 +119,7 @@ end
 % Add zero-mean Gaussian noise
 y = x + randn(size(t));
 
-% Compute the two-sided spectrum.
+% Compute the two-sided fft.
 Y = fft(y);
 
 % fft output order: DC, positive frequencies, then negative frequencies
@@ -127,7 +127,7 @@ Y = fft(y);
 A2 = fftshift(abs(Y)./N);  
 F2 = (-floor(N/2):ceil(N/2)-1)*(Fs/N);
 
-% Convert it to a single-sided amplitude spectrum.
+% Convert it to a one-sided fft.
 A1 = 2*abs(Y(1:floor(N/2)+1))/N;
 F1 = (0:floor(N/2))*Fs/N;
 
@@ -201,7 +201,7 @@ Spectral leakage can occur when a signal does not contain an integer number of c
 
 ### Spectrum
 
-Different spectral quantities emphasize different properties of a signal. The amplitude spectrum is useful for identifying sinusoidal amplitudes, while power spectra and power spectral densities are commonly used for energy and noise analysis.
+Different spectral quantities emphasize different properties of a signal. The amplitude spectrum is useful for identifying sinusoidal amplitudes. The power spectrum describes the signal's mean-square contribution in each frequency bin, while the power spectral density (PSD) describes power per unit bandwidth and is especially useful for broadband noise analysis.
 
 | Quantity               | Typical expression                              | Units                  |
 |------------------------|-------------------------------------------------|------------------------|
