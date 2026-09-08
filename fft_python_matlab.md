@@ -166,7 +166,7 @@ ylim([0,1.1]);
 grid on;
 ```
 
-## Notes
+## Additional notes
 ### FFT scaling
 For a signal with `N` samples, dividing `Y=abs(fft(signal))` by `N` normalizes the spectrum. For a one-sided spectrum of a real-valued signal, the negative-frequency components are omitted. To preserve the total signal amplitude, the amplitudes of the interior positive-frequency bins are doubled:
 
@@ -211,7 +211,7 @@ Different spectral quantities emphasize different properties of a signal. The am
 | Power spectral density | $\lvert Y[k] \rvert^2/(F_sN)$                   | signal units²/Hz       |
 
 
-## References
+### Read more
 
 - [NumPy: Discrete Fourier Transform routines](https://numpy.org/doc/stable/reference/routines.fft.html)
 - [NumPy: `numpy.fft.fft`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html)
