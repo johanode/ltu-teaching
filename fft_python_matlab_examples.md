@@ -181,14 +181,14 @@ grid on;
 ### FFT scaling
 For a signal with `N` samples, dividing `Y=abs(fft(signal))` by `N` normalizes the spectrum. For a one-sided spectrum of a real-valued signal, the negative-frequency components are omitted. To preserve the total signal amplitude, the amplitudes of the interior positive-frequency bins are doubled:
 
-\[
+$$
 A[k] =
 \begin{cases}
 \dfrac{\lvert Y[k]\rvert}{N}, & k = 0, \\[8pt]
 \dfrac{2\lvert Y[k]\rvert}{N}, & 0 < k < N/2, \\[8pt]
 \dfrac{\lvert Y[k]\rvert}{N}, & k = N/2.
 \end{cases}
-\]
+$$
 
 The DC and Nyquist components are not doubled because they do not have corresponding negative-frequency counterparts. Only the interior positive-frequency bins are doubled to account for the removed negative-frequency components.
 
@@ -197,25 +197,13 @@ The DC and Nyquist components are not doubled because they do not have correspon
 
 The **Nyquist frequency** is half the sampling frequency:
 
-\[
+$$
 f_\text{Nyquist} = \frac{F_s}{2}
-\]
+$$
 
 It is the highest frequency that can be represented without aliasing in a sampled signal. Frequency components above the Nyquist frequency are reflected back into the observable frequency range and appear at incorrect frequencies, a phenomenon known as **aliasing**.
 
-To avoid aliasing, the sampling frequency should be greater than twice the highest frequency present in the signal:
-
-\[
-F_s > 2f_\text{max}
-\]
-
-If a frequency component exceeds the Nyquist frequency, it is observed at the aliased frequency
-
-\[
-f_\text{alias} = \left|f - kF_s\right|
-\]
-
-for an appropriate integer \(k\) that maps the frequency into the interval \([0, F_s/2]\).
+To avoid aliasing, the sampling frequency should be greater than twice the highest frequency present in the signal $F_s > 2f_\text{max}$. If a frequency component exceeds the Nyquist frequency, it is observed at the aliased frequency $f_\text{alias} = \left|f - kF_s\right|$ for an appropriate integer $(k)$ that maps the frequency into the interval $[0, F_s/2]$.
 
 In practical measurement systems, an analog anti-aliasing filter is normally applied before sampling to attenuate frequency components above the Nyquist frequency.
 
@@ -232,3 +220,15 @@ Different spectral quantities emphasize different properties of a signal. The am
 | Amplitude spectrum     | $\lvert Y[k] \rvert/N$, with one-sided correction | signal units           |
 | Power spectrum         | $\lvert Y[k] \rvert^2/N$                      | signal units²          |
 | Power spectral density | $\lvert Y[k] \rvert^2/(F_sN)$                   | signal units²/Hz       |
+
+
+## References
+
+- [NumPy: Discrete Fourier Transform routines](https://numpy.org/doc/stable/reference/routines.fft.html)
+- [NumPy: `numpy.fft.fft`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html)
+- [NumPy: `numpy.fft.rfft`](https://numpy.org/doc/stable/reference/generated/numpy.fft.rfft.html)
+- [NumPy: `numpy.fft.fftfreq`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fftfreq.html)
+- [NumPy: `numpy.fft.rfftfreq`](https://numpy.org/doc/stable/reference/generated/numpy.fft.rfftfreq.html)
+- [NumPy: `numpy.fft.fftshift`](https://numpy.org/doc/stable/reference/generated/numpy.fft.fftshift.html)
+- [MathWorks: MATLAB `fft`](https://www.mathworks.com/help/matlab/ref/fft.html)
+- [MathWorks: Avoid aliasing in signal downsampling](https://www.mathworks.com/help/signal/ug/avoid-aliasing-in-signal-downsampling.html)
