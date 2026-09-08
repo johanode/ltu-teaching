@@ -7,19 +7,8 @@ The Fast Fourier Transform (FFT) efficiently computes the discrete Fourier trans
 - scale the FFT to obtain an amplitude spectrum; and
 - plot the time-domain signal and its frequency content.
 
-## Key terms
 
-- **Sampling frequency, `Fs`**: number of samples collected per second, in hertz (Hz).
-- **Signal length, `N` or `L`**: number of samples in the signal.
-- **Nyquist frequency**: the highest unaliased frequency, equal to `Fs/2`.
-- **Frequency resolution**: spacing between FFT bins, equal to `Fs/N`.
-- **Two-sided spectrum**: contains positive and negative frequencies.
-- **One-sided spectrum**: contains only nonnegative frequencies and is normally used for real-valued signals.
-
-### References
-
-
-## Example
+## Examples
 
 The example creates a signal containing sinusoids at 50 Hz, 120 Hz, and 600 Hz, then adds zero-mean Gaussian noise. It plots the noisy time-domain signal and its two-sided and one-sided amplitude spectra.
 
