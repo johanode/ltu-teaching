@@ -363,7 +363,7 @@ class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb2-1"><a hr
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">% Add zero-mean Gaussian noise</span></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="va">y</span> <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="va">randn</span>(<span class="va">size</span>(<span class="va">t</span>))<span class="op">;</span></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">% Compute the two-sided spectrum.</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">% Compute the two-sided fft.</span></span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="va">Y</span> <span class="op">=</span> <span class="va">fft</span>(<span class="va">y</span>)<span class="op">;</span></span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">% fft output order: DC, positive frequencies, then negative frequencies</span></span>
@@ -371,7 +371,7 @@ class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb2-1"><a hr
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="va">A2</span> <span class="op">=</span> <span class="va">fftshift</span>(<span class="va">abs</span>(<span class="va">Y</span>)<span class="op">./</span><span class="va">N</span>)<span class="op">;</span>  </span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="va">F2</span> <span class="op">=</span> (<span class="op">-</span><span class="va">floor</span>(<span class="va">N</span><span class="op">/</span><span class="fl">2</span>)<span class="op">:</span><span class="va">ceil</span>(<span class="va">N</span><span class="op">/</span><span class="fl">2</span>)<span class="op">-</span><span class="fl">1</span>)<span class="op">*</span>(<span class="va">Fs</span><span class="op">/</span><span class="va">N</span>)<span class="op">;</span></span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">% Convert it to a single-sided amplitude spectrum.</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">% Convert it to a one-sided fft.</span></span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="va">A1</span> <span class="op">=</span> <span class="fl">2</span><span class="op">*</span><span class="va">abs</span>(<span class="va">Y</span>(<span class="fl">1</span><span class="op">:</span><span class="va">floor</span>(<span class="va">N</span><span class="op">/</span><span class="fl">2</span>)<span class="op">+</span><span class="fl">1</span>))<span class="op">/</span><span class="va">N</span><span class="op">;</span></span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="va">F1</span> <span class="op">=</span> (<span class="fl">0</span><span class="op">:</span><span class="va">floor</span>(<span class="va">N</span><span class="op">/</span><span class="fl">2</span>))<span class="op">*</span><span class="va">Fs</span><span class="op">/</span><span class="va">N</span><span class="op">;</span></span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
@@ -458,8 +458,10 @@ be accounted for when accurate amplitude estimates are required.</p>
 <h3 id="spectrum">Spectrum</h3>
 <p>Different spectral quantities emphasize different properties of a
 signal. The amplitude spectrum is useful for identifying sinusoidal
-amplitudes, while power spectra and power spectral densities are
-commonly used for energy and noise analysis.</p>
+amplitudes. The power spectrum describes the signal’s mean-square
+contribution in each frequency bin, while the power spectral density
+(PSD) describes power per unit bandwidth and is especially useful for
+broadband noise analysis.</p>
 <table>
 <colgroup>
 <col style="width: 24%" />
