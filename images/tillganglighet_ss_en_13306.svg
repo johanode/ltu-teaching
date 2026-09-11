@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <style>
+      .title{font:700 38px Arial,sans-serif;fill:#17324d}.sub{font:400 18px Arial,sans-serif;fill:#526579}
+      .label{font:700 19px Arial,sans-serif;fill:#17324d}.small{font:400 16px Arial,sans-serif;fill:#526579}
+      .tick{stroke:#d5dde5;stroke-width:2}.event{stroke:#17324d;stroke-width:2}.card{fill:#fff;stroke:#d8e0e8;stroke-width:2}
+    </style>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#17324d" flood-opacity=".12"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#17324d"/></marker>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#f4f7fa"/>
+  <text x="80" y="72" class="title">Tillgänglighet</text>
+  <text x="80" y="106" class="sub">Illustrativ uppdelning av tidsbegrepp enligt SS-EN 13306</text>
+
+  <g filter="url(#shadow)"><rect x="60" y="140" width="1480" height="780" rx="24" class="card"/></g>
+
+  <!-- time grid -->
+  <g>
+    <line x1="310" y1="220" x2="310" y2="835" class="tick"/>
+    <line x1="460" y1="220" x2="460" y2="835" class="tick"/>
+    <line x1="560" y1="220" x2="560" y2="835" class="tick"/>
+    <line x1="620" y1="220" x2="620" y2="835" class="tick"/>
+    <line x1="830" y1="220" x2="830" y2="835" class="tick"/>
+    <line x1="940" y1="220" x2="940" y2="835" class="tick"/>
+    <line x1="1040" y1="220" x2="1040" y2="835" class="tick"/>
+    <line x1="1110" y1="220" x2="1110" y2="835" class="tick"/>
+    <line x1="1200" y1="220" x2="1200" y2="835" class="tick"/>
+    <line x1="1320" y1="220" x2="1320" y2="835" class="tick"/>
+  </g>
+
+  <!-- event labels -->
+  <g text-anchor="middle">
+    <text x="310" y="180" class="label">Fel</text><line x1="310" y1="188" x2="310" y2="215" class="event" marker-end="url(#arrow)"/>
+    <text x="560" y="174" class="label">Förebyggande</text><text x="560" y="196" class="small">underhåll</text><line x1="560" y1="202" x2="560" y2="215" class="event" marker-end="url(#arrow)"/>
+    <text x="830" y="180" class="label">Fel</text><line x1="830" y1="188" x2="830" y2="215" class="event" marker-end="url(#arrow)"/>
+    <text x="1110" y="174" class="label">Förebyggande</text><text x="1110" y="196" class="small">underhåll</text><line x1="1110" y1="202" x2="1110" y2="215" class="event" marker-end="url(#arrow)"/>
+    <text x="1320" y="180" class="label">Fel</text><line x1="1320" y1="188" x2="1320" y2="215" class="event" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- row labels -->
+  <g text-anchor="end">
+    <text x="270" y="282" class="label">Krävd tid</text><text x="270" y="306" class="small">Planerad drift</text>
+    <text x="270" y="397" class="label">Tillgänglig tid</text><text x="270" y="421" class="small">Funktionsdugligt tillstånd</text>
+    <text x="270" y="512" class="label">Otillgänglig tid</text><text x="270" y="536" class="small">Funktionsodugligt tillstånd</text>
+    <text x="270" y="627" class="label">Drifttid</text><text x="270" y="651" class="small">Drifttillstånd</text>
+    <text x="270" y="742" class="label">Underhåll</text><text x="270" y="766" class="small">Förebyggande eller avhjälpande</text>
+    <text x="270" y="850" class="label">Outnyttjad tid</text><text x="270" y="874" class="small">Ej krävd tid</text>
+  </g>
+
+  <!-- tracks -->
+  <g>
+    <rect x="300" y="255" width="1220" height="42" rx="12" fill="#dce9f7"/>
+    <rect x="300" y="255" width="640" height="42" rx="12" fill="#2979b8"/><rect x="1040" y="255" width="480" height="42" rx="12" fill="#2979b8"/>
+    <text x="970" y="283" class="small" text-anchor="middle">Ej krävd</text>
+
+    <rect x="300" y="370" width="1220" height="42" rx="12" fill="#dfe5eb"/>
+    <rect x="300" y="370" width="150" height="42" rx="12" fill="#25a56a"/><rect x="460" y="370" width="100" height="42" fill="#25a56a"/><rect x="620" y="370" width="210" height="42" fill="#25a56a"/><rect x="940" y="370" width="100" height="42" fill="#25a56a"/><rect x="1110" y="370" width="90" height="42" fill="#25a56a"/><rect x="1200" y="370" width="120" height="42" fill="#25a56a"/><rect x="1380" y="370" width="140" height="42" rx="12" fill="#25a56a"/>
+
+    <rect x="300" y="485" width="1220" height="42" rx="12" fill="#eef1f4"/>
+    <rect x="450" y="485" width="10" height="42" fill="#dd4652"/><rect x="560" y="485" width="60" height="42" fill="#f3a738"/><rect x="830" y="485" width="110" height="42" fill="#dd4652"/><rect x="1040" y="485" width="70" height="42" fill="#f3a738"/><rect x="1320" y="485" width="60" height="42" fill="#dd4652"/>
+
+    <rect x="300" y="600" width="1220" height="42" rx="12" fill="#e8edf1"/>
+    <rect x="300" y="600" width="150" height="42" rx="12" fill="#386f92"/><rect x="460" y="600" width="100" height="42" fill="#386f92"/><rect x="620" y="600" width="210" height="42" fill="#386f92"/><rect x="940" y="600" width="100" height="42" fill="#386f92"/><rect x="1110" y="600" width="90" height="42" fill="#386f92"/><rect x="1200" y="600" width="120" height="42" fill="#386f92"/><rect x="1380" y="600" width="140" height="42" rx="12" fill="#386f92"/>
+
+    <rect x="300" y="715" width="1220" height="42" rx="12" fill="#eef1f4"/>
+    <rect x="450" y="715" width="10" height="42" fill="#dd4652"/><rect x="560" y="715" width="60" height="42" fill="#f3a738"/><rect x="830" y="715" width="110" height="42" fill="#dd4652"/><rect x="1040" y="715" width="70" height="42" fill="#f3a738"/><rect x="1320" y="715" width="60" height="42" fill="#dd4652"/>
+    <text x="884" y="743" font-family="Arial" font-size="15" fill="#fff" text-anchor="middle">Avhjälpande</text><text x="1075" y="743" font-family="Arial" font-size="15" fill="#17324d" text-anchor="middle">Förebyggande</text>
+
+    <rect x="300" y="823" width="1220" height="30" rx="10" fill="#d9dde2"/>
+    <rect x="940" y="823" width="100" height="30" fill="#8c99a5"/>
+  </g>
+
+  <!-- footer equation -->
+  <rect x="300" y="885" width="1220" height="1" fill="#d8e0e8"/>
+  <text x="300" y="905" class="small">Grunddefinition:</text>
+  <text x="410" y="905" class="label">Tillgänglighet = Tillgänglig tid ÷ (Tillgänglig tid + Otillgänglig tid)</text>
+  <g transform="translate(1085 888)"><circle cx="8" cy="8" r="8" fill="#25a56a"/><text x="24" y="14" class="small">Tillgänglig</text><circle cx="150" cy="8" r="8" fill="#dd4652"/><text x="166" y="14" class="small">Fel</text><circle cx="235" cy="8" r="8" fill="#f3a738"/><text x="251" y="14" class="small">Förebyggande underhåll</text></g>
+</svg>
