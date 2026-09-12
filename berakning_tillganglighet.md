@@ -1,10 +1,12 @@
 # Tillgänglighet
-
+*Johan Odelius*, Drift och underhållsteknik, Luleå tekniska universitet
 ## Introduktion
 
-Tillgänglighet, *eng. availability* (A), beskriver förmågan hos en enhet att utföra det som krävs när det krävs (SS-EN 13306:2017). Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd. En enhet kan här vara en större anläggning, till exempel järnvägen mellan Luleå och Boden, ett produktionsavsnitt eller ett delsystem i en maskin. Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahållits.
+Tillgänglighet, *eng. availability* (A), beskriver förmågan hos en enhet att utföra det som krävs när det krävs. Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd. En enhet kan här vara en större anläggning, till exempel järnvägen mellan Luleå och Boden, ett större produktionsavsnitt eller ett delsystem i en maskin. 
 
-Tillgänglighet kan kvantifieras och beskriver som andelen av tiden under vilken enheten kan utföra det som krävs (när det krävs). Detta benämns tillgänglighetsprestanda i underhållsstandarden (SS-EN 13306:2017).
+Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.
+
+Tillgänglighet kan kvantifieras som andelen av tiden under vilken enheten kan utföra det som krävs (när det krävs). Detta benämns tillgänglighetsprestanda i svensk standard för underhåll (SS-EN 13306:2017)[^SS13306].
 
 $$
 A = \frac{\text{Tillgänglig tid}}
@@ -14,32 +16,42 @@ $$
 
 Det finns många olika varianter av tillgänglighetsprestanda. Anledningen är att det för olika typer av verksamheter inom olika sektorer kan vara relevant att ta fram olika nyckeltal för att följa upp och utveckla verksamheten och dess underhåll.
 
-Tidsbaserad tillgänglighet definieras enligt underhållsstandarden SS-EN 13306:2017 som den procentandel av tiden, under en given tidsperiod, då en enhet kan utföra det som krävs. Det finns också produktionsbaserad tillgänglighet, som definieras som förhållandet mellan faktisk produktion och krävd produktion (SS-EN 13306:2017). Produktionsbaserad tillgänglighet beskrivs inte vidare i denna guide.
+Tidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den procentandel av tiden, under en given tidsperiod, då en enhet kan utföra det som krävs. Det finns också produktionsbaserad tillgänglighet, som definieras som förhållandet mellan faktisk produktion och krävd produktion. Produktionsbaserad tillgänglighet beskrivs inte vidare i denna guide.
 
 Den tidsbaserade tillgängligheten kan utgå från total kalendertid eller krävd tid.
 
+[^SS13306]: *SS-EN 13306:2017 Underhåll – Underhållsterminologi*. Stockholm: Svenska institutet för standarder.
+
 ### Tillgänglighet baserad på kalendertid
 
-Tillgänglighet baserad på kalendertid avser den andel av den totala kalendertiden då en enhet är funktionsduglig, där
-$\text{Tillgänglig tid} + \text{Otillgänglig tid} = \text{Total tid}$. Det är således endast en del av den tillgängliga tiden som enheten är i drift, vilket benämns nyttjandegrad.
+Tillgänglighet baserad på kalendertid avser den andel av den totala kalendertiden (24 timmar om dygnet, 365 dagar om året) då en enhet är funktionsduglig
 
-Förhållandet mellan krävd tid och kalendertid kallas beläggningsgrad (*loading*). Se vidare till exempel beräkningen av total effektiv utrustningsprestanda, *Total Effective Equipment Performance* (TEEP), och utrustningens totala effektivitet, *Overall Equipment Effectiveness* (OEE), där $\mathrm{TEEP} = \mathrm{Loading} \cdot \mathrm{OEE}$.
+$$
+\text{Tillgänglig tid} + \text{Otillgänglig tid} = \text{Total tid}
+$$
 
-Tillgänglighet baserad på kalendertid frångår egentligen grunddefinitionen att det handlar om en förmåga att utföra det som krävs **när det krävs**.
+Det är således endast en del av den tillgängliga tiden som enheten är i drift, vilket benämns nyttjandegrad. Förhållandet mellan krävd tid och kalendertid kallas beläggningsgrad (*loading*)[^TEEP]. 
+
+[^TEEP]: Beräkningen av total effektiv utrustningsprestanda, *Total Effective Equipment Performance* (TEEP), och utrustningens totala effektivitet, *Overall Equipment Effectiveness* (OEE), där $\mathrm{TEEP} = \mathrm{Loading} \cdot \mathrm{OEE}$.
 
 ### Tillgänglighet baserad på krävd tid
 
-Detta mått beskriver den andel av den krävda tiden, eller den planerade produktionstiden, då enheten utför det som krävs. Den tillgängliga tiden (*uptime*) är i detta fall drifttid plus beredskapstid (*standby time*). Otillgänglig tid är underhållstid, där 
-$\text{Tillgänglig tid} + \text{Otillgänglig tid} = \text{Krävd tid}$.
+Detta mått på tillgänglighet beskriver den andel av den krävda tiden eller den planerade produktionstiden då enheten utför det som krävs
 
-Detta mått på tillgänglighet beskrivs också i SS-EN 15341:2019 under *Maintenance Key Performance Indicators* och benämns där *Time-based availability* (M10). I standarden beskrivs även *Availability based on operating time* (M11), som endast utgår från drifttid och exkluderar beredskapstid från beräkningen.
+ $$
+ \text{Tillgänglig tid} + \text{Otillgänglig tid} = \text{Krävd tid}
+ $$
 
-Beredskapstid är den tid då en enhet är i funktionsdugligt tillstånd men inte i drift under krävd tid. I praktiken kan man ofta bortse från denna tid vid beräkning av tillgängligheten. Beredskapstid är en typ av produktionsförlust som ingår i beräkningen av anläggningseffektivitet och därmed i beräkningen av OEE.
+Den tillgängliga tiden (*uptime*) utgörs i detta fall drifttid plus beredskapstid (*standby time*). Beredskapstid är den tid då en enhet är i funktionsdugligt tillstånd men inte i drift under krävd tid. I praktiken kan man ofta bortse från denna tid vid beräkning av tillgängligheten[^Perf].
 
----
+[^Perf]: Beredskapstid är en typ av produktionsförlust (*six losses*) som ingår i beräkningen av anläggningseffektivitet för OEE.
 
-## Tre mått på tillgänglighet
-Utöver att beräkning av tillgänglighet kan baseras på kalendertid eller krävd tid finns det ytterligare indelningar som utgår från att man vill beskrva olika orsakar till otillgänglig tid. Dessa är om det otillgänglig tid är reperationstid till följd av ett fel, aktiv förebyggande underhållstid eller väntetid. 
+Detta mått beskrivs också i svenska standarden Nyckeltal för underhåll[^KPI] under *Maintenance Key Performance Indicators* och benämns där *Time-based availability* (M10). I samma standarden beskrivs även *Availability based on operating time* (M11), som endast utgår från drifttid och exkluderar beredskapstid från beräkningen.
+
+[^KPI]: *SS-EN 15341:2019 Underhåll – Nyckeltal för underhåll*. Stockholm: Svenska institutet för standarder.
+
+## Tre mått på tillgänglighet (Ak, Am, Ao)
+Utöver att tillgänglighet kan beräknas baserat på kalendertid eller krävd tid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.
 
 Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgänglighet:
 
@@ -48,7 +60,7 @@ Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgä
 - Operativ tillgänglighet (Ao) / *Operational availability* (Ao)
 
 ### Konstruktiv tillgänglighet (Ak)
-Den konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet i SS-EN 13306:2017. Inga väntetider ingår och inte heller förebyggande underhåll. 
+Den konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet SS-EN 13306. Varken väntetider eller förebyggande underhåll ingår. 
 
 Den konstruktiva tillgängligheten beräknas enligt
 $$
@@ -57,37 +69,189 @@ A_k=
 {MTBF+MTTR}
 $$
 
-där MTBF är medeltiden mellan fel (*Mean Time Between Failure*) och MTTR är medelreperationstiden (*Mean Time To Repair*). Ekvationen skriver, av tradition, medelreperationstiden som MTTR, men enligt korrekt terminologi bör det egentligen vara MRT:*Mean Repair Time* då MTTR också betyder *Mean Time To Restore* som inkluderar väntetid. 
+där **MTBF** är medeltiden mellan fel (*Mean Time Between Failure*) och **MTTR** är medelreparationstiden (*Mean Time To Repair*). 
 
-MTBF är den förväntade tiden mellan fel definiera enligt
+**MTBF** är den förväntade tiden mellan fel definieras enligt
 $$
-MTBF = \int_{0}^{\infty} R(t) dt
+MTBF = \int_{0}^{\infty} t f(t) dt = \int_{0}^{\infty} R(t) dt
 $$
-där $R(t)$ är *Reliability function* (tillförlitlighetsfunktion). För en exponentialfördelning är $MTBF = 1/\lambda$ och för en weibull fördelning $MTBF = \alpha \Gamma (1/\beta+1)$.
+där $f(t)$ är fördelningens täthetsfunktion och $R(t)$ är *reliability function* (tillförlitlighetsfunktion)^[MTBF].
 
-En skattning av det förväntade värdet kan beräknas som det aritmetiska medelvärdet av tiderna mellan fel. Tid mellan fel är tiden från återställande av tidigiare fel till nästa fel. Denna tid inkluderar för kalenderbaserad tillgänglighet således även förebyggande underhållstid. För de flesta system och anläggningar är reperationstiden väldigt liten i förhållande till kalender tiden så en bra approxiamtion är att beräkna medeltiden för den totalal tiden mellan fel. 
+En skattning av **MTBF** kan beräknas som det aritmetiska medelvärdet av tiderna mellan fel, där tiden mellan fel är tiden från återställandet av tidigare fel till nästa fel: 
+$$
+\mathrm{MTBF} 
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} T_i
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}}
+\left(
+t_{\mathrm{Fail},\,i}
+-
+t_{\mathrm{Restored},\,i-1}
+\right)
+$$
+där $t_{\mathrm{Restored},\,0}=0$
 
-För tillgänglighet baserad på krävd tid, beräknas normal MTBF som medeltiden för drifttiden mellan fel, dvs utan hänsyn till eventuellt förebyggande underhåll som genomförs under planerad drift. 
+**MTBF** används för enheter som kan repareras, medan medeltid till fel (**MTTF**) betecknar den förväntade tiden till fel för en enhet som inte repareras. 
 
-MTBF används enheter som kan repareras, medan medeltid till fel (MTTF) betecknar den förväntade tiden till fel för en enhet som inte repareras. 
+[^MTBF]: För en exponentialfördelning är $MTBF = 1/\lambda$ och för en Weibullfördelning $MTBF = \alpha \Gamma (1/\beta+1)$.
+
+#### Kalenderbaserad tillgänglighet
+Tid mellan fel för kalenderbaserad tillgänglighet inkluderar både tillgänglig tid och förebyggande underhållstid. Den kan därför också beräknas enligt
+
+$$
+\mathrm{MTBF} 
+= 
+\frac{\text{Tillgänglig tid}+\text{Förebyggande underhållstid}}{\text{Antal fel}}
+$$
+
+
+För de flesta system och anläggningar är reparationstiden väldigt kort i förhållande till kalendertiden. En approximation är att beräkna medeltiden av feltiderna för den totala tiden mellan fel
+$$
+\mathrm{MTBF} 
+\approx
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} \left(
+t_{\mathrm{Fail},\,i}
+-
+t_{\mathrm{Fail},\,i-1}
+\right)
+= 
+\frac{\text{Total tid}}{n_{Fail}}
+$$
+
+**MTBF** approximeras även med utgångspunkt i bara tillgänglig tid som
+
+$$
+\mathrm{MTBF} 
+\approx
+\frac{\text{Tillgänglig tid}}{\text{Antal fel}}
+$$
+
+#### Tillgänglighet baserad på krävd tid
+
+För tillgänglighet baserad på krävd tid beräknas normalt **MTBF** som medeltiden för drifttiden mellan fel, dvs utan hänsyn till eventuellt förebyggande underhåll som genomförs under planerad drift, enligt 
+
+$$
+\mathrm{MTBF} 
+= \frac{\text{Drifttid}}{n_{Fail}}
+$$
+
+#### Medelreparationstid
+Medelreparationstiden beräknas enligt[^MTTR]
+$$
+\mathrm{MTTR}
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} T_{Rep,i}
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}}
+\left(
+t_{\mathrm{Repair\ end},\,i}
+-
+t_{\mathrm{Repair\ start},\,i}
+\right)
+$$
+
+[^MTTR]: I ekvationen för konstruktiv tillgänglighet (Ak) betecknas av tradition medelreparationstiden som **MTTR**, men enligt korrekt terminologi ska det vara **MRT**: *Mean Repair Time* då **MTTR** betecknar *Mean Time To Restore* som inkluderar väntetid. 
 
 ### Materialtillgänglighet (Am)
-Materialtillgänglighet eller uppnådd tillgängligheten inkluderar utöver avhjälpande underhåll även förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt
+Materialtillgänglighet, eller uppnådd tillgängligheten, inkluderar både avhjälpande och förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt
 
-Den konstruktiva tillgängligheten beräknas enligt
 $$
-A_a=
+A_m=
 \frac{MTBM}
 {MTBM+MAMT}
 $$
 
-där MTBM (*Mean Time Between Maintenance*) är medeltidem mellan underhåll och MAMT (*Mean Active Maintenance Time*) är mdedeltiden för aktivt underhåll, förebyggande som avhjälpande (reperation).
+där **MTBM** (*Mean Time Between Maintenance*) är medeltiden mellan underhåll och **MAMT** (*Mean Active Maintenance Time*) är medeltiden för aktivt underhåll, såväl förebyggande som avhjälpande (reparation).
 
-Därför gäller:
+Medeltiden mellan underhåll beräknas som medelvärdet av den tillgängliga tiden mellan underhållsåtgärder 
 
-```math
-A_k \ge A_m \ge A_o
-```
+$$
+\mathrm{MTBM}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Up,i}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M}
+\left(
+t_{\mathrm{M\ start},\,i}
+-
+t_{\mathrm{M\ end},\,i-1}
+\right)
+= \frac{\text{Tillgänglig tid}}{n_M}
+$$. 
+
+där $M$ (*maintenance*) är en underhållsåtgärd och $n_M = n_{Fail}+ n_{PM}$ är antal fel plus antal antalet förebyggande åtgärder.
+
+
+För tillgänglighet baserad på krävd tid är, enligt tidigare, tillgänglig tid detsamma som drifttid plus beredskapstid men beräknas vanligen som 
+$$
+\mathrm{MTBM}
+= \frac{\text{Drifttid}}{n_M}
+$$. 
+
+Den genomsnittliga aktiva underhållstiden per åtgärd beräknas som
+$$
+\mathrm{MAMT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{AM,i}
+=
+\frac{1}{n_{Fail}+n_{PM}}
+\left(
+\displaystyle\sum_{j=1}^{n_{Fail}} T_{Rep,j}
++
+\displaystyle\sum_{k=1}^{n_{PM}} T_{APM,k}
+\right)
+$$
+
+där $T_{AM,i}$ är den aktiva underhållstiden för åtgärd $i$, $T_{Rep,j}$ är den reparationstiden för fel $j$ och $T_{APM,i}$ är den aktiva förebyggande underhållstiden för åtgärd $k$. 
+
+
+### Operativ tillgänglighet (Ao)
+Operativ tillgänglighet inkluderar all otillgänglig tid, det vill säga både avhjälpande underhåll och förebyggande underhåll där väntetiden även ingår.
+
+Den operativa tillgängligheten beräknas enligt
+$$
+A_o
+=
+\frac{MTBM}
+{MTBM+MDT}
+=
+\frac{Tillgänglig tid}
+{Tillgänglig tid + Otillgänglig tid}
+$$
+
+där **MDT** är medeltiden för en underhållsåtgärd inklusive väntetid
+
+$$
+\mathrm{MDT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Down,i}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M}
+\left(
+t_{\mathrm{M\ end},\,i}
+-
+t_{\mathrm{M\ start},\,i}
+\right)
+$$
+
+vilket också kan beräknas som
+$$
+\mathrm{MDT}
+=\frac{\sum_{i=1}^{n_{Fail}} T_{CM, i} + \sum_{i=1}^{n_{PM}} T_{PM, i}}
+{n_{Fail} + n_{PM}}
+$$
+ 
+eller $MDT=MAMT + MWT$ där $MWT$ är medelväntetiden enligt
+
+$$
+\mathrm{MWT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Wait,i}
+$$
+
+där $T_{Wait,i}$ är den sammanlagda väntetiden under underhållsaktivitet $i$.
+
 
 ---
 
