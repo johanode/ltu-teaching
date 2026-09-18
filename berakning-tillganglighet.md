@@ -128,31 +128,34 @@ där [**MDT**](#mdt) (*Mean Downtime*) är medeltiden är den genomsnittliga oti
 ---
 
 ## Driftsäkerhetsparametrar
-### MTBF
-**MTBF** är den förväntade tiden mellan fel och definieras enligt
-$$
-MTBF = \int_{0}^{\infty} t f(t) dt = \int_{0}^{\infty} R(t) dt
-$$
-där $f(t)$ är fördelningens täthetsfunktion och $R(t)$ är *reliability function* (tillförlitlighetsfunktion). För en exponentialfördelning är $MTBF = 1/\lambda$ och för en Weibullfördelning $MTBF = \alpha \Gamma (1/\beta+1)$ där $\alpha$ är skalparametern och $\beta$ är formparametern.
 
-En skattning av **MTBF** kan beräknas som det aritmetiska medelvärdet av tiderna mellan fel, där tiden mellan fel är tiden från återställandet av tidigare fel till nästa fel: 
+Tillgänglighetsmåtten i föregående avsnitt bygger på medeltider för bland annat tider mellan fel, reparationstider och väntetider. Parametrarna är väntevärden för slumpmässiga tider, men skattas i praktiken från observerade tider.
+
+Nedan beskrivs hur parametrarna kan skattas från observerade data. En mer utförlig statistisk beskrivning finns på sidan [Statistisk beskrivning av driftsäkerhetsparametrar](driftsakerhetsparametrar.md).
+
+### MTBF
+
+**MTBF** (*Mean Time Between Failures*) är medeltiden mellan fel. En skattning av **MTBF** kan beräknas som det aritmetiska medelvärdet av de observerade tiderna mellan fel:
+
 $$
-\mathrm{MTBF} 
+\mathrm{MTBF}
 =
-\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} T_i
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}} T_i
 =
-\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}}
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}}
 \left(
-t_{\mathrm{Fail},\,i}
+t_{\mathrm{Fail},i}
 -
-t_{\mathrm{Restored},\,i-1}
+t_{\mathrm{Restored},i-1}
 \right)
 $$
-där $t_{\mathrm{Restored},\,0}=0$
 
-**MTBF** används för enheter som kan repareras, medan medeltid till fel (**MTTF**) betecknar den förväntade tiden till fel för en enhet som inte repareras. 
+där $t_{\mathrm{Restored},0}=t_0$ och $t_0$ är observationsperiodens starttid.
 
-#### Kalendertid
+MTBF används för reparerbara enheter. För enheter som inte repareras används i stället **MTTF** (*Mean Time To Failure*), medeltid till fel.
+
 Tid mellan fel för kalenderbaserad tillgänglighet inkluderar både tillgänglig tid och förebyggande underhållstid. Den kan därför också beräknas enligt
 
 $$
