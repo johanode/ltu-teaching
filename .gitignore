@@ -3,4 +3,5 @@
 /.quarto/
 .vscode/
 __pycache__/
+/versions
 /images/versions
