@@ -1,6 +1,6 @@
 # Statistisk beskrivning av driftsäkerhetsparametrar
 
-Tider mellan fel, reparationstider, väntetider och otillgängliga tider kan betraktas som slumpvariabler. Parametrar som MTBF och MRT är då väntevärden för motsvarande slumpmässiga tider.[^BenDaya]
+Tider mellan fel, reparationstider och väntetider kan betraktas som slumpvariabler. Parametrar som MTBF och MRT är då väntevärden för motsvarande slumpmässiga tider.
 
 ## Slumpmässiga tider och väntevärden
 
@@ -40,7 +40,7 @@ R(t)
 P(T_{\mathrm{BF}}>t)
 $$
 
-är tillförlitlighetsfunktionen, kan MTBF skrivas som
+är *reliability function* (också överlevnadsfunktionen / *survival function*), kan MTBF skrivas som
 
 $$
 \mathrm{MTBF}
@@ -50,7 +50,7 @@ $$
 \int_0^\infty R(t)\,dt.
 $$
 
-Om tiden mellan fel är exponentialfördelad med konstant felintensitet $\lambda$ gäller
+Om tiden mellan fel är exponentialfördelad med felbenägenhet $\lambda$ gäller
 
 $$
 \mathrm{MTBF}
@@ -66,8 +66,6 @@ $$
 \alpha\,
 \Gamma\!\left(1+\frac{1}{\beta}\right).
 $$
-
-Exponentialfördelningen förutsätter en konstant felintensitet. Weibullfördelningen kan även beskriva en felintensitet som minskar eller ökar med tiden.
 
 ## Reparationstid
 
@@ -87,7 +85,7 @@ $$
 \int_0^\infty t f_{\mathrm{Rep}}(t)\,dt.
 $$
 
-Underhållsmässighetsfunktionen kan definieras som
+Om $M(t)$ betecknar reparationstidens fördelningsfunktion
 
 $$
 M(t)
@@ -103,7 +101,7 @@ $$
 \int_0^\infty [1-M(t)]\,dt.
 $$
 
-Reparationstider är positiva och kan vara högerskeva. Lognormalfördelningen är därför en vanligt förekommande modell för reparationstider, men valet av fördelning behöver prövas mot observerade data.[^RepairDistribution]
+Reparationstider är positiva och kan vara högerskeva. Lognormalfördelningen är därför en vanligt förekommande modell för reparationstider, men valet av fördelning behöver prövas mot observerade data.
 
 Om
 
@@ -138,7 +136,7 @@ På motsvarande sätt kan övriga parametrar definieras som väntevärden:
 $$
 \mathrm{MTBM}
 =
-\operatorname{E}[T_{\mathrm{BM}}],
+\operatorname{E}[T_{\mathrm{M}}],
 $$
 
 $$
@@ -150,7 +148,7 @@ $$
 $$
 \mathrm{MDT}
 =
-\operatorname{E}[T_{\mathrm{Down}}],
+\operatorname{E}[T_{\mathrm{D}}],
 $$
 
 och
@@ -164,7 +162,7 @@ $$
 Om den otillgängliga tiden för varje underhållsåtgärd kan delas upp enligt
 
 $$
-T_{\mathrm{Down}}
+T_{\mathrm{D}}
 =
 T_{\mathrm{AM}}
 +
@@ -178,7 +176,7 @@ $$
 =
 \mathrm{MAMT}
 +
-\mathrm{MWT}}.
+\mathrm{MWT}.
 $$
 
 Detta samband kräver inte att den aktiva underhållstiden och väntetiden är statistiskt oberoende. Det förutsätter däremot att tiderna avser samma population av underhållsåtgärder och samma avgränsning av den otillgängliga tiden.
@@ -212,7 +210,3 @@ $$
 $$
 
 Det aritmetiska medelvärdet är en direkt skattning när observationerna utgör fullständigt observerade och jämförbara tidsintervall. Om observationsperioden avslutas innan ett fel eller en reparation har inträffat är observationen censurerad. Då kan metoder för livslängds- och tillförlitlighetsanalys behöva användas i stället för att enbart beräkna medelvärdet av de fullständiga observationerna.
-
-[^BenDaya]: Ben-Daya, M., Kumar, U. & Murthy, D. N. P. (2016). *Introduction to Maintenance Engineering: Modelling, Optimization and Management*. John Wiley & Sons. https://doi.org/10.1002/9781118926581
-
-[^RepairDistribution]: Normal-, exponential- och lognormalfördelningar för reparationstider behandlas bland annat i *MIL-HDBK-472: Maintainability Prediction*. Se även NIST:s beskrivning av [lognormalfördelningen](https://www.itl.nist.gov/div898/handbook/apr/section1/apr164.htm).
