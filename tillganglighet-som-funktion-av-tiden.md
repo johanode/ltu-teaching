@@ -25,7 +25,7 @@ $$
 A(t)=P\{X(t)=1\},
 $$
 
-där \(P\{\cdot\}\) betecknar sannolikheten för en händelse.
+där $P\{\cdot\}$ betecknar sannolikheten för en händelse.
 
 Eftersom \(X(t)\) endast kan anta värdena 0 och 1 gäller
 
@@ -39,7 +39,7 @@ $$
 P\{X(t)=1\},
 $$
 
-där \(\operatorname{E}[\cdot]\) betecknar väntevärdet.
+där $\operatorname{E}[\cdot]$ betecknar väntevärdet.
 
 Punkttillgängligheten kan därför även skrivas som
 
@@ -57,7 +57,7 @@ $$
 U(t)=\int_0^t X(s)\,ds.
 $$
 
-Låt \(UT[t_1,t_2]\) beteckna den sammanlagda tillgängliga tiden under intervallet $[t_1,t_2]$:
+Låt $UT[t_1,t_2]$ beteckna den sammanlagda tillgängliga tiden under intervallet $[t_1,t_2]$:
 
 $$
 UT[t_1,t_2]
@@ -65,7 +65,7 @@ UT[t_1,t_2]
 U(t_2)-U(t_1).
 $$
 
-Den sammanlagda otillgängliga tiden under samma intervall betecknas \(DT[t_1,t_2]\) och ges av
+Den sammanlagda otillgängliga tiden under samma intervall betecknas $DT[t_1,t_2]$ och ges av
 
 $$
 DT[t_1,t_2]
@@ -123,7 +123,7 @@ A_\infty
 \lim_{T\rightarrow\infty}A(0,T).
 $$
 
-Antag att de efterföljande cyklerna av tillgängliga tidsintervall \(UT_i\) och otillgängliga tidsintervall \(DT_i\) är oberoende och likafördelade samt har ändliga väntevärden. Den asymptotiska genomsnittliga intervalltillgängligheten ges då av
+Antag att de efterföljande cyklerna av tillgängliga tidsintervall $UT_i$ och otillgängliga tidsintervall $DT_i$ är oberoende och likafördelade samt har ändliga väntevärden. Den asymptotiska genomsnittliga intervalltillgängligheten ges då av
 
 $$
 A_\infty
@@ -149,14 +149,15 @@ A_\infty
 {\overline{UT}+\overline{DT}}.
 $$
 
-Den asymptotiska genomsnittliga intervalltillgängligheten kan uttryckas med olika medeltider beroende på vilka orsaker till otillgänglighet som inkluderas, se också [Tre mått på tillgänglighet (Ak, Am, Ao)](berakning-tillganglighet.md#tre-mått-på-tillgänglighet-ak-am-ao). Konstruktiv och operativ tillgänglighet är två mått som bygger på denna princip men har olika avgränsningar.
+Den asymptotiska genomsnittliga intervalltillgängligheten kan uttryckas med olika medeltider beroende på vilka orsaker till otillgänglighet som inkluderas, se också [Tre mått på tillgänglighet (Ak, Am, Ao)](berakning-tillganglighet.md#tre-mått-på-tillgänglighet-ak-am-ao). Konstruktiv och operativ tillgänglighet är två mått som bygger på denna princip.
+
 Den konstruktiva tillgängligheten beräknas enligt
 
 $$
 A_k=\frac{MTBF}{MTBF+MRT},
 $$
 
-där \(MTBF\) (*Mean Time Between Failures*) är medeltiden mellan fel och \(MRT\) (*Mean Repair Time*) är medelreparationstiden.
+där **MTBF** (*Mean Time Between Failures*) är medeltiden mellan fel och **MRT** (*Mean Repair Time*) är medelreparationstiden.
 
 Den operativa tillgängligheten beräknas enligt
 
@@ -164,7 +165,7 @@ $$
 A_o=\frac{MTBM}{MTBM+MDT},
 $$
 
-där \(MTBM\) (*Mean Time Between Maintenance*) är medeltiden mellan underhållsåtgärder och \(MDT\) (*Mean Down Time*) är den genomsnittliga otillgängliga tiden per underhållsåtgärd.
+där **MTBM** (*Mean Time Between Maintenance*) är medeltiden mellan underhållsåtgärder och **MDT** (*Mean Down Time*) är den genomsnittliga otillgängliga tiden per underhållsåtgärd.
 
 Båda måtten beskriver således asymptotisk genomsnittlig intervalltillgänglighet, men med olika avgränsningar av vilka tider och underhållshändelser som ingår.
 
