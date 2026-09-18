@@ -6,7 +6,7 @@ Tillgänglighet, *eng. availability* (A), beskriver förmågan hos en enhet att 
 
 Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.
 
-Tillgänglighet kan kvantifieras som andelen av krävd tid under vilken enheten kan utföra det som krävs. Detta benämns tillgänglighetsprestanda i svensk standard för underhåll (SS-EN 13306:2017)[^SS13306].
+Tillgänglighet kan kvantifieras som andelen av krävd tid (*required time*) under vilken enheten kan utföra det som krävs. Detta benämns tillgänglighetsprestanda i svensk standard för underhåll (SS-EN 13306:2017)[^SS13306].
 
 $$
 A = \frac{\text{Tillgänglig tid}}
@@ -25,7 +25,7 @@ $$
 
 I M10 ingår [beredskapstid](#definitioner) (*standby time*) i tillgänglig tid (*uptime*) men inte [outnyttjad tid](#definitioner) (*idle time*). 
 
-Vid beräkning av tidsbaserad tillgänglighet måste man således bestämma vilken tid som ska räknas som [krävd tid](#definitioner). I denna guide beskrivs två alternativ: total kalendertid och planerad drifttid.
+Gemensamt för tidsbaserade tillgänglighetsmått är att man måste bestämma vilken tid som ska räknas som [krävd tid](#definitioner). I denna guide beskrivs två alternativ: total kalendertid och planerad drifttid.
 
 [^SS13306]: *SS-EN 13306:2017 Underhåll – Underhållsterminologi*. Stockholm: Svenska institutet för standarder.
 [^SS15341]: *SS-EN 15341:2019 Underhåll – Nyckeltal för underhåll*. Stockholm: Svenska institutet för standarder.
@@ -217,7 +217,7 @@ Medeltiden mellan underhåll beräknas som medelvärdet av den tillgängliga tid
 $$
 \mathrm{MTBM}
 =
-\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Up,i}
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{U,i}
 =
 \frac{1}{n_M}\sum_{i=1}^{n_M}
 \left(
@@ -299,34 +299,42 @@ där $T_{Wait,i}$ är den sammanlagda väntetiden under underhållsaktivitet $i$
 
 Ett system har följande data:
 
-- Tillgänglig tid = 3600 h
+- Tillgänglig tid (UT) = 3600 h
 - Antal fel = 30
 - Summa reparationstid = 150 h
-- Summa väntetid avhjälpande underhåll = 90 h
+- Medelväntetid avhjälpande underhåll = 3 h
 - Antal förebyggande underhåll = 15
-- Summa förebyggande underhållstid = 45 h
-- Summa väntetid förebyggande underhåll = 15 h
+- Summa förebyggande underhållstid = 60 h
+- Medelväntetid förebyggande underhåll = 1 h
 
 Beräkna den kalenderbaserad tillgängligheten:
 
-- $A_k$
-- $A_m$
-- $A_o$
+a) $A_k$
+
+b) $A_m$
+
+c) $A_o$
+
 
 ---
 
-### Steg 1: Beräkna MTBF
+### a) Beräkna Ak
+$$
+A_k=
+\frac{MTBF}{MTBF+MRT}
+$$
 
+#### Steg 1: MTBF
 $$
 MTBF=
-\frac{\text{Tillgänglig tid}+\sum T_{PM}}{n_{Fail}}
+\frac{\text{UT}+\sum T_{PM}}{n_{Fail}}
 =
 \frac{3600+(45+15)}{30}
 =
 122\ h
 $$
 
-### Steg 2: Beräkna MRT
+#### Steg 2: MRT
 
 $$
 MRT=
@@ -337,7 +345,7 @@ MRT=
 5\ h
 $$
 
-### Steg 3: Beräkna Ak
+#### Steg 3: Ak
 
 $$
 A_k=
@@ -350,35 +358,40 @@ $$
 
 **Svar:** Den konstruktiva tillgängligheten $A_k=96.1\%$
 
-## Steg 4: Beräkna MTBM
+### b) Beräkna Am
+$$
+A_m=
+\frac{MTBM}{MTBM+MAMT}
+$$
 
-Antal underhållshändelser: $n_{M}=n_{Fail}+n_{PM}=30+15=45$
-
+#### Steg 1: MTBM
 $$
 MTBM=
-\frac{Tillgänglig tid}{n_{M}}
+\frac{UT}{n_{M}}
 =
-\frac{3600}{45}
+\frac{3600}{30+15}
 =
 80\ h
 $$
 
----
+där antal underhållshändelser n_{M}=n_{Fail}+n_{PM}$
 
-## Steg 5: Beräkna MAMT
-
+#### Steg 2: MAMT
 $$
 MAMT=
 \frac{\sum T_{Rep} + \sum T_{APM}}{n_{M}}
 =
-\frac{150 + 45}{45}
+\frac{150 + (60-15 \cdot 1)}{45}
 =
 4.33\ h
 $$
 
----
+där summan aktivt förebyggande underhållstid erhålls ur 
+$$
+\sum T_{APM} = \sum T_{PM} - n_{PM} \cdot MWT_{PM}
+$$
 
-## Steg 6: Beräkna Am
+#### Steg 3: Am
 
 $$
 A_m=
@@ -391,8 +404,24 @@ $$
 
 **Svar:** Material tillgängligheten är $A_m=94.9\%$
 
-## Steg 7: Beräkna MDT
+### c) Beräkna Ao
 
+$$
+A_o=
+\frac{MTBM}{MTBM+MDT}
+$$
+
+#### Steg 1: MTBM
+$$
+MTBM=
+\frac{UT}{n_{M}}
+=
+\frac{3600}{45}
+=
+80\ h
+$$
+
+#### Steg 2: MDT
 $$
 MDT=
 \frac{\sum T_{CM} + \sum T_{PM}}{n_M}
@@ -402,9 +431,7 @@ MDT=
 6.667\ h
 $$
 
----
-
-## Steg 8: Beräkna Ao
+#### Steg 3: Ao
 
 $$
 A_o=
@@ -416,7 +443,6 @@ A_o=
 $$
 
 **Svar:** Den operativa tillgängligheten är $A_o=92.3\%$
-
 
 
 ## Exempel 2
@@ -520,7 +546,7 @@ $$
 #### Steg 3: Operativ tillgänglighet (Ao)
 
 $$
-MTBM = MTBF \text{(förebyggande underhåll genomförs under icke krävd tid)}
+MTBM = MTBF \Longleftarrow \text{förebyggande underhåll genomförs under icke krävd tid}
 $$
 
 
