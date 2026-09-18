@@ -20,7 +20,7 @@ Tidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den procentandel a
 
 Tidsbaserad tillgänglighet beskrivs också i svenska standarden SS-EN 15341:2019 Nyckeltal för underhåll[^SS15341] under *Maintenance Key Performance Indicators* genom nyckeltalet *Time-based availability* (M10) 
 $$
-\frac{\text{Uptime during required time}}{\text{Required time}}
+M10 = \frac{\text{Uptime during required time}}{\text{Required time}}
 $$
 **Krävd tid** (*required time*) är det tidsintervall under vilket en enhet måste vara i funktionsdugligt tillstånd. 
 
@@ -38,9 +38,9 @@ Vid beräkning av tidsbaserad tillgänglighet måste man således bestämma vilk
 Tillgänglighet baserad på kalendertid avser den andel av den totala kalendertiden (24 timmar om dygnet, 365 dagar om året) då en enhet är funktionsduglig
 
 $$
-\mathrm{Uptime} + \mathrm{Downtime} = \mathrm{Total tid} 
+\mathrm{Uptime} + \mathrm{Downtime} = \mathrm{Total\ time} 
 \Longrightarrow 
-A = \frac{\mathrm{Uptime}}{\mathrm{Total time}}
+A = \frac{\mathrm{Uptime}}{\mathrm{Total\ time}}
 $$
 
 Andelen av den tillgängliga tiden som enheten är i drift benämns nyttjandegrad. 
@@ -61,7 +61,7 @@ $$
 där TTR (*time to restoration*) är tiden till återställning och omfattar reparationstid och väntetid. 
 
 
-## Tre mått på tillgänglighet ($A_k$, $A_m$, $A_o$)
+## Tre mått på tillgänglighet (Ak, Am, Ao)
 Utöver att tillgänglighet kan beräknas baserat på kalendertid eller driftstid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.
 
 Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgänglighet:
@@ -70,7 +70,7 @@ Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgä
 - Materialtillgänglighet ($A_m$) / *Achieved availability* ($A_a$)
 - Operativ tillgänglighet ($A_o$) / *Operational availability* ($A_o$)
 
-### Konstruktiv tillgänglighet ($A_k$)
+### Konstruktiv tillgänglighet (Ak)
 Den konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet i SS-EN 13306. Varken väntetider eller förebyggande underhåll ingår. 
 
 Den konstruktiva tillgängligheten beräknas enligt
@@ -85,7 +85,7 @@ där [**MTBF**](#mtbf) är medeltiden mellan fel (*Mean Time Between Failures*) 
 
 I ekvationen för konstruktiv tillgänglighet betecknas medelreparationstiden traditionellt ofta med **MTTR** (*Mean Time To Repair*). Enligt terminologin i svensk standard betecknas medelreparationstiden emellertid med **MRT** (*Mean Repair Time*), medan **MTTR** står för *Mean Time To Restore* och inkluderar väntetid.
 
-### Materialtillgänglighet ($A_m$)
+### Materialtillgänglighet (Am)
 Materialtillgänglighet, eller uppnådd tillgängligheten, inkluderar både avhjälpande och förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt
 
 $$
@@ -96,7 +96,7 @@ $$
 
 där [**MTBM**](#mtbm) (*Mean Time Between Maintenance*) är medeltiden mellan underhåll och [**MAMT**](#mamt) (*Mean Active Maintenance Time*) är medeltiden för aktivt underhåll, såväl förebyggande som avhjälpande (reparation).
 
-### Operativ tillgänglighet ($A_o$)
+### Operativ tillgänglighet (Ao)
 Operativ tillgänglighet inkluderar både avhjälpande underhåll och förebyggande underhåll där väntetid även ingår.
 
 Den operativa tillgängligheten beräknas enligt
@@ -412,29 +412,33 @@ Nedan är data för fel och förebyggande underhåll för ett anläggning med ko
 [b)](#uppgift-b) Beräkna $A_k$, $A_m$, $A_o$ baserat på kalender tid
 
 
-| ID   | Typ   | Anmält datum $(t_{failure, i})| Anmält vidare       | Arbetet påbörjat    | Arbetet slutfört $(t_{restore, i}) |
+| ID   | Typ   | Anmält datum $(t_{failure, i})$| Anmält vidare       | Arbetet påbörjat    | Arbetet slutfört $(t_{restore, i})$ |
 |:-----|:------|:--------------------|:--------------------|:--------------------|:--------------------|
 | F01  | AU    | 2024-01-15 03:12:00 | 2024-01-15 06:45:00 | 2024-01-15 07:20:00 | 2024-01-15 08:40:00 |
-| PM01 | FU    | 2024-03-01 08:00:00 | 2024-03-01 08:00:00 | 2024-03-01 08:00:00 | 2024-03-02 08:00:00 |
 | F02  | AU    | 2024-04-22 17:54:00 | 2024-04-22 19:10:00 | 2024-04-22 20:00:00 | 2024-04-22 23:15:00 |
 | F03  | AU    | 2024-07-31 09:27:00 | 2024-07-31 10:05:00 | 2024-07-31 11:20:00 | 2024-07-31 14:50:00 |
-| PM02 | FU    | 2024-09-01 08:00:00 | 2024-09-01 08:00:00 | 2024-09-01 08:00:00 | 2024-09-02 08:00:00 |
 | F04  | AU    | 2024-10-10 13:56:00 | 2024-10-10 14:53:00 | 2024-10-10 20:46:00 | 2024-10-11 04:45:00 |
 | F05  | AU    | 2024-11-18 22:41:00 | 2024-11-18 23:30:00 | 2024-11-19 01:10:00 | 2024-11-19 03:20:00 |
 | F06  | AU    | 2024-12-04 06:11:00 | 2024-12-04 06:41:00 | 2024-12-04 15:25:00 | 2024-12-04 22:37:00 |
 | F07  | AU    | 2025-02-24 14:08:00 | 2025-02-24 14:55:00 | 2025-02-24 16:10:00 | 2025-02-24 19:40:00 |
-| PM03 | FU    | 2025-03-01 08:00:00 | 2025-03-01 08:00:00 | 2025-03-01 08:00:00 | 2025-03-02 08:00:00 |
 | F08  | AU    | 2025-05-12 01:59:00 | 2025-05-12 02:39:00 | 2025-05-14 01:28:00 | 2025-05-14 11:19:00 |
 | F09  | AU    | 2025-06-03 05:33:00 | 2025-06-03 08:20:00 | 2025-06-03 09:00:00 | 2025-06-03 11:45:00 |
-| PM04 | FU    | 2025-09-01 08:00:00 | 2025-09-01 08:00:00 | 2025-09-01 08:00:00 | 2025-09-02 08:00:00 |
 | F10  | AU    | 2025-09-11 18:26:00 | 2025-09-11 20:10:00 | 2025-09-11 21:00:00 | 2025-09-12 00:55:00 |
 | F11  | AU    | 2025-10-25 16:53:00 | 2025-10-25 17:40:00 | 2025-10-27 06:31:00 | 2025-10-27 09:00:00 |
 | F12  | AU    | 2025-12-20 07:51:00 | 2025-12-20 08:40:00 | 2025-12-20 10:15:00 | 2025-12-20 13:05:00 |
-| PM05 | FU    | 2026-03-01 08:00:00 | 2026-03-01 08:00:00 | 2026-03-01 08:00:00 | 2026-03-02 08:00:00 |
 | F13  | AU    | 2026-03-29 12:17:00 | 2026-03-29 13:05:00 | 2026-03-29 15:00:00 | 2026-03-29 17:40:00 |
 | F14  | AU    | 2026-04-14 07:21:00 | 2026-04-14 08:18:00 | 2026-04-15 04:14:00 | 2026-04-15 09:34:00 |
 | F15  | AU    | 2026-04-21 15:20:00 | 2026-04-21 15:59:00 | 2026-04-23 11:47:00 | 2026-04-23 20:45:00 |
 | F16  | AU    | 2026-07-07 01:44:00 | 2026-07-07 04:20:00 | 2026-07-07 05:10:00 | 2026-07-07 07:05:00 |
+
+
+| ID   | Typ   | Anmält datum        | Anmält vidare       | Arbetet påbörjat $(t_{PM\ start, i})$ | Arbetet slutfört $(t_{PM\ end, i})$ |
+|:-----|:------|:--------------------|:--------------------|:--------------------|:--------------------|
+| PM01 | FU    | 2024-03-01 08:00:00 | 2024-03-01 08:00:00 | 2024-03-01 08:00:00 | 2024-03-02 08:00:00 |
+| PM02 | FU    | 2024-09-01 08:00:00 | 2024-09-01 08:00:00 | 2024-09-01 08:00:00 | 2024-09-02 08:00:00 |
+| PM03 | FU    | 2025-03-01 08:00:00 | 2025-03-01 08:00:00 | 2025-03-01 08:00:00 | 2025-03-02 08:00:00 |
+| PM04 | FU    | 2025-09-01 08:00:00 | 2025-09-01 08:00:00 | 2025-09-01 08:00:00 | 2025-09-02 08:00:00 |
+| PM05 | FU    | 2026-03-01 08:00:00 | 2026-03-01 08:00:00 | 2026-03-01 08:00:00 | 2026-03-02 08:00:00 |
 | PM06 | FU    | 2026-09-01 08:00:00 | 2026-09-01 08:00:00 | 2026-09-01 08:00:00 | 2026-09-02 08:00:00 |
 
 
@@ -517,8 +521,8 @@ $$
 ### Uppgift b
 
 #### Steg 1: Tider
-Beräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid (avhjälpande och förebyggande) samt nedtid
 
+Beräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid (avhjälpande och förebyggande) samt nedtid
 
 | ID   | Tid mellan fel (TBF) [dygn]   |   Tid mellan underhåll (TBM) [dygn] |   Aktiv underhållstid [h] |   Väntetid [h] |   Nedtid [h] |
 |:-----|:------------------------------|------------------------------------:|--------------------------:|---------------:|-------------:|
@@ -549,7 +553,7 @@ Beräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid (avhjälpan
 
 - **Tid mellan fel** är
 $$
-\mathrm{TBF} = t_{failure, i-1}-t_{cm\ restore, i} \quad \left(t_{failure, 0}=\text{2023-11-01 08:00}\right)
+\mathrm{TBF} = t_{failure, i-1}-t_{restore, i} \quad \left(t_{failure, 0}=\text{2023-11-01 08:00}\right)
 $$ 
 
 - **Tid mellan underhåll** är 
