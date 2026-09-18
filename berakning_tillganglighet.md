@@ -2,7 +2,7 @@
 *Johan Odelius*, Drift och underhållsteknik, Luleå tekniska universitet
 ## Introduktion
 
-Tillgänglighet, *eng. availability* (A), beskriver förmågan hos en enhet att utföra det som krävs när det krävs. Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd. En enhet kan här vara en större anläggning, till exempel järnvägen mellan Luleå och Boden, ett större produktionsavsnitt eller ett delsystem i en maskin. 
+Tillgänglighet, *eng. availability* (A), beskriver förmågan hos en enhet att utföra det som krävs när det krävs. Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd. 
 
 Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.
 
@@ -11,71 +11,116 @@ Tillgänglighet kan kvantifieras som andelen av tiden under vilken enheten kan u
 $$
 A = \frac{\text{Tillgänglig tid}}
 {\text{Tillgänglig tid} + \text{Otillgänglig tid}}
-= \frac{\text{Uptime}}{\text{Uptime} + \text{Downtime}}
+= \frac{\mathrm{Uptime}}{\mathrm{Uptime} + \mathrm{Downtime}}
 $$
 
 Det finns många olika varianter av tillgänglighetsprestanda. Anledningen är att det för olika typer av verksamheter inom olika sektorer kan vara relevant att ta fram olika nyckeltal för att följa upp och utveckla verksamheten och dess underhåll.
 
-Tidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den procentandel av tiden, under en given tidsperiod, då en enhet kan utföra det som krävs. Det finns också produktionsbaserad tillgänglighet, som definieras som förhållandet mellan faktisk produktion och krävd produktion. Produktionsbaserad tillgänglighet beskrivs inte vidare i denna guide.
+Tidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den procentandel av tiden, under en given tidsperiod, då en enhet kan utföra det som krävs. Det finns också produktionsbaserad tillgänglighet, som definieras som förhållandet mellan faktisk produktion och krävd produktion. Produktionsbaserad tillgänglighet beskrivs inte vidare i denna guide. 
 
-Den tidsbaserade tillgängligheten kan utgå från total kalendertid eller krävd tid.
+Tidsbaserad tillgänglighet beskrivs också i svenska standarden SS-EN 15341:2019 Nyckeltal för underhåll[^SS15341] under *Maintenance Key Performance Indicators* genom nyckeltalet *Time-based availability* (M10) 
+$$
+\frac{\text{Uptime during required time}}{\text{Required time}}
+$$
+**Krävd tid** (*required time*) är det tidsintervall under vilket en enhet måste vara i funktionsdugligt tillstånd. 
+
+I M10 ingår beredskapstid (*standby time*) i tillgänglig tid (*uptime*) men inte outnyttjad tid (*idle time*). 
+- **Beredskapstid** är den tid då en enhet är i funktionsdugligt tillstånd men inte i drift under krävd tid. 
+- **Outnyttjad tid** är den tid då en enhet är i funktionsdugligt tillstånd, men inte är i drift, under ej krävd tid
+
+Vid beräkning av tidsbaserad tillgänglighet måste man således bestämma vilken tid som ska räknas som krävd tid. I denna guide beskrivs två alternativ: total kalendertid och planerad drifttid.
 
 [^SS13306]: *SS-EN 13306:2017 Underhåll – Underhållsterminologi*. Stockholm: Svenska institutet för standarder.
+[^SS15341]: *SS-EN 15341:2019 Underhåll – Nyckeltal för underhåll*. Stockholm: Svenska institutet för standarder.
 
-### Tillgänglighet baserad på kalendertid
+### Tillgänglighet baserad på total kalendertid
 
 Tillgänglighet baserad på kalendertid avser den andel av den totala kalendertiden (24 timmar om dygnet, 365 dagar om året) då en enhet är funktionsduglig
 
 $$
-\text{Tillgänglig tid} + \text{Otillgänglig tid} = \text{Total tid}
+\mathrm{Uptime} + \mathrm{Downtime} = \mathrm{Total tid} 
+\Longrightarrow 
+A = \frac{\mathrm{Uptime}}{\mathrm{Total time}}
 $$
 
-Det är således endast en del av den tillgängliga tiden som enheten är i drift, vilket benämns nyttjandegrad. Förhållandet mellan krävd tid och kalendertid kallas beläggningsgrad (*loading*)[^TEEP]. 
+Andelen av den tillgängliga tiden som enheten är i drift benämns nyttjandegrad. 
 
-[^TEEP]: Beräkningen av total effektiv utrustningsprestanda, *Total Effective Equipment Performance* (TEEP), och utrustningens totala effektivitet, *Overall Equipment Effectiveness* (OEE), där $\mathrm{TEEP} = \mathrm{Loading} \cdot \mathrm{OEE}$.
+### Tillgänglighet baserad på planerad driftstid
 
-### Tillgänglighet baserad på krävd tid
+Detta mått på tillgänglighet beskriver den andel av den planerade driften då enheten kan utföra det som krävs $(\text{Krävd tid}=\text{Planerad drift})$. Förhållandet mellan planerad driftstid och kalendertid kallas beläggningsgrad (*loading*). Den tillgängliga tiden (*uptime*) omfattar drifttid och beredskapstid. 
 
-Detta mått på tillgänglighet beskriver den andel av den krävda tiden eller den planerade produktionstiden då enheten utför det som krävs
+I SS-EN 15341 beskrivs även *Availability based on operating time* (M11), som endast utgår från drifttid (OT) och exkluderar beredskapstid, enligt
+$$
+M11 = \frac{OT}{\text{Required operating time}}
+$$
 
- $$
- \text{Tillgänglig tid} + \text{Otillgänglig tid} = \text{Krävd tid}
- $$
+Standarden för nyckeltal inom underhåll beskriver även ett tredje mått, *Availability based on time to restoration* (M12) enligt
+$$
+M12 = \frac{OT}{OT+TTR}
+$$ 
+där TTR (*time to restoration*) är tiden till återställning och omfattar reparationstid och väntetid. 
 
-Den tillgängliga tiden (*uptime*) utgörs i detta fall drifttid plus beredskapstid (*standby time*). Beredskapstid är den tid då en enhet är i funktionsdugligt tillstånd men inte i drift under krävd tid. I praktiken kan man ofta bortse från denna tid vid beräkning av tillgängligheten[^Perf].
 
-[^Perf]: Beredskapstid är en typ av produktionsförlust (*six losses*) som ingår i beräkningen av anläggningseffektivitet för OEE.
-
-Detta mått beskrivs också i svenska standarden Nyckeltal för underhåll[^KPI] under *Maintenance Key Performance Indicators* och benämns där *Time-based availability* (M10). I samma standarden beskrivs även *Availability based on operating time* (M11), som endast utgår från drifttid och exkluderar beredskapstid från beräkningen.
-
-[^KPI]: *SS-EN 15341:2019 Underhåll – Nyckeltal för underhåll*. Stockholm: Svenska institutet för standarder.
-
-## Tre mått på tillgänglighet (Ak, Am, Ao)
-Utöver att tillgänglighet kan beräknas baserat på kalendertid eller krävd tid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.
+## Tre mått på tillgänglighet ($A_k$, $A_m$, $A_o$)
+Utöver att tillgänglighet kan beräknas baserat på kalendertid eller driftstid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.
 
 Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgänglighet:
 
-- Konstruktiv tillgänglighet (Ak) / *Inherent availability* (Ai)
-- Materialtillgänglighet (Am) / *Achieved availability* (Aa)
-- Operativ tillgänglighet (Ao) / *Operational availability* (Ao)
+- Konstruktiv tillgänglighet ($A_k$) / *Inherent availability* ($A_i$)
+- Materialtillgänglighet ($A_m$) / *Achieved availability* ($A_a$)
+- Operativ tillgänglighet ($A_o$) / *Operational availability* ($A_o$)
 
-### Konstruktiv tillgänglighet (Ak)
-Den konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet SS-EN 13306. Varken väntetider eller förebyggande underhåll ingår. 
+### Konstruktiv tillgänglighet ($A_k$)
+Den konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet i SS-EN 13306. Varken väntetider eller förebyggande underhåll ingår. 
 
 Den konstruktiva tillgängligheten beräknas enligt
 $$
 A_k=
 \frac{MTBF}
-{MTBF+MTTR}
+{MTBF+MRT}
 $$
 
-där **MTBF** är medeltiden mellan fel (*Mean Time Between Failure*) och **MTTR** är medelreparationstiden (*Mean Time To Repair*). 
+där [**MTBF**](#mtbf) är medeltiden mellan fel (*Mean Time Between Failures*) och [**MRT**](#mrt) är medelreparationstiden (*Mean Repair Time*). 
 
-**MTBF** är den förväntade tiden mellan fel definieras enligt
+
+I ekvationen för konstruktiv tillgänglighet betecknas medelreparationstiden traditionellt ofta med **MTTR** (*Mean Time To Repair*). Enligt terminologin i svensk standard betecknas medelreparationstiden emellertid med **MRT** (*Mean Repair Time*), medan **MTTR** står för *Mean Time To Restore* och inkluderar väntetid.
+
+### Materialtillgänglighet ($A_m$)
+Materialtillgänglighet, eller uppnådd tillgängligheten, inkluderar både avhjälpande och förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt
+
+$$
+A_m=
+\frac{MTBM}
+{MTBM+MAMT}
+$$
+
+där [**MTBM**](#mtbm) (*Mean Time Between Maintenance*) är medeltiden mellan underhåll och [**MAMT**](#mamt) (*Mean Active Maintenance Time*) är medeltiden för aktivt underhåll, såväl förebyggande som avhjälpande (reparation).
+
+### Operativ tillgänglighet ($A_o$)
+Operativ tillgänglighet inkluderar både avhjälpande underhåll och förebyggande underhåll där väntetid även ingår.
+
+Den operativa tillgängligheten beräknas enligt
+$$
+A_o
+=
+\frac{MTBM}
+{MTBM+MDT}
+=
+\frac{Uptime}
+{Uptime + Downtime}
+$$
+
+där [**MDT**](#mdt) (*Mean Downtime*) är medeltiden är den genomsnittliga otillgängliga tiden per underhållsåtgärd, inklusive väntetid. Den kan också beräknas som $MDT = MAMT + MWT$ där [$MWT$](#mwt) (*Mean Waiting Time*) är medelväntetiden. 
+
+---
+
+## Driftsäkerhetsparametrar
+### MTBF
+**MTBF** är den förväntade tiden mellan fel och definieras enligt
 $$
 MTBF = \int_{0}^{\infty} t f(t) dt = \int_{0}^{\infty} R(t) dt
 $$
-där $f(t)$ är fördelningens täthetsfunktion och $R(t)$ är *reliability function* (tillförlitlighetsfunktion)^[MTBF].
+där $f(t)$ är fördelningens täthetsfunktion och $R(t)$ är *reliability function* (tillförlitlighetsfunktion). För en exponentialfördelning är $MTBF = 1/\lambda$ och för en Weibullfördelning $MTBF = \alpha \Gamma (1/\beta+1)$ där $\alpha$ är skalparametern och $\beta$ är formparametern.
 
 En skattning av **MTBF** kan beräknas som det aritmetiska medelvärdet av tiderna mellan fel, där tiden mellan fel är tiden från återställandet av tidigare fel till nästa fel: 
 $$
@@ -94,19 +139,17 @@ där $t_{\mathrm{Restored},\,0}=0$
 
 **MTBF** används för enheter som kan repareras, medan medeltid till fel (**MTTF**) betecknar den förväntade tiden till fel för en enhet som inte repareras. 
 
-[^MTBF]: För en exponentialfördelning är $MTBF = 1/\lambda$ och för en Weibullfördelning $MTBF = \alpha \Gamma (1/\beta+1)$.
-
-#### Kalenderbaserad tillgänglighet
+#### Kalendertid
 Tid mellan fel för kalenderbaserad tillgänglighet inkluderar både tillgänglig tid och förebyggande underhållstid. Den kan därför också beräknas enligt
 
 $$
 \mathrm{MTBF} 
 = 
-\frac{\text{Tillgänglig tid}+\text{Förebyggande underhållstid}}{\text{Antal fel}}
+\frac{\mathrm{Uptime}+\text{Preventive maintenance time}}{\text{Number of failures}}
 $$
 
 
-För de flesta system och anläggningar är reparationstiden väldigt kort i förhållande till kalendertiden. En approximation är att beräkna medeltiden av feltiderna för den totala tiden mellan fel
+För många system och anläggningar är reparationstiden väldigt kort i förhållande till kalendertiden. En approximation är att beräkna medeltiden av feltiderna för den totala tiden mellan fel
 $$
 \mathrm{MTBF} 
 \approx
@@ -116,7 +159,7 @@ t_{\mathrm{Fail},\,i}
 t_{\mathrm{Fail},\,i-1}
 \right)
 = 
-\frac{\text{Total tid}}{n_{Fail}}
+\frac{\text{Total time}}{n_{Fail}}
 $$
 
 **MTBF** approximeras även med utgångspunkt i bara tillgänglig tid som
@@ -124,22 +167,22 @@ $$
 $$
 \mathrm{MTBF} 
 \approx
-\frac{\text{Tillgänglig tid}}{\text{Antal fel}}
+\frac{\mathrm{Uptime}}{\text{Number of failures}}
 $$
 
-#### Tillgänglighet baserad på krävd tid
+#### Drifttid
 
-För tillgänglighet baserad på krävd tid beräknas normalt **MTBF** som medeltiden för drifttiden mellan fel, dvs utan hänsyn till eventuellt förebyggande underhåll som genomförs under planerad drift, enligt 
+För tillgänglighet baserad på planerad drift beräknas normalt **MTBF** som medeltiden för drifttiden $(OT)$ mellan fel, dvs utan hänsyn till eventuellt förebyggande underhåll som genomförs under planerad drift, enligt 
 
 $$
 \mathrm{MTBF} 
-= \frac{\text{Drifttid}}{n_{Fail}}
+= \frac{mathrm{OT}}{n_{Fail}}
 $$
 
-#### Medelreparationstid
-Medelreparationstiden beräknas enligt[^MTTR]
+### MRT
+Medelreparationstiden beräknas enligt
 $$
-\mathrm{MTTR}
+\mathrm{MRT}
 =
 \frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} T_{Rep,i}
 =
@@ -151,19 +194,8 @@ t_{\mathrm{Repair\ start},\,i}
 \right)
 $$
 
-[^MTTR]: I ekvationen för konstruktiv tillgänglighet (Ak) betecknas av tradition medelreparationstiden som **MTTR**, men enligt korrekt terminologi ska det vara **MRT**: *Mean Repair Time* då **MTTR** betecknar *Mean Time To Restore* som inkluderar väntetid. 
 
-### Materialtillgänglighet (Am)
-Materialtillgänglighet, eller uppnådd tillgängligheten, inkluderar både avhjälpande och förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt
-
-$$
-A_m=
-\frac{MTBM}
-{MTBM+MAMT}
-$$
-
-där **MTBM** (*Mean Time Between Maintenance*) är medeltiden mellan underhåll och **MAMT** (*Mean Active Maintenance Time*) är medeltiden för aktivt underhåll, såväl förebyggande som avhjälpande (reparation).
-
+### MTBM
 Medeltiden mellan underhåll beräknas som medelvärdet av den tillgängliga tiden mellan underhållsåtgärder 
 
 $$
@@ -177,18 +209,19 @@ t_{\mathrm{M\ start},\,i}
 -
 t_{\mathrm{M\ end},\,i-1}
 \right)
-= \frac{\text{Tillgänglig tid}}{n_M}
+= \frac{\mathrm{Uptime}}{n_M}
 $$. 
 
-där $M$ (*maintenance*) är en underhållsåtgärd och $n_M = n_{Fail}+ n_{PM}$ är antal fel plus antal antalet förebyggande åtgärder.
+där $M$ (*maintenance*) är en underhållsåtgärd och $n_M = n_{Fail}+ n_{PM}$ är antalet avhjälpande och förebyggande underhållsåtgärder.
 
 
 För tillgänglighet baserad på krävd tid är, enligt tidigare, tillgänglig tid detsamma som drifttid plus beredskapstid men beräknas vanligen som 
 $$
 \mathrm{MTBM}
-= \frac{\text{Drifttid}}{n_M}
+= \frac{\mathrm{OT}}{n_M}
 $$. 
 
+### MAMT
 Den genomsnittliga aktiva underhållstiden per åtgärd beräknas som
 $$
 \mathrm{MAMT}
@@ -203,25 +236,10 @@ $$
 \right)
 $$
 
-där $T_{AM,i}$ är den aktiva underhållstiden för åtgärd $i$, $T_{Rep,j}$ är den reparationstiden för fel $j$ och $T_{APM,i}$ är den aktiva förebyggande underhållstiden för åtgärd $k$. 
+där $T_{AM,i}$ är den aktiva underhållstiden för åtgärd $i$, $T_{Rep,j}$ är reparationstiden för fel $j$ och $T_{APM,k}$ är den aktiva förebyggande underhållstiden för åtgärd $k$. 
 
-
-### Operativ tillgänglighet (Ao)
-Operativ tillgänglighet inkluderar all otillgänglig tid, det vill säga både avhjälpande underhåll och förebyggande underhåll där väntetiden även ingår.
-
-Den operativa tillgängligheten beräknas enligt
-$$
-A_o
-=
-\frac{MTBM}
-{MTBM+MDT}
-=
-\frac{Tillgänglig tid}
-{Tillgänglig tid + Otillgänglig tid}
-$$
-
-där **MDT** är medeltiden för en underhållsåtgärd inklusive väntetid
-
+### MDT
+Den genomsnittliga otillgängliga tiden (nedtiden) per underhållsåtgärd beräknas enligt 
 $$
 \mathrm{MDT}
 =
@@ -234,15 +252,22 @@ t_{\mathrm{M\ end},\,i}
 t_{\mathrm{M\ start},\,i}
 \right)
 $$
+där $T_{\mathrm{CM},i}$ är den otillgängliga tiden för den avhjälpande underhållsåtgärden $i$, och $T_{\mathrm{PM},i}$ är motsvarande tid för den förebyggande underhållsåtgärden.
 
-vilket också kan beräknas som
+Vilket också kan beräknas som
 $$
 \mathrm{MDT}
 =\frac{\sum_{i=1}^{n_{Fail}} T_{CM, i} + \sum_{i=1}^{n_{PM}} T_{PM, i}}
 {n_{Fail} + n_{PM}}
 $$
  
-eller $MDT=MAMT + MWT$ där $MWT$ är medelväntetiden enligt
+#### MWT
+MDT kan också beräknas som 
+$$
+MDT = MAMT + MWT
+$$ 
+
+$MWT$ är medelväntetiden per underhållsåtgärd enligt
 
 $$
 \mathrm{MWT}
@@ -252,494 +277,329 @@ $$
 
 där $T_{Wait,i}$ är den sammanlagda väntetiden under underhållsaktivitet $i$.
 
+# Exempel beräkning
 
----
-
-# Illustration
-
-Nedanstående figur visar principen.
-
-```text
-Tid ---------------------------------------------------------->
-
-Tillgänglig tid
-
-██████████████      ████████████████      ██████████████
-
-Otillgänglig tid
-
-              ████                  ██
-
-               ↑                     ↑
-            Reparation          Förebyggande
-                                underhåll
-```
-
-Systemet växlar mellan tillgängligt och otillgängligt tillstånd.
-
-När systemet fungerar samlas tillgänglig tid.
-
-När systemet repareras eller underhålls samlas otillgänglig tid.
-
----
-
-# Konstruktiv tillgänglighet (Ak)
-
-Konstruktiv tillgänglighet beskriver hur tillgängligheten påverkas av:
-
-- fel
-- reparationstid
-
-Förebyggande underhåll och väntetider ingår inte.
-
-## MTBF
-
-MTBF står för:
-
-```text
-Mean Time Between Failures
-```
-
-på svenska:
-
-```text
-Medeltid mellan fel
-```
-
-Beräknas som
-
-```math
-MTBF=
-\frac{\text{Tillgänglig tid}}
-{\text{Antal fel}}
-```
-
-eller, om drifttid används i uppgiften,
-
-```math
-MTBF=
-\frac{\text{Drifttid}}
-{\text{Antal fel}}
-```
-
----
-
-## MTTR
-
-MTTR står för:
-
-```text
-Mean Time To Repair
-```
-
-på svenska:
-
-```text
-Medelreparationstid
-```
-
-Beräknas som
-
-```math
-MTTR=
-\frac{\text{Total reparationstid}}
-{\text{Antal fel}}
-```
-
----
-
-## Beräkning av Ak
-
-När MTBF och MTTR är beräknade används
-
-```math
-A_k=
-\frac{MTBF}
-{MTBF+MTTR}
-```
-
----
-
-# Materialtillgänglighet (Am)
-
-Materialtillgänglighet beskriver hur tillgängligheten påverkas av:
-
-- fel
-- reparationstid
-- förebyggande underhåll
-
-Väntetider ingår inte.
-
----
-
-## MTBM
-
-MTBM står för:
-
-```text
-Mean Time Between Maintenance
-```
-
-på svenska:
-
-```text
-Medeltid mellan underhåll
-```
-
-Här räknas både:
-
-- avhjälpande underhåll
-- förebyggande underhåll
-
-MTBM beräknas som
-
-```math
-MTBM=
-\frac{\text{Tillgänglig tid}}
-{\text{Antal fel + antal förebyggande underhåll}}
-```
-
----
-
-## MAMT
-
-MAMT står för:
-
-```text
-Mean Active Maintenance Time
-```
-
-på svenska:
-
-```text
-Genomsnittlig aktiv underhållstid
-```
-
-Den aktiva underhållstiden består av:
-
-- avhjälpande underhåll
-- förebyggande underhåll
-
-MAMT beräknas som
-
-```math
-MAMT=
-\frac{\text{Avhjälpande underhållstid}
-+\text{Förebyggande underhållstid}}
-{\text{Antal fel + antal förebyggande underhåll}}
-```
-
----
-
-## Beräkning av Am
-
-När MTBM och MAMT är beräknade används
-
-```math
-A_m=
-\frac{MTBM}
-{MTBM+MAMT}
-```
-
----
-
-# Operativ tillgänglighet (Ao)
-
-Operativ tillgänglighet beskriver den verkliga tillgängligheten.
-
-Här beaktas:
-
-- fel
-- reparationstid
-- förebyggande underhåll
-- väntetider
-
----
-
-## MDT
-
-MDT står för:
-
-```text
-Mean Down Time
-```
-
-på svenska:
-
-```text
-Medelnertid
-```
-
-MDT beräknas som
-
-```math
-MDT=MAMT+MWT
-```
-
----
-
-## MWT
-
-MWT står för:
-
-```text
-Mean Waiting Time
-```
-
-på svenska:
-
-```text
-Medelväntetid
-```
-
-Väntetider kan vara exempelvis:
-
-- väntan på reparatör
-- väntan på reservdelar
-- administrativ väntetid
-
-MWT beräknas som
-
-```math
-MWT=
-\frac{\text{Total väntetid}}
-{\text{Antal fel + antal förebyggande underhåll}}
-```
-
----
-
-## Beräkning av Ao
-
-När MTBM och MDT är beräknade används
-
-```math
-A_o=
-\frac{MTBM}
-{MTBM+MDT}
-```
-
----
-
-## Alternativ metod
-
-Operativ tillgänglighet kan ofta beräknas direkt från tillgänglig tid och nertid.
-
-```math
-A_o=
-\frac{\text{Tillgänglig tid}}
-{\text{Tillgänglig tid + nertid}}
-```
-
-där
-
-```math
-\text{Nertid}
-=
-\text{Underhållstid}
-+
-\text{Väntetid}
-```
-
----
-
-# Fullständigt exempel
+## Exempel 1
 
 Ett system har följande data:
 
 - Tillgänglig tid = 3600 h
 - Antal fel = 30
-- Total reparationstid = 150 h
+- Summa reparationstid = 150 h
+- Summa väntetid avhjälpande underhåll = 90 h
 - Antal förebyggande underhåll = 15
-- Förebyggande underhållstid = 45 h
-- Total väntetid = 90 h
+- Summa förebyggande underhållstid = 45 h
+- Summa väntetid förebyggande underhåll = 15 h
 
-Beräkna:
+Beräkna den kalenderbaserad tillgängligheten:
 
-- Ak
-- Am
-- Ao
+- $A_k$
+- $A_m$
+- $A_o$
 
 ---
 
-## Steg 1: Beräkna MTBF
+### Steg 1: Beräkna MTBF
 
-```math
+$$
 MTBF=
-\frac{3600}{30}
+\frac{\text{Tillgänglig tid}+\sum T_{PM}}{n_{Fail}}
 =
-120\ h
-```
+\frac{3600+(45+15)}{30}
+=
+122\ h
+$$
 
----
+### Steg 2: Beräkna MRT
 
-## Steg 2: Beräkna MTTR
-
-```math
-MTTR=
+$$
+MRT=
+\frac{\sum T_{Rep}}{n_{Fail}}
+=
 \frac{150}{30}
 =
 5\ h
-```
+$$
 
----
+### Steg 3: Beräkna $A_k$
 
-## Steg 3: Beräkna Ak
-
-```math
+$$
 A_k=
-\frac{120}{120+5}
+\frac{MTBF}{MTBF+MRT}
 =
-0.96
-```
+\frac{122}{122+5}
+=
+0.961
+$$
 
-```math
-A_k=96.0\%
-```
-
----
+Den konstruktiva tillgängligheten $A_k=96.1\%$
 
 ## Steg 4: Beräkna MTBM
 
-Antal underhållshändelser:
+Antal underhållshändelser: $n_{M}=n_{Fail}+n_{PM}=30+15=45$
 
-```math
-30+15=45
-```
-
-```math
+$$
 MTBM=
+\frac{Tillgänglig tid}{n_{M}}
+=
 \frac{3600}{45}
 =
 80\ h
-```
+$$
 
 ---
 
 ## Steg 5: Beräkna MAMT
 
-Total aktiv underhållstid:
-
-```math
-150+45=195\ h
-```
-
-```math
+$$
 MAMT=
-\frac{195}{45}
+\frac{\sum T_{Rep} + \sum T_{APM}}{n_{M}}
+=
+\frac{150 + 45}{45}
 =
 4.33\ h
-```
+$$
 
 ---
 
-## Steg 6: Beräkna Am
+## Steg 6: Beräkna $A_m$
 
-```math
+$$
 A_m=
+\frac{MTBM}{MTBM+MAMT}
+=
 \frac{80}{80+4.33}
 =
 0.949
-```
+$$
 
-```math
-A_m=94.9\%
-```
+Material tillgängligheten är $A_m=94.9\%$
 
----
+## Steg 7: Beräkna MDT
 
-## Steg 7: Beräkna MWT
-
-```math
-MWT=
-\frac{90}{45}
-=
-2.0\ h
-```
-
----
-
-## Steg 8: Beräkna MDT
-
-```math
+$$
 MDT=
-4.33+2.0
+\frac{\sum T_{CM} + \sum T_{PM}}{n_M}
 =
-6.33\ h
-```
-
----
-
-## Steg 9: Beräkna Ao
-
-```math
-A_o=
-\frac{80}{80+6.33}
+\frac{(150+90) + (45+15)}{45}
 =
-0.927
-```
-
-```math
-A_o=92.7\%
-```
+6.667\ h
+$$
 
 ---
 
-# Sammanfattning
+## Steg 8: Beräkna $A_o$
 
-## Konstruktiv tillgänglighet
-
-```math
-A_k=
-\frac{MTBF}{MTBF+MTTR}
-```
-
-```math
-MTBF=
-\frac{\text{Tillgänglig tid}}{\text{Antal fel}}
-```
-
-```math
-MTTR=
-\frac{\text{Total reparationstid}}{\text{Antal fel}}
-```
-
----
-
-## Materialtillgänglighet
-
-```math
-A_m=
-\frac{MTBM}{MTBM+MAMT}
-```
-
-```math
-MTBM=
-\frac{\text{Tillgänglig tid}}
-{\text{Antal fel + antal förebyggande underhåll}}
-```
-
-```math
-MAMT=
-\frac{\text{Avhjälpande underhållstid}
-+\text{Förebyggande underhållstid}}
-{\text{Antal fel + antal förebyggande underhåll}}
-```
-
----
-
-## Operativ tillgänglighet
-
-```math
+$$
 A_o=
 \frac{MTBM}{MTBM+MDT}
-```
+=
+\frac{80}{80+6.667}
+=
+0.923
+$$
 
-```math
-MDT=MAMT+MWT
-```
+Den operativa tillgängligheten är $A_o=92.3\%$
 
-```math
-MWT=
-\frac{\text{Total väntetid}}
-{\text{Antal fel + antal förebyggande underhåll}}
-```
+
+
+## Exempel 2
+
+Nedan är data för fel och förebyggande underhåll för ett anläggning med kontinuerlig produktion. Anläggningen driftsattes 2023-11-01 kl 08:00.
+
+[a)](#uppgift-a) Beräkna $A_k$, $A_o$ baserat på planerad produktionstid, där planerad produktionstid är total tid minus de förebyggande underhållsstoppen.
+
+[b)](#uppgift-b) Beräkna $A_k$, $A_m$, $A_o$ baserat på kalender tid
+
+
+| ID   | Typ   | Anmält datum $(t_{failure, i})| Anmält vidare       | Arbetet påbörjat    | Arbetet slutfört $(t_{restore, i}) |
+|:-----|:------|:--------------------|:--------------------|:--------------------|:--------------------|
+| F01  | AU    | 2024-01-15 03:12:00 | 2024-01-15 06:45:00 | 2024-01-15 07:20:00 | 2024-01-15 08:40:00 |
+| PM01 | FU    | 2024-03-01 08:00:00 | 2024-03-01 08:00:00 | 2024-03-01 08:00:00 | 2024-03-02 08:00:00 |
+| F02  | AU    | 2024-04-22 17:54:00 | 2024-04-22 19:10:00 | 2024-04-22 20:00:00 | 2024-04-22 23:15:00 |
+| F03  | AU    | 2024-07-31 09:27:00 | 2024-07-31 10:05:00 | 2024-07-31 11:20:00 | 2024-07-31 14:50:00 |
+| PM02 | FU    | 2024-09-01 08:00:00 | 2024-09-01 08:00:00 | 2024-09-01 08:00:00 | 2024-09-02 08:00:00 |
+| F04  | AU    | 2024-10-10 13:56:00 | 2024-10-10 14:53:00 | 2024-10-10 20:46:00 | 2024-10-11 04:45:00 |
+| F05  | AU    | 2024-11-18 22:41:00 | 2024-11-18 23:30:00 | 2024-11-19 01:10:00 | 2024-11-19 03:20:00 |
+| F06  | AU    | 2024-12-04 06:11:00 | 2024-12-04 06:41:00 | 2024-12-04 15:25:00 | 2024-12-04 22:37:00 |
+| F07  | AU    | 2025-02-24 14:08:00 | 2025-02-24 14:55:00 | 2025-02-24 16:10:00 | 2025-02-24 19:40:00 |
+| PM03 | FU    | 2025-03-01 08:00:00 | 2025-03-01 08:00:00 | 2025-03-01 08:00:00 | 2025-03-02 08:00:00 |
+| F08  | AU    | 2025-05-12 01:59:00 | 2025-05-12 02:39:00 | 2025-05-14 01:28:00 | 2025-05-14 11:19:00 |
+| F09  | AU    | 2025-06-03 05:33:00 | 2025-06-03 08:20:00 | 2025-06-03 09:00:00 | 2025-06-03 11:45:00 |
+| PM04 | FU    | 2025-09-01 08:00:00 | 2025-09-01 08:00:00 | 2025-09-01 08:00:00 | 2025-09-02 08:00:00 |
+| F10  | AU    | 2025-09-11 18:26:00 | 2025-09-11 20:10:00 | 2025-09-11 21:00:00 | 2025-09-12 00:55:00 |
+| F11  | AU    | 2025-10-25 16:53:00 | 2025-10-25 17:40:00 | 2025-10-27 06:31:00 | 2025-10-27 09:00:00 |
+| F12  | AU    | 2025-12-20 07:51:00 | 2025-12-20 08:40:00 | 2025-12-20 10:15:00 | 2025-12-20 13:05:00 |
+| PM05 | FU    | 2026-03-01 08:00:00 | 2026-03-01 08:00:00 | 2026-03-01 08:00:00 | 2026-03-02 08:00:00 |
+| F13  | AU    | 2026-03-29 12:17:00 | 2026-03-29 13:05:00 | 2026-03-29 15:00:00 | 2026-03-29 17:40:00 |
+| F14  | AU    | 2026-04-14 07:21:00 | 2026-04-14 08:18:00 | 2026-04-15 04:14:00 | 2026-04-15 09:34:00 |
+| F15  | AU    | 2026-04-21 15:20:00 | 2026-04-21 15:59:00 | 2026-04-23 11:47:00 | 2026-04-23 20:45:00 |
+| F16  | AU    | 2026-07-07 01:44:00 | 2026-07-07 04:20:00 | 2026-07-07 05:10:00 | 2026-07-07 07:05:00 |
+| PM06 | FU    | 2026-09-01 08:00:00 | 2026-09-01 08:00:00 | 2026-09-01 08:00:00 | 2026-09-02 08:00:00 |
+
+
+### Uppgift a
+
+#### Steg 1: Tider
+Beräkna tid mellan fel samt reperationstid och nedtid (otillgänglig tid)
+
+| ID   |   Tid mellan fel (TBF) [dygn] |   Reparationstid [h] |   Väntetid [h] |   Nedtid [h] |
+|:-----|------------------------------:|---------------------:|---------------:|-------------:|
+| F01  |                          74.8 |                  1.3 |            4.1 |          5.5 |
+| F02  |                          97.4 |                  3.2 |            2.1 |          5.4 |
+| F03  |                          99.4 |                  3.5 |            1.9 |          5.4 |
+| F04  |                          70   |                  8   |            6.8 |         14.8 |
+| F05  |                          38.7 |                  2.2 |            2.5 |          4.6 |
+| F06  |                          15.1 |                  7.2 |            9.2 |         16.4 |
+| F07  |                          81.6 |                  3.5 |            2   |          5.5 |
+| F08  |                          75.3 |                  9.8 |           47.5 |         57.3 |
+| F09  |                          19.8 |                  2.8 |            3.4 |          6.2 |
+| F10  |                          99.3 |                  3.9 |            2.6 |          6.5 |
+| F11  |                          43.7 |                  2.5 |           37.6 |         40.1 |
+| F12  |                          54   |                  2.8 |            2.4 |          5.2 |
+| F13  |                          98   |                  2.7 |            2.7 |          5.4 |
+| F14  |                          15.6 |                  5.3 |           20.9 |         26.2 |
+| F15  |                           6.2 |                  9   |           44.4 |         53.4 |
+| F16  |                          74.2 |                  1.9 |            3.4 |          5.4 |
+
+- **Tid mellan fel** är den tillgängliga tiden från föregående återställande till nästa fel där förebyggande underhåll som infaller under intervallet exkluderas
+$$
+TBF_{i}
+=
+\left(
+t_{failure,i}
+-
+t_{restore,i-1}
+\right)
+-
+\sum_j
+\left(
+t_{PM end,j}
+-
+t_{PM start,j}
+\right)
+$$
+
+- **Reperationstid** är tidsintervallet mellan *Arbetet slutfört* och *Arbetet påbörjat*
+- **Väntetid** är tidsintervallet mellan *Arbetet påbörjat* och *Anmält datum* 
+- **Nedtid** är tidsintervallet mellan *Arbetet slutfört* och *Anmält datum*.
+
+
+#### Steg 2: $A_k$
+$$
+MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1444.6 h
+$$
+
+$$
+MRT = \frac{1}{16} \sum_{i=1}^{16} T_{R,i} = 4.35 h
+$$
+
+$$
+A_k = \frac{MTBF}{MTBF+MRT}=\frac{1444.6}{1444.6+4.35} = 0.997
+$$
+
+
+#### Steg 3: $A_o$
+
+$$
+MTBM = MTBF \text{(förebyggande underhåll genomförs under icke krävd tid)}
+$$
+
+
+$$
+MDT = \frac{1}{16} \sum_{i=1}^{16} T_{Down,i} = 16.46 h
+$$
+
+$$
+A_o = \frac{MTBM}{MTBM+MDT}=\frac{1444.6}{1444.6+16.46} = 0.989
+$$
+
+### Uppgift b
+
+#### Steg 1: Tider
+Beräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid (avhjälpande och förebyggande) samt nedtid
+
+
+| ID   | Tid mellan fel (TBF) [dygn]   |   Tid mellan underhåll (TBM) [dygn] |   Aktiv underhållstid [h] |   Väntetid [h] |   Nedtid [h] |
+|:-----|:------------------------------|------------------------------------:|--------------------------:|---------------:|-------------:|
+| F01  | 74.8                          |                                74.8 |                       1.3 |            4.1 |          5.5 |
+| PM01 | -                             |                                46   |                      24   |            0   |         24   |
+| F02  | 98.4                          |                                51.4 |                       3.2 |            2.1 |          5.4 |
+| F03  | 99.4                          |                                99.4 |                       3.5 |            1.9 |          5.4 |
+| PM02 | -                             |                                31.7 |                      24   |            0   |         24   |
+| F04  | 71.0                          |                                38.2 |                       8   |            6.8 |         14.8 |
+| F05  | 38.7                          |                                38.7 |                       2.2 |            2.5 |          4.6 |
+| F06  | 15.1                          |                                15.1 |                       7.2 |            9.2 |         16.4 |
+| F07  | 81.6                          |                                81.6 |                       3.5 |            2   |          5.5 |
+| PM03 | -                             |                                 4.5 |                      24   |            0   |         24   |
+| F08  | 76.3                          |                                70.7 |                       9.8 |           47.5 |         57.3 |
+| F09  | 19.8                          |                                19.8 |                       2.8 |            3.4 |          6.2 |
+| PM04 | -                             |                                89.8 |                      24   |            0   |         24   |
+| F10  | 100.3                         |                                 9.4 |                       3.9 |            2.6 |          6.5 |
+| F11  | 43.7                          |                                43.7 |                       2.5 |           37.6 |         40.1 |
+| F12  | 54.0                          |                                54   |                       2.8 |            2.4 |          5.2 |
+| PM05 | -                             |                                70.8 |                      24   |            0   |         24   |
+| F13  | 99.0                          |                                27.2 |                       2.7 |            2.7 |          5.4 |
+| F14  | 15.6                          |                                15.6 |                       5.3 |           20.9 |         26.2 |
+| F15  | 6.2                           |                                 6.2 |                       9   |           44.4 |         53.4 |
+| F16  | 74.2                          |                                74.2 |                       1.9 |            3.4 |          5.4 |
+| PM06 | -                             |                                56   |                      24   |            0   |         24   |
+
+
+
+- **Tid mellan fel** är
+$$
+\mathrm{TBF} = t_{failure, i-1}-t_{cm\ restore, i} \quad \left(t_{failure, 0}=\text{2023-11-01 08:00}\right)
+$$ 
+
+- **Tid mellan underhåll** är 
+$$
+\mathrm{TBM} = t_{m\ restore, i}-t_{m, i-1} \quad \left(t_{m, 0}=\text{2023-11-01 08:00}\right)
+$$ 
+
+- **Aktiv underhållstid** (samma som rerationstid för AU) är tidsintervallet mellan *Arbetet slutfört* och *Arbetet påbörjat*
+- **Väntetid** är tidsintervallet mellan *Arbetet påbörjat* och *Anmält datum* 
+- **Nedtid** är tidsintervallet mellan *Arbetet slutfört* och *Anmält datum*.
+
+
+#### Steg 2: $A_k$
+$$
+MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1452.1 h
+$$
+
+$$
+MRT = \frac{1}{16} \sum_{i=1}^{16} T_{R,i} = 4.35 h
+$$
+
+$$
+A_k = \frac{MTBF}{MTBF+MRT}=\frac{1452.1}{1451.2+4.35} = 0.997
+$$
+
+#### Steg 3: $A_m$
+$$
+MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.4 h
+$$
+
+$$
+MAMT = \frac{1}{22} \sum_{i=1}^{22} T_{M,i} = 9.71 h
+$$
+
+$$
+A_m = \frac{MTBF}{MTBF+MRT}=\frac{1111.4}{1111.4+9.71} = 0.991
+$$
+
+
+#### Steg 4: $A_o$
+
+$$
+MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.4 h
+$$
+
+
+$$
+MDT = \frac{1}{22} \sum_{i=1}^{22} T_{Down,i} = 18.51 h
+$$
+
+$$
+A_o = \frac{MTBM}{MTBM+MDT}=\frac{1111.4}{1111.4+18.51} = 0.984
+$$
