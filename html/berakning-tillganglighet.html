@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Johan Odelius, Drift och underhållsteknik, Luleå tekniska universitet" />
+  <title>Tillgänglighet</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tillgänglighet</h1>
+<p class="author">Johan Odelius, Drift och underhållsteknik, Luleå
+tekniska universitet</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Innehåll</h2>
+<ul>
+<li><a href="#introduktion" id="toc-introduktion">Introduktion</a></li>
+<li><a href="#observerad-och-förväntad-tillgänglighet"
+id="toc-observerad-och-förväntad-tillgänglighet">Observerad och
+förväntad tillgänglighet</a></li>
+<li><a href="#tre-mått-på-tillgänglighet-ak-am-ao"
+id="toc-tre-mått-på-tillgänglighet-ak-am-ao">Tre mått på tillgänglighet
+(Ak, Am, Ao)</a></li>
+<li><a href="#driftsäkerhetsparametrar"
+id="toc-driftsäkerhetsparametrar">Driftsäkerhetsparametrar</a></li>
+<li><a href="#beräkningsexempel"
+id="toc-beräkningsexempel">Beräkningsexempel</a></li>
+<li><a href="#övningsuppgifter"
+id="toc-övningsuppgifter">Övningsuppgifter</a></li>
+</ul>
+</nav>
+<h2 id="introduktion">Introduktion</h2>
+<p>Tillgänglighet, <em>eng. availability</em> (A), beskriver förmågan
+hos en enhet att utföra det som krävs när det krävs. Att utföra det som
+krävs innebär att enheten befinner sig i ett tillstånd där den kan
+utföra sina krävda funktioner, ett så kallat funktionsdugligt
+tillstånd.</p>
+<p>Definitionen av tillgänglighet förutsätter att nödvändiga externa
+resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till
+en enhet förutsätter vi alltså att de resurser som enheten behöver för
+att kunna utföra det som krävs tillhandahålls.</p>
+<p>Tillgänglighet kan kvantifieras som andelen av krävd tid
+(<em>required time</em>) under vilken enheten kan utföra det som krävs.
+Detta benämns tillgänglighetsprestanda i svensk standard för underhåll
+(SS-EN 13306:2017)<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>.</p>
+<p><span class="math display">\[
+A = \frac{\text{Tillgänglig tid}}
+{\text{Tillgänglig tid} + \text{Otillgänglig tid}}
+= \frac{\mathrm{Uptime}}{\mathrm{Uptime} + \mathrm{Downtime}}
+\]</span></p>
+<p>Det finns många olika varianter av tillgänglighetsprestanda.
+Anledningen är att det för olika typer av verksamheter inom olika
+sektorer kan vara relevant att ta fram olika nyckeltal för att följa upp
+och utveckla verksamheten och dess underhåll.</p>
+<p>Tidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den
+procentandel av tiden, under en given tidsperiod, då en enhet kan utföra
+det som krävs. Det finns också produktionsbaserad tillgänglighet, som
+definieras som förhållandet mellan faktisk produktion och krävd
+produktion. Produktionsbaserad tillgänglighet beskrivs inte vidare i
+denna guide.</p>
+<p>Tidsbaserad tillgänglighet beskrivs också i svenska standarden SS-EN
+15341:2019 Nyckeltal för underhåll<a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a> under <em>Maintenance
+Key Performance Indicators</em> genom nyckeltalet <em>Time-based
+availability</em> (M10) <span class="math display">\[
+M10 = \frac{\text{Uptime during required time}}{\text{Required time}}
+\]</span></p>
+<p>I M10 ingår <a href="#definitioner">beredskapstid</a> (<em>standby
+time</em>) i tillgänglig tid (<em>uptime</em>) men inte <a
+href="#definitioner">outnyttjad tid</a> (<em>idle time</em>).</p>
+<p>Gemensamt för tidsbaserade tillgänglighetsmått är att man måste
+bestämma vilken tid som ska räknas som <a href="#definitioner">krävd
+tid</a>. I denna guide beskrivs två alternativ: total kalendertid och
+planerad drifttid.</p>
+<h3 id="tillgänglighet-baserad-på-total-kalendertid">Tillgänglighet
+baserad på total kalendertid</h3>
+<p>Tillgänglighet baserad på kalendertid avser den andel av den totala
+kalendertiden (24 timmar om dygnet, 365 dagar om året) då en enhet är
+funktionsduglig</p>
+<p><span class="math display">\[
+\mathrm{Uptime} + \mathrm{Downtime} = \mathrm{Total\ time}
+\Longrightarrow
+A = \frac{\mathrm{Uptime}}{\mathrm{Total\ time}}
+\]</span></p>
+<h3 id="tillgänglighet-baserad-på-planerad-driftstid">Tillgänglighet
+baserad på planerad driftstid</h3>
+<p>Detta mått på tillgänglighet beskriver den andel av den planerade
+driften då enheten kan utföra det som krävs <span
+class="math inline">\((\text{Krävd tid}=\text{Planerad drift})\)</span>.
+Den tillgängliga tiden omfattar drifttid och beredskapstid.</p>
+<p>I SS-EN 15341 beskrivs även <em>Availability based on operating
+time</em> (M11), som endast utgår från drifttid (OT) och exkluderar
+beredskapstid, enligt <span class="math display">\[
+M11 = \frac{OT}{\text{Required operating time}}
+\]</span></p>
+<p>Standarden för nyckeltal inom underhåll beskriver även ett tredje
+mått, <em>Availability based on time to restoration</em> (M12) enligt
+<span class="math display">\[
+M12 = \frac{OT}{OT+TTR}
+\]</span> där TTR (<em>time to restoration</em>) är tiden till
+återställning och omfattar reparationstid och väntetid.</p>
+<h3 id="definitioner">Definitioner</h3>
+<ul>
+<li><p><a id="funktionsdugligt-tillstånd"></a><strong>Funktionsdugligt
+tillstånd</strong> (<em>up state</em>) är ett tillstånd då en enhet kan
+utföra krävd funktion, antaget att de externa resurserna
+tillhandahålls.</p></li>
+<li><p><a id="funktionsodugligt-tillstånd"></a><strong>Funktionsodugligt
+tillstånd</strong> (<em>down state</em>) är ett tillstånd då en enhet
+inte kan utföra krävd funktion på grund av förebyggande underhåll eller
+ett feltillstånd.</p></li>
+<li><p><a id="tillgagnglig-tid"></a><strong>Tillgänglig tid</strong>
+(<em>uptime</em>, UT) är tidsintervallet under vilket en enhet är i ett
+funktionsdugligt tillstånd.</p></li>
+<li><p><a id="otillgagnglig-tid"></a><strong>Otillgänglig tid</strong>
+(<em>downtime</em>, DT) är tidsintervallet under vilket en enhet är i
+ett funktionsodugligt tillstånd.</p></li>
+<li><p><a id="drifttid"></a><strong>Drifttid</strong> (<em>operating
+Time</em>, OT) är tidsintervallet under vilket en enhet är i
+drifttillstånd (ett tillstånd när en enhet utför det som
+krävs).</p></li>
+<li><p><a id="kravd-tid"></a><strong>Krävd tid</strong> (<em>required
+time</em>) är det tidsintervall under vilket en enhet måste vara i
+funktionsdugligt tillstånd.</p></li>
+<li><p><a id="beredskapstid"></a><strong>Beredskapstid</strong>
+(<em>standby time</em>) är den tid då en enhet är i funktionsdugligt
+tillstånd men inte i drift under krävd tid.</p></li>
+<li><p><a id="outnyttjad-tid"></a><strong>Outnyttjad tid</strong>
+(<em>idle time</em>) är den tid då en enhet är i funktionsdugligt
+tillstånd, men inte är i drift, under ej krävd tid</p></li>
+</ul>
+<h2 id="observerad-och-förväntad-tillgänglighet">Observerad och
+förväntad tillgänglighet</h2>
+<p>Tillgänglig och otillgänglig tid bestäms av de händelser och
+tidsintervall som observeras under en given observationsperiod. De
+händelser som påverkar tillgängligheten kan beskrivas med stokastiska
+processer. Exempelvis kan felhändesler modelleras med en homogen eller
+icke-homogen Poissonprocess (HPP respektive NHPP). De observerade
+tiderna till fel samt reparations- och väntetiderna är realisationer av
+stokastiska variabler med tillhörande sannolikhetsfördelningar.
+Tidsintervallet mellan förebyggande underhållsåtgärder betraktas däremot
+vanligen som deterministiskt och modelleras därför inte som en
+stokastisk variabel.</p>
+<p>De observerade tiderna kan alltså användas för att beräkna
+tillgängligheten under den aktuella observationsperioden, enligt
+beskrivningen i föregående avsnitt. Genom att representera tiderna med
+deras väntevärden eller skattade medelvärden kan den förväntade
+tillgängligheten på lång sikt beskrivas. Detta behandlas vidare i nästa
+avsnitt <a href="#tre-mått-på-tillgänglighet-ak-am-ao">Tre mått på
+tillgänglighet</a>. En mer matematisk beskrivning av punkt-, intervall-
+och asymptotisk tillgänglighet finns på sidan <a
+href="tillganglighet-som-funktion-av-tiden.html">Tillgänglighet som
+funktion av tiden</a>.</p>
+<h2 id="tre-mått-på-tillgänglighet-ak-am-ao">Tre mått på tillgänglighet
+(Ak, Am, Ao)</h2>
+<p>Utöver att tillgänglighet kan beräknas baserat på kalendertid eller
+driftstid finns det ytterligare indelningar med syfte att beskriva och
+utvärdera olika orsaker till otillgänglig tid.</p>
+<p>Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal)
+för tillgänglighet:</p>
+<ul>
+<li><a href="#konstruktiv-tillgänglighet-ak">Konstruktiv
+tillgänglighet</a> (<span class="math inline">\(A_k\)</span>) /
+<em>Inherent availability</em> (<span
+class="math inline">\(A_i\)</span>)</li>
+<li><a href="#materialtillgänglighet-am">Materialtillgänglighet</a>
+(<span class="math inline">\(A_m\)</span>) / <em>Achieved
+availability</em> (<span class="math inline">\(A_a\)</span>)</li>
+<li><a href="#operativ-tillgänglighet-ao">Operativ tillgänglighet</a>
+(<span class="math inline">\(A_o\)</span>) / <em>Operational
+availability</em> (<span class="math inline">\(A_o\)</span>)</li>
+</ul>
+<h3 id="konstruktiv-tillgänglighet-ak">Konstruktiv tillgänglighet
+(Ak)</h3>
+<p>Den konstruktiva tillgängligheten eller inre tillgängligheten baseras
+på den i konstruktionen inbyggda funktionssäkerheten och
+underhållsmässigheten. Se också inre funktionsäkerhet och inre
+underhållsmässighet i SS-EN 13306. Varken väntetider eller förebyggande
+underhåll ingår.</p>
+<p>Den konstruktiva tillgängligheten beräknas enligt <span
+class="math display">\[
+A_k=
+\frac{MTBF}
+{MTBF+MRT}
+\]</span></p>
+<p>där <a href="#mtbf"><strong>MTBF</strong></a> är medeltiden mellan
+fel (<em>Mean Time Between Failures</em>) och <a
+href="#mrt"><strong>MRT</strong></a> är medelreparationstiden (<em>Mean
+Repair Time</em>).</p>
+<p>I ekvationen för konstruktiv tillgänglighet betecknas
+medelreparationstiden traditionellt ofta med <strong>MTTR</strong>
+(<em>Mean Time To Repair</em>). Enligt terminologin i svensk standard
+betecknas medelreparationstiden emellertid med <strong>MRT</strong>
+(<em>Mean Repair Time</em>), medan <strong>MTTR</strong> står för
+<em>Mean Time To Restore</em> och inkluderar väntetid.</p>
+<h3 id="materialtillgänglighet-am">Materialtillgänglighet (Am)</h3>
+<p>Materialtillgänglighet, eller uppnådd tillgängligheten, inkluderar
+både avhjälpande och förebyggande underhåll men exkluderar fortfarande
+väntetider. Den beräknas enligt</p>
+<p><span class="math display">\[
+A_m=
+\frac{MTBM}
+{MTBM+MAMT}
+\]</span></p>
+<p>där <a href="#mtbm"><strong>MTBM</strong></a> (<em>Mean Time Between
+Maintenance</em>) är medeltiden mellan underhåll och <a
+href="#mamt"><strong>MAMT</strong></a> (<em>Mean Active Maintenance
+Time</em>) är medeltiden för aktivt underhåll, såväl förebyggande som
+avhjälpande (reparation).</p>
+<h3 id="operativ-tillgänglighet-ao">Operativ tillgänglighet (Ao)</h3>
+<p>Operativ tillgänglighet inkluderar både avhjälpande underhåll och
+förebyggande underhåll där väntetid även ingår.</p>
+<p>Den operativa tillgängligheten beräknas enligt <span
+class="math display">\[
+A_o
+=
+\frac{MTBM}
+{MTBM+MDT}
+\]</span></p>
+<p>där <a href="#mdt"><strong>MDT</strong></a> (<em>Mean Downtime</em>)
+är medeltiden är den genomsnittliga otillgängliga tiden per
+underhållsåtgärd, inklusive väntetid. Den kan också beräknas som <span
+class="math inline">\(MDT = MAMT + MWT\)</span> där <a
+href="#mwt"><strong>MWT</strong></a> (<em>Mean Waiting Time</em>) är
+medelväntetiden.</p>
+<hr />
+<h2 id="driftsäkerhetsparametrar">Driftsäkerhetsparametrar</h2>
+<p>Tillgänglighetsmåtten i föregående avsnitt bygger på medeltider för
+bland annat tider mellan fel, reparationstider och väntetider.
+Parametrarna är väntevärden för slumpmässiga tider, men skattas i
+praktiken från observerade tider.</p>
+<p>Nedan beskrivs hur parametrarna kan skattas från observerade data. En
+mer utförlig statistisk beskrivning finns på sidan <a
+href="driftsakerhetsparametrar.html">Statistisk beskrivning av
+driftsäkerhetsparametrar</a>.</p>
+<h3 id="mtbf">MTBF</h3>
+<p>MTBF (<em>Mean Time Between Failures</em>) är medeltiden mellan fel.
+En skattning av MTBF kan beräknas som det aritmetiska medelvärdet av de
+observerade tiderna mellan fel:</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}} T_i
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}}
+\left(
+t_{\mathrm{Fail},i}
+-
+t_{\mathrm{Restored},i-1}
+\right)
+\]</span></p>
+<p>där <span class="math inline">\(t_{\mathrm{Restored},0}=t_0\)</span>
+och <span class="math inline">\(t_0\)</span> är observationsperiodens
+starttid.</p>
+<p>MTBF används för reparerbara enheter. För enheter som inte repareras
+används i stället MTTF (<em>Mean Time To Failure</em>), medeltid till
+fel.</p>
+<p>Tid mellan fel för kalenderbaserad tillgänglighet inkluderar både
+tillgänglig tid <span class="math inline">\((UT)\)</span> och
+förebyggande underhållstid <span
+class="math inline">\((T_{PM})\)</span>. Den kan därför också beräknas
+enligt</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\frac{\mathrm{UT}+\sum T_{PM}}{n_{\mathrm{Fail}}}
+\]</span></p>
+<p>För många system och anläggningar är reparationstiden väldigt kort i
+förhållande till kalendertiden. En approximation är att beräkna
+medeltiden av feltiderna för den totala tiden mellan fel <span
+class="math display">\[
+\mathrm{MTBF}
+\approx
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} \left(
+t_{\mathrm{Fail},\,i}
+-
+t_{\mathrm{Fail},\,i-1}
+\right)
+=
+\frac{\text{Total time}}{n_{Fail}}
+\]</span></p>
+<p>På motsvarande sätt approximeras MTBF även med utgångspunkt i bara
+tillgänglig tid som</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+\approx
+\frac{\mathrm{UT}}{n_{Fail}}
+\]</span></p>
+<h4 id="drifttid">Drifttid</h4>
+<p>För tillgänglighet baserad på planerad drift beräknas normalt
+<strong>MTBF</strong> som medeltiden för drifttiden <span
+class="math inline">\((OT)\)</span> mellan fel, dvs utan hänsyn till
+eventuellt förebyggande underhåll som genomförs under planerad drift,
+enligt</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+= \frac{mathrm{OT}}{n_{Fail}}
+\]</span></p>
+<h3 id="mrt">MRT</h3>
+<p>Medelreparationstiden beräknas enligt <span class="math display">\[
+\mathrm{MRT}
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} T_{Rep,i}
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}}
+\left(
+t_{\mathrm{Repair\ end},\,i}
+-
+t_{\mathrm{Repair\ start},\,i}
+\right)
+\]</span></p>
+<h3 id="mtbm">MTBM</h3>
+<p>Medeltiden mellan underhåll beräknas som medelvärdet av den
+tillgängliga tiden mellan underhållsåtgärder</p>
+<p><span class="math display">\[
+\mathrm{MTBM}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{U,i}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M}
+\left(
+t_{\mathrm{M\ start},\,i}
+-
+t_{\mathrm{M\ end},\,i-1}
+\right)
+= \frac{\mathrm{Uptime}}{n_M}
+\]</span>.</p>
+<p>där <span class="math inline">\(M\)</span> (<em>maintenance</em>) är
+en underhållsåtgärd och <span class="math inline">\(n_M = n_{Fail}+
+n_{PM}\)</span> är antalet avhjälpande och förebyggande
+underhållsåtgärder.</p>
+<p>För tillgänglighet baserad på krävd tid är, enligt tidigare,
+tillgänglig tid detsamma som drifttid plus beredskapstid men beräknas
+vanligen som <span class="math display">\[
+\mathrm{MTBM}
+= \frac{\mathrm{OT}}{n_M}
+\]</span>.</p>
+<h3 id="mamt">MAMT</h3>
+<p>Den genomsnittliga aktiva underhållstiden per åtgärd beräknas som
+<span class="math display">\[
+\mathrm{MAMT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{AM,i}
+=
+\frac{1}{n_{Fail}+n_{PM}}
+\left(
+\displaystyle\sum_{j=1}^{n_{Fail}} T_{Rep,j}
++
+\displaystyle\sum_{k=1}^{n_{PM}} T_{APM,k}
+\right)
+\]</span></p>
+<p>där <span class="math inline">\(T_{AM,i}\)</span> är den aktiva
+underhållstiden för åtgärd <span class="math inline">\(i\)</span>, <span
+class="math inline">\(T_{Rep,j}\)</span> är reparationstiden för fel
+<span class="math inline">\(j\)</span> och <span
+class="math inline">\(T_{APM,k}\)</span> är den aktiva förebyggande
+underhållstiden för åtgärd <span class="math inline">\(k\)</span>.</p>
+<h3 id="mdt">MDT</h3>
+<p>Den genomsnittliga otillgängliga tiden (nedtiden) per
+underhållsåtgärd beräknas enligt <span class="math display">\[
+\mathrm{MDT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Down,i}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M}
+\left(
+t_{\mathrm{M\ end},\,i}
+-
+t_{\mathrm{M\ start},\,i}
+\right)
+\]</span> där <span class="math inline">\(T_{\mathrm{CM},i}\)</span> är
+den otillgängliga tiden för den avhjälpande underhållsåtgärden <span
+class="math inline">\(i\)</span>, och <span
+class="math inline">\(T_{\mathrm{PM},i}\)</span> är motsvarande tid för
+den förebyggande underhållsåtgärden.</p>
+<p>Vilket också kan beräknas som <span class="math display">\[
+\mathrm{MDT}
+=\frac{\sum_{i=1}^{n_{Fail}} T_{CM, i} + \sum_{i=1}^{n_{PM}} T_{PM, i}}
+{n_{Fail} + n_{PM}}
+\]</span></p>
+<h4 id="mwt">MWT</h4>
+<p>MDT kan också beräknas som <span class="math display">\[
+MDT = MAMT + MWT
+\]</span></p>
+<p><span class="math inline">\(MWT\)</span> är medelväntetiden per
+underhållsåtgärd enligt</p>
+<p><span class="math display">\[
+\mathrm{MWT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Wait,i}
+\]</span></p>
+<p>där <span class="math inline">\(T_{Wait,i}\)</span> är den
+sammanlagda väntetiden under underhållsaktivitet <span
+class="math inline">\(i\)</span>.</p>
+<h2 id="beräkningsexempel">Beräkningsexempel</h2>
+<p>Genomgång av två exempel för beräkning av tillgänglighet finns på
+sidan <a href="#exempel-berakning-tillganglighet.html">Beräkningsexempel
+tillgänglighet</a>.</p>
+<h2 id="övningsuppgifter">Övningsuppgifter</h2>
+<p>Övningsuppgifter finns på sidan <a
+href="rakneovningar-tillganglighet.html">Räkneövningar i
+tillgänglighet</a>.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><em>SS-EN 13306:2017 Underhåll –
+Underhållsterminologi</em>. Stockholm: Svenska institutet för
+standarder.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><em>SS-EN 15341:2019 Underhåll – Nyckeltal för
+underhåll</em>. Stockholm: Svenska institutet för standarder.<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>exempel-berakning-tillganglighet</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="beräkningsexempel">Beräkningsexempel</h1>
+<p>Följande exempel visar hur tillgänglighetsmåtten kan beräknas steg
+för steg.</p>
+<h2 id="exempel-1">Exempel 1</h2>
+<p>Ett system har följande data:</p>
+<ul>
+<li>Tillgänglig tid (UT) = 3600 h</li>
+<li>Antal fel = 30</li>
+<li>Summa reparationstid = 150 h</li>
+<li>Medelväntetid avhjälpande underhåll = 3 h</li>
+<li>Antal förebyggande underhåll = 15</li>
+<li>Summa förebyggande underhållstid = 60 h</li>
+<li>Medelväntetid förebyggande underhåll = 1 h</li>
+</ul>
+<p>Beräkna den kalenderbaserad tillgängligheten:</p>
+<ol type="a">
+<li><p><span class="math inline">\(A_k\)</span></p></li>
+<li><p><span class="math inline">\(A_m\)</span></p></li>
+<li><p><span class="math inline">\(A_o\)</span></p></li>
+</ol>
+<hr />
+<h3 id="a-beräkna-ak">a) Beräkna Ak</h3>
+<p><span class="math display">\[
+A_k=
+\frac{MTBF}{MTBF+MRT}
+\]</span></p>
+<h4 id="steg-1-mtbf">Steg 1: MTBF</h4>
+<p><span class="math display">\[
+MTBF=
+\frac{\text{UT}+\sum T_{PM}}{n_{Fail}}
+=
+\frac{3600+(45+15)}{30}
+=
+122\ h
+\]</span></p>
+<h4 id="steg-2-mrt">Steg 2: MRT</h4>
+<p><span class="math display">\[
+MRT=
+\frac{\sum T_{Rep}}{n_{Fail}}
+=
+\frac{150}{30}
+=
+5\ h
+\]</span></p>
+<h4 id="steg-3-ak">Steg 3: Ak</h4>
+<p><span class="math display">\[
+A_k=
+\frac{MTBF}{MTBF+MRT}
+=
+\frac{122}{122+5}
+=
+0.961
+\]</span></p>
+<p><strong>Svar:</strong> Den konstruktiva tillgängligheten <span
+class="math inline">\(A_k=96.1\%\)</span></p>
+<h3 id="b-beräkna-am">b) Beräkna Am</h3>
+<p><span class="math display">\[
+A_m=
+\frac{MTBM}{MTBM+MAMT}
+\]</span></p>
+<h4 id="steg-1-mtbm">Steg 1: MTBM</h4>
+<p><span class="math display">\[
+MTBM=
+\frac{UT}{n_{M}}
+=
+\frac{3600}{30+15}
+=
+80\ h
+\]</span></p>
+<p>där antal underhållsaktiviteter <span
+class="math inline">\(n_{M}=n_{Fail}+n_{PM}\)</span></p>
+<h4 id="steg-2-mamt">Steg 2: MAMT</h4>
+<p><span class="math display">\[
+MAMT=
+\frac{\sum T_{Rep} + \sum T_{APM}}{n_{M}}
+=
+\frac{150 + (60-15 \cdot 1)}{45}
+=
+4.33\ h
+\]</span></p>
+<p>där summan aktivt förebyggande underhållstid erhålls ur <span
+class="math display">\[
+\sum T_{APM} = \sum T_{PM} - n_{PM} \cdot MWT_{PM}
+\]</span></p>
+<h4 id="steg-3-am">Steg 3: Am</h4>
+<p><span class="math display">\[
+A_m=
+\frac{MTBM}{MTBM+MAMT}
+=
+\frac{80}{80+4.33}
+=
+0.949
+\]</span></p>
+<p><strong>Svar:</strong> Material tillgängligheten är <span
+class="math inline">\(A_m=94.9\%\)</span></p>
+<h3 id="c-beräkna-ao">c) Beräkna Ao</h3>
+<p><span class="math display">\[
+A_o=
+\frac{MTBM}{MTBM+MDT}
+\]</span></p>
+<h4 id="steg-1-mtbm-1">Steg 1: MTBM</h4>
+<p><span class="math display">\[
+MTBM=
+\frac{UT}{n_{M}}
+=
+\frac{3600}{45}
+=
+80\ h
+\]</span></p>
+<h4 id="steg-2-mdt">Steg 2: MDT</h4>
+<p><span class="math display">\[
+MDT=
+\frac{\sum T_{CM} + \sum T_{PM}}{n_M}
+=
+\frac{(150+90) + (45+15)}{45}
+=
+6.667\ h
+\]</span></p>
+<h4 id="steg-3-ao">Steg 3: Ao</h4>
+<p><span class="math display">\[
+A_o=
+\frac{MTBM}{MTBM+MDT}
+=
+\frac{80}{80+6.667}
+=
+0.923
+\]</span></p>
+<p><strong>Svar:</strong> Den operativa tillgängligheten är <span
+class="math inline">\(A_o=92.3\%\)</span></p>
+<h2 id="exempel-2">Exempel 2</h2>
+<p>Nedan är data för fel och förebyggande underhåll för en anläggning
+med kontinuerlig produktion. Anläggningen driftsattes 2023-11-01 kl
+08:00.</p>
+<p><a href="#uppgift-a">a)</a> Beräkna <span
+class="math inline">\(A_k\)</span>, <span
+class="math inline">\(A_o\)</span> baserat på planerad produktionstid,
+där planerad produktionstid är total tid minus de förebyggande
+underhållsstoppen.</p>
+<p><a href="#uppgift-b">b)</a> Beräkna <span
+class="math inline">\(A_k\)</span>, <span
+class="math inline">\(A_m\)</span>, <span
+class="math inline">\(A_o\)</span> baserat på kalendertid</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: left;">Typ</th>
+<th style="text-align: left;">Anmält datum <span
+class="math inline">\((t_{failure, i})\)</span></th>
+<th style="text-align: left;">Anmält vidare</th>
+<th style="text-align: left;">Arbetet påbörjat</th>
+<th style="text-align: left;">Arbetet slutfört <span
+class="math inline">\((t_{restore, i})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-01-15 03:12:00</td>
+<td style="text-align: left;">2024-01-15 06:45:00</td>
+<td style="text-align: left;">2024-01-15 07:20:00</td>
+<td style="text-align: left;">2024-01-15 08:40:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-04-22 17:54:00</td>
+<td style="text-align: left;">2024-04-22 19:10:00</td>
+<td style="text-align: left;">2024-04-22 20:00:00</td>
+<td style="text-align: left;">2024-04-22 23:15:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-07-31 09:27:00</td>
+<td style="text-align: left;">2024-07-31 10:05:00</td>
+<td style="text-align: left;">2024-07-31 11:20:00</td>
+<td style="text-align: left;">2024-07-31 14:50:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-10-10 13:56:00</td>
+<td style="text-align: left;">2024-10-10 14:53:00</td>
+<td style="text-align: left;">2024-10-10 20:46:00</td>
+<td style="text-align: left;">2024-10-11 04:45:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-11-18 22:41:00</td>
+<td style="text-align: left;">2024-11-18 23:30:00</td>
+<td style="text-align: left;">2024-11-19 01:10:00</td>
+<td style="text-align: left;">2024-11-19 03:20:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-12-04 06:11:00</td>
+<td style="text-align: left;">2024-12-04 06:41:00</td>
+<td style="text-align: left;">2024-12-04 15:25:00</td>
+<td style="text-align: left;">2024-12-04 22:37:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-02-24 14:08:00</td>
+<td style="text-align: left;">2025-02-24 14:55:00</td>
+<td style="text-align: left;">2025-02-24 16:10:00</td>
+<td style="text-align: left;">2025-02-24 19:40:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-05-12 01:59:00</td>
+<td style="text-align: left;">2025-05-12 02:39:00</td>
+<td style="text-align: left;">2025-05-14 01:28:00</td>
+<td style="text-align: left;">2025-05-14 11:19:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-06-03 05:33:00</td>
+<td style="text-align: left;">2025-06-03 08:20:00</td>
+<td style="text-align: left;">2025-06-03 09:00:00</td>
+<td style="text-align: left;">2025-06-03 11:45:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-09-11 18:26:00</td>
+<td style="text-align: left;">2025-09-11 20:10:00</td>
+<td style="text-align: left;">2025-09-11 21:00:00</td>
+<td style="text-align: left;">2025-09-12 00:55:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-10-25 16:53:00</td>
+<td style="text-align: left;">2025-10-25 17:40:00</td>
+<td style="text-align: left;">2025-10-27 06:31:00</td>
+<td style="text-align: left;">2025-10-27 09:00:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-12-20 07:51:00</td>
+<td style="text-align: left;">2025-12-20 08:40:00</td>
+<td style="text-align: left;">2025-12-20 10:15:00</td>
+<td style="text-align: left;">2025-12-20 13:05:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-03-29 12:17:00</td>
+<td style="text-align: left;">2026-03-29 13:05:00</td>
+<td style="text-align: left;">2026-03-29 15:00:00</td>
+<td style="text-align: left;">2026-03-29 17:40:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-04-14 07:21:00</td>
+<td style="text-align: left;">2026-04-14 08:18:00</td>
+<td style="text-align: left;">2026-04-15 04:14:00</td>
+<td style="text-align: left;">2026-04-15 09:34:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-04-21 15:20:00</td>
+<td style="text-align: left;">2026-04-21 15:59:00</td>
+<td style="text-align: left;">2026-04-23 11:47:00</td>
+<td style="text-align: left;">2026-04-23 20:45:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-07-07 01:44:00</td>
+<td style="text-align: left;">2026-07-07 04:20:00</td>
+<td style="text-align: left;">2026-07-07 05:10:00</td>
+<td style="text-align: left;">2026-07-07 07:05:00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: left;">Typ</th>
+<th style="text-align: left;">Anmält datum</th>
+<th style="text-align: left;">Anmält vidare</th>
+<th style="text-align: left;">Arbetet påbörjat <span
+class="math inline">\((t_{PM\ start, i})\)</span></th>
+<th style="text-align: left;">Arbetet slutfört <span
+class="math inline">\((t_{PM\ end, i})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2024-03-01 08:00:00</td>
+<td style="text-align: left;">2024-03-01 08:00:00</td>
+<td style="text-align: left;">2024-03-01 08:00:00</td>
+<td style="text-align: left;">2024-03-02 08:00:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2024-09-01 08:00:00</td>
+<td style="text-align: left;">2024-09-01 08:00:00</td>
+<td style="text-align: left;">2024-09-01 08:00:00</td>
+<td style="text-align: left;">2024-09-02 08:00:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2025-03-01 08:00:00</td>
+<td style="text-align: left;">2025-03-01 08:00:00</td>
+<td style="text-align: left;">2025-03-01 08:00:00</td>
+<td style="text-align: left;">2025-03-02 08:00:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2025-09-01 08:00:00</td>
+<td style="text-align: left;">2025-09-01 08:00:00</td>
+<td style="text-align: left;">2025-09-01 08:00:00</td>
+<td style="text-align: left;">2025-09-02 08:00:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2026-03-01 08:00:00</td>
+<td style="text-align: left;">2026-03-01 08:00:00</td>
+<td style="text-align: left;">2026-03-01 08:00:00</td>
+<td style="text-align: left;">2026-03-02 08:00:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2026-09-01 08:00:00</td>
+<td style="text-align: left;">2026-09-01 08:00:00</td>
+<td style="text-align: left;">2026-09-01 08:00:00</td>
+<td style="text-align: left;">2026-09-02 08:00:00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uppgift-a">Uppgift a</h3>
+<h4 id="steg-1-tider">Steg 1: Tider</h4>
+<p>Beräkna tid mellan fel samt reparationstid och nedtid (otillgänglig
+tid) - <strong>Tid mellan fel</strong> är den tillgängliga tiden från
+föregående återställning till nästa fel där förebyggande underhåll som
+infaller under intervallet exkluderas <span class="math display">\[
+TBF_i
+=
+\left(
+t_{failure,i}
+-
+t_{restore,i-1}
+\right)
+-
+\sum_j
+\max\left(
+0,\,
+\min(t_{PM\,end,j},t_{failure,i})
+-
+\max(t_{PM\,start,j},t_{restore,i-1})
+\right)
+\qquad t_{restore,0} = \text{2023-11-01 08:00}
+\]</span> - <strong>Reparationstid</strong> är tidsintervallet mellan
+<em>Arbetet slutfört</em> och <em>Arbetet påbörjat</em> -
+<strong>Väntetid</strong> är tidsintervallet mellan <em>Arbetet
+påbörjat</em> och <em>Anmält datum</em> - <strong>Nedtid</strong> är
+tidsintervallet mellan <em>Arbetet slutfört</em> och <em>Anmält
+datum</em>.</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 34%" />
+<col style="width: 24%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: right;">Tid mellan fel (TBF) [dygn]</th>
+<th style="text-align: right;">Reparationstid [h]</th>
+<th style="text-align: right;">Väntetid [h]</th>
+<th style="text-align: right;">Nedtid [h]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">74.8</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">97.4</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">99.4</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">14.8</td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">4.6</td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">15.1</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">9.2</td>
+<td style="text-align: right;">16.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">81.6</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">11</td>
+<td style="text-align: right;">75.3</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">47.5</td>
+<td style="text-align: right;">57.3</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">19.8</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">6.2</td>
+</tr>
+<tr>
+<td style="text-align: left;">14</td>
+<td style="text-align: right;">99.3</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">6.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">15</td>
+<td style="text-align: right;">43.7</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">37.6</td>
+<td style="text-align: right;">40.1</td>
+</tr>
+<tr>
+<td style="text-align: left;">16</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">5.2</td>
+</tr>
+<tr>
+<td style="text-align: left;">18</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">19</td>
+<td style="text-align: right;">15.6</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">26.2</td>
+</tr>
+<tr>
+<td style="text-align: left;">20</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">44.4</td>
+<td style="text-align: right;">53.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">21</td>
+<td style="text-align: right;">74.2</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+</tbody>
+</table>
+<h4 id="steg-2-konstruktiv-tillgänglighet-ak">Steg 2: Konstruktiv
+tillgänglighet (Ak)</h4>
+<p><span class="math display">\[
+MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1444.6 h
+\]</span></p>
+<p><span class="math display">\[
+MRT = \frac{1}{16} \sum_{i=1}^{16} T_{R,i} = 4.35 h
+\]</span></p>
+<p><span class="math display">\[
+A_k = \frac{MTBF}{MTBF+MRT}=\frac{1444.6}{1444.6+4.35} = 0.997
+\]</span></p>
+<p><strong>Svar:</strong> Konstruktiv tillgänglighet <span
+class="math inline">\(A_k = 99.7\%\)</span></p>
+<h4 id="steg-3-operativ-tillgänglighet-ao">Steg 3: Operativ
+tillgänglighet (Ao)</h4>
+<p><span class="math display">\[
+MTBM = MTBF \Longleftarrow \text{förebyggande underhåll genomförs under
+icke krävd tid}
+\]</span></p>
+<p><span class="math display">\[
+MDT = \frac{1}{16} \sum_{i=1}^{16} T_{Down,i} = 16.46 h
+\]</span></p>
+<p><span class="math display">\[
+A_o = \frac{MTBM}{MTBM+MDT}=\frac{1444.6}{1444.6+16.46} = 0.989
+\]</span></p>
+<p><strong>Svar:</strong> Operativ tillgänglighet <span
+class="math inline">\(A_o = 98.9\%\)</span></p>
+<h3 id="uppgift-b">Uppgift b</h3>
+<h4 id="steg-1-tider-1">Steg 1: Tider</h4>
+<p>Beräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid
+(avhjälpande och förebyggande) samt nedtid - <strong>Tid mellan
+fel</strong> är <span class="math display">\[
+\mathrm{TBF_i} = t_{failure, i}-t_{restore, i-1} \quad \left(t_{restore,
+0}=\text{2023-11-01 08:00}\right)
+\]</span></p>
+<ul>
+<li><p><strong>Tid mellan underhåll</strong> är <span
+class="math display">\[
+\mathrm{TBM_i} = t_{m, i}-t_{m\ restore, i-1} \quad \left(t_{m\ restore,
+0}=\text{2023-11-01 08:00}\right)
+\]</span></p></li>
+<li><p><strong>Aktiv underhållstid</strong> (samma som reparationstid
+för AU) är tidsintervallet mellan <em>Arbetet slutfört</em> och
+<em>Arbetet påbörjat</em>.</p></li>
+<li><p><strong>Väntetid</strong> är tidsintervallet mellan <em>Arbetet
+påbörjat</em> och <em>Anmält datum</em></p></li>
+<li><p><strong>Nedtid</strong> är tidsintervallet mellan <em>Arbetet
+slutfört</em> och <em>Anmält datum</em>.</p></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 23%" />
+<col style="width: 28%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: left;">Tid mellan fel (TBF) [dygn]</th>
+<th style="text-align: right;">Tid mellan underhåll (TBM) [dygn]</th>
+<th style="text-align: right;">Aktiv underhållstid [h]</th>
+<th style="text-align: right;">Väntetid [h]</th>
+<th style="text-align: right;">Nedtid [h]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">74.8</td>
+<td style="text-align: right;">74.8</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">98.4</td>
+<td style="text-align: right;">51.4</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">99.4</td>
+<td style="text-align: right;">99.4</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">31.7</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">71.0</td>
+<td style="text-align: right;">38.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">14.8</td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">38.7</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">4.6</td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">15.1</td>
+<td style="text-align: right;">15.1</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">9.2</td>
+<td style="text-align: right;">16.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">81.6</td>
+<td style="text-align: right;">81.6</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">76.3</td>
+<td style="text-align: right;">70.7</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">47.5</td>
+<td style="text-align: right;">57.3</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">19.8</td>
+<td style="text-align: right;">19.8</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">6.2</td>
+</tr>
+<tr>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">89.8</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">100.3</td>
+<td style="text-align: right;">9.4</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">6.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">43.7</td>
+<td style="text-align: right;">43.7</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">37.6</td>
+<td style="text-align: right;">40.1</td>
+</tr>
+<tr>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">54.0</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">5.2</td>
+</tr>
+<tr>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">70.8</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">99.0</td>
+<td style="text-align: right;">27.2</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">15.6</td>
+<td style="text-align: right;">15.6</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">26.2</td>
+</tr>
+<tr>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">6.2</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">44.4</td>
+<td style="text-align: right;">53.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">74.2</td>
+<td style="text-align: right;">74.2</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+</tbody>
+</table>
+<h4 id="steg-2-konstruktiv-tillgänglighet-ak-1">Steg 2: Konstruktiv
+tillgänglighet (Ak)</h4>
+<p><span class="math display">\[
+MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1451.98 h
+\]</span></p>
+<p><span class="math display">\[
+MRT = \frac{1}{16} \sum_{i=1}^{16} T_{R,i} = 4.35 h
+\]</span></p>
+<p><span class="math display">\[
+A_k = \frac{MTBF}{MTBF+MRT}=\frac{1451.98}{1451.98+4.35} = 0.997
+\]</span></p>
+<p><strong>Svar:</strong> Konstruktiv tillgänglighet <span
+class="math inline">\(A_k = 99.7\%\)</span></p>
+<h4 id="steg-3-materialtillgänglighet-am">Steg 3: Materialtillgänglighet
+(Am)</h4>
+<p><span class="math display">\[
+MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.67 h
+\]</span></p>
+<p><span class="math display">\[
+MAMT = \frac{1}{22} \sum_{i=1}^{22} T_{M,i} = 9.71 h
+\]</span></p>
+<p><span class="math display">\[
+A_m = \frac{MTBM}{MTBM+MAMT}=\frac{1111.67}{1111.67+9.71} = 0.991
+\]</span></p>
+<p><strong>Svar:</strong> Materialtillgänglighet <span
+class="math inline">\(A_m = 99.1\%\)</span></p>
+<h4 id="steg-4-operativ-tillgänglighet-ao">Steg 4: Operativ
+tillgänglighet (Ao)</h4>
+<p><span class="math display">\[
+MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.67 h
+\]</span></p>
+<p><span class="math display">\[
+MDT = \frac{1}{22} \sum_{i=1}^{22} T_{Down,i} = 18.51 h
+\]</span></p>
+<p><span class="math display">\[
+A_o = \frac{MTBM}{MTBM+MDT}=\frac{1111.67}{1111.67+18.51} = 0.984
+\]</span></p>
+<p><strong>Svar:</strong> Operativ tillgänglighet <span
+class="math inline">\(A_o = 98.4\%\)</span></p>
+</body>
+</html>

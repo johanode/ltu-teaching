@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>driftsakerhetsparametrar</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="statistisk-beskrivning-av-driftsäkerhetsparametrar">Statistisk
+beskrivning av driftsäkerhetsparametrar</h1>
+<p>Tider mellan fel, reparationstider och väntetider kan betraktas som
+slumpvariabler. Parametrar som MTBF och MRT är då väntevärden för
+motsvarande slumpmässiga tider.</p>
+<h2 id="slumpmässiga-tider-och-väntevärden">Slumpmässiga tider och
+väntevärden</h2>
+<p>För en icke-negativ slumpvariabel <span
+class="math inline">\(T\)</span> med täthetsfunktion <span
+class="math inline">\(f_T(t)\)</span> gäller</p>
+<p><span class="math display">\[
+\operatorname{E}[T]
+=
+\int_0^\infty t f_T(t)\,dt.
+\]</span></p>
+<p>Väntevärdet kan också uttryckas med hjälp av sannolikheten att tiden
+överstiger <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+\operatorname{E}[T]
+=
+\int_0^\infty P(T&gt;t)\,dt.
+\]</span></p>
+<p>Vilken sannolikhetsfördelning som är lämplig beror på vilken typ av
+tid som studeras och på det observerade datamaterialet.</p>
+<h2 id="tid-mellan-fel">Tid mellan fel</h2>
+<p>Låt <span class="math inline">\(T_{\mathrm{BF}}\)</span> beteckna
+tiden mellan fel. MTBF definieras som</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\operatorname{E}[T_{\mathrm{BF}}].
+\]</span></p>
+<p>Om <span class="math inline">\(f_{\mathrm{BF}}(t)\)</span> är
+täthetsfunktionen för tiden mellan fel och</p>
+<p><span class="math display">\[
+R(t)
+=
+P(T_{\mathrm{BF}}&gt;t)
+\]</span></p>
+<p>är <em>reliability function</em> (också överlevnadsfunktionen /
+<em>survival function</em>), kan MTBF skrivas som</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\int_0^\infty t f_{\mathrm{BF}}(t)\,dt
+=
+\int_0^\infty R(t)\,dt.
+\]</span></p>
+<p>Om tiden mellan fel är exponentialfördelad med felbenägenhet <span
+class="math inline">\(\lambda\)</span> gäller</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\frac{1}{\lambda}.
+\]</span></p>
+<p>Om tiden mellan fel är Weibullfördelad med skalparameter <span
+class="math inline">\(\alpha\)</span> och formparameter <span
+class="math inline">\(\beta\)</span> gäller</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\alpha\,
+\Gamma\!\left(1+\frac{1}{\beta}\right).
+\]</span></p>
+<h2 id="reparationstid">Reparationstid</h2>
+<p>Låt <span class="math inline">\(T_{\mathrm{Rep}}\)</span> beteckna
+reparationstiden. MRT definieras som</p>
+<p><span class="math display">\[
+\mathrm{MRT}
+=
+\operatorname{E}[T_{\mathrm{Rep}}].
+\]</span></p>
+<p>Om <span class="math inline">\(f_{\mathrm{Rep}}(t)\)</span> är
+reparationstidens täthetsfunktion gäller</p>
+<p><span class="math display">\[
+\mathrm{MRT}
+=
+\int_0^\infty t f_{\mathrm{Rep}}(t)\,dt.
+\]</span></p>
+<p>Om <span class="math inline">\(M(t)\)</span> betecknar
+reparationstidens fördelningsfunktion</p>
+<p><span class="math display">\[
+M(t)
+=
+P(T_{\mathrm{Rep}}\leq t),
+\]</span></p>
+<p>det vill säga sannolikheten att reparationen har slutförts inom tiden
+<span class="math inline">\(t\)</span>. MRT kan då även skrivas som</p>
+<p><span class="math display">\[
+\mathrm{MRT}
+=
+\int_0^\infty [1-M(t)]\,dt.
+\]</span></p>
+<p>Reparationstider är positiva och kan vara högerskeva.
+Lognormalfördelningen är därför en vanligt förekommande modell för
+reparationstider, men valet av fördelning behöver prövas mot observerade
+data.</p>
+<p>Om</p>
+<p><span class="math display">\[
+\ln T_{\mathrm{Rep}}
+\sim
+N(\mu,\sigma^2),
+\]</span></p>
+<p>är reparationstiden lognormalfördelad och</p>
+<p><span class="math display">\[
+\mathrm{MRT}
+=
+\exp\!\left(\mu+\frac{\sigma^2}{2}\right).
+\]</span></p>
+<p>Medianen är i detta fall</p>
+<p><span class="math display">\[
+\operatorname{median}(T_{\mathrm{Rep}})
+=
+\exp(\mu),
+\]</span></p>
+<p>vilket innebär att MRT normalt är större än medianreparationstiden
+när fördelningen är högerskev.</p>
+<h2 id="övriga-driftsäkerhetsparametrar">Övriga
+driftsäkerhetsparametrar</h2>
+<p>På motsvarande sätt kan övriga parametrar definieras som
+väntevärden:</p>
+<p><span class="math display">\[
+\mathrm{MTBM}
+=
+\operatorname{E}[T_{\mathrm{M}}],
+\]</span></p>
+<p><span class="math display">\[
+\mathrm{MAMT}
+=
+\operatorname{E}[T_{\mathrm{AM}}],
+\]</span></p>
+<p><span class="math display">\[
+\mathrm{MDT}
+=
+\operatorname{E}[T_{\mathrm{D}}],
+\]</span></p>
+<p>och</p>
+<p><span class="math display">\[
+\mathrm{MWT}
+=
+\operatorname{E}[T_{\mathrm{Wait}}].
+\]</span></p>
+<p>Om den otillgängliga tiden för varje underhållsåtgärd kan delas upp
+enligt</p>
+<p><span class="math display">\[
+T_{\mathrm{D}}
+=
+T_{\mathrm{AM}}
++
+T_{\mathrm{Wait}},
+\]</span></p>
+<p>ger väntevärdets linearitet</p>
+<p><span class="math display">\[
+\mathrm{MDT}
+=
+\mathrm{MAMT}
++
+\mathrm{MWT}.
+\]</span></p>
+<p>Detta samband kräver inte att den aktiva underhållstiden och
+väntetiden är statistiskt oberoende. Det förutsätter däremot att tiderna
+avser samma population av underhållsåtgärder och samma avgränsning av
+den otillgängliga tiden.</p>
+<h2 id="skattning-från-observerade-data">Skattning från observerade
+data</h2>
+<p>Om <span class="math inline">\(T_1,T_2,\ldots,T_n\)</span> är
+observerade tider kan väntevärdet skattas med det aritmetiska
+medelvärdet:</p>
+<p><span class="math display">\[
+\widehat{\operatorname{E}[T]}
+=
+\frac{1}{n}\sum_{i=1}^n T_i.
+\]</span></p>
+<p>Exempelvis skattas MTBF och MRT som</p>
+<p><span class="math display">\[
+\widehat{\mathrm{MTBF}}
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}}T_{\mathrm{BF},i}
+\]</span></p>
+<p>och</p>
+<p><span class="math display">\[
+\widehat{\mathrm{MRT}}
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}}T_{\mathrm{Rep},i}.
+\]</span></p>
+<p>Det aritmetiska medelvärdet är en direkt skattning när
+observationerna utgör fullständigt observerade och jämförbara
+tidsintervall. Om observationsperioden avslutas innan ett fel eller en
+reparation har inträffat är observationen censurerad. Då kan metoder för
+livslängds- och tillförlitlighetsanalys behöva användas i stället för
+att enbart beräkna medelvärdet av de fullständiga observationerna.</p>
+</body>
+</html>
