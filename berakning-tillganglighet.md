@@ -58,11 +58,11 @@ där TTR (*time to restoration*) är tiden till återställning och omfattar rep
 ### Definitioner
 - <a id="funktionsdugligt-tillstånd"></a>**Funktionsdugligt tillstånd** (*up state*) är ett tillstånd då en enhet kan utföra krävd funktion, antaget att de externa resurserna tillhandahålls.
 
-- <a id="funktionsodugligt-tillstånd"></a>**Funktionspdugligt tillstånd** (*down state*) är ett tillstånd då en enhet inte kan utföra krävd funktion på grund av förebyggande underhåll eller ett feltillstånd.
+- <a id="funktionsodugligt-tillstånd"></a>**Funktionsodugligt tillstånd** (*down state*) är ett tillstånd då en enhet inte kan utföra krävd funktion på grund av förebyggande underhåll eller ett feltillstånd.
 
-- <a id="tillgagnglig-tid"></a>**Tillgägnglig tid** (*uptime*, UT) är tidsintervallet under vilket en enhet är i ett funktionsdugligt tillstånd.
+- <a id="tillgagnglig-tid"></a>**Tillgänglig tid** (*uptime*, UT) är tidsintervallet under vilket en enhet är i ett funktionsdugligt tillstånd.
 
-- <a id="otillgagnglig-tid"></a>**Otillgägnglig tid** (*downtime*, DT) är tidsintervallet under vilket en enhet är i ett funktionsodugligt tillstånd.
+- <a id="otillgagnglig-tid"></a>**Otillgänglig tid** (*downtime*, DT) är tidsintervallet under vilket en enhet är i ett funktionsodugligt tillstånd.
 
 - <a id="drifttid"></a>**Drifttid** (*operating Time*, OT) är tidsintervallet under vilket en enhet är i drifttillstånd (ett tillstånd när en enhet utför det som krävs).
 
@@ -72,10 +72,10 @@ där TTR (*time to restoration*) är tiden till återställning och omfattar rep
 
 - <a id="outnyttjad-tid"></a>**Outnyttjad tid** (*idle time*) är den tid då en enhet är i funktionsdugligt tillstånd, men inte är i drift, under ej krävd tid
 
-## Från observerad till förväntad tillgänglighet
-Tillgänglig och otillgänglig tid består av observerade tider som är realisationer av slumpmässiga tider under en given observationsperiod. Tider till fel, reparationstider och väntetider kan beskrivas som stokastiska variabler med tillhörande sannolikhetsfördelningar. När fel inträffar, hur lång tid reparationen tar och hur länge man måste vänta på de resurser som behövs för att genomföra underhållet genom olika stokastiska processer. Tidsintervallet mellan förebyggande underhållsåtgärder beskrivs vanligen inte som en stokastisk variabel.
+## Observerad och förväntad tillgänglighet
+Tillgänglig och otillgänglig tid bestäms av de händelser och tidsintervall som observeras under en given observationsperiod. De händelser som påverkar tillgängligheten kan beskrivas med stokastiska processer. Exempelvis kan felhändesler modelleras med en homogen eller icke-homogen Poissonprocess (HPP respektive NHPP). De observerade tiderna till fel samt reparations- och väntetiderna är realisationer av stokastiska variabler med tillhörande sannolikhetsfördelningar. Tidsintervallet mellan förebyggande underhållsåtgärder betraktas däremot vanligen som deterministiskt och modelleras därför inte som en stokastisk variabel.
 
-Enligt föregående avsnitt kan tillgängligheten under en observerad period beräknas direkt från de observerade tiderna. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. Detta behandlas vidare i nästa avsnitt [Tre mått på tillgänglighet](#tre-mått-på-tillgänglighet-ak-am-ao). En mer matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns på sidan [Tillgänglighet som funktion av tiden](tillganglighet-som-funktion-av-tiden.md).
+De observerade tiderna kan alltså användas för att beräkna tillgängligheten under den aktuella observationsperioden, enligt beskrivningen i föregående avsnitt. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. Detta behandlas vidare i nästa avsnitt [Tre mått på tillgänglighet](#tre-mått-på-tillgänglighet-ak-am-ao). En mer matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns på sidan [Tillgänglighet som funktion av tiden](tillganglighet-som-funktion-av-tiden.md).
 
 ## Tre mått på tillgänglighet (Ak, Am, Ao)
 Utöver att tillgänglighet kan beräknas baserat på kalendertid eller driftstid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.
@@ -156,14 +156,13 @@ där $t_{\mathrm{Restored},0}=t_0$ och $t_0$ är observationsperiodens starttid.
 
 MTBF används för reparerbara enheter. För enheter som inte repareras används i stället **MTTF** (*Mean Time To Failure*), medeltid till fel.
 
-Tid mellan fel för kalenderbaserad tillgänglighet inkluderar både tillgänglig tid och förebyggande underhållstid. Den kan därför också beräknas enligt
+Tid mellan fel för kalenderbaserad tillgänglighet inkluderar både tillgänglig tid $(UT)$ och förebyggande underhållstid $(T_{PM})$. Den kan därför också beräknas enligt
 
 $$
 \mathrm{MTBF} 
 = 
-\frac{\mathrm{Uptime}+\text{Preventive maintenance time}}{\text{Number of failures}}
+\frac{\mathrm{UT}+\sum T_{PM}}{n_{\mathrm{Fail}}}
 $$
-
 
 För många system och anläggningar är reparationstiden väldigt kort i förhållande till kalendertiden. En approximation är att beräkna medeltiden av feltiderna för den totala tiden mellan fel
 $$
@@ -178,13 +177,16 @@ t_{\mathrm{Fail},\,i-1}
 \frac{\text{Total time}}{n_{Fail}}
 $$
 
-**MTBF** approximeras även med utgångspunkt i bara tillgänglig tid som
+
+På motsvarande sätt approximeras **MTBF** även med utgångspunkt i bara tillgänglig tid som
 
 $$
 \mathrm{MTBF} 
 \approx
-\frac{\mathrm{Uptime}}{\text{Number of failures}}
+\frac{\mathrm{UT}}{n_{Fail}}
 $$
+
+
 
 #### Drifttid
 
@@ -374,7 +376,7 @@ MTBM=
 80\ h
 $$
 
-där antal underhållshändelser n_{M}=n_{Fail}+n_{PM}$
+där antal underhållsaktiviteter $n_{M}=n_{Fail}+n_{PM}$
 
 #### Steg 2: MAMT
 $$
@@ -505,7 +507,7 @@ t_{PM end,j}
 t_{PM start,j}
 \right)
 $$
-- **Reperationstid** är tidsintervallet mellan *Arbetet slutfört* och *Arbetet påbörjat*
+- **Reparationstid** är tidsintervallet mellan *Arbetet slutfört* och *Arbetet påbörjat*
 - **Väntetid** är tidsintervallet mellan *Arbetet påbörjat* och *Anmält datum* 
 - **Nedtid** är tidsintervallet mellan *Arbetet slutfört* och *Anmält datum*.
 
@@ -575,7 +577,7 @@ $$
 \mathrm{TBM} = t_{m\ restore, i}-t_{m, i-1} \quad \left(t_{m, 0}=\text{2023-11-01 08:00}\right)
 $$ 
 
-- **Aktiv underhållstid** (samma som rerationstid för AU) är tidsintervallet mellan *Arbetet slutfört* och *Arbetet påbörjat*.
+- **Aktiv underhållstid** (samma som reparationstid för AU) är tidsintervallet mellan *Arbetet slutfört* och *Arbetet påbörjat*.
 - **Väntetid** är tidsintervallet mellan *Arbetet påbörjat* och *Anmält datum* 
 - **Nedtid** är tidsintervallet mellan *Arbetet slutfört* och *Anmält datum*.
 
