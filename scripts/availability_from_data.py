@@ -23,9 +23,23 @@ datetime_columns = [
 for column in datetime_columns:
     df[column] = pd.to_datetime(df[column])
 
+# Ensure event IDs are integers and sort the events
+df["EventID"] = df["EventID"].astype(int)
 
+df = (
+    df.sort_values("EventID")
+    .reset_index(drop=True)
+)
+
+# Verify that event IDs follow chronological order
+if not df["Reported date"].is_monotonic_increasing:
+    raise ValueError(
+        "Event ID does not follow chronological order."
+    )
+    
+    
 # Date and time when the system was put into operation
-t_put_in_operation = pd.to_datetime("2023-11-01 08:00")
+operation_start_time  = pd.to_datetime("2023-11-01 08:00")
 
 
 # -----------------------------------------------------------------------------
@@ -150,7 +164,7 @@ tbf = df.loc[mask_cm].apply(
     time_between_failures,
     axis=1,
     events=df,
-    start_time=t_put_in_operation,
+    start_time=operation_start_time ,
     exclude_pm=True,
 )
 
@@ -203,7 +217,7 @@ tbm = df.loc[mask_maintenance].apply(
     time_between_maintenance,
     axis=1,
     events=df,
-    start_time=t_put_in_operation,
+    start_time=operation_start_time ,
 )
 
 # Calculate calendar time between corrective failures.
@@ -212,7 +226,7 @@ tbf = df.loc[mask_cm].apply(
     time_between_failures,
     axis=1,
     events=df,
-    start_time=t_put_in_operation,
+    start_time=operation_start_time ,
     exclude_pm=False,
 )
 

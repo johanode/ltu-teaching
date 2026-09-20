@@ -22,9 +22,25 @@ datetime_columns = [
 
 for column in datetime_columns:
     df[column] = pd.to_datetime(df[column])
+    
+    
+# Säkerställ att händelse-ID är heltal och sortera händelserna
+df["HändelseID"] = df["HändelseID"].astype(int)
+
+df = (
+    df.sort_values("HändelseID")
+    .reset_index(drop=True)
+)
+
+# Kontrollera att händelse-ID följer den kronologiska ordningen
+if not df["Anmält datum"].is_monotonic_increasing:
+    raise ValueError(
+        "HändelseID följer inte den kronologiska ordningen."
+    )
+    
 
 # Datum och tid då utrustningen togs i drift
-t_put_in_operation = pd.to_datetime("2023-11-01 08:00")
+operation_start_time  = pd.to_datetime("2023-11-01 08:00")
 
 
 # -----------------------------------------------------------------------------
@@ -148,7 +164,7 @@ tbf = df.loc[mask_cm].apply(
     time_between_failures,
     axis=1,
     events=df,
-    start_time=t_put_in_operation,
+    start_time=operation_start_time ,
     exclude_pm=True,
 )
 
@@ -200,7 +216,7 @@ tbm = df.loc[mask_maintenance].apply(
     time_between_maintenance,
     axis=1,
     events=df,
-    start_time=t_put_in_operation,
+    start_time=operation_start_time ,
 )
 
 # Beräkna kalendertiden mellan avhjälpande fel.
@@ -209,7 +225,7 @@ tbf = df.loc[mask_cm].apply(
     time_between_failures,
     axis=1,
     events=df,
-    start_time=t_put_in_operation,
+    start_time=operation_start_time ,
     exclude_pm=False,
 )
 
