@@ -2,9 +2,9 @@
 title: "Formelsamling i drift och underhåll"
 toc: true
 toc-title: "Innehåll"
-toc-depth: 2
+toc-depth: 3
 number-sections: true
-number-depth: 2
+number-depth: 3
 lang: en
 format:
     html:
@@ -22,7 +22,7 @@ format:
 
 {{< pagebreak >}}
 
-# Tillförlitlighetsanalys
+## Tillförlitlighetsanalys
 
 | Beteckning   | Betydelse                                                    |
 |------------------------------------|------------------------------------|
@@ -33,54 +33,54 @@ format:
 
 : {tbl-colwidths="[20,80]"}
 
-## Exponentialfördelning
+### Exponentialfördelning
 
-### Felsannolikhet
+#### Felsannolikhet
 
 $$F(t)=1-e^{-\lambda t}$$
 
-### Felfrekvens
+#### Felfrekvens
 
 $$f(t)=\lambda e^{-\lambda t}$$
 
-### Funktionssannolikhet
+#### Funktionssannolikhet
 
 $$R(t)=e^{-\lambda t}$$
 
-### Felintensitet
+#### Felintensitet
 
 $$\lambda(t)=\lambda$$
 
 För en exponentialfördelning är felintensiteten $\lambda$ konstant och benämns felbenägenhet.
 
-### Medelvärde
+#### Medelvärde
 
 $$MTBF\ \text{eller}\ MTTF=\frac{1}{\lambda}$$
 
-## Weibullfördelning
+### Weibullfördelning
 
 $\alpha$ är skalparametern och $\beta$ är formparametern.
 
-### Felsannolikhet
+#### Felsannolikhet
 
 $$F(t)=1-\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right]$$
 
-### Felfrekvens
+#### Felfrekvens
 
 $$f(t)
 =
 \frac{\beta t^{\beta-1}}{\alpha^\beta}
 \exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right]$$
 
-### Funktionssannolikhet
+#### Funktionssannolikhet
 
 $$R(t)=\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right]$$
 
-### Felintensitet
+#### Felintensitet
 
 $$\lambda(t)=\frac{\beta t^{\beta-1}}{\alpha^\beta}$$
 
-### Medelvärde
+#### Medelvärde
 
 $$MTBF\ \text{eller}\ MTTF
 =
@@ -88,7 +88,7 @@ $$MTBF\ \text{eller}\ MTTF
 
 Värden på $\Gamma \text{-funktionen}$ finns i [Tabell 1](#tabell-1-gammafunktionen)
 
-### Estimat av felsannolikheten
+#### Estimat av felsannolikheten
 
 För den rangordnade feltiden $t_i$ kan felsannolikheten skattas som
 
@@ -96,13 +96,13 @@ $$F(t_i)=\frac{i-0{,}3}{n+0{,}4}$$
 
 där $i$ är feltidens rangnummer och $n$ är antalet observerade feltider.
 
-## Systemtillförlitlighet
+### Systemtillförlitlighet
 
-### Seriekopplat system
+#### Seriekopplat system
 
 $$R_{tot}=R_1R_2\cdots R_n$$
 
-### Parallellkopplat system
+#### Parallellkopplat system
 
 $$R_{tot}
 =
@@ -110,7 +110,7 @@ $$R_{tot}
 
 {{< pagebreak >}}
 
-# Tillgänglighetsprestanda
+## Tillgänglighetsprestanda
 
 | Beteckning | Betydelse |
 |------------------------------------|------------------------------------|
@@ -129,21 +129,21 @@ Tillgänglighet beskriver den andel av den krävda tiden under vilken en enhet b
 
 $$A=\frac{UT}{UT+DT}$$
 
-## Konstruktiv tillgänglighet
+### Konstruktiv tillgänglighet
 
 $$A_k=\frac{MTBF}{MTBF+MRT}$$
 
-## Materialtillgänglighet
+### Materialtillgänglighet
 
 $$A_m=\frac{MTBM}{MTBM+MAMT}$$
 
-## Operativ tillgänglighet
+### Operativ tillgänglighet
 
 $$A_o=\frac{MTBM}{MTBM+MDT}$$
 
 {{< pagebreak >}}
 
-# Utrustningens totala effektivitet
+## Utrustningens totala effektivitet
 
 Utrustningens totala effektivitet benämns vanligen **TAK** på svenska och **OEE** (*Overall Equipment Effectiveness*) på engelska. Måttet beräknas som
 
@@ -165,29 +165,30 @@ $$TAK
 \cdot
 \text{Kvalitetsutbyte}$$
 
-## TAK-beräkning
-### Tillgänglighet
+### TAK-beräkning
+
+#### Tillgänglighet
 
 $$\text{Tillgänglighet}
 =
 \frac{\text{Planerad produktionstid}-\text{Stopptid}}
 {\text{Planerad produktionstid}}$$
 
-### Anläggningseffektivitet
+#### Anläggningseffektivitet
 
 $$\text{Anläggningseffektivitet}
 =
 \frac{\text{Processat antal}\cdot\text{Teoretisk cykeltid}}
 {\text{Drifttid}}$$
 
-### Kvalitetsutbyte
+#### Kvalitetsutbyte
 
 $$\text{Kvalitetsutbyte}
 =
 \frac{\text{Processat antal}-\text{Felaktigt antal}}
 {\text{Processat antal}}$$
 
-## TEEP
+### TEEP
 
 $$TEEP=OEE \cdot Loading$$
 
@@ -198,7 +199,7 @@ $$Loading
 
 {{< pagebreak >}}
 
-# Livscykelkostnad (LCC)
+## Livscykelkostnad (LCC)
 
 | Beteckning | Betydelse                  |
 |------------|----------------------------|
@@ -215,7 +216,7 @@ $$Loading
 
 : {tbl-colwidths="[20,80]"}
 
-## Realränta
+### Realränta
 
 $$r_r
 =
@@ -223,7 +224,7 @@ $$r_r
 \approx
 r_n-q$$
 
-## Nuvärde av ett enstaka belopp
+### Nuvärde av ett enstaka belopp
 
 För ett framtida belopp $R$ vid år $i$ gäller
 $$NV = R \cdot NUV$$
@@ -234,7 +235,7 @@ $$NUV=\frac{1}{(1+r)^i}$$
 
 Värden på NUV finns i [Tabell 2](#tabell-2-nuvärdesfaktor-nuv)
 
-## Nuvärdessumma av ett årligt återkommande belopp
+### Nuvärdessumma av ett årligt återkommande belopp
 
 För ett årligt belopp $a$ under $n$ år gäller
 
@@ -248,15 +249,15 @@ $$NUS
 
 Värden på NUS finns i [Tabell 3](#tabell-3-nusummefaktor-nus)
 
-## Nuvärdessumma av varierande årliga belopp
+### Nuvärdessumma av varierande årliga belopp
 
 $$NV
 =
 \sum_{i=1}^{n}\frac{a_i}{(1+r)^i}$$
 
-# Riskanalys
+## Riskanalys
 
-## Riskprioriteringstal
+### Riskprioriteringstal
 Riskprioriteringstalet beräknas som
 
 $$RPN=S\cdot O\cdot D$$
@@ -267,9 +268,9 @@ där $S$ är felets allvarlighet, $O$ är sannolikheten för förekomst och $D$ 
 
 {{< pagebreak >}}
 
-# Tabeller
+## Tabeller
 
-## Tabell 1: Gammafunktionen {#tabell-1-gammafunktionen .unnumbered}
+### Tabell 1: Gammafunktionen {#tabell-1-gammafunktionen .unnumbered}
 
 | $z$ | $\Gamma(z)$ |
 |----:|------------:|
@@ -306,7 +307,7 @@ där $S$ är felets allvarlighet, $O$ är sannolikheten för förekomst och $D$ 
 
 {{< pagebreak >}}
 
-## Tabell 2: Nuvärdesfaktor (NUV) {#tabell-2-nuvärdesfaktor-nuv .unnumbered}
+### Tabell 2: Nuvärdesfaktor (NUV) {#tabell-2-nuvärdesfaktor-nuv .unnumbered}
 
 Nuvärdesfaktor (NUV) för ett belopp år $i$
 
@@ -345,7 +346,7 @@ Nuvärdesfaktor (NUV) för ett belopp år $i$
 
 {{< pagebreak >}}
 
-## Tabell 3: Nusummefaktor (NUS) {#tabell-3-nusummefaktor-nus .unnumbered}
+### Tabell 3: Nusummefaktor (NUS) {#tabell-3-nusummefaktor-nus .unnumbered}
 
 Nusummefaktor (NUS) för årliga belopp under $n$ år
 
