@@ -1,14 +1,21 @@
 project:
   type: book
 
+bibliography: references.bib
+
 book:
   title: "Driftsäkerhet"
   chapters:
     - index.qmd
     - rams.qmd
-    - funktionssakerhet.qmd
-    - systemtillforlitlighet.qmd
+    - tillganglighet.qmd
+    - tillforlitlighet.qmd
+  appendices:
+    - formelsamling.qmd
 
 format:
   html:
     theme: cosmo
+    toc: true
+  pdf:
+    documentclass: scrreprt
