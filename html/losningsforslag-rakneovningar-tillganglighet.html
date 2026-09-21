@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>losningsforslag-rakneovningar-tillganglighet</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1
+id="lösningsförslag-till-räkneövningar-i-driftsäkerhet">Lösningsförslag
+till räkneövningar i driftsäkerhet”</h1>
+<p>Tillhör <a href="rakneovningar-driftsakerhet.html">Räkneövningar i
+driftsäkerhet</a>.</p>
+<h2 id="sammanställning">Sammanställning</h2>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th style="text-align: right;"><span
+class="math inline">\(A_k\)</span></th>
+<th style="text-align: right;"><span
+class="math inline">\(A_m\)</span></th>
+<th style="text-align: right;"><span
+class="math inline">\(A_o\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;">90,9 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">89,7 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;">95,2 %</td>
+<td style="text-align: right;">76,9 %</td>
+<td style="text-align: right;">74,4 %</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: right;">95,2 %</td>
+<td style="text-align: right;">94,7 %</td>
+<td style="text-align: right;">93,6 %</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: right;">97,4 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">95,2 %</td>
+</tr>
+<tr>
+<td>6A</td>
+<td style="text-align: right;">95,8 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">93,4 %</td>
+</tr>
+<tr>
+<td>6B</td>
+<td style="text-align: right;">95,9 %</td>
+<td style="text-align: right;">93,4 %</td>
+<td style="text-align: right;">91,1 %</td>
+</tr>
+</tbody>
+</table>
+<h2 id="innehåll">Innehåll</h2>
+<ol type="1">
+<li><a href="#upg-1-konstruktiv-tillgänglighet-för-en-pump">Konstruktiv
+tillgänglighet för en pump</a></li>
+<li><a
+href="#upg-2-konstruktiv-tillgänglighet-baserad-på-drifttid">Konstruktiv
+tillgänglighet baserad på drifttid</a></li>
+<li><a href="#upg-3-tre-mått-på-tillgänglighet-för-ett-borraggregat">Tre
+mått på tillgänglighet för ett borraggregat</a></li>
+<li><a
+href="#upg-4-tillgänglighet-för-en-asfalteringsmaskin">Tillgänglighet
+för en asfalteringsmaskin</a></li>
+<li><a href="#upg-5-konstruktiv-och-operativ-tillgänglighet">Konstruktiv
+och operativ tillgänglighet</a></li>
+<li><a
+href="#upg-6-tillgänglighet-från-en-arbetsorderdata">Tillgänglighet från
+en arbetsorderdata</a>
+<ul>
+<li><a href="#a-planerad-produktionstid">A: Planerad
+produktionstid</a></li>
+<li><a href="#b-kalendertid">B: Kalendertid</a></li>
+</ul></li>
+</ol>
+<h2 id="upg-1-konstruktiv-tillgänglighet-för-en-pump">Upg 1: Konstruktiv
+tillgänglighet för en pump</h2>
+<p>Medelreparationstiden är</p>
+<p><span class="math display">\[
+MRT=\frac{RT}{n_{Fail}}=\frac{200}{100}=2\ \text{h}.
+\]</span></p>
+<p>Den konstruktiva tillgängligheten blir</p>
+<p><span class="math display">\[
+A_k
+=\frac{MTBF}{MTBF+MRT}
+=\frac{20}{20+2}
+=0{,}909.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_k=90{,}9\
+\%\)</span>.</p>
+<h2 id="upg-2-konstruktiv-tillgänglighet-baserad-på-drifttid">Upg 2:
+Konstruktiv tillgänglighet baserad på drifttid</h2>
+<p>Medeltiden mellan fel baserat på drifttid är</p>
+<p><span class="math display">\[
+MTBF=\frac{OT}{n_{Fail}}=\frac{2600}{11}=236{,}36\ \text{h}.
+\]</span></p>
+<p>Medelreparationstiden är</p>
+<p><span class="math display">\[
+MRT=\frac{RT}{n_{Fail}}=\frac{300}{11}=27{,}27\ \text{h}.
+\]</span></p>
+<p>Den konstruktiva tillgängligheten blir</p>
+<p><span class="math display">\[
+A_k
+=\frac{MTBF}{MTBF+MRT}
+=\frac{236{,}36}{236{,}36+27{,}27}
+=0{,}897.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_k=89{,}7\
+\%\)</span>.</p>
+<p>Tiden för förebyggande underhåll behövs inte. Beräkningen är baserad
+på drifttid och konstruktiv tillgänglighet omfattar endast tiden mellan
+fel och reparationstiden.</p>
+<h2 id="upg-3-tre-mått-på-tillgänglighet-för-ett-borraggregat">Upg 3:
+Tre mått på tillgänglighet för ett borraggregat</h2>
+<h3 id="konstruktiv-tillgänglighet">Konstruktiv tillgänglighet</h3>
+<p>Det förebyggande underhållet (<em>preventive maintenance time</em>,
+PMT) genomförs under krävd tid och ingår därför i tiden mellan fel.</p>
+<p><span class="math display">\[
+MTBF=\frac{UT+PMT}{n_{Fail}}=\frac{1600+400}{200}=10\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MRT=\frac{RT}{n_{Fail}}=\frac{100}{200}=0{,}5\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_k
+=\frac{MTBF}{MTBF+MRT}
+=\frac{10}{10+0{,}5}
+=0{,}952.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_k=95{,}2\
+\%\)</span>.</p>
+<h3 id="materialtillgänglighet">Materialtillgänglighet</h3>
+<p>Antalet underhållsåtgärder är</p>
+<p><span class="math display">\[
+n_M=200+40=240.
+\]</span></p>
+<p>Den aktiva förebyggande underhållstiden (APMT) är</p>
+<p><span class="math display">\[
+APMT=400-20=380\ \text{h}.
+\]</span></p>
+<p>Det ger följande beräkning av materialtillgängligheten <span
+class="math display">\[
+MTBM=\frac{UT}{n_M}=\frac{1600}{240}=6{,}67\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MAMT=\frac{RT+APMT}{n_M}=\frac{100+380}{240}=2{,}00\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_m
+=\frac{MTBM}{MTBM+MAMT}
+=\frac{6{,}67}{6{,}67+2{,}00}
+=0{,}769.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_m=76{,}9\
+\%\)</span>.</p>
+<h3 id="operativ-tillgänglighet">Operativ tillgänglighet</h3>
+<p>Den sammanlagda otillgängliga tiden (DT) är</p>
+<p><span class="math display">\[
+DT=100+50+400=550\ \text{h}.
+\]</span></p>
+<p>Vilket ger följande beräkning av den operativa tillgängligheten <span
+class="math display">\[
+MDT=\frac{DT}{n_M}=\frac{550}{240}=2{,}29\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_o
+=\frac{MTBM}{MTBM+MDT}
+=\frac{6{,}67}{6{,}67+2{,}29}
+=0{,}744.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_o=74{,}4\
+\%\)</span>.</p>
+<h2 id="upg-4-tillgänglighet-för-en-asfalteringsmaskin">Upg 4:
+Tillgänglighet för en asfalteringsmaskin</h2>
+<h3 id="konstruktiv-tillgänglighet-1">Konstruktiv tillgänglighet</h3>
+<p>Eftersom det förebyggande underhållet genomförs under krävd tid ingår
+det i beräkningen av tid mellan fel. Den sammanlagda tiden för
+förebyggande underhåll (PMT) är</p>
+<p><span class="math display">\[
+PMT = 12\cdot4=48\ \text{h}.
+\]</span></p>
+<p>Det ger följande beräkning av konstruktiv tillgänglighet <span
+class="math display">\[
+MTBF=\frac{UT+PMT}{n_{Fail}}=\frac{7\,952+48}{50}=160\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MRT=8\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_k
+=\frac{MTBF}{MTBF+MRT}
+=\frac{160}{160+8}
+=0{,}952.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_k=95{,}2\
+\%\)</span>.</p>
+<h3 id="materialtillgänglighet-1">Materialtillgänglighet</h3>
+<p>Antalet underhållsåtgärder är <span
+class="math inline">\(n_M=50+12=62\)</span> och medeltiden mellan
+underhåll blir <span class="math display">\[
+MTBM=\frac{UT}{n_M}=\frac{7\,952}{62}=128{,}26\ \text{h}
+\]</span></p>
+<p>Total reparationstid är</p>
+<p><span class="math display">\[
+RT = MRT \cdot n_{Fail} = 8 \cdot 50 = 400 \text{h}
+\]</span></p>
+<p>och aktiv förebyggande underhållstid är</p>
+<p><span class="math display">\[
+APMT = MAPMT \cdot n_{PM} = (4-0) \cdot 12 = 48 \text{h}
+\]</span></p>
+<p>Det ger följande beräkning av materialtillgängligheten</p>
+<p><span class="math display">\[
+MAMT=\frac{RT+APMT}{n_M}=\frac{400+48}{62}=7{,}23\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_m
+=\frac{MTBM}{MTBM+MAMT}
+=\frac{128{,}26}{128{,}26+7{,}23}
+=0{,}947.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_m=94{,}7\
+\%\)</span>.</p>
+<h3 id="operativ-tillgänglighet-1">Operativ tillgänglighet</h3>
+<p>Den sammanlagda avhjälpande underhållstiden (CMT) är</p>
+<p><span class="math display">\[
+CMT = (MRT + MWT_{CM}) \cdot n_{Fail} = 500\ \text{h}.
+\]</span></p>
+<p>Den sammanlagda otillgängliga tiden (DT) blir då</p>
+<p><span class="math display">\[
+DT = CMT + PMT = 500 + 48 = 548\ \text{h}.
+\]</span></p>
+<p>Beräkningen av operativ tillgänglighet blir</p>
+<p><span class="math display">\[
+MDT=\frac{DT}{n_M}=\frac{548}{62}=8{,}84\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_o
+=\frac{MTBM}{MTBM+MDT}
+=\frac{128{,}26}{128{,}26+8{,}84}
+=0{,}936.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_o=93{,}6\
+\%\)</span>.</p>
+<h2 id="upg-5-konstruktiv-och-operativ-tillgänglighet">Upg 5:
+Konstruktiv och operativ tillgänglighet</h2>
+<p>Beräkningarna ska baseras på drifttid (OT).</p>
+<h3 id="konstruktiv-tillgänglighet-2">Konstruktiv tillgänglighet</h3>
+<p><span class="math display">\[
+MTBF=\frac{OT}{n_{Fail}}=\frac{3000}{10}=300\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MRT=\frac{RT}{n_{Fail}}=\frac{80}{10}=8\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_k
+=\frac{MTBF}{MTBF+MRT}
+=\frac{300}{300+8}
+=0{,}974.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_k=97{,}4\
+\%\)</span>.</p>
+<p>Förebyggande underhåll och väntetid ingår inte i den konstruktiva
+tillgängligheten.</p>
+<h3 id="operativ-tillgänglighet-2">Operativ tillgänglighet</h3>
+<p>Medeltid mellan underhåll är</p>
+<p><span class="math display">\[
+MTBM=\frac{OT}{n_M}=\frac{3000}{10+10}=150\ \text{h}
+\]</span></p>
+<p>Den sammanlagda otillgängliga tiden är</p>
+<p><span class="math display">\[
+DT = CMT + PMT = 120+30=150\ \text{h}.
+\]</span></p>
+<p>där den avhjälpande underhållstiden (CMT) fås från</p>
+<p><span class="math display">\[
+CMT = RT + MWT_{CM} \cdot n_{Fail} = 80 + 4 \cdot 10 = 120 \text{h}
+\]</span></p>
+<p>Beräkningen av operativ tillgänglighet blir då</p>
+<p><span class="math display">\[
+MDT=\frac{DT}{n_M}=\frac{150}{20}=7{,}5\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+A_o
+=\frac{MTBM}{MTBM+MDT}
+=\frac{150}{150+7{,}5}
+=0{,}952.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_o=95{,}2\
+\%\)</span>.</p>
+<h2 id="upg-6-tillgänglighet-från-en-arbetsorderdata">Upg 6:
+Tillgänglighet från en arbetsorderdata</h2>
+<p>Anläggningen togs i drift den 1 januari 2026 kl. 08.00.</p>
+<h3 id="a-planerad-produktionstid">A) Planerad produktionstid</h3>
+<p>FU genomförs utanför krävd tid. Tiden för FU ska därför dras bort
+från tiden mellan felen.</p>
+<h4 id="i-tid-mellan-fel">I) Tid mellan fel</h4>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">Händelse-ID</th>
+<th style="text-align: right;">Tid från föregående återställning</th>
+<th style="text-align: right;">FU under intervallet</th>
+<th style="text-align: right;">Tid mellan fel <span
+class="math inline">\(TBF_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">48 h</td>
+<td style="text-align: right;">0 h</td>
+<td style="text-align: right;">48 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">96 h</td>
+<td style="text-align: right;">4 h</td>
+<td style="text-align: right;">92 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">88 h</td>
+<td style="text-align: right;">2 h</td>
+<td style="text-align: right;">86 h</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Summa</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"><strong>226 h</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ii-reparationstid-och-otillgänglig-tid">II) Reparationstid och
+otillgänglig tid</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Händelse-ID</th>
+<th style="text-align: right;">Reparationstid <span
+class="math inline">\(T_{Rep,i}\)</span></th>
+<th style="text-align: right;">Otillgänglig tid <span
+class="math inline">\(DT_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2 h</td>
+<td style="text-align: right;">4 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4 h</td>
+<td style="text-align: right;">6 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4 h</td>
+<td style="text-align: right;">6 h</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Summa</strong></td>
+<td style="text-align: right;"><strong>10 h</strong></td>
+<td style="text-align: right;"><strong>16 h</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="iii-medeltider">III) Medeltider</h4>
+<p>Medeltiderna blir</p>
+<p><span class="math display">\[
+MTBF=\frac{\sum_i TBF_i}{n_{Fail}}=\frac{226}{3}=75{,}33\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MRT=\frac{\sum_i T_{Rep,i}}{n_{Fail}}=\frac{10}{3}=3{,}33\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MDT=\frac{\sum_i DT_i}{n_{Fail}}=\frac{16}{3}=5{,}33\ \text{h}.
+\]</span></p>
+<h4 id="iv-tillgänglighet">IV) Tillgänglighet</h4>
+<p>Den konstruktiva tillgängligheten är</p>
+<p><span class="math display">\[
+A_k
+=\frac{MTBF}{MTBF+MRT}
+=\frac{75{,}33}{75{,}33+3{,}33}
+=0{,}958.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_k=95{,}8\
+\%\)</span>.</p>
+<p>Eftersom inga andra underhållsåtgärder genomförs under krävd tid
+sätts <span class="math inline">\(MTBM=MTBF\)</span>.</p>
+<p>Den operativa tillgängligheten är</p>
+<p><span class="math display">\[
+A_o
+=\frac{MTBM}{MTBM+MDT}
+=\frac{75{,}33}{75{,}33+5{,}33}
+=0{,}934.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_o=93{,}4\
+\%\)</span>.</p>
+<h3 id="b-kalendertid">B) Kalendertid</h3>
+<p>Vid den kalenderbaserade beräkningen ingår FU i tiden mellan fel.</p>
+<h4 id="i-tid-mellan-fel-1">I) Tid mellan fel</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Händelse-ID</th>
+<th>Beräkning</th>
+<th style="text-align: right;">Tid mellan fel <span
+class="math inline">\(TBF_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Driftsättning till fel ID=1</td>
+<td style="text-align: right;">48 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Återställning efter fel ID1 till fel ID=3</td>
+<td style="text-align: right;">96 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Återställning efter fel ID=3 till fel ID=5</td>
+<td style="text-align: right;">88 h</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Summa</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>232 h</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ii-tid-mellan-underhåll">II) Tid mellan underhåll</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Händelse-ID</th>
+<th style="text-align: center;">Typ</th>
+<th style="text-align: right;">Tid mellan underhåll <span
+class="math inline">\(TBM_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">AU</td>
+<td style="text-align: right;">48 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">FU</td>
+<td style="text-align: right;">44 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">AU</td>
+<td style="text-align: right;">48 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">FU</td>
+<td style="text-align: right;">38 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">AU</td>
+<td style="text-align: right;">48 h</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Summa</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><strong>226 h</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="iii-reparationstid-och-otillgänglig-tid">III) Reparationstid och
+otillgänglig tid</h4>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 23%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">Händelse-ID</th>
+<th style="text-align: center;">Typ</th>
+<th style="text-align: right;">Aktiv underhållstid <span
+class="math inline">\(T_{AM,i}\)</span></th>
+<th style="text-align: right;">Väntetid</th>
+<th style="text-align: right;">Otillgänglig tid <span
+class="math inline">\(DT_{i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">AU</td>
+<td style="text-align: right;">2 h</td>
+<td style="text-align: right;">2 h</td>
+<td style="text-align: right;">4 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">FU</td>
+<td style="text-align: right;">4 h</td>
+<td style="text-align: right;">0 h</td>
+<td style="text-align: right;">4 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">AU</td>
+<td style="text-align: right;">4 h</td>
+<td style="text-align: right;">2 h</td>
+<td style="text-align: right;">6 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">FU</td>
+<td style="text-align: right;">2 h</td>
+<td style="text-align: right;">0 h</td>
+<td style="text-align: right;">2 h</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">AU</td>
+<td style="text-align: right;">4 h</td>
+<td style="text-align: right;">2 h</td>
+<td style="text-align: right;">6 h</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>Summa</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><strong>16 h</strong></td>
+<td style="text-align: right;"><strong>6 h</strong></td>
+<td style="text-align: right;"><strong>22 h</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Reparationstiderna <span class="math inline">\(T_{Rep,i}\)</span> är
+således 2, 4 och 4 timmar.</p>
+<h4 id="iv-medelvärden">IV) Medelvärden</h4>
+<p><span class="math display">\[
+MTBF=\frac{\sum_i TBF_i}{n_{Fail}}=\frac{232}{3}=77{,}33\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MRT=\frac{\sum_i T_{Rep,i}}{n_{Fail}}=\frac{2+4+4}{3}=3{,}33\ \text{h}.
+\]</span></p>
+<p><span class="math display">\[
+MTBM=\frac{\sum_i TBM_i}{n_M}=\frac{226}{5}=45{,}2\ \text{h}.
+\]</span></p>
+<p><span class="math display">\[
+MAMT=\frac{\sum_i T_{AM,i}}{n_M}=\frac{16}{5}=3{,}2\ \text{h}
+\]</span></p>
+<p><span class="math display">\[
+MDT=\frac{\sum_i DT_i}{n_M}=\frac{22}{5}=4{,}4\ \text{h}.
+\]</span></p>
+<h4 id="v-tillgänglighet">V) Tillgänglighet</h4>
+<p>Den konstruktiva tillgängligheten är</p>
+<p><span class="math display">\[
+A_k
+=\frac{MTBF}{MTBF+MRT}
+=\frac{77{,}33}{77{,}33+3{,}33}
+=0{,}959.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_k=95{,}9\
+\%\)</span>.</p>
+<p>Materialtillgängligheten är</p>
+<p><span class="math display">\[
+A_m
+=\frac{MTBM}{MTBM+MAMT}
+=\frac{45{,}2}{45{,}2+3{,}2}
+=0{,}934.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_m=93{,}4\
+\%\)</span>.</p>
+<p>Den operativa tillgängligheten är</p>
+<p><span class="math display">\[
+A_o
+=\frac{MTBM}{MTBM+MDT}
+=\frac{45{,}2}{45{,}2+4{,}4}
+=0{,}911.
+\]</span></p>
+<p><strong>Svar:</strong> <span class="math inline">\(A_o=91{,}1\
+\%\)</span>.</p>
+</body>
+</html>
