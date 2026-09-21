@@ -4,12 +4,13 @@ project:
 bibliography: references.bib
 
 book:
-  title: "Driftsäkerhet"
+  title: "Driftsäkerhet och underhåll"
   chapters:
     - index.qmd
     - rams.qmd
     - tillganglighet.qmd
     - tillforlitlighet.qmd
+    - referenser.qmd
   appendices:
     - formelsamling.qmd
 
