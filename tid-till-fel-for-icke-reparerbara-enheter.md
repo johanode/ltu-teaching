@@ -1,7 +1,7 @@
 # Tid till fel för icke-reparerbara enheter
 För en icke-reparerbar enhet är **tiden till fel** den centrala storheten. När felet har inträffat tas enheten ur populationen som analyseras och inga efterföljande fel eller reparationer ingår inte i modellen.
 
-Låt $TTF$ beteckna tiden till fel. Eftersom det inte går att förutsäga exakt när en viss enhet kommer att sluta fungera modelleras (TTF) som en stokastisk variabel. En observerad livslängd är en realisation av denna variabel.
+Låt $TTF$ beteckna tiden till fel. Eftersom det inte går att förutsäga exakt när en viss enhet kommer att sluta fungera, modelleras $TTF$ som en stokastisk variabel. En observerad livslängd är en realisation av denna variabel.
 
 För att illustrera hur slumpmässiga händelser beter sig börjar vi med ett diskret exempel med en tärning.
 
@@ -96,7 +96,7 @@ Felsannolikheten vid nästa kontroll är alltid 10 procent för en enhet som for
 
 Det förväntade antalet kast fram till felet är
 $$
-E[K]=\frac{1}{p}
+E[K]=\frac{1}{p}.
 $$
 
 För den tiosidiga tärningen är det förväntade antalet kast alltså tio. Det betyder inte att varje enhet får fel efter tio kast, utan att medelvärdet närmar sig tio när många enheter observeras.
@@ -164,7 +164,7 @@ Den är alltså konstant och beror inte på hur länge enheten redan har fungera
 
 Anta att en population består av (m) oberoende och likvärdiga enheter. Varje enhet observeras tills dess första fel inträffar.
 
-Vid tiden (t) har varje enhet gått sönder med sannolikheten (F(t)). Antalet felade enheter (N(t)) är därför binomialfördelat:
+Vid tiden $t$ har varje enhet gått sönder med sannolikheten $F(t)$. Antalet felade enheter $N(t)$ är därför binomialfördelat:
 
 $$
 N(t)\sim \operatorname{Binomial}\bigl(m,F(t)\bigr).
@@ -186,7 +186,7 @@ En observerad population följer inte de förväntade kurvorna exakt. Skillnaden
 
 ![Simulerat och förväntat antal felade enheter i en population](bilder/population-tid-till-fel.png)
 
-> **Avgränsning:** Om populationen är stor och (F(t)) är liten kan antalet felade enheter vid en bestämd tidpunkt approximeras med en Poissonfördelning. Det innebär inte att felen i en fast population automatiskt bildar en homogen Poissonprocess. Här studeras endast tiden till det första felet för varje enhet.
+> **Avgränsning:** Om populationen är stor och $F(t)$ är liten kan antalet felade enheter vid en bestämd tidpunkt approximeras med en Poissonfördelning. Det innebär inte att felen i en fast population automatiskt bildar en homogen Poissonprocess. Här studeras endast tiden till det första felet för varje enhet.
 
 ## Antaganden i modellen
 
