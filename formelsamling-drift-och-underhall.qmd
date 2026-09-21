@@ -1,0 +1,374 @@
+---
+title: "Formelsamling i drift och underhåll"
+toc: true
+toc-title: "Innehåll"
+toc-depth: 2
+lang: en
+papersize: a4
+geometry: margin=20mm
+fontsize: 11pt
+number-sections: true
+number-depth: 2
+---
+
+{{< pagebreak >}}
+
+# Tillförlitlighetsanalys
+
+| Beteckning   | Betydelse                                                    |
+|------------------------------------|------------------------------------|
+| $F(t)$       | Felsannolikhet vid tiden $t$                                 |
+| $f(t)$       | Felfrekvens, eller täthetsfunktion för tid till fel          |
+| $R(t)$       | Funktionssannolikhet, eller funktionssäkerhet, vid tiden $t$ |
+| $\lambda(t)$ | Felintensitet                                                |
+
+: {tbl-colwidths="[20,80]"}
+
+## Exponentialfördelning
+
+### Felsannolikhet
+
+$$F(t)=1-e^{-\lambda t}$$
+
+### Felfrekvens
+
+$$f(t)=\lambda e^{-\lambda t}$$
+
+### Funktionssannolikhet
+
+$$R(t)=e^{-\lambda t}$$
+
+### Felintensitet
+
+$$\lambda(t)=\lambda$$
+
+För en exponentialfördelning är felintensiteten $\lambda$ konstant och benämns felbenägenhet.
+
+### Medelvärde
+
+$$MTBF\ \text{eller}\ MTTF=\frac{1}{\lambda}$$
+
+## Weibullfördelning
+
+$\alpha$ är skalparametern och $\beta$ är formparametern.
+
+### Felsannolikhet
+
+$$F(t)=1-\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right]$$
+
+### Felfrekvens
+
+$$f(t)
+=
+\frac{\beta t^{\beta-1}}{\alpha^\beta}
+\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right]$$
+
+### Funktionssannolikhet
+
+$$R(t)=\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right]$$
+
+### Felintensitet
+
+$$\lambda(t)=\frac{\beta t^{\beta-1}}{\alpha^\beta}$$
+
+### Medelvärde
+
+$$MTBF\ \text{eller}\ MTTF
+=
+\alpha\Gamma\left(1+\frac{1}{\beta}\right)$$
+
+Värden på $\Gamma \text{-funktionen}$ finns i [Tabell 1](#tabell-1-gammafunktionen)
+
+### Estimat av felsannolikheten
+
+För den rangordnade feltiden $t_i$ kan felsannolikheten skattas som
+
+$$F(t_i)=\frac{i-0{,}3}{n+0{,}4}$$
+
+där $i$ är feltidens rangnummer och $n$ är antalet observerade feltider.
+
+## Systemtillförlitlighet
+
+### Seriekopplat system
+
+$$R_{tot}=R_1R_2\cdots R_n$$
+
+### Parallellkopplat system
+
+$$R_{tot}
+=
+1-\left[(1-R_1)(1-R_2)\cdots(1-R_n)\right]$$
+
+{{< pagebreak >}}
+
+# Tillgänglighetsprestanda
+
+| Beteckning | Betydelse |
+|------------------------------------|------------------------------------|
+| $UT$ | Tillgänglig tid (*uptime*) |
+| $DT$ | Otillgänglig tid (*downtime*) |
+| $MTBF$ | Medeltid mellan fel (*Mean Time Between Failures*) |
+| $MTTF$ | Medeltid till fel (*Mean Time To Failure*) |
+| $MRT$ | Medelreparationstid (*Mean Repair Time*) |
+| $MTBM$ | Medeltid mellan underhåll (*Mean Time Between Maintenance*) |
+| $MAMT$ | Medeltid för aktivt underhåll (*Mean Active Maintenance Time*) |
+| $MDT$ | Genomsnittlig otillgänglig tid per underhållsåtgärd (*Mean Downtime*) |
+
+: {tbl-colwidths="[20,80]"}
+
+Tillgänglighet beskriver den andel av den krävda tiden under vilken en enhet befinner sig i ett funktionsdugligt tillstånd. Den krävda tiden är summan av tillgänglig och otillgänglig tid.
+
+$$A=\frac{UT}{UT+DT}$$
+
+## Konstruktiv tillgänglighet
+
+$$A_k=\frac{MTBF}{MTBF+MRT}$$
+
+## Materialtillgänglighet
+
+$$A_m=\frac{MTBM}{MTBM+MAMT}$$
+
+## Operativ tillgänglighet
+
+$$A_o=\frac{MTBM}{MTBM+MDT}$$
+
+{{< pagebreak >}}
+
+# Utrustningens totala effektivitet
+
+Utrustningens totala effektivitet benämns vanligen **TAK** på svenska och **OEE** (*Overall Equipment Effectiveness*) på engelska. Måttet beräknas som
+
+$$OEE
+=
+\text{Availability}
+\cdot
+\text{Performance}
+\cdot
+\text{Quality}$$
+
+eller på svenska
+
+$$TAK
+=
+\text{Tillgänglighet}
+\cdot
+\text{Anläggningseffektivitet}
+\cdot
+\text{Kvalitetsutbyte}$$
+
+## TAK-beräkning
+### Tillgänglighet
+
+$$\text{Tillgänglighet}
+=
+\frac{\text{Planerad produktionstid}-\text{Stopptid}}
+{\text{Planerad produktionstid}}$$
+
+### Anläggningseffektivitet
+
+$$\text{Anläggningseffektivitet}
+=
+\frac{\text{Processat antal}\cdot\text{Teoretisk cykeltid}}
+{\text{Drifttid}}$$
+
+### Kvalitetsutbyte
+
+$$\text{Kvalitetsutbyte}
+=
+\frac{\text{Processat antal}-\text{Felaktigt antal}}
+{\text{Processat antal}}$$
+
+## TEEP
+
+$$TEEP=OEE \cdot Loading$$
+
+$$Loading
+=
+\frac{\text{Planerad produktionstid}}
+{\text{Kalendertid}}$$
+
+{{< pagebreak >}}
+
+# Livscykelkostnad (LCC)
+
+| Beteckning | Betydelse                  |
+|------------|----------------------------|
+| $r_n$      | Nominell ränta             |
+| $r_r$      | Realränta                  |
+| $r$        | Kalkylränta                |
+| $q$        | Inflation                  |
+| $NV$       | Nuvärde                    |
+| $NUV$      | Nuvärdefaktor              |
+| $NUS$      | Nuvärdessummafaktor        |
+| $a$        | Årligt återkommande belopp |
+| $a_i$      | Årligt belopp år $i$       |
+| $R_i$      | Belopp år $i$              |
+
+: {tbl-colwidths="[20,80]"}
+
+## Realränta
+
+$$r_r
+=
+\frac{1+r_n}{1+q}-1
+\approx
+r_n-q$$
+
+## Nuvärde av ett enstaka belopp
+
+För ett framtida belopp $R$ vid år $i$ gäller
+$$NV = R \cdot NUV$$
+
+där
+
+$$NUV=\frac{1}{(1+r)^i}$$
+
+Värden på NUV finns i [Tabell 2](#tabell-2-nuvärdesfaktor-nuv)
+
+## Nuvärdessumma av ett årligt återkommande belopp
+
+För ett årligt belopp $a$ under $n$ år gäller
+
+$$NV = NUS \cdot a$$
+
+där
+
+$$NUS 
+= \frac{1-(1+r)^{-n}}{r}
+= \frac{(1+r)^n-1}{r(1+r)^n}$$
+
+Värden på NUS finns i [Tabell 3](#tabell-3-nusummefaktor-nus)
+
+## Nuvärdessumma av varierande årliga belopp
+
+$$NV
+=
+\sum_{i=1}^{n}\frac{a_i}{(1+r)^i}$$
+
+# Riskanalys
+
+## Riskprioriteringstal
+Riskprioriteringstalet beräknas som
+
+$$RPN=S\cdot O\cdot D$$
+
+där $S$ är felets allvarlighet, $O$ är sannolikheten för förekomst och $D$ är möjligheten att upptäcka felet.
+
+
+
+{{< pagebreak >}}
+
+# Tabeller
+
+## Tabell 1: Gammafunktionen {#tabell-1-gammafunktionen}
+
+| $z$ | $\Gamma(z)$ |
+|----:|------------:|
+| 0,1 |         9,5 |
+| 0,2 |         4,6 |
+| 0,3 |         3,0 |
+| 0,4 |         2,2 |
+| 0,5 |         1,8 |
+| 0,6 |         1,5 |
+| 0,7 |         1,3 |
+| 0,8 |         1,2 |
+| 0,9 |         1,1 |
+| 1,0 |         1,0 |
+| 1,1 |         1,0 |
+| 1,2 |         0,9 |
+| 1,3 |         0,9 |
+| 1,4 |         0,9 |
+| 1,5 |         0,9 |
+| 1,6 |         0,9 |
+| 1,7 |         0,9 |
+| 1,8 |         0,9 |
+| 1,9 |         1,0 |
+| 2,0 |         1,0 |
+| 2,1 |         1,0 |
+| 2,2 |         1,1 |
+| 2,3 |         1,2 |
+| 2,4 |         1,2 |
+| 2,5 |         1,3 |
+| 2,6 |         1,4 |
+| 2,7 |         1,5 |
+| 2,8 |         1,7 |
+| 2,9 |         1,8 |
+| 3,0 |         2,0 |
+
+{{< pagebreak >}}
+
+## Tabell 2: Nuvärdesfaktor (NUV) {#tabell-2-nuvärdesfaktor-nuv}
+
+Nuvärdesfaktor (NUV) för ett belopp år $i$
+
+| År $i$ |   2 % |   4 % |   6 % |   8 % |  10 % |
+|-------:|------:|------:|------:|------:|------:|
+|      1 | 0,980 | 0,962 | 0,943 | 0,926 | 0,909 |
+|      2 | 0,961 | 0,925 | 0,890 | 0,857 | 0,826 |
+|      3 | 0,942 | 0,889 | 0,840 | 0,794 | 0,751 |
+|      4 | 0,924 | 0,855 | 0,792 | 0,735 | 0,683 |
+|      5 | 0,906 | 0,822 | 0,747 | 0,681 | 0,621 |
+|      6 | 0,888 | 0,790 | 0,705 | 0,630 | 0,564 |
+|      7 | 0,871 | 0,760 | 0,665 | 0,583 | 0,513 |
+|      8 | 0,853 | 0,731 | 0,627 | 0,540 | 0,467 |
+|      9 | 0,837 | 0,703 | 0,592 | 0,500 | 0,424 |
+|     10 | 0,820 | 0,676 | 0,558 | 0,463 | 0,386 |
+|     12 | 0,788 | 0,625 | 0,497 | 0,397 | 0,319 |
+|     14 | 0,758 | 0,577 | 0,442 | 0,340 | 0,263 |
+|     16 | 0,728 | 0,534 | 0,394 | 0,292 | 0,218 |
+|     18 | 0,700 | 0,494 | 0,350 | 0,250 | 0,180 |
+|     20 | 0,673 | 0,456 | 0,312 | 0,215 | 0,149 |
+|     22 | 0,647 | 0,422 | 0,278 | 0,184 | 0,123 |
+|     24 | 0,622 | 0,390 | 0,247 | 0,158 | 0,102 |
+|     26 | 0,598 | 0,361 | 0,220 | 0,135 | 0,084 |
+|     28 | 0,574 | 0,333 | 0,196 | 0,116 | 0,069 |
+|     30 | 0,552 | 0,308 | 0,174 | 0,099 | 0,057 |
+|     32 | 0,531 | 0,285 | 0,155 | 0,085 | 0,047 |
+|     34 | 0,510 | 0,264 | 0,138 | 0,073 | 0,039 |
+|     36 | 0,490 | 0,244 | 0,123 | 0,063 | 0,032 |
+|     38 | 0,471 | 0,225 | 0,109 | 0,054 | 0,027 |
+|     40 | 0,453 | 0,208 | 0,097 | 0,046 | 0,022 |
+|     42 | 0,435 | 0,193 | 0,087 | 0,039 | 0,018 |
+|     44 | 0,418 | 0,178 | 0,077 | 0,034 | 0,015 |
+|     46 | 0,402 | 0,165 | 0,069 | 0,029 | 0,012 |
+|     48 | 0,387 | 0,152 | 0,061 | 0,025 | 0,010 |
+|     50 | 0,372 | 0,141 | 0,054 | 0,021 | 0,009 |
+
+{{< pagebreak >}}
+
+## Tabell 3: Nusummefaktor (NUS) {#tabell-3-nusummefaktor-nus}
+
+Nusummefaktor (NUS) för årliga belopp under $n$ år
+
+| År $n$ |    2 % |    4 % |    6 % |    8 % |  10 % |
+|-------:|-------:|-------:|-------:|-------:|------:|
+|      1 |  0,980 |  0,962 |  0,943 |  0,926 | 0,909 |
+|      2 |  1,942 |  1,886 |  1,833 |  1,783 | 1,736 |
+|      3 |  2,884 |  2,775 |  2,673 |  2,577 | 2,487 |
+|      4 |  3,808 |  3,630 |  3,465 |  3,312 | 3,170 |
+|      5 |  4,713 |  4,452 |  4,212 |  3,993 | 3,791 |
+|      6 |  5,601 |  5,242 |  4,917 |  4,623 | 4,355 |
+|      7 |  6,472 |  6,002 |  5,582 |  5,206 | 4,868 |
+|      8 |  7,325 |  6,733 |  6,210 |  5,747 | 5,335 |
+|      9 |  8,162 |  7,435 |  6,802 |  6,247 | 5,759 |
+|     10 |  8,983 |  8,111 |  7,360 |  6,710 | 6,145 |
+|     12 | 10,575 |  9,385 |  8,384 |  7,536 | 6,814 |
+|     14 | 12,106 | 10,563 |  9,295 |  8,244 | 7,367 |
+|     16 | 13,578 | 11,652 | 10,106 |  8,851 | 7,824 |
+|     18 | 14,992 | 12,659 | 10,828 |  9,372 | 8,201 |
+|     20 | 16,351 | 13,590 | 11,470 |  9,818 | 8,514 |
+|     22 | 17,658 | 14,451 | 12,042 | 10,201 | 8,772 |
+|     24 | 18,914 | 15,247 | 12,550 | 10,529 | 8,985 |
+|     26 | 20,121 | 15,983 | 13,003 | 10,810 | 9,161 |
+|     28 | 21,281 | 16,663 | 13,406 | 11,051 | 9,307 |
+|     30 | 22,396 | 17,292 | 13,765 | 11,258 | 9,427 |
+|     32 | 23,468 | 17,874 | 14,084 | 11,435 | 9,526 |
+|     34 | 24,499 | 18,411 | 14,368 | 11,587 | 9,609 |
+|     36 | 25,489 | 18,908 | 14,621 | 11,717 | 9,677 |
+|     38 | 26,441 | 19,368 | 14,846 | 11,829 | 9,733 |
+|     40 | 27,355 | 19,793 | 15,046 | 11,925 | 9,779 |
+|     42 | 28,235 | 20,186 | 15,225 | 12,007 | 9,817 |
+|     44 | 29,080 | 20,549 | 15,383 | 12,077 | 9,849 |
+|     46 | 29,892 | 20,885 | 15,524 | 12,137 | 9,875 |
+|     48 | 30,673 | 21,195 | 15,650 | 12,189 | 9,897 |
+|     50 | 31,424 | 21,482 | 15,762 | 12,233 | 9,915 |
