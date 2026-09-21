@@ -1,6 +1,3 @@
----
-bibliography: references.bib
----
 # Beräkning av tillgänglighet
 Tillgänglighet (*availability* A) beskriver förmågan hos en enhet att utföra det som krävs när det krävs  [@SSEN13306]. Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.
 
@@ -122,7 +119,7 @@ $$
 
 där [**MDT**](#mdt) (*Mean Downtime*) är den genomsnittliga otillgängliga tiden per underhållsåtgärd, inklusive väntetid. Den kan också beräknas som $MDT = MAMT + MWT$, där [**MWT**](#mwt) (*Mean Waiting Time*) är medelväntetiden.
 
----
+***
 
 ## Driftsäkerhetsparametrar
 
@@ -316,7 +313,7 @@ b) $A_m$
 c) $A_o$
 
 
----
+***
 
 ### a) Beräkna Ak
 $$
