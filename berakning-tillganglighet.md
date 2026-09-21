@@ -200,7 +200,7 @@ För tillgänglighet baserad på planerad drift beräknas normalt **MTBF** som m
 
 $$
 \mathrm{MTBF} 
-= \frac{mathrm{OT}}{n_{Fail}}
+= \frac{\mathrm{OT}}{n_{Fail}}
 $$
 
 ### MRT
@@ -233,7 +233,7 @@ t_{\mathrm{M\ start},\,i}
 -
 t_{\mathrm{M\ end},\,i-1}
 \right)
-= \frac{\mathrm{Uptime}}{n_M}
+= \frac{\mathrm{UT}}{n_M}
 $$. 
 
 där $M$ (*maintenance*) är en underhållsåtgärd och $n_M = n_{Fail}+ n_{PM}$ är antalet avhjälpande och förebyggande underhållsåtgärder.
