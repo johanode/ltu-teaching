@@ -1,6 +1,6 @@
 # Räkneövningar i driftsäkerhet
 
-Övningarna behandlar konstruktiv, materiell och operativ tillgänglighet.
+Övningarna behandlar konstruktiv, material- och operativ tillgänglighet.
 
 Följande beteckningar används:
 
@@ -47,7 +47,7 @@ Ett borraggregat har följande data från en observationsperiod:
 | Uppgift | Värde |
 |---|---:|
 | Tillgänglig tid, UT | 1 600 h |
-| Sammanlagd förebyggande underhållstid, inklusive väntetid | 400 h |
+| Sammanlagd förebyggande underhållstid (inklusive väntetid) | 400 h |
 | Sammanlagd reparationstid | 100 h |
 | Sammanlagd väntetid för AU | 50 h |
 | Sammanlagd väntetid för FU | 20 h |
@@ -118,9 +118,9 @@ En anläggning med kontinuerlig produktion togs i drift den 1 januari 2026 kl. 0
 
 Den planerade produktionstiden är krävd tid. FU genomförs utanför krävd tid.
 
-I. Beräkna tid mellan fel (*time bewteen failures, TBF*).
-II. Beräkna reparationstiden och otillgänglig tid för varje AU.
-III. Beräkna MTBF, MRT och MDT avseende AU.
+I. Beräkna tid mellan fel (*time between failures, TBF*).
+II. Beräkna reparationstid och otillgänglig tid för varje AU.
+III. Beräkna MTBF, MRT och MDT för AU.
 IV. Beräkna $A_k$ och $A_o$.
 
 
@@ -128,9 +128,9 @@ IV. Beräkna $A_k$ och $A_o$.
 
 Vid den kalenderbaserade beräkningen ingår både AU och FU.
 
-I. Beräkna tid mellan felen (*time bewteen failures, TBF*).
-II. Beräkna tid mellan underhållsåtgärder (*time between maintenance, TBM*). 
-III. Beräkna reparationstid, aktiv underhållstid och otillgängligt tid för händelserna.
+I. Beräkna tid mellan fel (*time between failures, TBF*).
+II. Beräkna tid mellan underhållsåtgärder (*time between maintenance, TBM*).
+III. Beräkna reparationstid, aktiv underhållstid och otillgänglig tid för händelserna.
 IV. Beräkna MTBF, MRT, MTBM, MAMT och MDT.
 V. Beräkna $A_k$, $A_m$ och $A_o$.
 
