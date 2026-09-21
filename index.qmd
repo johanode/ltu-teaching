@@ -1,20 +1,9 @@
----
-title: "Driftsäkerhet"
----
-
 Det här materialet ger en grundläggande introduktion till driftsäkerhet. Tyngdpunkten ligger på RAMS, tillgänglighet och de driftsäkerhetsparametrar som används för att beskriva tekniska system.
 
-## Kapitel
+## Kapitel {.unnumbered}
 
 1. [Driftsäkerhet och RAMS](rams.qmd)
 2. [Tillgänglighet](tillganglighet.qmd)
 3. [Funktionssäkerhet och tillförlitlighetsanalys](tillforlitlighet.qmd)
 
 Det sista kapitlet behandlar grundläggande sannolikhetsmodeller för funktionssäkerhet samt en introduktion till systemtillförlitlighet.
-
-## Förhandsgranska
-
-Projektet är utformat som en **Quarto book**. När filerna ligger i samma mappstruktur som `_quarto.yml` kör du:
-
-```bash
-quarto preview
