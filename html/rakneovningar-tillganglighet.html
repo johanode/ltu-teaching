@@ -177,10 +177,36 @@
   type="text/javascript"></script>
 </head>
 <body>
-<h1 id="räkneövningar-i-driftsäkerhet">Räkneövningar i
-driftsäkerhet</h1>
-<p>Övningarna behandlar konstruktiv, materiell och operativ
+<h1 id="räkneövningar-i-tillgänglighet">Räkneövningar i
+tillgänglighet</h1>
+<p>Övningarna behandlar konstruktiv, material- och operativ
 tillgänglighet.</p>
+<h2 id="uppgifter">Uppgifter</h2>
+<ol type="1">
+<li><a
+href="#uppgift-1-konstruktiv-tillgänglighet-för-en-pump">Konstruktiv
+tillgänglighet för en pump</a></li>
+<li><a
+href="#uppgift-2-konstruktiv-tillgänglighet-baserad-på-drifttid">Konstruktiv
+tillgänglighet baserad på drifttid</a></li>
+<li><a
+href="#uppgift-3-tre-mått-på-tillgänglighet-för-ett-borraggregat">Tre
+mått på tillgänglighet för ett borraggregat</a></li>
+<li><a
+href="#uppgift-4-tillgänglighet-för-en-asfalteringsmaskin">Tillgänglighet
+för en asfalteringsmaskin</a></li>
+<li><a
+href="#uppgift-5-konstruktiv-och-operativ-tillgänglighet">Konstruktiv
+och operativ tillgänglighet</a></li>
+<li><a
+href="#uppgift-6-tillgänglighet-från-en-arbetsorderdata">Tillgänglighet
+från en arbetsorderdata</a>
+<ul>
+<li><a href="#a-planerad-produktionstid">A: Planerad
+produktionstid</a></li>
+<li><a href="#b-kalendertid">B: Kalendertid</a></li>
+</ul></li>
+</ol>
 <p>Följande beteckningar används:</p>
 <ul>
 <li><strong>AU</strong>: avhjälpande underhåll</li>
@@ -194,17 +220,15 @@ tillgänglighet.</p>
 <li><strong>MDT</strong>: genomsnittlig otillgänglig tid per
 underhållsåtgärd</li>
 </ul>
-<h2 id="uppgift-1-konstruktiv-tillgänglighet-för-en-pump">Uppgift 1
+<h3 id="lösningsförslag">Lösningsförslag</h3>
+<p><a
+href="losningsforslag-rakneovningar-tillganglighet.md">Lösningsförslag
+räkneövningar tillgänglighet</a></p>
+<h2 id="uppgift-1-konstruktiv-tillgänglighet-för-en-pump">Uppgift 1:
 Konstruktiv tillgänglighet för en pump</h2>
 <p>Beräkna pumpens konstruktiva tillgänglighet <span
 class="math inline">\(A_k\)</span>.</p>
 <table>
-<thead>
-<tr>
-<th>Uppgift</th>
-<th style="text-align: right;">Värde</th>
-</tr>
-</thead>
 <tbody>
 <tr>
 <td>Medeltid mellan fel, MTBF</td>
@@ -221,16 +245,10 @@ class="math inline">\(A_k\)</span>.</p>
 </tbody>
 </table>
 <h2
-id="uppgift-2-konstruktiv-tillgänglighet-baserad-på-drifttid">Uppgift 2
+id="uppgift-2-konstruktiv-tillgänglighet-baserad-på-drifttid">Uppgift 2:
 Konstruktiv tillgänglighet baserad på drifttid</h2>
 <p>Ett system har följande data från en observationsperiod:</p>
 <table>
-<thead>
-<tr>
-<th>Uppgift</th>
-<th style="text-align: right;">Värde</th>
-</tr>
-</thead>
 <tbody>
 <tr>
 <td>Drifttid, OT</td>
@@ -253,23 +271,17 @@ Konstruktiv tillgänglighet baserad på drifttid</h2>
 <p>Beräkna systemets konstruktiva tillgänglighet <span
 class="math inline">\(A_k\)</span> baserat på drifttid.</p>
 <h2
-id="uppgift-3-tre-mått-på-tillgänglighet-för-ett-borraggregat">Uppgift 3
-Tre mått på tillgänglighet för ett borraggregat</h2>
+id="uppgift-3-tre-mått-på-tillgänglighet-för-ett-borraggregat">Uppgift
+3: Tre mått på tillgänglighet för ett borraggregat</h2>
 <p>Ett borraggregat har följande data från en observationsperiod:</p>
 <table>
-<thead>
-<tr>
-<th>Uppgift</th>
-<th style="text-align: right;">Värde</th>
-</tr>
-</thead>
 <tbody>
 <tr>
 <td>Tillgänglig tid, UT</td>
 <td style="text-align: right;">1 600 h</td>
 </tr>
 <tr>
-<td>Sammanlagd förebyggande underhållstid, inklusive väntetid</td>
+<td>Sammanlagd förebyggande underhållstid (inklusive väntetid)</td>
 <td style="text-align: right;">400 h</td>
 </tr>
 <tr>
@@ -295,21 +307,18 @@ Tre mått på tillgänglighet för ett borraggregat</h2>
 </tbody>
 </table>
 <p>Beräkna följande mått baserat på kalendertid:</p>
-<p>A. Konstruktiv tillgänglighet <span
-class="math inline">\(A_k\)</span> B. Materialtillgänglighet <span
-class="math inline">\(A_m\)</span> C. Operativ tillgänglighet <span
-class="math inline">\(A_o\)</span></p>
-<h2 id="uppgift-4-tillgänglighet-för-en-asfalteringsmaskin">Uppgift 4
+<ul>
+<li>Konstruktiv tillgänglighet <span
+class="math inline">\(A_k\)</span></li>
+<li>Materialtillgänglighet <span class="math inline">\(A_m\)</span></li>
+<li>Operativ tillgänglighet <span
+class="math inline">\(A_o\)</span></li>
+</ul>
+<h2 id="uppgift-4-tillgänglighet-för-en-asfalteringsmaskin">Uppgift 4:
 Tillgänglighet för en asfalteringsmaskin</h2>
 <p>En asfalteringsmaskin har följande data från en
 observationsperiod:</p>
 <table>
-<thead>
-<tr>
-<th>Uppgift</th>
-<th style="text-align: right;">Värde</th>
-</tr>
-</thead>
 <tbody>
 <tr>
 <td>Tillgänglig tid, UT</td>
@@ -342,20 +351,17 @@ observationsperiod:</p>
 </tbody>
 </table>
 <p>Beräkna följande mått baserat på kalendertid:</p>
-<p>A. Konstruktiv tillgänglighet <span
-class="math inline">\(A_k\)</span> B. Materialtillgänglighet <span
-class="math inline">\(A_m\)</span> C. Operativ tillgänglighet <span
-class="math inline">\(A_o\)</span></p>
-<h2 id="uppgift-5-konstruktiv-och-operativ-tillgänglighet">Uppgift 5
+<ul>
+<li>Konstruktiv tillgänglighet <span
+class="math inline">\(A_k\)</span></li>
+<li>Materialtillgänglighet <span class="math inline">\(A_m\)</span></li>
+<li>Operativ tillgänglighet <span
+class="math inline">\(A_o\)</span></li>
+</ul>
+<h2 id="uppgift-5-konstruktiv-och-operativ-tillgänglighet">Uppgift 5:
 Konstruktiv och operativ tillgänglighet</h2>
 <p>Ett system har följande data från en observationsperiod:</p>
 <table>
-<thead>
-<tr>
-<th>Uppgift</th>
-<th style="text-align: right;">Värde</th>
-</tr>
-</thead>
 <tbody>
 <tr>
 <td>Drifttid, OT</td>
@@ -385,10 +391,13 @@ Konstruktiv och operativ tillgänglighet</h2>
 </table>
 <p>De angivna underhållsaktivteterna inträffar under krävd tid. Antag 0
 h väntetid för FU. Beräkna följande mått:</p>
-<p>A. Konstruktiv tillgänglighet <span
-class="math inline">\(A_k\)</span> B. Operativ tillgänglighet <span
-class="math inline">\(A_o\)</span></p>
-<h2 id="uppgift-6-tillgänglighet-från-arbetsorderdata">Uppgift 6
+<ul>
+<li>Konstruktiv tillgänglighet <span
+class="math inline">\(A_k\)</span></li>
+<li>Operativ tillgänglighet <span
+class="math inline">\(A_o\)</span></li>
+</ul>
+<h2 id="uppgift-6-tillgänglighet-från-arbetsorderdata">Uppgift 6:
 Tillgänglighet från arbetsorderdata</h2>
 <p>En anläggning med kontinuerlig produktion togs i drift den 1 januari
 2026 kl. 08.00. Tabellen visar samtliga underhållshändelser under
@@ -451,19 +460,28 @@ observationsperioden.</p>
 <h3 id="a-planerad-produktionstid">A: Planerad produktionstid</h3>
 <p>Den planerade produktionstiden är krävd tid. FU genomförs utanför
 krävd tid.</p>
-<p>I. Beräkna tid mellan fel (<em>time bewteen failures, TBF</em>). II.
-Beräkna reparationstiden och otillgänglig tid för varje AU. III. Beräkna
-MTBF, MRT och MDT avseende AU. IV. Beräkna <span
-class="math inline">\(A_k\)</span> och <span
-class="math inline">\(A_o\)</span>.</p>
+<ul>
+<li><p>Beräkna tid mellan fel (<em>time between failures,
+TBF</em>).</p></li>
+<li><p>Beräkna reparationstid och otillgänglig tid för varje
+AU.</p></li>
+<li><p>Beräkna MTBF, MRT och MDT för AU.</p></li>
+<li><p>Beräkna <span class="math inline">\(A_k\)</span> och <span
+class="math inline">\(A_o\)</span>.</p></li>
+</ul>
 <h3 id="b-kalendertid">B: Kalendertid</h3>
 <p>Vid den kalenderbaserade beräkningen ingår både AU och FU.</p>
-<p>I. Beräkna tid mellan felen (<em>time bewteen failures, TBF</em>).
-II. Beräkna tid mellan underhållsåtgärder (<em>time between maintenance,
-TBM</em>). III. Beräkna reparationstid, aktiv underhållstid och
-otillgängligt tid för händelserna. IV. Beräkna MTBF, MRT, MTBM, MAMT och
-MDT. V. Beräkna <span class="math inline">\(A_k\)</span>, <span
+<ul>
+<li><p>Beräkna tid mellan fel (<em>time between failures,
+TBF</em>).</p></li>
+<li><p>Beräkna tid mellan underhållsåtgärder (<em>time between
+maintenance, TBM</em>).</p></li>
+<li><p>Beräkna reparationstid, aktiv underhållstid och otillgänglig tid
+för händelserna.</p></li>
+<li><p>Beräkna MTBF, MRT, MTBM, MAMT och MDT.</p></li>
+<li><p>Beräkna <span class="math inline">\(A_k\)</span>, <span
 class="math inline">\(A_m\)</span> och <span
-class="math inline">\(A_o\)</span>.</p>
+class="math inline">\(A_o\)</span>.</p></li>
+</ul>
 </body>
 </html>
