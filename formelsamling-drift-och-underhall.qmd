@@ -269,7 +269,7 @@ där $S$ är felets allvarlighet, $O$ är sannolikheten för förekomst och $D$ 
 
 # Tabeller
 
-## Tabell 1: Gammafunktionen {#tabell-1-gammafunktionen}
+## Tabell 1: Gammafunktionen {#tabell-1-gammafunktionen .unnumbered}
 
 | $z$ | $\Gamma(z)$ |
 |----:|------------:|
@@ -306,7 +306,7 @@ där $S$ är felets allvarlighet, $O$ är sannolikheten för förekomst och $D$ 
 
 {{< pagebreak >}}
 
-## Tabell 2: Nuvärdesfaktor (NUV) {#tabell-2-nuvärdesfaktor-nuv}
+## Tabell 2: Nuvärdesfaktor (NUV) {#tabell-2-nuvärdesfaktor-nuv .unnumbered}
 
 Nuvärdesfaktor (NUV) för ett belopp år $i$
 
@@ -345,7 +345,7 @@ Nuvärdesfaktor (NUV) för ett belopp år $i$
 
 {{< pagebreak >}}
 
-## Tabell 3: Nusummefaktor (NUS) {#tabell-3-nusummefaktor-nus}
+## Tabell 3: Nusummefaktor (NUS) {#tabell-3-nusummefaktor-nus .unnumbered}
 
 Nusummefaktor (NUS) för årliga belopp under $n$ år
 
