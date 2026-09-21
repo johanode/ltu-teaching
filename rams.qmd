@@ -1,8 +1,4 @@
----
-bibliography: references.bib
----
-
-# Driftsäkerhet
+# Driftsäkerhet och RAMS
 Driftsäkerhet är ett mått på ett systems förmåga att prestera det som krävs och när det krävs enligt SS-EN 13306:2017 [@SSEN13306]. Det är en central egenskap hos tekniska system och omfattar flera aspekter som påverkar systemets prestanda över tid.
 
 Driftsäkerhet omfattar flera centrala egenskaper hos ett system:
@@ -26,7 +22,7 @@ RAMS används för att beskriva ett systems prestanda ur ett driftsäkerhetspers
 I litteraturen används RAMS ofta med S som *Safety*. I denna framställning används S som *Supportability*. När S står för *Safety* behandlas *Supportability* ofta som en del av *Maintainability*.
 
 
----
+***
 
 ## RAMS och dess egenskaper
 Nedan beskrivs de fyra egenskaperna som ingår i RAMS. De är alla relaterade till varandra och påverkar systemets övergripande driftsäkerhet
@@ -84,7 +80,7 @@ Tidsintervallet mellan förebyggande underhållsåtgärder betraktas vanligen so
 
 De observerade tiderna kan alltså användas för att beräkna tillgängligheten under den aktuella observationsperioden. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. En matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns nedan: [Tillgänglighet som funktion av tiden](#tillganglighet-som-funktion-av-tiden).
 
----
+***
 # Statistisk beskrivning av driftsäkerhet
 
 ## Tillgänglighet som funktion av tiden
