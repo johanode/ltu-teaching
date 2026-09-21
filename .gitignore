@@ -6,6 +6,8 @@ __pycache__/
 /versions
 /images/versions
 /**/priv
-
 **/*.quarto_ipynb
-tillganglighet-syntax-validation.html
+*.aux
+*.log
+*.out
+*.toc
