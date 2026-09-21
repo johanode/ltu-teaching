@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Beräkning av tillgänglighet – Driftsäkerhet</title>
+<title>2&nbsp; Beräkning av tillgänglighet – Driftsäkerhet och underhåll</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -133,7 +133,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tillganglighet.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tillganglighet.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,7 +148,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Driftsäkerhet</a> 
+      <a href="./">Driftsäkerhet och underhåll</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -161,25 +161,31 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+ <span class="menu-text">Driftsäkerhet och underhåll</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./rams.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet och RAMS</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tillganglighet.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tillforlitlighet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./referenser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenser</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -209,39 +215,39 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#observerad-och-förväntad-tillgänglighet" id="toc-observerad-och-förväntad-tillgänglighet" class="nav-link active" data-scroll-target="#observerad-och-förväntad-tillgänglighet"><span class="header-section-number">3.1</span> Observerad och förväntad tillgänglighet</a></li>
-  <li><a href="#tillgänglighetsprestanda" id="toc-tillgänglighetsprestanda" class="nav-link" data-scroll-target="#tillgänglighetsprestanda"><span class="header-section-number">3.2</span> Tillgänglighetsprestanda</a>
+  <li><a href="#observerad-och-förväntad-tillgänglighet" id="toc-observerad-och-förväntad-tillgänglighet" class="nav-link active" data-scroll-target="#observerad-och-förväntad-tillgänglighet"><span class="header-section-number">2.1</span> Observerad och förväntad tillgänglighet</a></li>
+  <li><a href="#tillgänglighetsprestanda" id="toc-tillgänglighetsprestanda" class="nav-link" data-scroll-target="#tillgänglighetsprestanda"><span class="header-section-number">2.2</span> Tillgänglighetsprestanda</a>
   <ul class="collapse">
-  <li><a href="#tillgänglighet-baserad-på-total-kalendertid" id="toc-tillgänglighet-baserad-på-total-kalendertid" class="nav-link" data-scroll-target="#tillgänglighet-baserad-på-total-kalendertid"><span class="header-section-number">3.2.1</span> Tillgänglighet baserad på total kalendertid</a></li>
-  <li><a href="#tillgänglighet-baserad-på-planerad-driftstid" id="toc-tillgänglighet-baserad-på-planerad-driftstid" class="nav-link" data-scroll-target="#tillgänglighet-baserad-på-planerad-driftstid"><span class="header-section-number">3.2.2</span> Tillgänglighet baserad på planerad driftstid</a></li>
-  <li><a href="#definitioner" id="toc-definitioner" class="nav-link" data-scroll-target="#definitioner"><span class="header-section-number">3.2.3</span> Definitioner</a></li>
+  <li><a href="#tillgänglighet-baserad-på-total-kalendertid" id="toc-tillgänglighet-baserad-på-total-kalendertid" class="nav-link" data-scroll-target="#tillgänglighet-baserad-på-total-kalendertid"><span class="header-section-number">2.2.1</span> Tillgänglighet baserad på total kalendertid</a></li>
+  <li><a href="#tillgänglighet-baserad-på-planerad-driftstid" id="toc-tillgänglighet-baserad-på-planerad-driftstid" class="nav-link" data-scroll-target="#tillgänglighet-baserad-på-planerad-driftstid"><span class="header-section-number">2.2.2</span> Tillgänglighet baserad på planerad driftstid</a></li>
+  <li><a href="#definitioner" id="toc-definitioner" class="nav-link" data-scroll-target="#definitioner"><span class="header-section-number">2.2.3</span> Definitioner</a></li>
   </ul></li>
-  <li><a href="#tre-mått-på-tillgänglighet-ak-am-ao" id="toc-tre-mått-på-tillgänglighet-ak-am-ao" class="nav-link" data-scroll-target="#tre-mått-på-tillgänglighet-ak-am-ao"><span class="header-section-number">3.3</span> Tre mått på tillgänglighet (Ak, Am, Ao)</a>
+  <li><a href="#tre-mått-på-tillgänglighet-ak-am-ao" id="toc-tre-mått-på-tillgänglighet-ak-am-ao" class="nav-link" data-scroll-target="#tre-mått-på-tillgänglighet-ak-am-ao"><span class="header-section-number">2.3</span> Tre mått på tillgänglighet (Ak, Am, Ao)</a>
   <ul class="collapse">
-  <li><a href="#konstruktiv-tillgänglighet-ak" id="toc-konstruktiv-tillgänglighet-ak" class="nav-link" data-scroll-target="#konstruktiv-tillgänglighet-ak"><span class="header-section-number">3.3.1</span> Konstruktiv tillgänglighet (Ak)</a></li>
-  <li><a href="#materialtillgänglighet-am" id="toc-materialtillgänglighet-am" class="nav-link" data-scroll-target="#materialtillgänglighet-am"><span class="header-section-number">3.3.2</span> Materialtillgänglighet (Am)</a></li>
-  <li><a href="#operativ-tillgänglighet-ao" id="toc-operativ-tillgänglighet-ao" class="nav-link" data-scroll-target="#operativ-tillgänglighet-ao"><span class="header-section-number">3.3.3</span> Operativ tillgänglighet (Ao)</a></li>
+  <li><a href="#konstruktiv-tillgänglighet-ak" id="toc-konstruktiv-tillgänglighet-ak" class="nav-link" data-scroll-target="#konstruktiv-tillgänglighet-ak"><span class="header-section-number">2.3.1</span> Konstruktiv tillgänglighet (Ak)</a></li>
+  <li><a href="#materialtillgänglighet-am" id="toc-materialtillgänglighet-am" class="nav-link" data-scroll-target="#materialtillgänglighet-am"><span class="header-section-number">2.3.2</span> Materialtillgänglighet (Am)</a></li>
+  <li><a href="#operativ-tillgänglighet-ao" id="toc-operativ-tillgänglighet-ao" class="nav-link" data-scroll-target="#operativ-tillgänglighet-ao"><span class="header-section-number">2.3.3</span> Operativ tillgänglighet (Ao)</a></li>
   </ul></li>
-  <li><a href="#driftsäkerhetsparametrar" id="toc-driftsäkerhetsparametrar" class="nav-link" data-scroll-target="#driftsäkerhetsparametrar"><span class="header-section-number">3.4</span> Driftsäkerhetsparametrar</a>
+  <li><a href="#driftsäkerhetsparametrar" id="toc-driftsäkerhetsparametrar" class="nav-link" data-scroll-target="#driftsäkerhetsparametrar"><span class="header-section-number">2.4</span> Driftsäkerhetsparametrar</a>
   <ul class="collapse">
-  <li><a href="#mtbf" id="toc-mtbf" class="nav-link" data-scroll-target="#mtbf"><span class="header-section-number">3.4.1</span> MTBF</a></li>
-  <li><a href="#mrt" id="toc-mrt" class="nav-link" data-scroll-target="#mrt"><span class="header-section-number">3.4.2</span> MRT</a></li>
-  <li><a href="#mtbm" id="toc-mtbm" class="nav-link" data-scroll-target="#mtbm"><span class="header-section-number">3.4.3</span> MTBM</a></li>
-  <li><a href="#mamt" id="toc-mamt" class="nav-link" data-scroll-target="#mamt"><span class="header-section-number">3.4.4</span> MAMT</a></li>
-  <li><a href="#mdt" id="toc-mdt" class="nav-link" data-scroll-target="#mdt"><span class="header-section-number">3.4.5</span> MDT</a></li>
+  <li><a href="#mtbf" id="toc-mtbf" class="nav-link" data-scroll-target="#mtbf"><span class="header-section-number">2.4.1</span> MTBF</a></li>
+  <li><a href="#mrt" id="toc-mrt" class="nav-link" data-scroll-target="#mrt"><span class="header-section-number">2.4.2</span> MRT</a></li>
+  <li><a href="#mtbm" id="toc-mtbm" class="nav-link" data-scroll-target="#mtbm"><span class="header-section-number">2.4.3</span> MTBM</a></li>
+  <li><a href="#mamt" id="toc-mamt" class="nav-link" data-scroll-target="#mamt"><span class="header-section-number">2.4.4</span> MAMT</a></li>
+  <li><a href="#mdt" id="toc-mdt" class="nav-link" data-scroll-target="#mdt"><span class="header-section-number">2.4.5</span> MDT</a></li>
   </ul></li>
-  <li><a href="#beräkningsexempel" id="toc-beräkningsexempel" class="nav-link" data-scroll-target="#beräkningsexempel"><span class="header-section-number">4</span> Beräkningsexempel</a>
+  <li><a href="#beräkningsexempel" id="toc-beräkningsexempel" class="nav-link" data-scroll-target="#beräkningsexempel"><span class="header-section-number">3</span> Beräkningsexempel</a>
   <ul class="collapse">
-  <li><a href="#exempel-1" id="toc-exempel-1" class="nav-link" data-scroll-target="#exempel-1"><span class="header-section-number">4.1</span> Exempel 1</a>
+  <li><a href="#exempel-1" id="toc-exempel-1" class="nav-link" data-scroll-target="#exempel-1"><span class="header-section-number">3.1</span> Exempel 1</a>
   <ul class="collapse">
-  <li><a href="#a-beräkna-ak" id="toc-a-beräkna-ak" class="nav-link" data-scroll-target="#a-beräkna-ak"><span class="header-section-number">4.1.1</span> a) Beräkna Ak</a></li>
-  <li><a href="#b-beräkna-am" id="toc-b-beräkna-am" class="nav-link" data-scroll-target="#b-beräkna-am"><span class="header-section-number">4.1.2</span> b) Beräkna Am</a></li>
-  <li><a href="#c-beräkna-ao" id="toc-c-beräkna-ao" class="nav-link" data-scroll-target="#c-beräkna-ao"><span class="header-section-number">4.1.3</span> c) Beräkna Ao</a></li>
+  <li><a href="#a-beräkna-ak" id="toc-a-beräkna-ak" class="nav-link" data-scroll-target="#a-beräkna-ak"><span class="header-section-number">3.1.1</span> a) Beräkna Ak</a></li>
+  <li><a href="#b-beräkna-am" id="toc-b-beräkna-am" class="nav-link" data-scroll-target="#b-beräkna-am"><span class="header-section-number">3.1.2</span> b) Beräkna Am</a></li>
+  <li><a href="#c-beräkna-ao" id="toc-c-beräkna-ao" class="nav-link" data-scroll-target="#c-beräkna-ao"><span class="header-section-number">3.1.3</span> c) Beräkna Ao</a></li>
   </ul></li>
-  <li><a href="#exempel-2" id="toc-exempel-2" class="nav-link" data-scroll-target="#exempel-2"><span class="header-section-number">4.2</span> Exempel 2</a>
+  <li><a href="#exempel-2" id="toc-exempel-2" class="nav-link" data-scroll-target="#exempel-2"><span class="header-section-number">3.2</span> Exempel 2</a>
   <ul class="collapse">
-  <li><a href="#uppgift-a" id="toc-uppgift-a" class="nav-link" data-scroll-target="#uppgift-a"><span class="header-section-number">4.2.1</span> Uppgift a</a></li>
-  <li><a href="#uppgift-b" id="toc-uppgift-b" class="nav-link" data-scroll-target="#uppgift-b"><span class="header-section-number">4.2.2</span> Uppgift b</a></li>
+  <li><a href="#uppgift-a" id="toc-uppgift-a" class="nav-link" data-scroll-target="#uppgift-a"><span class="header-section-number">3.2.1</span> Uppgift a</a></li>
+  <li><a href="#uppgift-b" id="toc-uppgift-b" class="nav-link" data-scroll-target="#uppgift-b"><span class="header-section-number">3.2.2</span> Uppgift b</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -252,7 +258,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></h1>
 </div>
 
 
@@ -269,14 +275,14 @@ window.Quarto = {
 </header>
 
 
-<p>Tillgänglighet (<em>availability</em> A) beskriver förmågan hos en enhet att utföra det som krävs när det krävs <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>. Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.</p>
-<section id="observerad-och-förväntad-tillgänglighet" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="observerad-och-förväntad-tillgänglighet"><span class="header-section-number">3.1</span> Observerad och förväntad tillgänglighet</h2>
+<p>Tillgänglighet (<em>availability</em> A) beskriver förmågan hos en enhet att utföra det som krävs när det krävs <span class="citation" data-cites="SSEN13306">(<a href="referenser.html#ref-SSEN13306" role="doc-biblioref">SS-EN 13306 2017</a>)</span>. Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.</p>
+<section id="observerad-och-förväntad-tillgänglighet" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="observerad-och-förväntad-tillgänglighet"><span class="header-section-number">2.1</span> Observerad och förväntad tillgänglighet</h2>
 <p>Tillgänglig och otillgänglig tid bestäms av de händelser och tidsintervall som observeras under en given observationsperiod. De observerade tiderna kan användas för att beräkna tillgängligheten under den aktuella observationsperioden. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. Detta behandlas i avsnittet <a href="#tre-mått-på-tillgänglighet-ak-am-ao">Tre mått på tillgänglighet</a>. En mer matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns på sidan <a href="./rams.html#tillganglighet-som-funktion-av-tiden">Tillgänglighet som funktion av tiden</a>.</p>
 </section>
-<section id="tillgänglighetsprestanda" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="tillgänglighetsprestanda"><span class="header-section-number">3.2</span> Tillgänglighetsprestanda</h2>
-<p>Tillgänglighet kan kvantifieras som andelen av krävd tid (<em>required time</em>) under vilken enheten kan utföra det som krävs. Detta benämns tillgänglighetsprestanda i svensk standard för underhåll (SS-EN 13306:2017) <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>.</p>
+<section id="tillgänglighetsprestanda" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="tillgänglighetsprestanda"><span class="header-section-number">2.2</span> Tillgänglighetsprestanda</h2>
+<p>Tillgänglighet kan kvantifieras som andelen av krävd tid (<em>required time</em>) under vilken enheten kan utföra det som krävs. Detta benämns tillgänglighetsprestanda i svensk standard för underhåll (SS-EN 13306:2017) <span class="citation" data-cites="SSEN13306">(<a href="referenser.html#ref-SSEN13306" role="doc-biblioref">SS-EN 13306 2017</a>)</span>.</p>
 <p><span class="math display">\[
 A = \frac{\text{Tillgänglig tid}}
 {\text{Tillgänglig tid} + \text{Otillgänglig tid}}
@@ -284,13 +290,13 @@ A = \frac{\text{Tillgänglig tid}}
 \]</span></p>
 <p>Det finns många olika varianter av tillgänglighetsprestanda. Anledningen är att det för olika typer av verksamheter inom olika sektorer kan vara relevant att ta fram olika nyckeltal för att följa upp och utveckla verksamheten och dess underhåll.</p>
 <p>Tidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den procentandel av tiden, under en given tidsperiod, då en enhet kan utföra det som krävs. Det finns också produktionsbaserad tillgänglighet, som definieras som förhållandet mellan faktisk produktion och krävd produktion. Produktionsbaserad tillgänglighet beskrivs inte vidare i denna guide.</p>
-<p>Tidsbaserad tillgänglighet beskrivs också i den svenska standarden SS-EN 15341:2019, <em>Nyckeltal för underhåll</em> <span class="citation" data-cites="SSEN15341">(<a href="#ref-SSEN15341" role="doc-biblioref">Underhåll – Nyckeltal för underhåll 2022</a>)</span>, under <em>Maintenance Key Performance Indicators</em> genom nyckeltalet <em>Time-based availability</em> (M10): <span class="math display">\[
+<p>Tidsbaserad tillgänglighet beskrivs också i den svenska standarden SS-EN 15341:2019, <em>Nyckeltal för underhåll</em> <span class="citation" data-cites="SSEN15341">(<a href="referenser.html#ref-SSEN15341" role="doc-biblioref">SS-EN 15341 2022</a>)</span>, under <em>Maintenance Key Performance Indicators</em> genom nyckeltalet <em>Time-based availability</em> (M10): <span class="math display">\[
 M10 = \frac{\text{Uptime during required time}}{\text{Required time}}
 \]</span></p>
 <p>I M10 ingår <a href="#definitioner">beredskapstid</a> (<em>standby time</em>) i tillgänglig tid (<em>uptime</em>) men inte <a href="#definitioner">outnyttjad tid</a> (<em>idle time</em>).</p>
 <p>Gemensamt för tidsbaserade tillgänglighetsmått är att man måste bestämma vilken tid som ska räknas som <a href="#definitioner">krävd tid</a>. I denna guide beskrivs två alternativ: total kalendertid och planerad drifttid.</p>
-<section id="tillgänglighet-baserad-på-total-kalendertid" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="tillgänglighet-baserad-på-total-kalendertid"><span class="header-section-number">3.2.1</span> Tillgänglighet baserad på total kalendertid</h3>
+<section id="tillgänglighet-baserad-på-total-kalendertid" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="tillgänglighet-baserad-på-total-kalendertid"><span class="header-section-number">2.2.1</span> Tillgänglighet baserad på total kalendertid</h3>
 <p>Tillgänglighet baserad på kalendertid avser den andel av den totala kalendertiden (24 timmar om dygnet, 365 dagar om året) då en enhet är funktionsduglig.</p>
 <p><span class="math display">\[
 \mathrm{Uptime} + \mathrm{Downtime} = \mathrm{Total\ time}
@@ -298,8 +304,8 @@ M10 = \frac{\text{Uptime during required time}}{\text{Required time}}
 A = \frac{\mathrm{Uptime}}{\mathrm{Total\ time}}
 \]</span></p>
 </section>
-<section id="tillgänglighet-baserad-på-planerad-driftstid" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="tillgänglighet-baserad-på-planerad-driftstid"><span class="header-section-number">3.2.2</span> Tillgänglighet baserad på planerad driftstid</h3>
+<section id="tillgänglighet-baserad-på-planerad-driftstid" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="tillgänglighet-baserad-på-planerad-driftstid"><span class="header-section-number">2.2.2</span> Tillgänglighet baserad på planerad driftstid</h3>
 <p>Detta mått på tillgänglighet beskriver den andel av den planerade driften då enheten kan utföra det som krävs <span class="math inline">\((\text{Krävd tid}=\text{Planerad drift})\)</span>. Den tillgängliga tiden omfattar drifttid och beredskapstid.</p>
 <p>I SS-EN 15341 beskrivs även <em>Availability based on operating time</em> (M11), som endast utgår från drifttid (OT) och exkluderar beredskapstid, enligt <span class="math display">\[
 M11 = \frac{OT}{\text{Required operating time}}
@@ -308,8 +314,8 @@ M11 = \frac{OT}{\text{Required operating time}}
 M12 = \frac{OT}{OT+TTR}
 \]</span> där TTR (<em>time to restoration</em>) är tiden till återställning och omfattar reparationstid och väntetid.</p>
 </section>
-<section id="definitioner" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="definitioner"><span class="header-section-number">3.2.3</span> Definitioner</h3>
+<section id="definitioner" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="definitioner"><span class="header-section-number">2.2.3</span> Definitioner</h3>
 <ul>
 <li><p><a id="funktionsdugligt-tillstånd"></a><strong>Funktionsdugligt tillstånd</strong> (<em>up state</em>) är ett tillstånd då en enhet kan utföra krävd funktion, antaget att de externa resurserna tillhandahålls.</p></li>
 <li><p><a id="funktionsodugligt-tillstånd"></a><strong>Funktionsodugligt tillstånd</strong> (<em>down state</em>) är ett tillstånd då en enhet inte kan utföra krävd funktion på grund av förebyggande underhåll eller ett feltillstånd.</p></li>
@@ -322,8 +328,8 @@ M12 = \frac{OT}{OT+TTR}
 </ul>
 </section>
 </section>
-<section id="tre-mått-på-tillgänglighet-ak-am-ao" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="tre-mått-på-tillgänglighet-ak-am-ao"><span class="header-section-number">3.3</span> Tre mått på tillgänglighet (Ak, Am, Ao)</h2>
+<section id="tre-mått-på-tillgänglighet-ak-am-ao" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="tre-mått-på-tillgänglighet-ak-am-ao"><span class="header-section-number">2.3</span> Tre mått på tillgänglighet (Ak, Am, Ao)</h2>
 <p>Utöver att tillgänglighet kan beräknas baserat på kalendertid eller driftstid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.</p>
 <p>Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgänglighet:</p>
 <ul>
@@ -331,8 +337,8 @@ M12 = \frac{OT}{OT+TTR}
 <li><a href="#materialtillgänglighet-am">Materialtillgänglighet</a> (<span class="math inline">\(A_m\)</span>) / <em>Achieved availability</em> (<span class="math inline">\(A_a\)</span>)</li>
 <li><a href="#operativ-tillgänglighet-ao">Operativ tillgänglighet</a> (<span class="math inline">\(A_o\)</span>) / <em>Operational availability</em> (<span class="math inline">\(A_o\)</span>)</li>
 </ul>
-<section id="konstruktiv-tillgänglighet-ak" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="konstruktiv-tillgänglighet-ak"><span class="header-section-number">3.3.1</span> Konstruktiv tillgänglighet (Ak)</h3>
+<section id="konstruktiv-tillgänglighet-ak" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="konstruktiv-tillgänglighet-ak"><span class="header-section-number">2.3.1</span> Konstruktiv tillgänglighet (Ak)</h3>
 <p>Den konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet i SS-EN 13306. Varken väntetider eller förebyggande underhåll ingår.</p>
 <p>Den konstruktiva tillgängligheten beräknas enligt <span class="math display">\[
 A_k=
@@ -342,8 +348,8 @@ A_k=
 <p>där <a href="#mtbf"><strong>MTBF</strong></a> är medeltiden mellan fel (<em>Mean Time Between Failures</em>) och <a href="#mrt"><strong>MRT</strong></a> är medelreparationstiden (<em>Mean Repair Time</em>).</p>
 <p>I ekvationen för konstruktiv tillgänglighet betecknas medelreparationstiden traditionellt ofta med <strong>MTTR</strong> (<em>Mean Time To Repair</em>). Enligt terminologin i svensk standard betecknas medelreparationstiden emellertid med <strong>MRT</strong> (<em>Mean Repair Time</em>), medan <strong>MTTR</strong> står för <em>Mean Time To Restore</em> och inkluderar väntetid.</p>
 </section>
-<section id="materialtillgänglighet-am" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="materialtillgänglighet-am"><span class="header-section-number">3.3.2</span> Materialtillgänglighet (Am)</h3>
+<section id="materialtillgänglighet-am" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="materialtillgänglighet-am"><span class="header-section-number">2.3.2</span> Materialtillgänglighet (Am)</h3>
 <p>Materialtillgänglighet, eller uppnådd tillgänglighet, inkluderar både avhjälpande och förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt</p>
 <p><span class="math display">\[
 A_m=
@@ -352,8 +358,8 @@ A_m=
 \]</span></p>
 <p>där <a href="#mtbm"><strong>MTBM</strong></a> (<em>Mean Time Between Maintenance</em>) är medeltiden mellan underhåll och <a href="#mamt"><strong>MAMT</strong></a> (<em>Mean Active Maintenance Time</em>) är medeltiden för aktivt underhåll, såväl förebyggande som avhjälpande (reparation).</p>
 </section>
-<section id="operativ-tillgänglighet-ao" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="operativ-tillgänglighet-ao"><span class="header-section-number">3.3.3</span> Operativ tillgänglighet (Ao)</h3>
+<section id="operativ-tillgänglighet-ao" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="operativ-tillgänglighet-ao"><span class="header-section-number">2.3.3</span> Operativ tillgänglighet (Ao)</h3>
 <p>Operativ tillgänglighet inkluderar både avhjälpande underhåll och förebyggande underhåll där väntetid även ingår.</p>
 <p>Den operativa tillgängligheten beräknas enligt <span class="math display">\[
 A_o
@@ -365,12 +371,12 @@ A_o
 <hr>
 </section>
 </section>
-<section id="driftsäkerhetsparametrar" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="driftsäkerhetsparametrar"><span class="header-section-number">3.4</span> Driftsäkerhetsparametrar</h2>
+<section id="driftsäkerhetsparametrar" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="driftsäkerhetsparametrar"><span class="header-section-number">2.4</span> Driftsäkerhetsparametrar</h2>
 <p>Tillgänglighetsmåtten i föregående avsnitt bygger på medeltider för bland annat tider mellan fel, reparationstider och väntetider. Parametrarna är väntevärden för slumpmässiga tider, men skattas i praktiken från observerade tider.</p>
 <p>Nedan beskrivs hur parametrarna kan skattas från observerade data. En mer utförlig statistisk beskrivning finns på sidan <a href="./rams.html#statistisk-beskrivning-av-driftsäkerhetsparametrar">Statistisk beskrivning av driftsäkerhetsparametrar</a>.</p>
-<section id="mtbf" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="mtbf"><span class="header-section-number">3.4.1</span> MTBF</h3>
+<section id="mtbf" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="mtbf"><span class="header-section-number">2.4.1</span> MTBF</h3>
 <p>MTBF (<em>Mean Time Between Failures</em>) är medeltiden mellan fel. En skattning av MTBF kan beräknas som det aritmetiska medelvärdet av de observerade tiderna mellan fel:</p>
 <p><span class="math display">\[
 \mathrm{MTBF}
@@ -411,8 +417,8 @@ t_{\mathrm{Fail},\,i-1}
 \approx
 \frac{\mathrm{UT}}{n_{Fail}}
 \]</span></p>
-<section id="drifttid" class="level4" data-number="3.4.1.1">
-<h4 data-number="3.4.1.1" class="anchored" data-anchor-id="drifttid"><span class="header-section-number">3.4.1.1</span> Drifttid</h4>
+<section id="drifttid" class="level4" data-number="2.4.1.1">
+<h4 data-number="2.4.1.1" class="anchored" data-anchor-id="drifttid"><span class="header-section-number">2.4.1.1</span> Drifttid</h4>
 <p>För tillgänglighet baserad på planerad drift beräknas normalt <strong>MTBF</strong> som medeltiden för drifttiden <span class="math inline">\((OT)\)</span> mellan fel, dvs utan hänsyn till eventuellt förebyggande underhåll som genomförs under planerad drift, enligt</p>
 <p><span class="math display">\[
 \mathrm{MTBF}
@@ -420,8 +426,8 @@ t_{\mathrm{Fail},\,i-1}
 \]</span></p>
 </section>
 </section>
-<section id="mrt" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="mrt"><span class="header-section-number">3.4.2</span> MRT</h3>
+<section id="mrt" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="mrt"><span class="header-section-number">2.4.2</span> MRT</h3>
 <p>Medelreparationstiden beräknas enligt <span class="math display">\[
 \mathrm{MRT}
 =
@@ -435,8 +441,8 @@ t_{\mathrm{Repair\ start},\,i}
 \right)
 \]</span></p>
 </section>
-<section id="mtbm" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="mtbm"><span class="header-section-number">3.4.3</span> MTBM</h3>
+<section id="mtbm" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="mtbm"><span class="header-section-number">2.4.3</span> MTBM</h3>
 <p>Medeltiden mellan underhåll beräknas som medelvärdet av den tillgängliga tiden mellan underhållsåtgärder</p>
 <p><span class="math display">\[
 \mathrm{MTBM}
@@ -457,8 +463,8 @@ t_{\mathrm{M\ end},\,i-1}
 = \frac{\mathrm{OT}}{n_M}
 \]</span></p>
 </section>
-<section id="mamt" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="mamt"><span class="header-section-number">3.4.4</span> MAMT</h3>
+<section id="mamt" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="mamt"><span class="header-section-number">2.4.4</span> MAMT</h3>
 <p>Den genomsnittliga aktiva underhållstiden per åtgärd beräknas som <span class="math display">\[
 \mathrm{MAMT}
 =
@@ -473,8 +479,8 @@ t_{\mathrm{M\ end},\,i-1}
 \]</span></p>
 <p>där <span class="math inline">\(T_{AM,i}\)</span> är den aktiva underhållstiden för åtgärd <span class="math inline">\(i\)</span>, <span class="math inline">\(T_{Rep,j}\)</span> är reparationstiden för fel <span class="math inline">\(j\)</span> och <span class="math inline">\(T_{APM,k}\)</span> är den aktiva förebyggande underhållstiden för åtgärd <span class="math inline">\(k\)</span>.</p>
 </section>
-<section id="mdt" class="level3" data-number="3.4.5">
-<h3 data-number="3.4.5" class="anchored" data-anchor-id="mdt"><span class="header-section-number">3.4.5</span> MDT</h3>
+<section id="mdt" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="mdt"><span class="header-section-number">2.4.5</span> MDT</h3>
 <p>Den genomsnittliga otillgängliga tiden (nedtiden) per underhållsåtgärd beräknas enligt <span class="math display">\[
 \mathrm{MDT}
 =
@@ -492,8 +498,8 @@ t_{\mathrm{M\ start},\,i}
 =\frac{\sum_{i=1}^{n_{Fail}} T_{CM, i} + \sum_{i=1}^{n_{PM}} T_{PM, i}}
 {n_{Fail} + n_{PM}}
 \]</span></p>
-<section id="mwt" class="level4" data-number="3.4.5.1">
-<h4 data-number="3.4.5.1" class="anchored" data-anchor-id="mwt"><span class="header-section-number">3.4.5.1</span> MWT</h4>
+<section id="mwt" class="level4" data-number="2.4.5.1">
+<h4 data-number="2.4.5.1" class="anchored" data-anchor-id="mwt"><span class="header-section-number">2.4.5.1</span> MWT</h4>
 <p>MDT kan också beräknas som <span class="math display">\[
 MDT = MAMT + MWT
 \]</span></p>
@@ -507,11 +513,11 @@ MDT = MAMT + MWT
 </section>
 </section>
 </section>
-<section id="beräkningsexempel" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Beräkningsexempel</h1>
+<section id="beräkningsexempel" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Beräkningsexempel</h1>
 <p>Följande exempel visar hur tillgänglighetsmåtten kan beräknas steg för steg.</p>
-<section id="exempel-1" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="exempel-1"><span class="header-section-number">4.1</span> Exempel 1</h2>
+<section id="exempel-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="exempel-1"><span class="header-section-number">3.1</span> Exempel 1</h2>
 <p>Ett system har följande data:</p>
 <ul>
 <li>Tillgänglig tid (UT) = 3600 h</li>
@@ -529,14 +535,14 @@ MDT = MAMT + MWT
 <li><p><span class="math inline">\(A_o\)</span></p></li>
 </ol>
 <hr>
-<section id="a-beräkna-ak" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="a-beräkna-ak"><span class="header-section-number">4.1.1</span> a) Beräkna Ak</h3>
+<section id="a-beräkna-ak" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="a-beräkna-ak"><span class="header-section-number">3.1.1</span> a) Beräkna Ak</h3>
 <p><span class="math display">\[
 A_k=
 \frac{MTBF}{MTBF+MRT}
 \]</span></p>
-<section id="steg-1-mtbf" class="level4" data-number="4.1.1.1">
-<h4 data-number="4.1.1.1" class="anchored" data-anchor-id="steg-1-mtbf"><span class="header-section-number">4.1.1.1</span> Steg 1: MTBF</h4>
+<section id="steg-1-mtbf" class="level4" data-number="3.1.1.1">
+<h4 data-number="3.1.1.1" class="anchored" data-anchor-id="steg-1-mtbf"><span class="header-section-number">3.1.1.1</span> Steg 1: MTBF</h4>
 <p><span class="math display">\[
 MTBF=
 \frac{\text{UT}+\sum T_{PM}}{n_{Fail}}
@@ -546,8 +552,8 @@ MTBF=
 122\ h
 \]</span></p>
 </section>
-<section id="steg-2-mrt" class="level4" data-number="4.1.1.2">
-<h4 data-number="4.1.1.2" class="anchored" data-anchor-id="steg-2-mrt"><span class="header-section-number">4.1.1.2</span> Steg 2: MRT</h4>
+<section id="steg-2-mrt" class="level4" data-number="3.1.1.2">
+<h4 data-number="3.1.1.2" class="anchored" data-anchor-id="steg-2-mrt"><span class="header-section-number">3.1.1.2</span> Steg 2: MRT</h4>
 <p><span class="math display">\[
 MRT=
 \frac{\sum T_{Rep}}{n_{Fail}}
@@ -557,8 +563,8 @@ MRT=
 5\ h
 \]</span></p>
 </section>
-<section id="steg-3-ak" class="level4" data-number="4.1.1.3">
-<h4 data-number="4.1.1.3" class="anchored" data-anchor-id="steg-3-ak"><span class="header-section-number">4.1.1.3</span> Steg 3: Ak</h4>
+<section id="steg-3-ak" class="level4" data-number="3.1.1.3">
+<h4 data-number="3.1.1.3" class="anchored" data-anchor-id="steg-3-ak"><span class="header-section-number">3.1.1.3</span> Steg 3: Ak</h4>
 <p><span class="math display">\[
 A_k=
 \frac{MTBF}{MTBF+MRT}
@@ -570,14 +576,14 @@ A_k=
 <p><strong>Svar:</strong> Den konstruktiva tillgängligheten <span class="math inline">\(A_k=96.1\%\)</span></p>
 </section>
 </section>
-<section id="b-beräkna-am" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="b-beräkna-am"><span class="header-section-number">4.1.2</span> b) Beräkna Am</h3>
+<section id="b-beräkna-am" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="b-beräkna-am"><span class="header-section-number">3.1.2</span> b) Beräkna Am</h3>
 <p><span class="math display">\[
 A_m=
 \frac{MTBM}{MTBM+MAMT}
 \]</span></p>
-<section id="steg-1-mtbm" class="level4" data-number="4.1.2.1">
-<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="steg-1-mtbm"><span class="header-section-number">4.1.2.1</span> Steg 1: MTBM</h4>
+<section id="steg-1-mtbm" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="steg-1-mtbm"><span class="header-section-number">3.1.2.1</span> Steg 1: MTBM</h4>
 <p><span class="math display">\[
 MTBM=
 \frac{UT}{n_{M}}
@@ -588,8 +594,8 @@ MTBM=
 \]</span></p>
 <p>där antal underhållsaktiviteter <span class="math inline">\(n_{M}=n_{Fail}+n_{PM}\)</span></p>
 </section>
-<section id="steg-2-mamt" class="level4" data-number="4.1.2.2">
-<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="steg-2-mamt"><span class="header-section-number">4.1.2.2</span> Steg 2: MAMT</h4>
+<section id="steg-2-mamt" class="level4" data-number="3.1.2.2">
+<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="steg-2-mamt"><span class="header-section-number">3.1.2.2</span> Steg 2: MAMT</h4>
 <p><span class="math display">\[
 MAMT=
 \frac{\sum T_{Rep} + \sum T_{APM}}{n_{M}}
@@ -602,8 +608,8 @@ MAMT=
 \sum T_{APM} = \sum T_{PM} - n_{PM} \cdot MWT_{PM}
 \]</span></p>
 </section>
-<section id="steg-3-am" class="level4" data-number="4.1.2.3">
-<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="steg-3-am"><span class="header-section-number">4.1.2.3</span> Steg 3: Am</h4>
+<section id="steg-3-am" class="level4" data-number="3.1.2.3">
+<h4 data-number="3.1.2.3" class="anchored" data-anchor-id="steg-3-am"><span class="header-section-number">3.1.2.3</span> Steg 3: Am</h4>
 <p><span class="math display">\[
 A_m=
 \frac{MTBM}{MTBM+MAMT}
@@ -615,14 +621,14 @@ A_m=
 <p><strong>Svar:</strong> Materialtillgängligheten är <span class="math inline">\(A_m=94.9\%\)</span></p>
 </section>
 </section>
-<section id="c-beräkna-ao" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="c-beräkna-ao"><span class="header-section-number">4.1.3</span> c) Beräkna Ao</h3>
+<section id="c-beräkna-ao" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="c-beräkna-ao"><span class="header-section-number">3.1.3</span> c) Beräkna Ao</h3>
 <p><span class="math display">\[
 A_o=
 \frac{MTBM}{MTBM+MDT}
 \]</span></p>
-<section id="steg-1-mtbm-1" class="level4" data-number="4.1.3.1">
-<h4 data-number="4.1.3.1" class="anchored" data-anchor-id="steg-1-mtbm-1"><span class="header-section-number">4.1.3.1</span> Steg 1: MTBM</h4>
+<section id="steg-1-mtbm-1" class="level4" data-number="3.1.3.1">
+<h4 data-number="3.1.3.1" class="anchored" data-anchor-id="steg-1-mtbm-1"><span class="header-section-number">3.1.3.1</span> Steg 1: MTBM</h4>
 <p><span class="math display">\[
 MTBM=
 \frac{UT}{n_{M}}
@@ -632,8 +638,8 @@ MTBM=
 80\ h
 \]</span></p>
 </section>
-<section id="steg-2-mdt" class="level4" data-number="4.1.3.2">
-<h4 data-number="4.1.3.2" class="anchored" data-anchor-id="steg-2-mdt"><span class="header-section-number">4.1.3.2</span> Steg 2: MDT</h4>
+<section id="steg-2-mdt" class="level4" data-number="3.1.3.2">
+<h4 data-number="3.1.3.2" class="anchored" data-anchor-id="steg-2-mdt"><span class="header-section-number">3.1.3.2</span> Steg 2: MDT</h4>
 <p><span class="math display">\[
 MDT=
 \frac{\sum T_{CM} + \sum T_{PM}}{n_M}
@@ -643,8 +649,8 @@ MDT=
 6.667\ h
 \]</span></p>
 </section>
-<section id="steg-3-ao" class="level4" data-number="4.1.3.3">
-<h4 data-number="4.1.3.3" class="anchored" data-anchor-id="steg-3-ao"><span class="header-section-number">4.1.3.3</span> Steg 3: Ao</h4>
+<section id="steg-3-ao" class="level4" data-number="3.1.3.3">
+<h4 data-number="3.1.3.3" class="anchored" data-anchor-id="steg-3-ao"><span class="header-section-number">3.1.3.3</span> Steg 3: Ao</h4>
 <p><span class="math display">\[
 A_o=
 \frac{MTBM}{MTBM+MDT}
@@ -657,8 +663,8 @@ A_o=
 </section>
 </section>
 </section>
-<section id="exempel-2" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="exempel-2"><span class="header-section-number">4.2</span> Exempel 2</h2>
+<section id="exempel-2" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="exempel-2"><span class="header-section-number">3.2</span> Exempel 2</h2>
 <p>Nedan är data för fel och förebyggande underhåll för en anläggning med kontinuerlig produktion. Anläggningen driftsattes 2023-11-01 kl 08:00.</p>
 <p><a href="#uppgift-a">a)</a> Beräkna <span class="math inline">\(A_k\)</span>, <span class="math inline">\(A_o\)</span> baserat på planerad produktionstid, där planerad produktionstid är total tid minus de förebyggande underhållsstoppen.</p>
 <p><a href="#uppgift-b">b)</a> Beräkna <span class="math inline">\(A_k\)</span>, <span class="math inline">\(A_m\)</span>, <span class="math inline">\(A_o\)</span> baserat på kalendertid</p>
@@ -882,10 +888,10 @@ A_o=
 </tr>
 </tbody>
 </table>
-<section id="uppgift-a" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="uppgift-a"><span class="header-section-number">4.2.1</span> Uppgift a</h3>
-<section id="steg-1-tider" class="level4" data-number="4.2.1.1">
-<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="steg-1-tider"><span class="header-section-number">4.2.1.1</span> Steg 1: Tider</h4>
+<section id="uppgift-a" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="uppgift-a"><span class="header-section-number">3.2.1</span> Uppgift a</h3>
+<section id="steg-1-tider" class="level4" data-number="3.2.1.1">
+<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="steg-1-tider"><span class="header-section-number">3.2.1.1</span> Steg 1: Tider</h4>
 <p>Beräkna tid mellan fel samt reparationstid och nedtid (otillgänglig tid) - <strong>Tid mellan fel</strong> är den tillgängliga tiden från föregående återställning till nästa fel där förebyggande underhåll som infaller under intervallet exkluderas <span class="math display">\[
 TBF_i
 =
@@ -1037,8 +1043,8 @@ t_{restore,i-1}
 </tbody>
 </table>
 </section>
-<section id="steg-2-konstruktiv-tillgänglighet-ak" class="level4" data-number="4.2.1.2">
-<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="steg-2-konstruktiv-tillgänglighet-ak"><span class="header-section-number">4.2.1.2</span> Steg 2: Konstruktiv tillgänglighet (Ak)</h4>
+<section id="steg-2-konstruktiv-tillgänglighet-ak" class="level4" data-number="3.2.1.2">
+<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="steg-2-konstruktiv-tillgänglighet-ak"><span class="header-section-number">3.2.1.2</span> Steg 2: Konstruktiv tillgänglighet (Ak)</h4>
 <p><span class="math display">\[
 MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1444.6 h
 \]</span></p>
@@ -1050,8 +1056,8 @@ A_k = \frac{MTBF}{MTBF+MRT}=\frac{1444.6}{1444.6+4.35} = 0.997
 \]</span></p>
 <p><strong>Svar:</strong> Konstruktiv tillgänglighet <span class="math inline">\(A_k = 99.7\%\)</span></p>
 </section>
-<section id="steg-3-operativ-tillgänglighet-ao" class="level4" data-number="4.2.1.3">
-<h4 data-number="4.2.1.3" class="anchored" data-anchor-id="steg-3-operativ-tillgänglighet-ao"><span class="header-section-number">4.2.1.3</span> Steg 3: Operativ tillgänglighet (Ao)</h4>
+<section id="steg-3-operativ-tillgänglighet-ao" class="level4" data-number="3.2.1.3">
+<h4 data-number="3.2.1.3" class="anchored" data-anchor-id="steg-3-operativ-tillgänglighet-ao"><span class="header-section-number">3.2.1.3</span> Steg 3: Operativ tillgänglighet (Ao)</h4>
 <p><span class="math display">\[
 MTBM = MTBF \Longleftarrow \text{förebyggande underhåll genomförs under icke krävd tid}
 \]</span></p>
@@ -1064,10 +1070,10 @@ A_o = \frac{MTBM}{MTBM+MDT}=\frac{1444.6}{1444.6+16.46} = 0.989
 <p><strong>Svar:</strong> Operativ tillgänglighet <span class="math inline">\(A_o = 98.9\%\)</span></p>
 </section>
 </section>
-<section id="uppgift-b" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="uppgift-b"><span class="header-section-number">4.2.2</span> Uppgift b</h3>
-<section id="steg-1-tider-1" class="level4" data-number="4.2.2.1">
-<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="steg-1-tider-1"><span class="header-section-number">4.2.2.1</span> Steg 1: Tider</h4>
+<section id="uppgift-b" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="uppgift-b"><span class="header-section-number">3.2.2</span> Uppgift b</h3>
+<section id="steg-1-tider-1" class="level4" data-number="3.2.2.1">
+<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="steg-1-tider-1"><span class="header-section-number">3.2.2.1</span> Steg 1: Tider</h4>
 <p>Beräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid (avhjälpande och förebyggande) samt nedtid - <strong>Tid mellan fel</strong> är <span class="math display">\[
 \mathrm{TBF_i} = t_{failure, i}-t_{restore, i-1} \quad \left(t_{restore, 0}=\text{2023-11-01 08:00}\right)
 \]</span></p>
@@ -1278,8 +1284,8 @@ A_o = \frac{MTBM}{MTBM+MDT}=\frac{1444.6}{1444.6+16.46} = 0.989
 </tbody>
 </table>
 </section>
-<section id="steg-2-konstruktiv-tillgänglighet-ak-1" class="level4" data-number="4.2.2.2">
-<h4 data-number="4.2.2.2" class="anchored" data-anchor-id="steg-2-konstruktiv-tillgänglighet-ak-1"><span class="header-section-number">4.2.2.2</span> Steg 2: Konstruktiv tillgänglighet (Ak)</h4>
+<section id="steg-2-konstruktiv-tillgänglighet-ak-1" class="level4" data-number="3.2.2.2">
+<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="steg-2-konstruktiv-tillgänglighet-ak-1"><span class="header-section-number">3.2.2.2</span> Steg 2: Konstruktiv tillgänglighet (Ak)</h4>
 <p><span class="math display">\[
 MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1451.98 h
 \]</span></p>
@@ -1291,8 +1297,8 @@ A_k = \frac{MTBF}{MTBF+MRT}=\frac{1451.98}{1451.98+4.35} = 0.997
 \]</span></p>
 <p><strong>Svar:</strong> Konstruktiv tillgänglighet <span class="math inline">\(A_k = 99.7\%\)</span></p>
 </section>
-<section id="steg-3-materialtillgänglighet-am" class="level4" data-number="4.2.2.3">
-<h4 data-number="4.2.2.3" class="anchored" data-anchor-id="steg-3-materialtillgänglighet-am"><span class="header-section-number">4.2.2.3</span> Steg 3: Materialtillgänglighet (Am)</h4>
+<section id="steg-3-materialtillgänglighet-am" class="level4" data-number="3.2.2.3">
+<h4 data-number="3.2.2.3" class="anchored" data-anchor-id="steg-3-materialtillgänglighet-am"><span class="header-section-number">3.2.2.3</span> Steg 3: Materialtillgänglighet (Am)</h4>
 <p><span class="math display">\[
 MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.67 h
 \]</span></p>
@@ -1304,8 +1310,8 @@ A_m = \frac{MTBM}{MTBM+MAMT}=\frac{1111.67}{1111.67+9.71} = 0.991
 \]</span></p>
 <p><strong>Svar:</strong> Materialtillgänglighet <span class="math inline">\(A_m = 99.1\%\)</span></p>
 </section>
-<section id="steg-4-operativ-tillgänglighet-ao" class="level4" data-number="4.2.2.4">
-<h4 data-number="4.2.2.4" class="anchored" data-anchor-id="steg-4-operativ-tillgänglighet-ao"><span class="header-section-number">4.2.2.4</span> Steg 4: Operativ tillgänglighet (Ao)</h4>
+<section id="steg-4-operativ-tillgänglighet-ao" class="level4" data-number="3.2.2.4">
+<h4 data-number="3.2.2.4" class="anchored" data-anchor-id="steg-4-operativ-tillgänglighet-ao"><span class="header-section-number">3.2.2.4</span> Steg 4: Operativ tillgänglighet (Ao)</h4>
 <p><span class="math display">\[
 MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.67 h
 \]</span></p>
@@ -1318,12 +1324,12 @@ A_o = \frac{MTBM}{MTBM+MDT}=\frac{1111.67}{1111.67+18.51} = 0.984
 <p><strong>Svar:</strong> Operativ tillgänglighet <span class="math inline">\(A_o = 98.4\%\)</span></p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-SSEN15341" class="csl-entry" role="listitem">
-Underhåll – Nyckeltal för underhåll, Pub. L. Nos. SS-EN 15341:2019+A1:2022 (2022). <a href="https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/">https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/</a>.
-</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-SSEN13306" class="csl-entry" role="listitem">
-Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). <a href="https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/">https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/</a>.
+SS-EN 13306:2017 Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). <a href="https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/">https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/</a>.
+</div>
+<div id="ref-SSEN15341" class="csl-entry" role="listitem">
+SS-EN 15341:2019 Underhåll – Nyckeltal för underhåll, Pub. L. Nos. SS-EN 15341:2019+A1:2022 (2022). <a href="https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/">https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/</a>.
 </div>
 </div>
 </section>
@@ -1734,13 +1740,13 @@ Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). <a 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./rams.html" class="pagination-link" aria-label="Driftsäkerhet">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span>
+      <a href="./rams.html" class="pagination-link" aria-label="Driftsäkerhet och RAMS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet och RAMS</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./tillforlitlighet.html" class="pagination-link" aria-label="Tillförlitlighetsanalys">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

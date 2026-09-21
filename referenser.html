@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Driftsäkerhet och underhåll</title>
+<title>Referenser – Driftsäkerhet och underhåll</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -33,7 +52,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./rams.html" rel="next">
+<link href="./formelsamling.html" rel="next">
+<link href="./tillforlitlighet.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Driftsäkerhet och underhåll</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./referenser.html">Referenser</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -111,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Driftsäkerhet och underhåll</span></a>
   </div>
 </li>
@@ -135,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./referenser.html" class="sidebar-item-text sidebar-link">
+  <a href="./referenser.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Referenser</span></a>
   </div>
 </li>
@@ -161,24 +181,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#driftsäkerhet-och-underhåll" id="toc-driftsäkerhet-och-underhåll" class="nav-link active" data-scroll-target="#driftsäkerhet-och-underhåll">Driftsäkerhet och underhåll</a>
-  <ul class="collapse">
-  <li><a href="#kapitel" id="toc-kapitel" class="nav-link" data-scroll-target="#kapitel">Kapitel</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Driftsäkerhet och underhåll</h1>
+<h1 class="title">Referenser</h1>
 </div>
 
 
@@ -195,21 +206,23 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="driftsäkerhet-och-underhåll" class="level1 unnumbered">
-<h1 class="unnumbered">Driftsäkerhet och underhåll</h1>
-<p>Det här materialet ger en grundläggande introduktion till driftsäkerhet. Tyngdpunkten ligger på RAMS, tillgänglighet och de driftsäkerhetsparametrar som används för att beskriva tekniska system.</p>
-<section id="kapitel" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="kapitel">Kapitel</h2>
-<ol type="1">
-<li><a href="./rams.html">Driftsäkerhet och RAMS</a></li>
-<li><a href="./tillganglighet.html">Tillgänglighet</a></li>
-<li><a href="./tillforlitlighet.html">Funktionssäkerhet och tillförlitlighetsanalys</a></li>
-</ol>
-<p>Det sista kapitlet behandlar grundläggande sannolikhetsmodeller för funktionssäkerhet samt en introduktion till systemtillförlitlighet.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-BenDaya" class="csl-entry" role="listitem">
+Ben-Daya, Mohamed, Uday Kumar, and D. N. Prabhakar Murthy. 2016.
+<em>Introduction to Maintenance Engineering: Modelling, Optimization and
+Management</em>. John Wiley &amp; Sons. <a href="https://doi.org/10.1002/9781118926581">https://doi.org/10.1002/9781118926581</a>.
+</div>
+<div id="ref-SSEN13306" class="csl-entry" role="listitem">
+SS-EN 13306:2017 Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN
+13306:2017 (2017). <a href="https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/">https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/</a>.
+</div>
+<div id="ref-SSEN15341" class="csl-entry" role="listitem">
+SS-EN 15341:2019 Underhåll – Nyckeltal för underhåll, Pub. L. Nos. SS-EN
+15341:2019+A1:2022 (2022). <a href="https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/">https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/</a>.
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -614,10 +627,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./tillforlitlighet.html" class="pagination-link" aria-label="Tillförlitlighetsanalys">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./rams.html" class="pagination-link" aria-label="Driftsäkerhet och RAMS">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet och RAMS</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./formelsamling.html" class="pagination-link" aria-label="Formelsamling i drift och underhåll">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Formelsamling i drift och underhåll</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

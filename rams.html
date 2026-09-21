@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Driftsäkerhet – Driftsäkerhet</title>
+<title>1&nbsp; Driftsäkerhet och RAMS – Driftsäkerhet och underhåll</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -133,7 +133,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rams.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rams.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet och RAMS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,7 +148,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Driftsäkerhet</a> 
+      <a href="./">Driftsäkerhet och underhåll</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -161,25 +161,31 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+ <span class="menu-text">Driftsäkerhet och underhåll</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./rams.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet och RAMS</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tillganglighet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tillforlitlighet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./referenser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenser</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -209,28 +215,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#rams-och-dess-egenskaper" id="toc-rams-och-dess-egenskaper" class="nav-link active" data-scroll-target="#rams-och-dess-egenskaper"><span class="header-section-number">2.1</span> RAMS och dess egenskaper</a>
+  <li><a href="#rams-och-dess-egenskaper" id="toc-rams-och-dess-egenskaper" class="nav-link active" data-scroll-target="#rams-och-dess-egenskaper"><span class="header-section-number">1.1</span> RAMS och dess egenskaper</a>
   <ul class="collapse">
-  <li><a href="#funktionssäkerhet" id="toc-funktionssäkerhet" class="nav-link" data-scroll-target="#funktionssäkerhet"><span class="header-section-number">2.1.1</span> Funktionssäkerhet</a></li>
-  <li><a href="#underhållsmässighet" id="toc-underhållsmässighet" class="nav-link" data-scroll-target="#underhållsmässighet"><span class="header-section-number">2.1.2</span> Underhållsmässighet</a></li>
-  <li><a href="#underhållsstödets-prestanda" id="toc-underhållsstödets-prestanda" class="nav-link" data-scroll-target="#underhållsstödets-prestanda"><span class="header-section-number">2.1.3</span> Underhållsstödets prestanda</a></li>
-  <li><a href="#tillgänglighet" id="toc-tillgänglighet" class="nav-link" data-scroll-target="#tillgänglighet"><span class="header-section-number">2.1.4</span> Tillgänglighet</a></li>
+  <li><a href="#funktionssäkerhet" id="toc-funktionssäkerhet" class="nav-link" data-scroll-target="#funktionssäkerhet"><span class="header-section-number">1.1.1</span> Funktionssäkerhet</a></li>
+  <li><a href="#underhållsmässighet" id="toc-underhållsmässighet" class="nav-link" data-scroll-target="#underhållsmässighet"><span class="header-section-number">1.1.2</span> Underhållsmässighet</a></li>
+  <li><a href="#underhållsstödets-prestanda" id="toc-underhållsstödets-prestanda" class="nav-link" data-scroll-target="#underhållsstödets-prestanda"><span class="header-section-number">1.1.3</span> Underhållsstödets prestanda</a></li>
+  <li><a href="#tillgänglighet" id="toc-tillgänglighet" class="nav-link" data-scroll-target="#tillgänglighet"><span class="header-section-number">1.1.4</span> Tillgänglighet</a></li>
   </ul></li>
-  <li><a href="#statistisk-beskrivning-av-driftsäkerhet" id="toc-statistisk-beskrivning-av-driftsäkerhet" class="nav-link" data-scroll-target="#statistisk-beskrivning-av-driftsäkerhet"><span class="header-section-number">3</span> Statistisk beskrivning av driftsäkerhet</a>
+  <li><a href="#statistisk-beskrivning-av-driftsäkerhet" id="toc-statistisk-beskrivning-av-driftsäkerhet" class="nav-link" data-scroll-target="#statistisk-beskrivning-av-driftsäkerhet"><span class="header-section-number">2</span> Statistisk beskrivning av driftsäkerhet</a>
   <ul class="collapse">
-  <li><a href="#tillgänglighet-som-funktion-av-tiden" id="toc-tillgänglighet-som-funktion-av-tiden" class="nav-link" data-scroll-target="#tillgänglighet-som-funktion-av-tiden"><span class="header-section-number">3.1</span> Tillgänglighet som funktion av tiden</a>
+  <li><a href="#tillgänglighet-som-funktion-av-tiden" id="toc-tillgänglighet-som-funktion-av-tiden" class="nav-link" data-scroll-target="#tillgänglighet-som-funktion-av-tiden"><span class="header-section-number">2.1</span> Tillgänglighet som funktion av tiden</a>
   <ul class="collapse">
-  <li><a href="#punkttillgänglighet" id="toc-punkttillgänglighet" class="nav-link" data-scroll-target="#punkttillgänglighet"><span class="header-section-number">3.1.1</span> Punkttillgänglighet</a></li>
-  <li><a href="#intervalltillgänglighet" id="toc-intervalltillgänglighet" class="nav-link" data-scroll-target="#intervalltillgänglighet"><span class="header-section-number">3.1.2</span> Intervalltillgänglighet</a></li>
-  <li><a href="#genomsnittlig-intervalltillgänglighet" id="toc-genomsnittlig-intervalltillgänglighet" class="nav-link" data-scroll-target="#genomsnittlig-intervalltillgänglighet"><span class="header-section-number">3.1.3</span> Genomsnittlig intervalltillgänglighet</a></li>
-  <li><a href="#asymptotisk-genomsnittlig-intervalltillgänglighet" id="toc-asymptotisk-genomsnittlig-intervalltillgänglighet" class="nav-link" data-scroll-target="#asymptotisk-genomsnittlig-intervalltillgänglighet"><span class="header-section-number">3.1.4</span> Asymptotisk genomsnittlig intervalltillgänglighet</a></li>
+  <li><a href="#punkttillgänglighet" id="toc-punkttillgänglighet" class="nav-link" data-scroll-target="#punkttillgänglighet"><span class="header-section-number">2.1.1</span> Punkttillgänglighet</a></li>
+  <li><a href="#intervalltillgänglighet" id="toc-intervalltillgänglighet" class="nav-link" data-scroll-target="#intervalltillgänglighet"><span class="header-section-number">2.1.2</span> Intervalltillgänglighet</a></li>
+  <li><a href="#genomsnittlig-intervalltillgänglighet" id="toc-genomsnittlig-intervalltillgänglighet" class="nav-link" data-scroll-target="#genomsnittlig-intervalltillgänglighet"><span class="header-section-number">2.1.3</span> Genomsnittlig intervalltillgänglighet</a></li>
+  <li><a href="#asymptotisk-genomsnittlig-intervalltillgänglighet" id="toc-asymptotisk-genomsnittlig-intervalltillgänglighet" class="nav-link" data-scroll-target="#asymptotisk-genomsnittlig-intervalltillgänglighet"><span class="header-section-number">2.1.4</span> Asymptotisk genomsnittlig intervalltillgänglighet</a></li>
   </ul></li>
-  <li><a href="#driftsäkerhetsparametrar" id="toc-driftsäkerhetsparametrar" class="nav-link" data-scroll-target="#driftsäkerhetsparametrar"><span class="header-section-number">3.2</span> Driftsäkerhetsparametrar</a>
+  <li><a href="#driftsäkerhetsparametrar" id="toc-driftsäkerhetsparametrar" class="nav-link" data-scroll-target="#driftsäkerhetsparametrar"><span class="header-section-number">2.2</span> Driftsäkerhetsparametrar</a>
   <ul class="collapse">
-  <li><a href="#tid-mellan-fel" id="toc-tid-mellan-fel" class="nav-link" data-scroll-target="#tid-mellan-fel"><span class="header-section-number">3.2.1</span> Tid mellan fel</a></li>
-  <li><a href="#reparationstid" id="toc-reparationstid" class="nav-link" data-scroll-target="#reparationstid"><span class="header-section-number">3.2.2</span> Reparationstid</a></li>
-  <li><a href="#övriga-driftsäkerhetsparametrar" id="toc-övriga-driftsäkerhetsparametrar" class="nav-link" data-scroll-target="#övriga-driftsäkerhetsparametrar"><span class="header-section-number">3.2.3</span> Övriga driftsäkerhetsparametrar</a></li>
-  <li><a href="#skattning-från-observerade-data" id="toc-skattning-från-observerade-data" class="nav-link" data-scroll-target="#skattning-från-observerade-data"><span class="header-section-number">3.2.4</span> Skattning från observerade data</a></li>
+  <li><a href="#tid-mellan-fel" id="toc-tid-mellan-fel" class="nav-link" data-scroll-target="#tid-mellan-fel"><span class="header-section-number">2.2.1</span> Tid mellan fel</a></li>
+  <li><a href="#reparationstid" id="toc-reparationstid" class="nav-link" data-scroll-target="#reparationstid"><span class="header-section-number">2.2.2</span> Reparationstid</a></li>
+  <li><a href="#övriga-driftsäkerhetsparametrar" id="toc-övriga-driftsäkerhetsparametrar" class="nav-link" data-scroll-target="#övriga-driftsäkerhetsparametrar"><span class="header-section-number">2.2.3</span> Övriga driftsäkerhetsparametrar</a></li>
+  <li><a href="#skattning-från-observerade-data" id="toc-skattning-från-observerade-data" class="nav-link" data-scroll-target="#skattning-från-observerade-data"><span class="header-section-number">2.2.4</span> Skattning från observerade data</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -241,7 +247,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet och RAMS</span></h1>
 </div>
 
 
@@ -258,7 +264,7 @@ window.Quarto = {
 </header>
 
 
-<p>Driftsäkerhet är ett mått på ett systems förmåga att prestera det som krävs och när det krävs enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>. Det är en central egenskap hos tekniska system och omfattar flera aspekter som påverkar systemets prestanda över tid.</p>
+<p>Driftsäkerhet är ett mått på ett systems förmåga att prestera det som krävs och när det krävs enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="referenser.html#ref-SSEN13306" role="doc-biblioref">SS-EN 13306 2017</a>)</span>. Det är en central egenskap hos tekniska system och omfattar flera aspekter som påverkar systemets prestanda över tid.</p>
 <p>Driftsäkerhet omfattar flera centrala egenskaper hos ett system:</p>
 <ul>
 <li>Tillgänglighet (Availability, A)</li>
@@ -278,13 +284,13 @@ window.Quarto = {
 </ul>
 <p>I litteraturen används RAMS ofta med S som <em>Safety</em>. I denna framställning används S som <em>Supportability</em>. När S står för <em>Safety</em> behandlas <em>Supportability</em> ofta som en del av <em>Maintainability</em>.</p>
 <hr>
-<section id="rams-och-dess-egenskaper" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="rams-och-dess-egenskaper"><span class="header-section-number">2.1</span> RAMS och dess egenskaper</h2>
+<section id="rams-och-dess-egenskaper" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="rams-och-dess-egenskaper"><span class="header-section-number">1.1</span> RAMS och dess egenskaper</h2>
 <p>Nedan beskrivs de fyra egenskaperna som ingår i RAMS. De är alla relaterade till varandra och påverkar systemets övergripande driftsäkerhet</p>
 <p>Funktionssäkerheten, underhållsmässigheten och underhållsstödets prestanda påverkar tillsammans enhetens tillgänglighet. Funktionssäkerheten påverkar hur ofta fel inträffar, underhållsmässigheten hur snabbt det tekniska underhållsarbetet kan genomföras och underhållsstödet hur långa väntetider som uppstår.</p>
-<section id="funktionssäkerhet" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="funktionssäkerhet"><span class="header-section-number">2.1.1</span> Funktionssäkerhet</h3>
-<p>Funktionssäkerhet är en enhets förmåga att utföra en krävd funktion under givna förhållanden och under ett angivet tidsintervall enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>. Funktionssäkerheten beskriver därmed hur ofta fel inträffar och hur länge en enhet kan fungera innan ett fel uppstår.</p>
+<section id="funktionssäkerhet" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="funktionssäkerhet"><span class="header-section-number">1.1.1</span> Funktionssäkerhet</h3>
+<p>Funktionssäkerhet är en enhets förmåga att utföra en krävd funktion under givna förhållanden och under ett angivet tidsintervall enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="referenser.html#ref-SSEN13306" role="doc-biblioref">SS-EN 13306 2017</a>)</span>. Funktionssäkerheten beskriver därmed hur ofta fel inträffar och hur länge en enhet kan fungera innan ett fel uppstår.</p>
 <p>Funktionssäkerhet kan beskrivas utifrån medeltiden till fel och medeltiden mellan fel:</p>
 <ul>
 <li><strong>MTTF</strong> (<em>Mean Time To Failure</em>)</li>
@@ -292,9 +298,9 @@ window.Quarto = {
 </ul>
 <p>MTTF används för enheter som inte repareras, medan MTBF används för reparerbara enheter.</p>
 </section>
-<section id="underhållsmässighet" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="underhållsmässighet"><span class="header-section-number">2.1.2</span> Underhållsmässighet</h3>
-<p>Underhållsmässighet beskriver en enhets förmåga att bibehållas i eller återställas till ett tillstånd där den kan utföra sin krävda funktion enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>. Detta avser underhåll som utförs under givna förhållanden, med fastställda metoder och tillgängliga resurser.</p>
+<section id="underhållsmässighet" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="underhållsmässighet"><span class="header-section-number">1.1.2</span> Underhållsmässighet</h3>
+<p>Underhållsmässighet beskriver en enhets förmåga att bibehållas i eller återställas till ett tillstånd där den kan utföra sin krävda funktion enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="referenser.html#ref-SSEN13306" role="doc-biblioref">SS-EN 13306 2017</a>)</span>. Detta avser underhåll som utförs under givna förhållanden, med fastställda metoder och tillgängliga resurser.</p>
 <p>Underhållsmässigheten påverkas bland annat av:</p>
 <ul>
 <li>åtkomst: hur lätt det är att komma åt enheten för underhåll</li>
@@ -303,9 +309,9 @@ window.Quarto = {
 </ul>
 <p>Underhållsmässighet kan mätas med <strong>MRT</strong> (<em>Mean Repair Time</em>) och <strong>MTTR</strong> (<em>Mean Time To Restoration</em>). Måtten beskriver den genomsnittliga tiden för reparation respektive återställning av en enhet.</p>
 </section>
-<section id="underhållsstödets-prestanda" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="underhållsstödets-prestanda"><span class="header-section-number">2.1.3</span> Underhållsstödets prestanda</h3>
-<p>Underhållsstödets prestanda, även kallat underhållssäkerhet, beskriver underhållsorganisationens förmåga att tillhandahålla de resurser som krävs för att underhållsaktiviteten ska kunna utföras på rätt plats och vid rätt tidpunkt enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>.</p>
+<section id="underhållsstödets-prestanda" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="underhållsstödets-prestanda"><span class="header-section-number">1.1.3</span> Underhållsstödets prestanda</h3>
+<p>Underhållsstödets prestanda, även kallat underhållssäkerhet, beskriver underhållsorganisationens förmåga att tillhandahålla de resurser som krävs för att underhållsaktiviteten ska kunna utföras på rätt plats och vid rätt tidpunkt enligt SS-EN 13306:2017 <span class="citation" data-cites="SSEN13306">(<a href="referenser.html#ref-SSEN13306" role="doc-biblioref">SS-EN 13306 2017</a>)</span>.</p>
 <p>Underhållsstödet omfattar bland annat tillgång till:</p>
 <ul>
 <li>personal med rätt kompetens</li>
@@ -317,9 +323,9 @@ window.Quarto = {
 <p>Även underhållsorganisationens utformning påverkar underhållsstödets prestanda. Det kan exempelvis handla om intern eller extern underhållspersonal och om resurserna är centralt eller lokalt placerade.</p>
 <p>Ett vanligt mått är <strong>MWT</strong> (<em>Mean Waiting Time</em>), vilket beskriver den genomsnittliga väntetiden i samband med underhåll. Väntetiden kan exempelvis orsakas av administration, logistik (t.ex. brist på personal eller reservdelar) eller tekniska förhållanden (t.ex. att varm utrustning behöver kylas innan en åtgärd kan genomföras).</p>
 </section>
-<section id="tillgänglighet" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="tillgänglighet"><span class="header-section-number">2.1.4</span> Tillgänglighet</h3>
-<p>Tillgänglighet beskriver förmågan hos en enhet att utföra det som krävs när det krävs, förutsatt att nödvändiga externa resurser tillhandahålls <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>. Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd.</p>
+<section id="tillgänglighet" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="tillgänglighet"><span class="header-section-number">1.1.4</span> Tillgänglighet</h3>
+<p>Tillgänglighet beskriver förmågan hos en enhet att utföra det som krävs när det krävs, förutsatt att nödvändiga externa resurser tillhandahålls <span class="citation" data-cites="SSEN13306">(<a href="referenser.html#ref-SSEN13306" role="doc-biblioref">SS-EN 13306 2017</a>)</span>. Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd.</p>
 <p>För att analysera tillgängligheten behöver växlingen mellan funktionsdugliga och funktionsodugliga tillstånd beskrivas över tid. Denna växling påverkas både av när fel inträffar och av hur lång tid det tar att återställa enheten efter ett fel eller en underhållsåtgärd.</p>
 <p>Felhändelser kan beskrivas med stokastiska processer, exempelvis en homogen eller icke-homogen Poissonprocess (HPP respektive NHPP). Tider till och mellan fel samt reparations- och väntetider kan på motsvarande sätt betraktas som utfall av stokastiska variabler med tillhörande sannolikhetsfördelningar.</p>
 <p>Tidsintervallet mellan förebyggande underhållsåtgärder betraktas vanligen som deterministiskt och modelleras därför inte som en stokastisk variabel. Det faktiska genomförandet kan däremot påverkas av exempelvis oväntat slitage, produktionsplanering och tillgång till underhållsresurser.</p>
@@ -327,11 +333,11 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="statistisk-beskrivning-av-driftsäkerhet" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Statistisk beskrivning av driftsäkerhet</h1>
-<section id="tillgänglighet-som-funktion-av-tiden" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="tillgänglighet-som-funktion-av-tiden"><span class="header-section-number">3.1</span> Tillgänglighet som funktion av tiden</h2>
-<p>Den matematiska beskrivningen i detta stycke bygger på framställningen i <span class="citation" data-cites="BenDaya">Ben-Daya et al. (<a href="#ref-BenDaya" role="doc-biblioref">2016</a>)</span> (avsnitt 7.4).</p>
+<section id="statistisk-beskrivning-av-driftsäkerhet" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Statistisk beskrivning av driftsäkerhet</h1>
+<section id="tillgänglighet-som-funktion-av-tiden" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="tillgänglighet-som-funktion-av-tiden"><span class="header-section-number">2.1</span> Tillgänglighet som funktion av tiden</h2>
+<p>Den matematiska beskrivningen i detta stycke bygger på framställningen i <span class="citation" data-cites="BenDaya">Ben-Daya et al. (<a href="referenser.html#ref-BenDaya" role="doc-biblioref">2016</a>)</span> (avsnitt 7.4).</p>
 <p>För en reparerbar enhet kan tillståndet vid tiden <span class="math inline">\(t\)</span> beskrivas med funktionen</p>
 <p><span class="math display">\[
 X(t)=
@@ -344,8 +350,8 @@ X(t)=
 <p><span class="math display">\[
 UT_1,DT_1,UT_2,DT_2,\ldots
 \]</span></p>
-<section id="punkttillgänglighet" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="punkttillgänglighet"><span class="header-section-number">3.1.1</span> Punkttillgänglighet</h3>
+<section id="punkttillgänglighet" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="punkttillgänglighet"><span class="header-section-number">2.1.1</span> Punkttillgänglighet</h3>
 <p>Punkttillgängligheten <span class="math inline">\(A(t)\)</span> är sannolikheten att enheten befinner sig i ett funktionsdugligt tillstånd vid tidpunkten <span class="math inline">\(t\)</span>:</p>
 <p><span class="math display">\[
 A(t)=P\{X(t)=1\},
@@ -374,8 +380,8 @@ A(t)=\operatorname{E}[X(t)].
 \]</span></p>
 <p>Punkttillgänglighet används när det är relevant att bestämma sannolikheten för att enheten är funktionsduglig vid en bestämd tidpunkt.</p>
 </section>
-<section id="intervalltillgänglighet" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="intervalltillgänglighet"><span class="header-section-number">3.1.2</span> Intervalltillgänglighet</h3>
+<section id="intervalltillgänglighet" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="intervalltillgänglighet"><span class="header-section-number">2.1.2</span> Intervalltillgänglighet</h3>
 <p>Den ackumulerade tillgängliga tiden (<em>cumulative uptime</em>) från tiden <span class="math inline">\(0\)</span> till tiden <span class="math inline">\(t\)</span> definieras som</p>
 <p><span class="math display">\[
 U(t)=\int_0^t X(s)\,ds.
@@ -409,8 +415,8 @@ DT[t_1,t_2]
 {UT[t_1,t_2]+DT[t_1,t_2]}.
 \]</span></p>
 </section>
-<section id="genomsnittlig-intervalltillgänglighet" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="genomsnittlig-intervalltillgänglighet"><span class="header-section-number">3.1.3</span> Genomsnittlig intervalltillgänglighet</h3>
+<section id="genomsnittlig-intervalltillgänglighet" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="genomsnittlig-intervalltillgänglighet"><span class="header-section-number">2.1.3</span> Genomsnittlig intervalltillgänglighet</h3>
 <p>Den genomsnittliga intervalltillgängligheten är väntevärdet av intervalltillgängligheten under <span class="math inline">\([t_1,t_2]\)</span>:</p>
 <p><span class="math display">\[
 A(t_1,t_2)
@@ -429,8 +435,8 @@ A(t_1,t_2)
 \int_{t_1}^{t_2} A(t)\,dt.
 \]</span></p>
 </section>
-<section id="asymptotisk-genomsnittlig-intervalltillgänglighet" class="level3" data-number="3.1.4">
-<h3 data-number="3.1.4" class="anchored" data-anchor-id="asymptotisk-genomsnittlig-intervalltillgänglighet"><span class="header-section-number">3.1.4</span> Asymptotisk genomsnittlig intervalltillgänglighet</h3>
+<section id="asymptotisk-genomsnittlig-intervalltillgänglighet" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="asymptotisk-genomsnittlig-intervalltillgänglighet"><span class="header-section-number">2.1.4</span> Asymptotisk genomsnittlig intervalltillgänglighet</h3>
 <p>Den asymptotiska genomsnittliga intervalltillgängligheten är gränsvärdet för den genomsnittliga intervalltillgängligheten när observationsperiodens längd går mot oändligheten:</p>
 <p><span class="math display">\[
 A_\infty
@@ -475,8 +481,8 @@ A_k
 <p>där <strong>MTBF</strong> (<em>Mean Time Between Failures</em>) är medeltiden mellan fel och <strong>MRT</strong> (<em>Mean Repair Time</em>) är medelreparationstiden.</p>
 </section>
 </section>
-<section id="driftsäkerhetsparametrar" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="driftsäkerhetsparametrar"><span class="header-section-number">3.2</span> Driftsäkerhetsparametrar</h2>
+<section id="driftsäkerhetsparametrar" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="driftsäkerhetsparametrar"><span class="header-section-number">2.2</span> Driftsäkerhetsparametrar</h2>
 <p>De följande definitionerna utgår från att de studerade tiderna kan representeras av slumpvariabler med en gemensam sannolikhetsfördelning, exempelvis inom en förnyelseprocess. För en NHPP är felintensiteten tidsberoende, och ett enda konstant värde på MTBF beskriver därför inte processen generellt.</p>
 <p>Tider mellan fel, reparationstider och väntetider beskrivna i tidigare avsnitt kan betraktas som slumpvariabler. Parametrar som MTBF (<em>Mean Time Between Failures</em>) och MRT (<em>Mean Repair Time</em>) är då väntevärden för motsvarande slumpmässiga tider.</p>
 <p>För en icke-negativ slumpvariabel <span class="math inline">\(T\)</span> med täthetsfunktion <span class="math inline">\(f_T(t)\)</span> gäller</p>
@@ -492,8 +498,8 @@ A_k
 \int_0^\infty P(T&gt;t)\,dt.
 \]</span></p>
 <p>Vilken sannolikhetsfördelning som är lämplig beror på vilken typ av tid som studeras och på det observerade datamaterialet.</p>
-<section id="tid-mellan-fel" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="tid-mellan-fel"><span class="header-section-number">3.2.1</span> Tid mellan fel</h3>
+<section id="tid-mellan-fel" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="tid-mellan-fel"><span class="header-section-number">2.2.1</span> Tid mellan fel</h3>
 <p>Låt <span class="math inline">\(T_{\mathrm{BF}}\)</span> beteckna tiden mellan fel. MTBF definieras som</p>
 <p><span class="math display">\[
 \mathrm{MTBF}
@@ -528,8 +534,8 @@ P(T_{\mathrm{BF}}&gt;t)
 \Gamma\!\left(1+\frac{1}{\beta}\right).
 \]</span></p>
 </section>
-<section id="reparationstid" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="reparationstid"><span class="header-section-number">3.2.2</span> Reparationstid</h3>
+<section id="reparationstid" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="reparationstid"><span class="header-section-number">2.2.2</span> Reparationstid</h3>
 <p>Låt <span class="math inline">\(T_{\mathrm{Rep}}\)</span> beteckna reparationstiden. MRT definieras som</p>
 <p><span class="math display">\[
 \mathrm{MRT}
@@ -575,8 +581,8 @@ N(\mu,\sigma^2),
 \]</span></p>
 <p>vilket innebär att MRT normalt är större än medianreparationstiden när fördelningen är högerskev.</p>
 </section>
-<section id="övriga-driftsäkerhetsparametrar" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="övriga-driftsäkerhetsparametrar"><span class="header-section-number">3.2.3</span> Övriga driftsäkerhetsparametrar</h3>
+<section id="övriga-driftsäkerhetsparametrar" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="övriga-driftsäkerhetsparametrar"><span class="header-section-number">2.2.3</span> Övriga driftsäkerhetsparametrar</h3>
 <p>På motsvarande sätt kan övriga parametrar definieras som väntevärden:</p>
 <p><span class="math display">\[
 \mathrm{MTBM}
@@ -617,8 +623,8 @@ T_{\mathrm{Wait}},
 \]</span></p>
 <p>Detta samband kräver inte att den aktiva underhållstiden och väntetiden är statistiskt oberoende. Det förutsätter däremot att tiderna avser samma population av underhållsåtgärder och samma avgränsning av den otillgängliga tiden.</p>
 </section>
-<section id="skattning-från-observerade-data" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="skattning-från-observerade-data"><span class="header-section-number">3.2.4</span> Skattning från observerade data</h3>
+<section id="skattning-från-observerade-data" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="skattning-från-observerade-data"><span class="header-section-number">2.2.4</span> Skattning från observerade data</h3>
 <p>Om <span class="math inline">\(T_1,T_2,\ldots,T_n\)</span> är observerade tider kan väntevärdet skattas med det aritmetiska medelvärdet:</p>
 <p><span class="math display">\[
 \widehat{\operatorname{E}[T]}
@@ -642,12 +648,12 @@ T_{\mathrm{Wait}},
 <p>Det aritmetiska medelvärdet är en direkt skattning när observationerna utgör fullständigt observerade och jämförbara tidsintervall. Om observationsperioden avslutas innan ett fel eller en reparation har inträffat är observationen censurerad. Då kan metoder för livslängds- och tillförlitlighetsanalys behöva användas i stället för att enbart beräkna medelvärdet av de fullständiga observationerna.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-BenDaya" class="csl-entry" role="listitem">
 Ben-Daya, Mohamed, Uday Kumar, and D. N. Prabhakar Murthy. 2016. <em>Introduction to Maintenance Engineering: Modelling, Optimization and Management</em>. John Wiley &amp; Sons. <a href="https://doi.org/10.1002/9781118926581">https://doi.org/10.1002/9781118926581</a>.
 </div>
 <div id="ref-SSEN13306" class="csl-entry" role="listitem">
-Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). <a href="https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/">https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/</a>.
+SS-EN 13306:2017 Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). <a href="https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/">https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/</a>.
 </div>
 </div>
 </section>
@@ -1057,13 +1063,13 @@ Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). <a 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Driftsäkerhet">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Driftsäkerhet och underhåll">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Driftsäkerhet och underhåll</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./tillganglighet.html" class="pagination-link" aria-label="Beräkning av tillgänglighet">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
