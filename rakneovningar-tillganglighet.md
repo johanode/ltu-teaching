@@ -56,9 +56,9 @@ Ett borraggregat har följande data från en observationsperiod:
 
 Beräkna följande mått baserat på kalendertid:
 
-1. Konstruktiv tillgänglighet $A_k$
-2. Materialtillgänglighet $A_m$
-3. Operativ tillgänglighet $A_o$
+A. Konstruktiv tillgänglighet $A_k$
+B. Materialtillgänglighet $A_m$
+C. Operativ tillgänglighet $A_o$
 
 
 ## Uppgift 4 Tillgänglighet för en asfalteringsmaskin
@@ -77,9 +77,9 @@ En asfalteringsmaskin har följande data från en observationsperiod:
 
 Beräkna följande mått baserat på kalendertid:
 
-1. Konstruktiv tillgänglighet $A_k$
-2. Materialtillgänglighet $A_m$
-3. Operativ tillgänglighet $A_o$
+A. Konstruktiv tillgänglighet $A_k$
+B. Materialtillgänglighet $A_m$
+C. Operativ tillgänglighet $A_o$
 
 
 ## Uppgift 5 Konstruktiv och operativ tillgänglighet
@@ -98,8 +98,8 @@ Ett system har följande data från en observationsperiod:
 
 De angivna underhållsaktivteterna inträffar under krävd tid. Antag 0 h väntetid för FU. Beräkna följande mått:
 
-1. Konstruktiv tillgänglighet $A_k$
-2. Operativ tillgänglighet $A_o$
+A. Konstruktiv tillgänglighet $A_k$
+B. Operativ tillgänglighet $A_o$
 
 
 ## Uppgift 6 Tillgänglighet från arbetsorderdata
@@ -114,23 +114,23 @@ En anläggning med kontinuerlig produktion togs i drift den 1 januari 2026 kl. 0
 | 4 | FU | 2026-01-09 08.00 | 2026-01-09 08.00 | 2026-01-09 10.00 |
 | 5 | AU | 2026-01-11 10.00 | 2026-01-11 12.00 | 2026-01-11 16.00 |
 
-### a Planerad produktionstid
+### A: Planerad produktionstid
 
 Den planerade produktionstiden är krävd tid. FU genomförs utanför krävd tid.
 
-1. Beräkna tid mellan fel (*time bewteen failures, TBF*).
-2. Beräkna reparationstiden och otillgänglig tid för varje AU.
-3. Beräkna MTBF, MRT och MDT avseende AU.
-4. Beräkna $A_k$ och $A_o$.
+I. Beräkna tid mellan fel (*time bewteen failures, TBF*).
+II. Beräkna reparationstiden och otillgänglig tid för varje AU.
+III. Beräkna MTBF, MRT och MDT avseende AU.
+IV. Beräkna $A_k$ och $A_o$.
 
 
-### b Kalendertid
+### B: Kalendertid
 
 Vid den kalenderbaserade beräkningen ingår både AU och FU.
 
-1. Beräkna tid mellan felen (*time bewteen failures, TBF*).
-2. Beräkna tid mellan underhållsåtgärder (*time between maintenance, TBM*). 
-3. Beräkna reparationstid, aktiv underhållstid och otillgängligt tid för händelserna.
-4. Beräkna MTBF, MRT, MTBM, MAMT och MDT.
-5. Beräkna $A_k$, $A_m$ och $A_o$.
+I. Beräkna tid mellan felen (*time bewteen failures, TBF*).
+II. Beräkna tid mellan underhållsåtgärder (*time between maintenance, TBM*). 
+III. Beräkna reparationstid, aktiv underhållstid och otillgängligt tid för händelserna.
+IV. Beräkna MTBF, MRT, MTBM, MAMT och MDT.
+V. Beräkna $A_k$, $A_m$ och $A_o$.
 
