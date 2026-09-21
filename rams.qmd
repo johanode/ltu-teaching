@@ -1,216 +1,486 @@
+---
+bibliography: references.bib
+---
+
 # Driftsäkerhet
+Driftsäkerhet är ett mått på ett systems förmåga att prestera det som krävs och när det krävs enligt SS-EN 13306:2017 [@SSEN13306]. Det är en central egenskap hos tekniska system och omfattar flera aspekter som påverkar systemets prestanda över tid.
 
 Driftsäkerhet omfattar flera centrala egenskaper hos ett system:
 
 - Tillgänglighet (Availability, A)
 - Funktionssäkerhet (Reliability)
 - Underhållsmässighet (Maintainability)
-- Underhållssäkerhet (Supportability)
+- Underhållstödets prestanda eller underhållssäkerhet (Supportability)
 
-Dessa sammanfattas i begreppet **RAMS**.
+Dessa sammanfattas i begreppet **RAMS**. 
 
-RAMS används för att beskriva ett systems prestanda ur ett driftsäkerhetsperspektiv och inkluderar ibland även:
+RAMS används för att beskriva ett systems prestanda ur ett driftsäkerhetsperspektiv och inkluderar även:
 
-- Safety
-- Security
-- Sustainability
+- Säkerhet (*Safety*)
+- Skydd (*Security*)
+- Hållbarhet (*Sustainability*)
+- Ekonomi (*Economy*)
+- Användningsförhållanden (*Operating Conditions*)
+- Operatörens påverkan (*Operator Influence*)
 
----
+I litteraturen används RAMS ofta med S som *Safety*. I denna framställning används S som *Supportability*. När S står för *Safety* behandlas *Supportability* ofta som en del av *Maintainability*.
 
-# RAMS och dess komponenter
-
-Driftsäkerhet påverkas av:
-
-- Hur ofta fel uppstår (Reliability)
-- Hur snabbt fel kan åtgärdas (Maintainability)
-- Hur organisation och resurser påverkar åtgärdstid (Supportability)
-
-En hög driftsäkerhet innebär:
-
-- Lägre produktionskostnader
-- Färre driftstörningar
-
-En låg driftsäkerhet innebär:
-
-- Stora störningar
-- Låg tillgänglighet
 
 ---
 
-# Tillgänglighet
+## RAMS och dess egenskaper
+Nedan beskrivs de fyra egenskaperna som ingår i RAMS. De är alla relaterade till varandra och påverkar systemets övergripande driftsäkerhet
 
-Tillgänglighet beskriver ett systems tillstånd över tid.
+Funktionssäkerheten, underhållsmässigheten och underhållsstödets prestanda påverkar tillsammans enhetens tillgänglighet. Funktionssäkerheten påverkar hur ofta fel inträffar, underhållsmässigheten hur snabbt det tekniska underhållsarbetet kan genomföras och underhållsstödet hur långa väntetider som uppstår.
 
-Man skiljer mellan:
 
-- Tillgänglig tid (Up Time, UT)
-- Otillgänglig tid (Down Time, DT)
+### Funktionssäkerhet
 
-Tillgängligheten definieras som:
+Funktionssäkerhet är en enhets förmåga att utföra en krävd funktion under givna förhållanden och under ett angivet tidsintervall enligt SS-EN 13306:2017 [@SSEN13306]. Funktionssäkerheten beskriver därmed hur ofta fel inträffar och hur länge en enhet kan fungera innan ett fel uppstår.
 
-$$
-A = \frac{UT}{UT + DT}
-$$
+Funktionssäkerhet kan beskrivas utifrån medeltiden till fel och medeltiden mellan fel:
 
----
+- **MTTF** (*Mean Time To Failure*)
+- **MTBF** (*Mean Time Between Failures*)
 
-## Exempel: maskin
+MTTF används för enheter som inte repareras, medan MTBF används för reparerbara enheter. 
 
-En lastare ska köras kontinuerligt under ett dygn.
+### Underhållsmässighet
 
-Under detta dygn står maskinen still i 2 timmar på grund av en krånglande växellåda.
+Underhållsmässighet beskriver en enhets förmåga att bibehållas i eller återställas till ett tillstånd där den kan utföra sin krävda funktion enligt SS-EN 13306:2017 [@SSEN13306]. Detta avser underhåll som utförs under givna förhållanden, med fastställda metoder och tillgängliga resurser.
 
-Tillgänglig tid:
-- 22 timmar
+Underhållsmässigheten påverkas bland annat av:
 
-Total tid:
-- 24 timmar
+- åtkomst: hur lätt det är att komma åt enheten för underhåll
+- standardisering: använda standardiserade komponenter och metoder
+- modularisering: använda modulära komponenter som kan bytas ut
 
-Tillgänglighet:
+Underhållsmässighet kan mätas med **MRT** (*Mean Repair Time*) och **MTTR** (*Mean Time To Restoration*). Måtten beskriver den genomsnittliga tiden för reparation respektive återställning av en enhet.
 
-$$
-A = \frac{22}{24}
-$$
+### Underhållsstödets prestanda
 
----
+Underhållsstödets prestanda, även kallat underhållssäkerhet, beskriver underhållsorganisationens förmåga att tillhandahålla de resurser som krävs för att underhållsaktiviteten ska kunna utföras på rätt plats och vid rätt tidpunkt enligt SS-EN 13306:2017 [@SSEN13306].
 
-# OEE (Overall Equipment Effectiveness)
+Underhållsstödet omfattar bland annat tillgång till:
 
-Tillgänglighet är en del av ett större effektivitetsmått:
+- personal med rätt kompetens
+- reservdelar och material
+- verktyg och underhållsutrustning
+- teknisk dokumentation
+- planering och arbetsledning
 
-$$
-OEE = Availability \times Performance \times Quality
-$$
+Även underhållsorganisationens utformning påverkar underhållsstödets prestanda. Det kan exempelvis handla om intern eller extern underhållspersonal och om resurserna är centralt eller lokalt placerade.
 
-På svenska:
+Ett vanligt mått är **MWT** (*Mean Waiting Time*), vilket beskriver den genomsnittliga väntetiden i samband med underhåll. Väntetiden kan exempelvis orsakas av administration, logistik (t.ex. brist på personal eller reservdelar) eller tekniska förhållanden (t.ex. att varm utrustning behöver kylas innan en åtgärd kan genomföras).
 
-$$
-TAK = Tillgänglighet \times Anläggningseffektivitet \times Kvalitetsutbyte
-$$
+### Tillgänglighet
+Tillgänglighet beskriver förmågan hos en enhet att utföra det som krävs när det krävs, förutsatt att nödvändiga externa resurser tillhandahålls [@SSEN13306]. Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd.
 
-Ett relaterat mått:
+För att analysera tillgängligheten behöver växlingen mellan funktionsdugliga och funktionsodugliga tillstånd beskrivas över tid. Denna växling påverkas både av när fel inträffar och av hur lång tid det tar att återställa enheten efter ett fel eller en underhållsåtgärd.
 
-- **TEEP (Total Effective Equipment Productivity)**
+Felhändelser kan beskrivas med stokastiska processer, exempelvis en homogen eller icke-homogen Poissonprocess (HPP respektive NHPP). Tider till och mellan fel samt reparations- och väntetider kan på motsvarande sätt betraktas som utfall av stokastiska variabler med tillhörande sannolikhetsfördelningar. 
 
-$$
-TEEP = Loading \times OEE
-$$
+Tidsintervallet mellan förebyggande underhållsåtgärder betraktas vanligen som deterministiskt och modelleras därför inte som en stokastisk variabel. Det faktiska genomförandet kan däremot påverkas av exempelvis oväntat slitage, produktionsplanering och tillgång till underhållsresurser.
 
-där:
-
-$$
-Loading = \frac{Scheduled\ time}{Calendar\ time}
-$$
+De observerade tiderna kan alltså användas för att beräkna tillgängligheten under den aktuella observationsperioden. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. En matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns nedan: [Tillgänglighet som funktion av tiden](#tillganglighet-som-funktion-av-tiden).
 
 ---
+# Statistisk beskrivning av driftsäkerhet
 
-# Tillgänglighetens uppbyggnad
+## Tillgänglighet som funktion av tiden
+Den matematiska beskrivningen i detta stycke bygger på framställningen i @BenDaya (avsnitt 7.4).
 
-Tillgänglighet påverkas av flera typer av tid:
-
-- Produktionstid
-- Reparationstid
-- Väntetid
-- Logistisk tid
-- Administrativ tid
-
----
-
-## Avhjälpande underhåll
-
-Vid fel sker följande steg:
-
-1. Fel uppstår
-2. Maskin stoppas
-3. Transport till verkstad
-4. Väntan på reservdelar
-5. Reparation
-6. Återstart
-
-Den totala tiden består av:
-
-- Aktiv reparationstid
-- Väntetider (logistik, resurser)
-
----
-
-## Förebyggande underhåll
-
-Även planerat underhåll påverkar tillgängligheten:
-
-- Produktion stoppas
-- Underhåll utförs
-- System återstartas
-
----
-
-# Hur kan tillgänglighet förbättras?
-
-Man kan minska nedtiden genom att:
-
-- Detektera fel tidigt
-- Minska administrativa väntetider
-- Förbättra logistik
-- Utföra reparationer snabbare
-- Optimera förebyggande underhåll
-
----
-
-# Tre typer av tillgänglighet
-
-## Konstruktiv tillgänglighet (Ak)
-
-- Baserad på konstruktion
-- Inkluderar endast:
-  - MTBF
-  - MTTR
-- Exkluderar:
-  - väntetider
-  - organisation
-
----
-
-## Materialtillgänglighet (Am)
-
-- Inkluderar:
-  - förebyggande underhåll
-  - avhjälpande underhåll
-- Exkluderar:
-  - väntetider
-
-Begrepp:
-
-- MTBM (Mean Time Between Maintenance)
-- MAMT (Mean Active Maintenance Time)
-
----
-
-## Operativ tillgänglighet (Ao)
-
-Den mest realistiska modellen.
-
-Inkluderar:
-
-- Fel
-- Reparation
-- Väntetider
-- Organisation
-
-Begrepp:
+För en reparerbar enhet kan tillståndet vid tiden $t$ beskrivas med funktionen
 
 $$
-MDT = MAMT + MWT
+X(t)=
+\begin{cases}
+1, & \text{om enheten är funktionsduglig vid tiden }t,\\
+0, & \text{om enheten är funktionsoduglig vid tiden }t.
+\end{cases}
 $$
 
----
+Enheten växlar mellan funktionsdugliga (*up state*) och funktionsodugliga tillstånd (*down state*). De efterföljande tillgängliga tidsintervallen (*uptime*, UT) och otillgängliga tidsintervallen (*downtime*, DT) kan betecknas
 
-# Tolkning av Ak, Am och Ao
+$$
+UT_1,DT_1,UT_2,DT_2,\ldots
+$$
 
-- Ak → teknisk potential
-- Am → påverkan av underhållsstrategi
-- Ao → verklig drift
+### Punkttillgänglighet
 
-Stor skillnad mellan Am och Ao tyder på:
+Punkttillgängligheten $A(t)$ är sannolikheten att enheten befinner sig i ett funktionsdugligt tillstånd vid tidpunkten $t$:
 
-- ineffektiv organisation
-- brister i resurser eller planering
+$$
+A(t)=P\{X(t)=1\},
+$$
+
+Väntevärdet för $X(t)$ beskriver det genomsnittliga tillståndet om många likadana enheter observeras vid samma tidpunkt $t$. För en diskret variabel beräknas väntevärdet genom att varje möjligt utfall multipliceras med sin sannolikhet: 
+
+$$
+\operatorname{E}[X(t)]
+=
+\sum_{x\in\{0,1\}}
+xP\{X(t)=x\}.
+$$
+
+Eftersom $X(t)$ endast kan anta värdena 0 och 1 gäller
+
+$$
+\operatorname{E}[X(t)]
+=
+1\cdot P\{X(t)=1\}
++
+0\cdot P\{X(t)=0\}
+=
+P\{X(t)=1\},
+$$
+
+Värdet 1 bidrar alltså när enheten fungerar, medan värdet 0 inte bidrar när enheten är funktionsoduglig. Väntevärdet blir därför lika med sannolikheten att enheten fungerar vid tidpunkten $t$.
+
+Punkttillgängligheten kan därmed även skrivas som
+
+$$
+A(t)=\operatorname{E}[X(t)].
+$$
+
+Punkttillgänglighet används när det är relevant att bestämma sannolikheten för att enheten är funktionsduglig vid en bestämd tidpunkt.
+
+### Intervalltillgänglighet
+
+Den ackumulerade tillgängliga tiden (*cumulative uptime*) från tiden $0$ till tiden $t$ definieras som
+
+$$
+U(t)=\int_0^t X(s)\,ds.
+$$
+
+Eftersom $X(s)=1$ när enheten fungerar och $X(s)=0$ när den inte fungerar summerar integralen all tillgänglig tid fram till tiden $t$.
+
+Låt $UT[t_1,t_2]$ beteckna den sammanlagda tillgängliga tiden under intervallet $[t_1,t_2]$:
+
+$$
+UT[t_1,t_2]
+=
+U(t_2)-U(t_1).
+$$
+
+Den sammanlagda otillgängliga tiden under samma intervall betecknas $DT[t_1,t_2]$ och beräknas som intervallets totala längd minus den tillgängliga tiden:
+
+$$
+DT[t_1,t_2]
+=
+(t_2-t_1)-UT[t_1,t_2].
+$$
+
+Intervalltillgängligheten under tidsintervallet $[t_1,t_2]$ är den andel av intervallets totala längd som enheten är funktionsduglig:
+
+$$
+\widetilde{A}(t_1,t_2)
+=
+\frac{U(t_2)-U(t_1)}{t_2-t_1}.
+$$
+
+Intervalltillgängligheten är en stokastisk variabel eftersom det varierar när och hur länge enheten kan utföra krävd funktion under intervallet. För ett observerat tidsintervall beräknas den som
+
+$$
+\widetilde{A}(t_1,t_2)
+=
+\frac{UT[t_1,t_2]}{t_2-t_1}
+=
+\frac{UT[t_1,t_2]}
+{UT[t_1,t_2]+DT[t_1,t_2]}.
+$$
+
+### Genomsnittlig intervalltillgänglighet
+
+Den genomsnittliga intervalltillgängligheten är väntevärdet av intervalltillgängligheten under $[t_1,t_2]$:
+
+$$
+A(t_1,t_2)
+=
+\operatorname{E}\!\left[\widetilde{A}(t_1,t_2)\right]
+=
+\frac{\operatorname{E}[U(t_2)-U(t_1)]}{t_2-t_1}
+=
+\frac{\operatorname{E}[UT[t_1, t_2]]}{t_2-t_1}.
+$$
+
+Den genomsnittliga intervalltillgängligheten kan även beräknas som medelvärdet av punkttillgängligheten under intervallet:
+
+
+$$
+A(t_1,t_2)
+=
+\frac{1}{t_2-t_1}
+\int_{t_1}^{t_2} A(t)\,dt.
+$$
+
+### Asymptotisk genomsnittlig intervalltillgänglighet
+
+Den asymptotiska genomsnittliga intervalltillgängligheten är gränsvärdet för den genomsnittliga intervalltillgängligheten när observationsperiodens längd går mot oändligheten:
+
+$$
+A_\infty
+=
+\lim_{T\rightarrow\infty}A(0,T).
+$$
+
+Antag att cyklerna $(UT_i,DT_i)$ är oberoende och likafördelade mellan cyklerna samt har ändliga väntevärden. Den asymptotiska genomsnittliga intervalltillgängligheten ges då av
+
+$$
+A_\infty
+=
+\frac{\operatorname{E}[UT_i]}
+{\operatorname{E}[UT_i]+\operatorname{E}[DT_i]}.
+$$
+
+Låt
+
+$$
+\overline{UT}=\operatorname{E}[UT_i]
+\qquad\text{och}\qquad
+\overline{DT}=\operatorname{E}[DT_i]
+$$
+
+beteckna medeltiden för de tillgängliga respektive otillgängliga tidsintervallen. Den asymptotiska tillgängligheten kan då skrivas som
+
+$$
+A_\infty
+=
+\frac{\overline{UT}}
+{\overline{UT}+\overline{DT}}.
+$$
+
+Det generella uttrycket för asymptotisk tillgänglighet kan specialiseras genom att bestämma vilka drifttider och orsaker till otillgänglighet som ska ingå i beräkningen. Se även [Beräkning av tillgänglighet](tillganglighet.qmd).
+
+Om samtliga relevanta orsaker till otillgänglighet inkluderas, såsom avhjälpande och förebyggande underhåll samt tillhörande väntetider, kan den asymptotiska genomsnittliga intervalltillgängligheten uttryckas som operativ tillgänglighet:
+
+$$
+A_o
+=
+\frac{MTBM}
+{MTBM+MDT}
+$$
+
+där **MTBM** (*Mean Time Between Maintenance*) är medeltiden mellan underhållsåtgärder och **MDT** (*Mean Down Time*) är den genomsnittliga otillgängliga tiden per underhållsåtgärd.
+
+Om endast fel och reparationstid inkluderas erhålls den konstruktiva tillgängligheten:
+
+$$
+A_k
+=
+\frac{MTBF}{MTBF+MRT}
+$$
+
+där **MTBF** (*Mean Time Between Failures*) är medeltiden mellan fel och **MRT** (*Mean Repair Time*) är medelreparationstiden.
+
+## Driftsäkerhetsparametrar
+De följande definitionerna utgår från att de studerade tiderna kan representeras av slumpvariabler med en gemensam sannolikhetsfördelning, exempelvis inom en förnyelseprocess. För en NHPP är felintensiteten tidsberoende, och ett enda konstant värde på MTBF beskriver därför inte processen generellt.
+
+Tider mellan fel, reparationstider och väntetider beskrivna i tidigare avsnitt kan betraktas som slumpvariabler. Parametrar som MTBF (*Mean Time Between Failures*) och MRT (*Mean Repair Time*) är då väntevärden för motsvarande slumpmässiga tider.
+
+För en icke-negativ slumpvariabel $T$ med täthetsfunktion $f_T(t)$ gäller
+
+$$
+\operatorname{E}[T]
+=
+\int_0^\infty t f_T(t)\,dt.
+$$
+
+Väntevärdet kan också uttryckas med hjälp av sannolikheten att tiden överstiger $t$:
+
+$$
+\operatorname{E}[T]
+=
+\int_0^\infty P(T>t)\,dt.
+$$
+
+Vilken sannolikhetsfördelning som är lämplig beror på vilken typ av tid som studeras och på det observerade datamaterialet.
+
+### Tid mellan fel
+
+Låt $T_{\mathrm{BF}}$ beteckna tiden mellan fel. MTBF definieras som
+
+$$
+\mathrm{MTBF}
+=
+\operatorname{E}[T_{\mathrm{BF}}].
+$$
+
+Om $f_{\mathrm{BF}}(t)$ är täthetsfunktionen för tiden mellan fel och
+
+$$
+R(t)
+=
+P(T_{\mathrm{BF}}>t)
+$$
+
+är *reliability function* (också överlevnadsfunktionen / *survival function*), kan MTBF skrivas som
+
+$$
+\mathrm{MTBF}
+=
+\int_0^\infty t f_{\mathrm{BF}}(t)\,dt
+=
+\int_0^\infty R(t)\,dt.
+$$
+
+Om tiden mellan fel är exponentialfördelad med felbenägenhet $\lambda$ gäller
+
+$$
+\mathrm{MTBF}
+=
+\frac{1}{\lambda}.
+$$
+
+Om tiden mellan fel är Weibullfördelad med skalparameter $\alpha$ och formparameter $\beta$ gäller
+
+$$
+\mathrm{MTBF}
+=
+\alpha\,
+\Gamma\!\left(1+\frac{1}{\beta}\right).
+$$
+
+### Reparationstid
+
+Låt $T_{\mathrm{Rep}}$ beteckna reparationstiden. MRT definieras som
+
+$$
+\mathrm{MRT}
+=
+\operatorname{E}[T_{\mathrm{Rep}}].
+$$
+
+Om $f_{\mathrm{Rep}}(t)$ är reparationstidens täthetsfunktion gäller
+
+$$
+\mathrm{MRT}
+=
+\int_0^\infty t f_{\mathrm{Rep}}(t)\,dt.
+$$
+
+Om $M(t)$ betecknar reparationstidens fördelningsfunktion
+
+$$
+M(t)
+=
+P(T_{\mathrm{Rep}}\leq t),
+$$
+
+det vill säga sannolikheten att reparationen har slutförts inom tiden $t$. MRT kan då även skrivas som
+
+$$
+\mathrm{MRT}
+=
+\int_0^\infty [1-M(t)]\,dt.
+$$
+
+Reparationstider är positiva och kan vara högerskeva. Lognormalfördelningen är därför en vanligt förekommande modell för reparationstider, men valet av fördelning behöver prövas mot observerade data.
+
+Om
+
+$$
+\ln T_{\mathrm{Rep}}
+\sim
+N(\mu,\sigma^2),
+$$
+
+är reparationstiden lognormalfördelad och
+
+$$
+\mathrm{MRT}
+=
+\exp\!\left(\mu+\frac{\sigma^2}{2}\right).
+$$
+
+Medianen är i detta fall
+
+$$
+\operatorname{median}(T_{\mathrm{Rep}})
+=
+\exp(\mu),
+$$
+
+vilket innebär att MRT normalt är större än medianreparationstiden när fördelningen är högerskev.
+
+### Övriga driftsäkerhetsparametrar
+
+På motsvarande sätt kan övriga parametrar definieras som väntevärden:
+
+$$
+\mathrm{MTBM}
+=
+\operatorname{E}[T_{\mathrm{M}}],
+$$
+
+$$
+\mathrm{MAMT}
+=
+\operatorname{E}[T_{\mathrm{AM}}],
+$$
+
+$$
+\mathrm{MDT}
+=
+\operatorname{E}[T_{\mathrm{D}}],
+$$
+
+och
+
+$$
+\mathrm{MWT}
+=
+\operatorname{E}[T_{\mathrm{Wait}}].
+$$
+
+Om den otillgängliga tiden för varje underhållsåtgärd kan delas upp enligt
+
+$$
+T_{\mathrm{D}}
+=
+T_{\mathrm{AM}}
++
+T_{\mathrm{Wait}},
+$$
+
+ger väntevärdets linearitet
+
+$$
+\mathrm{MDT}
+=
+\mathrm{MAMT}
++
+\mathrm{MWT}.
+$$
+
+Detta samband kräver inte att den aktiva underhållstiden och väntetiden är statistiskt oberoende. Det förutsätter däremot att tiderna avser samma population av underhållsåtgärder och samma avgränsning av den otillgängliga tiden.
+
+### Skattning från observerade data
+
+Om $T_1,T_2,\ldots,T_n$ är observerade tider kan väntevärdet skattas med det aritmetiska medelvärdet:
+
+$$
+\widehat{\operatorname{E}[T]}
+=
+\frac{1}{n}\sum_{i=1}^n T_i.
+$$
+
+Exempelvis skattas MTBF och MRT som
+
+$$
+\widehat{\mathrm{MTBF}}
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}}T_{\mathrm{BF},i}
+$$
+
+och
+
+$$
+\widehat{\mathrm{MRT}}
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}}T_{\mathrm{Rep},i}.
+$$
+
+Det aritmetiska medelvärdet är en direkt skattning när observationerna utgör fullständigt observerade och jämförbara tidsintervall. Om observationsperioden avslutas innan ett fel eller en reparation har inträffat är observationen censurerad. Då kan metoder för livslängds- och tillförlitlighetsanalys behöva användas i stället för att enbart beräkna medelvärdet av de fullständiga observationerna.
