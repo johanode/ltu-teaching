@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -196,82 +231,49 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#icke-reparerbara-system" id="toc-icke-reparerbara-system" class="nav-link active" data-scroll-target="#icke-reparerbara-system"><span class="header-section-number">3.1</span> Icke-reparerbara system</a></li>
-  <li><a href="#reparerbara-system" id="toc-reparerbara-system" class="nav-link" data-scroll-target="#reparerbara-system"><span class="header-section-number">3.2</span> Reparerbara system</a></li>
-  <li><a href="#kvantifiering-av-driftsäkerhet" id="toc-kvantifiering-av-driftsäkerhet" class="nav-link" data-scroll-target="#kvantifiering-av-driftsäkerhet"><span class="header-section-number">4</span> Kvantifiering av driftsäkerhet</a></li>
-  <li><a href="#sannolikhetsfunktioner" id="toc-sannolikhetsfunktioner" class="nav-link" data-scroll-target="#sannolikhetsfunktioner"><span class="header-section-number">5</span> Sannolikhetsfunktioner</a>
+  <li><a href="#icke-reparerbara-och-reparerbara-enheter" id="toc-icke-reparerbara-och-reparerbara-enheter" class="nav-link active" data-scroll-target="#icke-reparerbara-och-reparerbara-enheter"><span class="header-section-number">3.1</span> Icke-reparerbara och reparerbara enheter</a></li>
+  <li><a href="#data-för-tillförlitlighetsanalys" id="toc-data-för-tillförlitlighetsanalys" class="nav-link" data-scroll-target="#data-för-tillförlitlighetsanalys"><span class="header-section-number">3.2</span> Data för tillförlitlighetsanalys</a></li>
+  <li><a href="#ett-diskret-exempel-med-en-tärning" id="toc-ett-diskret-exempel-med-en-tärning" class="nav-link" data-scroll-target="#ett-diskret-exempel-med-en-tärning"><span class="header-section-number">3.3</span> Ett diskret exempel med en tärning</a>
   <ul class="collapse">
-  <li><a href="#täthetsfunktion-pdf" id="toc-täthetsfunktion-pdf" class="nav-link" data-scroll-target="#täthetsfunktion-pdf"><span class="header-section-number">5.1</span> Täthetsfunktion (PDF)</a></li>
-  <li><a href="#fördelningsfunktion-cdf" id="toc-fördelningsfunktion-cdf" class="nav-link" data-scroll-target="#fördelningsfunktion-cdf"><span class="header-section-number">5.2</span> Fördelningsfunktion (CDF)</a></li>
-  <li><a href="#funktionssannolikhet-reliability-function" id="toc-funktionssannolikhet-reliability-function" class="nav-link" data-scroll-target="#funktionssannolikhet-reliability-function"><span class="header-section-number">5.3</span> Funktionssannolikhet (Reliability function)</a></li>
-  <li><a href="#samband" id="toc-samband" class="nav-link" data-scroll-target="#samband"><span class="header-section-number">5.4</span> Samband</a></li>
-  <li><a href="#felintensitet-hazard-function" id="toc-felintensitet-hazard-function" class="nav-link" data-scroll-target="#felintensitet-hazard-function"><span class="header-section-number">5.5</span> Felintensitet (Hazard function)</a></li>
+  <li><a href="#funktionssannolikhet-och-felsannolikhet" id="toc-funktionssannolikhet-och-felsannolikhet" class="nav-link" data-scroll-target="#funktionssannolikhet-och-felsannolikhet"><span class="header-section-number">3.3.1</span> Funktionssannolikhet och felsannolikhet</a></li>
   </ul></li>
-  <li><a href="#exponentialfördelning" id="toc-exponentialfördelning" class="nav-link" data-scroll-target="#exponentialfördelning"><span class="header-section-number">6</span> Exponentialfördelning</a>
+  <li><a href="#kontinuerlig-tid-till-fel" id="toc-kontinuerlig-tid-till-fel" class="nav-link" data-scroll-target="#kontinuerlig-tid-till-fel"><span class="header-section-number">3.4</span> Kontinuerlig tid till fel</a>
   <ul class="collapse">
-  <li><a href="#antagande" id="toc-antagande" class="nav-link" data-scroll-target="#antagande"><span class="header-section-number">6.1</span> Antagande</a></li>
-  <li><a href="#funktioner" id="toc-funktioner" class="nav-link" data-scroll-target="#funktioner"><span class="header-section-number">6.2</span> Funktioner</a></li>
-  <li><a href="#samband-med-mttf" id="toc-samband-med-mttf" class="nav-link" data-scroll-target="#samband-med-mttf"><span class="header-section-number">6.3</span> Samband med MTTF</a></li>
+  <li><a href="#täthetsfunktion" id="toc-täthetsfunktion" class="nav-link" data-scroll-target="#täthetsfunktion"><span class="header-section-number">3.4.1</span> Täthetsfunktion</a></li>
+  <li><a href="#felsannolikhet" id="toc-felsannolikhet" class="nav-link" data-scroll-target="#felsannolikhet"><span class="header-section-number">3.4.2</span> Felsannolikhet</a></li>
+  <li><a href="#funktionssannolikhet-och-överlevnadsfunktion" id="toc-funktionssannolikhet-och-överlevnadsfunktion" class="nav-link" data-scroll-target="#funktionssannolikhet-och-överlevnadsfunktion"><span class="header-section-number">3.4.3</span> Funktionssannolikhet och överlevnadsfunktion</a></li>
+  <li><a href="#förväntad-tid-till-fel" id="toc-förväntad-tid-till-fel" class="nav-link" data-scroll-target="#förväntad-tid-till-fel"><span class="header-section-number">3.4.4</span> Förväntad tid till fel</a></li>
+  <li><a href="#felintensitet" id="toc-felintensitet" class="nav-link" data-scroll-target="#felintensitet"><span class="header-section-number">3.4.5</span> Felintensitet</a></li>
+  <li><a href="#exempel-med-normalfördelning" id="toc-exempel-med-normalfördelning" class="nav-link" data-scroll-target="#exempel-med-normalfördelning"><span class="header-section-number">3.4.6</span> Exempel med normalfördelning</a></li>
   </ul></li>
-  <li><a href="#exempel-sannolikhet-att-fungera" id="toc-exempel-sannolikhet-att-fungera" class="nav-link" data-scroll-target="#exempel-sannolikhet-att-fungera"><span class="header-section-number">7</span> Exempel: sannolikhet att fungera</a>
+  <li><a href="#exponentialfördelning" id="toc-exponentialfördelning" class="nav-link" data-scroll-target="#exponentialfördelning"><span class="header-section-number">3.5</span> Exponentialfördelning</a>
   <ul class="collapse">
-  <li><a href="#steg-1-medelvärde" id="toc-steg-1-medelvärde" class="nav-link" data-scroll-target="#steg-1-medelvärde"><span class="header-section-number">7.1</span> Steg 1: medelvärde</a></li>
-  <li><a href="#steg-2-felintensitet" id="toc-steg-2-felintensitet" class="nav-link" data-scroll-target="#steg-2-felintensitet"><span class="header-section-number">7.2</span> Steg 2: felintensitet</a></li>
-  <li><a href="#steg-3-funktionssannolikhet" id="toc-steg-3-funktionssannolikhet" class="nav-link" data-scroll-target="#steg-3-funktionssannolikhet"><span class="header-section-number">7.3</span> Steg 3: funktionssannolikhet</a></li>
+  <li><a href="#från-diskret-till-kontinuerlig-tid" id="toc-från-diskret-till-kontinuerlig-tid" class="nav-link" data-scroll-target="#från-diskret-till-kontinuerlig-tid"><span class="header-section-number">3.5.1</span> Från diskret till kontinuerlig tid</a></li>
+  <li><a href="#fördelningens-funktioner" id="toc-fördelningens-funktioner" class="nav-link" data-scroll-target="#fördelningens-funktioner"><span class="header-section-number">3.5.2</span> Fördelningens funktioner</a></li>
+  <li><a href="#exempel-sannolikheten-att-en-pump-fungerar" id="toc-exempel-sannolikheten-att-en-pump-fungerar" class="nav-link" data-scroll-target="#exempel-sannolikheten-att-en-pump-fungerar"><span class="header-section-number">3.5.3</span> Exempel: sannolikheten att en pump fungerar</a></li>
+  <li><a href="#antaganden-i-pumpexemplet" id="toc-antaganden-i-pumpexemplet" class="nav-link" data-scroll-target="#antaganden-i-pumpexemplet"><span class="header-section-number">3.5.4</span> Antaganden i pumpexemplet</a></li>
   </ul></li>
-  <li><a href="#badkarskurvan" id="toc-badkarskurvan" class="nav-link" data-scroll-target="#badkarskurvan"><span class="header-section-number">8</span> Badkarskurvan</a>
+  <li><a href="#weibullfördelning" id="toc-weibullfördelning" class="nav-link" data-scroll-target="#weibullfördelning"><span class="header-section-number">3.6</span> Weibullfördelning</a>
   <ul class="collapse">
-  <li><a href="#begynnelseperiod" id="toc-begynnelseperiod" class="nav-link" data-scroll-target="#begynnelseperiod"><span class="header-section-number">8.1</span> 1. Begynnelseperiod</a></li>
-  <li><a href="#slumpmässig-period" id="toc-slumpmässig-period" class="nav-link" data-scroll-target="#slumpmässig-period"><span class="header-section-number">8.2</span> 2. Slumpmässig period</a></li>
-  <li><a href="#slitageperiod" id="toc-slitageperiod" class="nav-link" data-scroll-target="#slitageperiod"><span class="header-section-number">8.3</span> 3. Slitageperiod</a></li>
+  <li><a href="#exempel-tonerkassett" id="toc-exempel-tonerkassett" class="nav-link" data-scroll-target="#exempel-tonerkassett"><span class="header-section-number">3.6.1</span> Exempel: tonerkassett</a></li>
   </ul></li>
-  <li><a href="#olika-typer-av-funktionssäkerhet" id="toc-olika-typer-av-funktionssäkerhet" class="nav-link" data-scroll-target="#olika-typer-av-funktionssäkerhet"><span class="header-section-number">9</span> Olika typer av funktionssäkerhet</a>
+  <li><a href="#badkarskurvan" id="toc-badkarskurvan" class="nav-link" data-scroll-target="#badkarskurvan"><span class="header-section-number">3.7</span> Badkarskurvan</a></li>
+  <li><a href="#val-av-sannolikhetsfördelning" id="toc-val-av-sannolikhetsfördelning" class="nav-link" data-scroll-target="#val-av-sannolikhetsfördelning"><span class="header-section-number">3.8</span> Val av sannolikhetsfördelning</a></li>
+  <li><a href="#felprocesser-för-reparerbara-enheter" id="toc-felprocesser-för-reparerbara-enheter" class="nav-link" data-scroll-target="#felprocesser-för-reparerbara-enheter"><span class="header-section-number">3.9</span> Felprocesser för reparerbara enheter</a>
   <ul class="collapse">
-  <li><a href="#teknisk" id="toc-teknisk" class="nav-link" data-scroll-target="#teknisk"><span class="header-section-number">9.1</span> Teknisk</a></li>
-  <li><a href="#hård--och-mjukvara" id="toc-hård--och-mjukvara" class="nav-link" data-scroll-target="#hård--och-mjukvara"><span class="header-section-number">9.2</span> Hård- och mjukvara</a></li>
-  <li><a href="#mänsklig" id="toc-mänsklig" class="nav-link" data-scroll-target="#mänsklig"><span class="header-section-number">9.3</span> Mänsklig</a></li>
+  <li><a href="#förnyelseprocess" id="toc-förnyelseprocess" class="nav-link" data-scroll-target="#förnyelseprocess"><span class="header-section-number">3.9.1</span> Förnyelseprocess</a></li>
+  <li><a href="#homogen-poissonprocess" id="toc-homogen-poissonprocess" class="nav-link" data-scroll-target="#homogen-poissonprocess"><span class="header-section-number">3.9.2</span> Homogen Poissonprocess</a></li>
+  <li><a href="#icke-homogen-poissonprocess" id="toc-icke-homogen-poissonprocess" class="nav-link" data-scroll-target="#icke-homogen-poissonprocess"><span class="header-section-number">3.9.3</span> Icke-homogen Poissonprocess</a></li>
   </ul></li>
-  <li><a href="#normalfördelning" id="toc-normalfördelning" class="nav-link" data-scroll-target="#normalfördelning"><span class="header-section-number">10</span> Normalfördelning</a></li>
-  <li><a href="#weibullfördelning" id="toc-weibullfördelning" class="nav-link" data-scroll-target="#weibullfördelning"><span class="header-section-number">11</span> Weibullfördelning</a>
+  <li><a href="#systemtillförlitlighet" id="toc-systemtillförlitlighet" class="nav-link" data-scroll-target="#systemtillförlitlighet"><span class="header-section-number">3.10</span> Systemtillförlitlighet</a>
   <ul class="collapse">
-  <li><a href="#tolkning-av-β" id="toc-tolkning-av-β" class="nav-link" data-scroll-target="#tolkning-av-β"><span class="header-section-number">11.1</span> Tolkning av β</a></li>
-  <li><a href="#funktioner-1" id="toc-funktioner-1" class="nav-link" data-scroll-target="#funktioner-1"><span class="header-section-number">11.2</span> Funktioner</a></li>
-  <li><a href="#exempel" id="toc-exempel" class="nav-link" data-scroll-target="#exempel"><span class="header-section-number">11.3</span> Exempel</a></li>
+  <li><a href="#seriekopplat-system" id="toc-seriekopplat-system" class="nav-link" data-scroll-target="#seriekopplat-system"><span class="header-section-number">3.10.1</span> Seriekopplat system</a></li>
+  <li><a href="#parallellkopplat-system" id="toc-parallellkopplat-system" class="nav-link" data-scroll-target="#parallellkopplat-system"><span class="header-section-number">3.10.2</span> Parallellkopplat system</a></li>
+  <li><a href="#blandat-system" id="toc-blandat-system" class="nav-link" data-scroll-target="#blandat-system"><span class="header-section-number">3.10.3</span> Blandat system</a></li>
+  <li><a href="#exempel-två-krossar-och-en-truck" id="toc-exempel-två-krossar-och-en-truck" class="nav-link" data-scroll-target="#exempel-två-krossar-och-en-truck"><span class="header-section-number">3.10.4</span> Exempel: två krossar och en truck</a></li>
   </ul></li>
-  <li><a href="#systemtillförlitlighet" id="toc-systemtillförlitlighet" class="nav-link" data-scroll-target="#systemtillförlitlighet"><span class="header-section-number">12</span> Systemtillförlitlighet</a></li>
-  <li><a href="#typer-av-system" id="toc-typer-av-system" class="nav-link" data-scroll-target="#typer-av-system"><span class="header-section-number">13</span> Typer av system</a></li>
-  <li><a href="#seriekopplade-system" id="toc-seriekopplade-system" class="nav-link" data-scroll-target="#seriekopplade-system"><span class="header-section-number">14</span> Seriekopplade system</a>
-  <ul class="collapse">
-  <li><a href="#princip" id="toc-princip" class="nav-link" data-scroll-target="#princip"><span class="header-section-number">14.1</span> Princip</a></li>
-  <li><a href="#funktionssäkerhet" id="toc-funktionssäkerhet" class="nav-link" data-scroll-target="#funktionssäkerhet"><span class="header-section-number">14.2</span> Funktionssäkerhet</a></li>
-  <li><a href="#tolkning" id="toc-tolkning" class="nav-link" data-scroll-target="#tolkning"><span class="header-section-number">14.3</span> Tolkning</a></li>
-  </ul></li>
-  <li><a href="#parallellkopplade-system" id="toc-parallellkopplade-system" class="nav-link" data-scroll-target="#parallellkopplade-system"><span class="header-section-number">15</span> Parallellkopplade system</a>
-  <ul class="collapse">
-  <li><a href="#princip-1" id="toc-princip-1" class="nav-link" data-scroll-target="#princip-1"><span class="header-section-number">15.1</span> Princip</a></li>
-  <li><a href="#funktionssäkerhet-1" id="toc-funktionssäkerhet-1" class="nav-link" data-scroll-target="#funktionssäkerhet-1"><span class="header-section-number">15.2</span> Funktionssäkerhet</a></li>
-  <li><a href="#tolkning-1" id="toc-tolkning-1" class="nav-link" data-scroll-target="#tolkning-1"><span class="header-section-number">15.3</span> Tolkning</a></li>
-  <li><a href="#viktig-aspekt" id="toc-viktig-aspekt" class="nav-link" data-scroll-target="#viktig-aspekt"><span class="header-section-number">15.4</span> Viktig aspekt</a></li>
-  </ul></li>
-  <li><a href="#redundans" id="toc-redundans" class="nav-link" data-scroll-target="#redundans"><span class="header-section-number">16</span> Redundans</a></li>
-  <li><a href="#blandade-system" id="toc-blandade-system" class="nav-link" data-scroll-target="#blandade-system"><span class="header-section-number">17</span> Blandade system</a>
-  <ul class="collapse">
-  <li><a href="#beräkningsmetod" id="toc-beräkningsmetod" class="nav-link" data-scroll-target="#beräkningsmetod"><span class="header-section-number">17.1</span> Beräkningsmetod</a></li>
-  </ul></li>
-  <li><a href="#exempel-blandat-system" id="toc-exempel-blandat-system" class="nav-link" data-scroll-target="#exempel-blandat-system"><span class="header-section-number">18</span> Exempel: blandat system</a>
-  <ul class="collapse">
-  <li><a href="#steg-1-beräkna-komponenters-tillförlitlighet" id="toc-steg-1-beräkna-komponenters-tillförlitlighet" class="nav-link" data-scroll-target="#steg-1-beräkna-komponenters-tillförlitlighet"><span class="header-section-number">18.1</span> Steg 1: beräkna komponenters tillförlitlighet</a>
-  <ul class="collapse">
-  <li><a href="#krossar" id="toc-krossar" class="nav-link" data-scroll-target="#krossar"><span class="header-section-number">18.1.1</span> Krossar</a></li>
-  <li><a href="#truck" id="toc-truck" class="nav-link" data-scroll-target="#truck"><span class="header-section-number">18.1.2</span> Truck</a></li>
-  </ul></li>
-  <li><a href="#steg-2-parallell-del-krossar" id="toc-steg-2-parallell-del-krossar" class="nav-link" data-scroll-target="#steg-2-parallell-del-krossar"><span class="header-section-number">18.2</span> Steg 2: parallell del (krossar)</a></li>
-  <li><a href="#steg-3-serie-med-truck" id="toc-steg-3-serie-med-truck" class="nav-link" data-scroll-target="#steg-3-serie-med-truck"><span class="header-section-number">18.3</span> Steg 3: serie med truck</a></li>
-  <li><a href="#resultat" id="toc-resultat" class="nav-link" data-scroll-target="#resultat"><span class="header-section-number">18.4</span> Resultat</a></li>
-  <li><a href="#tolkning-2" id="toc-tolkning-2" class="nav-link" data-scroll-target="#tolkning-2"><span class="header-section-number">18.5</span> Tolkning</a></li>
-  </ul></li>
-  <li><a href="#slutsatser" id="toc-slutsatser" class="nav-link" data-scroll-target="#slutsatser"><span class="header-section-number">19</span> Slutsatser</a></li>
-  <li><a href="#sammanfattning" id="toc-sammanfattning" class="nav-link" data-scroll-target="#sammanfattning"><span class="header-section-number">20</span> Sammanfattning</a></li>
+  <li><a href="#pythonexempel" id="toc-pythonexempel" class="nav-link" data-scroll-target="#pythonexempel"><span class="header-section-number">3.11</span> Pythonexempel</a></li>
+  <li><a href="#sammanfattning" id="toc-sammanfattning" class="nav-link" data-scroll-target="#sammanfattning"><span class="header-section-number">3.12</span> Sammanfattning</a></li>
   </ul>
 </nav>
     </div>
@@ -297,497 +299,670 @@ window.Quarto = {
 </header>
 
 
-<p>Funktionssäkerhet beskriver sannolikheten att ett system fungerar utan fel under en given tid och under givna förhållanden.</p>
-<p>Man skiljer mellan två typer av system:</p>
-<section id="icke-reparerbara-system" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="icke-reparerbara-system"><span class="header-section-number">3.1</span> Icke-reparerbara system</h2>
+<p>Funktionssäkerhet (<em>reliability</em>) beskriver en enhets förmåga att utföra en krävd funktion under givna förhållanden och under ett angivet tidsintervall.</p>
+<p>Med <strong>tillförlitlighetsanalys</strong> avses de metoder som används för att beskriva och analysera fel och tider till fel.</p>
+<p>Funktionssäkerhet är en del av driftsäkerheten och påverkar hur ofta en enhet tappar sin funktion. Reparationstider och väntetider påverkar däremot hur lång tid det tar innan enheten åter är funktionsduglig. Sambandet mellan dessa egenskaper beskrivs närmare på sidorna <a href="./rams.html">Driftsäkerhet och RAMS</a> och <a href="./tillganglighet.html">Beräkning av tillgänglighet</a>.</p>
+<section id="icke-reparerbara-och-reparerbara-enheter" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="icke-reparerbara-och-reparerbara-enheter"><span class="header-section-number">3.1</span> Icke-reparerbara och reparerbara enheter</h2>
+<p>En <strong>icke-reparerbar enhet</strong> kan inte återställas till funktionsdugligt skick efter ett fel. När felet inträffar har enheten nått sin livslängd och måste ersättas. Exempel är säkringar, glödlampor och vissa elektroniska komponenter. För sådana enheter studeras tiden från driftsättning till det första felet (<em>time to failure</em>, TTF). Medelvärdet av denna tid betecknas <strong>MTTF</strong> (<em>Mean Time To Failure</em>).</p>
+<p>En <strong>reparerbar enhet</strong> kan återställas till funktionsdugligt skick efter ett fel genom reparation, exempelvis utbyte av felaktiga delar. Eftersom samma enhet kan drabbas av flera fel under sin livstid studeras tiden från återställningen efter ett fel till nästa fel (<em>time between failures</em>, TBF). Medelvärdet av denna tid betecknas <strong>MTBF</strong> (<em>Mean Time Between Failures</em>).</p>
+<p>För en icke-reparerbar enhet studeras fördelningen för tiden till fel <span class="math inline">\(T\)</span>.</p>
+<p>För en reparerbar enhet kan analysen göras ur två perspektiv:</p>
 <ul>
-<li>System som inte repareras efter fel</li>
-<li>Exempel: glödlampor, säkringar</li>
+<li>Om varje reparation antas återställa enheten till <em>good as new</em> kan varje tid mellan fel behandlas som en ny tid till fel. Tiderna mellan fel bildar då en förnyelseprocess och kan beskrivas med samma typer av sannolikhetsfördelningar som tider till fel.</li>
+<li>Om syftet är att beskriva hur felhändelserna ackumuleras över tiden studeras i stället en felprocess. Antalet fel som har inträffat fram till tiden <span class="math inline">\(t\)</span> betecknas då <span class="math inline">\(N(t)\)</span>, se <a href="#felprocesser-for-reparerbara-enheter">Felprocesser för reparerbara enheter</a>.</li>
 </ul>
-<p>Viktigt mått: - <strong>MTTF (Mean Time To Failure)</strong></p>
+<p>Sannolikhetsfördelningar används alltså för att beskriva enskilda tider till eller mellan fel, medan felprocesser används för att beskriva en följd av fel över tiden.</p>
 </section>
-<section id="reparerbara-system" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="reparerbara-system"><span class="header-section-number">3.2</span> Reparerbara system</h2>
-<ul>
-<li>System som kan repareras och åter tas i drift</li>
-<li>Exempel: maskiner, fordon, produktionssystem</li>
-</ul>
-<p>Viktigt mått: - <strong>MTBF (Mean Time Between Failures)</strong></p>
-<hr>
+<section id="data-för-tillförlitlighetsanalys" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="data-för-tillförlitlighetsanalys"><span class="header-section-number">3.2</span> Data för tillförlitlighetsanalys</h2>
+<p>En tillförlitlighetsanalys bygger på observerade tider till fel eller tider mellan fel. För observationerna behöver man även information om exempelvis driftsförhållanden och belastning, eftersom funktionssäkerheten gäller under givna förhållanden.</p>
+<p>Om en enhet fortfarande fungerar när observationen avslutas känner man inte dess fullständiga tid till fel. Observationen är då <strong>censurerad</strong>.</p>
 </section>
-<section id="kvantifiering-av-driftsäkerhet" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Kvantifiering av driftsäkerhet</h1>
-<p>För att analysera driftsäkerhet krävs data:</p>
+<section id="ett-diskret-exempel-med-en-tärning" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="ett-diskret-exempel-med-en-tärning"><span class="header-section-number">3.3</span> Ett diskret exempel med en tärning</h2>
+<p>För att illustrera hur slumpmässiga felhändelser beter sig börjar vi med ett diskret exempel. Anta att en enhets funktionstillstånd kontrolleras med jämna tidsintervall. Vid varje kontroll kastas en tiosidig tärning:</p>
 <ul>
-<li>Feltider</li>
-<li>Reparationstider</li>
-<li>Väntetider</li>
+<li>utfallet <span class="math inline">\(1\)</span> betyder att enheten får ett fel,</li>
+<li>övriga utfall betyder att enheten fortsätter att fungera.</li>
 </ul>
-<p>Utifrån dessa kan man ställa frågor som:</p>
-<ul>
-<li>Vilken sannolikhetsfördelning beskriver felen?</li>
-<li>Vad är medeltiden till fel?</li>
-<li>Vad är medelreparationstiden?</li>
-</ul>
-<p>:contentReference<span data-index="0">oaicite:0</span></p>
-<hr>
-</section>
-<section id="sannolikhetsfunktioner" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Sannolikhetsfunktioner</h1>
-<p>För att beskriva funktionssäkerhet används flera matematiska funktioner:</p>
-<section id="täthetsfunktion-pdf" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="täthetsfunktion-pdf"><span class="header-section-number">5.1</span> Täthetsfunktion (PDF)</h2>
+<p>Sannolikheten för fel vid varje kontroll är</p>
 <p><span class="math display">\[
-f(x)
+p=\frac{1}{10}=0{,}1.
 \]</span></p>
-<p>Beskriver sannolikhetstätheten för fel vid tidpunkt (x).</p>
-<hr>
-</section>
-<section id="fördelningsfunktion-cdf" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="fördelningsfunktion-cdf"><span class="header-section-number">5.2</span> Fördelningsfunktion (CDF)</h2>
+<p>Kasten är oberoende av varandra, och sannolikheten för fel är 10 procent vid varje kontroll så länge enheten fortfarande fungerar.</p>
+<p>Låt <span class="math inline">\(K\)</span> beteckna antalet kast fram till och med det första felet. För att det första felet ska inträffa vid kast <span class="math inline">\(k\)</span> måste enheten klara de första <span class="math inline">\(k-1\)</span> kasten och därefter få ett fel vid kast <span class="math inline">\(k\)</span>. Sannolikheten för detta är</p>
 <p><span class="math display">\[
-F(x)
+f_K(k)
+=
+P(K=k)
+=
+(1-p)^{k-1}p,
+\qquad
+k=1,2,\ldots
 \]</span></p>
-<p>Beskriver sannolikheten att ett fel inträffar före tid (x).</p>
-<hr>
-</section>
-<section id="funktionssannolikhet-reliability-function" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="funktionssannolikhet-reliability-function"><span class="header-section-number">5.3</span> Funktionssannolikhet (Reliability function)</h2>
+<p>Antalet kast fram till det första felet är därmed geometriskt fördelat.</p>
+<section id="funktionssannolikhet-och-felsannolikhet" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="funktionssannolikhet-och-felsannolikhet"><span class="header-section-number">3.3.1</span> Funktionssannolikhet och felsannolikhet</h3>
+<p>För att enheten fortfarande ska fungera efter <span class="math inline">\(k\)</span> kast måste den ha klarat samtliga kast. Funktionssannolikheten är därför</p>
 <p><span class="math display">\[
-R(x)
+R_K(k)
+=
+P(K&gt;k)
+=
+(1-p)^k.
 \]</span></p>
-<p>Beskriver sannolikheten att systemet fortfarande fungerar vid tid (x).</p>
-<hr>
-</section>
-<section id="samband" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="samband"><span class="header-section-number">5.4</span> Samband</h2>
+<p>Felsannolikheten anger sannolikheten att det första felet har inträffat senast vid kast <span class="math inline">\(k\)</span>:</p>
 <p><span class="math display">\[
-R(x) + F(x) = 1
+F_K(k)
+=
+P(K\leq k)
+=
+1-(1-p)^k.
 \]</span></p>
-<hr>
-</section>
-<section id="felintensitet-hazard-function" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="felintensitet-hazard-function"><span class="header-section-number">5.5</span> Felintensitet (Hazard function)</h2>
+<p>Funktionssannolikheten och felsannolikheten kompletterar varandra:</p>
 <p><span class="math display">\[
-\lambda(x)
+F_K(k)=1-R_K(k).
 \]</span></p>
-<p>Beskriver den momentana risken för fel.</p>
-<hr>
-</section>
-</section>
-<section id="exponentialfördelning" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Exponentialfördelning</h1>
-<p>En av de viktigaste modellerna inom driftsäkerhet.</p>
-<section id="antagande" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="antagande"><span class="header-section-number">6.1</span> Antagande</h2>
-<ul>
-<li>Felintensiteten är konstant:</li>
-</ul>
+<p>Sannolikheten att det första felet inträffar vid exakt kast <span class="math inline">\(k\)</span> är förändringen i den samlade felsannolikheten mellan kast <span class="math inline">\(k-1\)</span> och kast <span class="math inline">\(k\)</span>:</p>
 <p><span class="math display">\[
-\lambda(x) = \lambda
+f_K(k)
+=
+F_K(k)-F_K(k-1)
+=
+\Delta F_K(k).
 \]</span></p>
-<hr>
-</section>
-<section id="funktioner" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="funktioner"><span class="header-section-number">6.2</span> Funktioner</h2>
-<p>Funktionssannolikhet:</p>
+<p>Om sannolikheterna för fel vid varje enskilt kast summeras erhålls sannolikheten att ett fel har inträffat senast vid kast <span class="math inline">\(k\)</span>:</p>
 <p><span class="math display">\[
-R(x) = e^{-\lambda x}
+F_K(k)=\sum_{i=1}^{k}f_K(i).
 \]</span></p>
-<p>Felsannolikhet:</p>
+<p>De tre funktionerna beskriver alltså olika saker:</p>
+<ul>
+<li><span class="math inline">\(R_K(k)\)</span> är sannolikheten att enheten fortfarande fungerar efter <span class="math inline">\(k\)</span> kast.</li>
+<li><span class="math inline">\(F_K(k)\)</span> är sannolikheten att enheten har fått sitt första fel senast vid kast <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(f_K(k)\)</span> är sannolikheten att det första felet inträffar vid exakt kast <span class="math inline">\(k\)</span>.</li>
+</ul>
+<p>Före den första kontrollen, när <span class="math inline">\(k=0\)</span>, fungerar enheten fortfarande. Därför är <span class="math inline">\(R_K(0)=1\)</span> och <span class="math inline">\(F_K(0)=0\)</span>.</p>
+<p>Felsannolikheten vid nästa kontroll är alltid 10 procent för en enhet som fortfarande fungerar. Sannolikheten <span class="math inline">\(f_K(k)\)</span> minskar ändå med antalet kast, eftersom färre enheter klarar sig tillräckligt länge för att få sitt första fel vid ett sent kast.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Kast <span class="math inline">\(k\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(P(\text{tärningen visar 1})\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(P(\text{tärningen inte visar 1})\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(R_K(k)\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(F_K(k)\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(f_K(k)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,100</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,810</td>
+<td style="text-align: right;">0,190</td>
+<td style="text-align: right;">0,090</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,729</td>
+<td style="text-align: right;">0,271</td>
+<td style="text-align: right;">0,081</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,656</td>
+<td style="text-align: right;">0,344</td>
+<td style="text-align: right;">0,073</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,590</td>
+<td style="text-align: right;">0,410</td>
+<td style="text-align: right;">0,066</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,531</td>
+<td style="text-align: right;">0,469</td>
+<td style="text-align: right;">0,059</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,478</td>
+<td style="text-align: right;">0,522</td>
+<td style="text-align: right;">0,053</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,430</td>
+<td style="text-align: right;">0,570</td>
+<td style="text-align: right;">0,048</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,387</td>
+<td style="text-align: right;">0,613</td>
+<td style="text-align: right;">0,043</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,349</td>
+<td style="text-align: right;">0,651</td>
+<td style="text-align: right;">0,039</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\ldots\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0,100</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,015</td>
+<td style="text-align: right;">0,985</td>
+<td style="text-align: right;">0,002</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/geometrisk_fordelning_till_forsta_fel.png" class="img-fluid figure-img"></p>
+<figcaption>Funktionssäkerhet och felsannolikhet för en geometrisk fördelning</figcaption>
+</figure>
+</div>
+<p>Det förväntade antalet kast fram till felet är</p>
 <p><span class="math display">\[
-F(x) = 1 - e^{-\lambda x}
+\operatorname{E}[K]=\frac{1}{p}.
 \]</span></p>
-<p>Täthetsfunktion:</p>
+<p>För den tiosidiga tärningen är det förväntade antalet kast alltså tio. Det betyder inte att varje enhet får fel efter tio kast, utan att medelvärdet närmar sig tio när många likadana enheter observeras.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/geometrisk_fordelning_till_forsta_fel.png" class="img-fluid figure-img"></p>
+<figcaption>Simulerad och teoretisk geometrisk fördelning</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="kontinuerlig-tid-till-fel" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="kontinuerlig-tid-till-fel"><span class="header-section-number">3.4</span> Kontinuerlig tid till fel</h2>
+<p>I tärningsexemplet kan felet endast inträffa vid bestämda kontroller och tiden till fel mäts därför som ett antal kast. För en enhet som används kontinuerligt kan felet däremot inträffa när som helst. Tiden till fel beskrivs då med en kontinuerlig stokastisk variabel.</p>
+<p>Låt <span class="math inline">\(T\)</span> beteckna tiden till fel för en enhet i en population av jämförbara enheter. Eftersom enheternas livslängder varierar modelleras <span class="math inline">\(T\)</span> som en stokastisk variabel. En observerad livslängd är en realisation av <span class="math inline">\(T\)</span>.</p>
+<p>Samma grundläggande funktioner används som i det diskreta exemplet. Skillnaden är att sannolikheten för fel vid ett enskilt kast ersätts av en täthetsfunktion över kontinuerlig tid.</p>
+<p>En illustration av sambandet mellan täthetsfunktionen, fördelningsfunktionen och funktionssannolikheten ges i avsnittet <a href="#exempel-med-normalfordelning">Exempel med normalfördelning</a>.</p>
+<section id="täthetsfunktion" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="täthetsfunktion"><span class="header-section-number">3.4.1</span> Täthetsfunktion</h3>
+<p>Täthetsfunktionen <span class="math inline">\(f(t)\)</span>, på engelska <em>probability density function</em> (PDF), beskriver hur sannolikheten för tiden till fel är fördelad över tiden.</p>
+<p>För en kontinuerlig variabel är <span class="math inline">\(f(t)\)</span> en täthet och inte sannolikheten för fel vid en exakt tidpunkt. Sannolikheten att felet inträffar mellan tiderna <span class="math inline">\(t_1\)</span> och <span class="math inline">\(t_2\)</span> motsvarar arean under täthetsfunktionen:</p>
 <p><span class="math display">\[
-f(x) = \lambda e^{-\lambda x}
+P(t_1&lt;T\leq t_2)
+=
+\int_{t_1}^{t_2}f(t)\,dt.
 \]</span></p>
-<hr>
-</section>
-<section id="samband-med-mttf" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="samband-med-mttf"><span class="header-section-number">6.3</span> Samband med MTTF</h2>
+<p>En täthetsfunktion är alltid icke-negativ och den sammanlagda arean under kurvan är 1:</p>
 <p><span class="math display">\[
-MTTF = \frac{1}{\lambda}
+f(t)\geq 0
+\qquad\text{och}\qquad
+\int_{-\infty}^{\infty}f(t)\,dt=1.
 \]</span></p>
-<hr>
-</section>
-</section>
-<section id="exempel-sannolikhet-att-fungera" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Exempel: sannolikhet att fungera</h1>
-<p>Vi har fem pumpar med tider till fel:</p>
-<ul>
-<li>7, 15, 9, 3, 4 timmar</li>
-</ul>
-<p>Vi vill beräkna sannolikheten att en pump fungerar i 5 timmar.</p>
-<hr>
-<section id="steg-1-medelvärde" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="steg-1-medelvärde"><span class="header-section-number">7.1</span> Steg 1: medelvärde</h2>
+<p>För en fördelning som endast beskriver icke-negativa tider gäller <span class="math inline">\(f(t)=0\)</span> när <span class="math inline">\(t&lt;0\)</span>. Integralen kan då skrivas</p>
 <p><span class="math display">\[
-MTTF = \frac{7 + 15 + 9 + 3 + 4}{5} = 7.6
+\int_0^\infty f(t)\,dt=1.
 \]</span></p>
-<hr>
+<p>Vanliga fördelningar för tider till fel är exponential-, Weibull- och lognormalfördelningen.</p>
 </section>
-<section id="steg-2-felintensitet" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="steg-2-felintensitet"><span class="header-section-number">7.2</span> Steg 2: felintensitet</h2>
+<section id="felsannolikhet" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="felsannolikhet"><span class="header-section-number">3.4.2</span> Felsannolikhet</h3>
+<p>Fördelningsfunktionen <span class="math inline">\(F(t)\)</span> anger sannolikheten att felet har inträffat senast vid tiden <span class="math inline">\(t\)</span>:</p>
 <p><span class="math display">\[
-\lambda = \frac{1}{7.6} \approx 0.13
+F(t)=P(T\leq t).
 \]</span></p>
-<hr>
-</section>
-<section id="steg-3-funktionssannolikhet" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="steg-3-funktionssannolikhet"><span class="header-section-number">7.3</span> Steg 3: funktionssannolikhet</h2>
+<p>För en kontinuerlig variabel erhålls fördelningsfunktionen genom att integrera täthetsfunktionen:</p>
 <p><span class="math display">\[
-R(5) = e^{-0.13 \cdot 5} \approx 0.52
+F(t)
+=
+\int_{-\infty}^{t}f(u)\,du.
 \]</span></p>
-<p>Alltså:</p>
-<ul>
-<li>52 % sannolikhet att pumpen fungerar i 5 timmar :contentReference<span data-index="1">oaicite:1</span></li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="badkarskurvan" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Badkarskurvan</h1>
-<p>Felintensiteten i många system följer tre faser:</p>
-<section id="begynnelseperiod" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="begynnelseperiod"><span class="header-section-number">8.1</span> 1. Begynnelseperiod</h2>
-<ul>
-<li>Höga initiala fel</li>
-<li>Felintensiteten minskar</li>
-</ul>
-<p>Orsak: - tillverkningsfel - svaga komponenter</p>
-<hr>
-</section>
-<section id="slumpmässig-period" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="slumpmässig-period"><span class="header-section-number">8.2</span> 2. Slumpmässig period</h2>
-<ul>
-<li>Konstant felintensitet</li>
-<li>Exponentialfördelning gäller</li>
-</ul>
-<hr>
-</section>
-<section id="slitageperiod" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="slitageperiod"><span class="header-section-number">8.3</span> 3. Slitageperiod</h2>
-<ul>
-<li>Felintensiteten ökar</li>
-<li>Komponenter åldras</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="olika-typer-av-funktionssäkerhet" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Olika typer av funktionssäkerhet</h1>
-<p>Funktionssäkerhet kan delas in i:</p>
-<section id="teknisk" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="teknisk"><span class="header-section-number">9.1</span> Teknisk</h2>
-<ul>
-<li>Elektriska komponenter (generatorer, transformatorer)</li>
-<li>Mekaniska komponenter (lager, turbiner)</li>
-<li>Infrastruktur (rör, dammar)</li>
-</ul>
-<hr>
-</section>
-<section id="hård--och-mjukvara" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="hård--och-mjukvara"><span class="header-section-number">9.2</span> Hård- och mjukvara</h2>
-<ul>
-<li>Hårdvara: fysiska system</li>
-<li>Mjukvara:
-<ul>
-<li>ökande betydelse</li>
-<li>kan både förbättras och försämras över tid</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="mänsklig" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="mänsklig"><span class="header-section-number">9.3</span> Mänsklig</h2>
-<ul>
-<li>Operatörens påverkan</li>
-<li>Beslutsfattande</li>
-<li>Organisation och kultur</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="normalfördelning" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Normalfördelning</h1>
-<p>Fel kan ibland beskrivas med normalfördelning.</p>
-<p>Egenskaper:</p>
-<ul>
-<li>Symmetrisk fördelning</li>
-<li>Beskrivs med medelvärde och standardavvikelse</li>
-</ul>
-<p>Exempel:</p>
-<ul>
-<li>MTTF ≈ 10 dagar</li>
-<li>Standardavvikelse ≈ 3</li>
-</ul>
-<hr>
-</section>
-<section id="weibullfördelning" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Weibullfördelning</h1>
-<p>En mycket flexibel modell.</p>
-<p>Parametrar:</p>
-<ul>
-<li>α (skala)</li>
-<li>β (form)</li>
-</ul>
-<hr>
-<section id="tolkning-av-β" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="tolkning-av-β"><span class="header-section-number">11.1</span> Tolkning av β</h2>
-<ul>
-<li>β &lt; 1 → avtagande felintensitet<br>
-</li>
-<li>β = 1 → konstant felintensitet (exponentialfall)<br>
-</li>
-<li>β &gt; 1 → ökande felintensitet (slitage)</li>
-</ul>
-<hr>
-</section>
-<section id="funktioner-1" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="funktioner-1"><span class="header-section-number">11.2</span> Funktioner</h2>
-<p>Funktionssannolikhet:</p>
+<p>För en fördelning som endast kan anta icke-negativa tider kan detta skrivas som</p>
 <p><span class="math display">\[
-R(x) = e^{-(x/\alpha)^\beta}
+F(t)
+=
+\int_0^t f(u)\,du.
 \]</span></p>
-<p>Felsannolikhet:</p>
+</section>
+<section id="funktionssannolikhet-och-överlevnadsfunktion" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="funktionssannolikhet-och-överlevnadsfunktion"><span class="header-section-number">3.4.3</span> Funktionssannolikhet och överlevnadsfunktion</h3>
+<p>Funktionssannolikheten <span class="math inline">\(R(t)\)</span> anger sannolikheten att enheten fortfarande fungerar efter tiden <span class="math inline">\(t\)</span>:</p>
 <p><span class="math display">\[
-F(x) = 1 - e^{-(x/\alpha)^\beta}
+R(t)=P(T&gt;t).
 \]</span></p>
-<hr>
-</section>
-<section id="exempel" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="exempel"><span class="header-section-number">11.3</span> Exempel</h2>
-<p>En tonerkassett har:</p>
-<ul>
-<li>α = 16 dygn<br>
-</li>
-<li>β = 6</li>
-</ul>
-<p>Sannolikheten att den fungerar i 12 dygn:</p>
+<p>Detta är samma funktion som ofta kallas för överlevnadsfunktion. I detta sammanhang är termerna alltså likvärdiga: <span class="math inline">\(R(t)\)</span> beskriver sannolikheten för att en enhet fortfarande fungerar vid tiden <span class="math inline">\(t\)</span>.</p>
+<p>Eftersom enheten antingen har fått ett fel senast vid tiden <span class="math inline">\(t\)</span> eller fortfarande fungerar gäller</p>
 <p><span class="math display">\[
-R(12) \approx 0.84
+R(t)=1-F(t).
 \]</span></p>
-<p>Alltså:</p>
+<p>För en population av jämförbara enheter anger <span class="math inline">\(F(t)\)</span> sannolikheten att en slumpmässigt vald enhet har fått fel senast vid tiden <span class="math inline">\(t\)</span>. Den kan också tolkas som den förväntade andelen enheter som har fått fel. På motsvarande sätt anger <span class="math inline">\(R(t)\)</span> sannolikheten att enheten fortfarande fungerar och den förväntade andelen fungerande enheter.</p>
+</section>
+<section id="förväntad-tid-till-fel" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="förväntad-tid-till-fel"><span class="header-section-number">3.4.4</span> Förväntad tid till fel</h3>
+<p>För en icke-reparerbar enhet är MTTF väntevärdet av tiden till fel:</p>
+<p><span class="math display">\[
+MTTF
+=
+\operatorname{E}[T]
+=
+\int_0^\infty t f(t)\,dt
+=
+\int_0^\infty R(t)\,dt.
+\]</span></p>
+<p>För en reparerbar enhet definieras MTBF på motsvarande sätt som väntevärdet av tiden mellan fel.</p>
+</section>
+<section id="felintensitet" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="felintensitet"><span class="header-section-number">3.4.5</span> Felintensitet</h3>
+<p>Felintensiteten <span class="math inline">\(\lambda(t)\)</span> beskriver hur snabbt fel uppstår vid tiden <span class="math inline">\(t\)</span> bland de enheter som fortfarande fungerar. På engelska benämns den <em>hazard function</em> eller <em>hazard rate</em>. Den ges av</p>
+<p><span class="math display">\[
+\lambda(t)
+=
+\frac{f(t)}{R(t)}.
+\]</span></p>
+<p>Felintensiteten är ett mått på den momentana felbenägenheten vid tiden <span class="math inline">\(t\)</span>, givet att enheten har fungerat utan fel fram till denna tidpunkt. Den är därför ett villkorat intensitetsmått och inte en sannolikhet. Eftersom felintensiteten uttrycks per tidsenhet, exempelvis fel per drifttimme, kan dess värde vara större än 1.</p>
+</section>
+<section id="exempel-med-normalfördelning" class="level3" data-number="3.4.6">
+<h3 data-number="3.4.6" class="anchored" data-anchor-id="exempel-med-normalfördelning"><span class="header-section-number">3.4.6</span> Exempel med normalfördelning</h3>
+<p>Normalfördelningen används här för att illustrera hur en täthetsfunktion, fördelningsfunktion och funktionssannolikhet ska tolkas. Anta att tiden till fel är normalfördelad med medelvärdet 10 timmar och standardavvikelsen 2 timmar:</p>
+<p><span class="math display">\[
+T\sim N(10,2^2).
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/normalfordelad-tid-till-fel.png" class="img-fluid figure-img"></p>
+<figcaption>Täthetsfunktion för en normalfördelad tid till fel</figcaption>
+</figure>
+</div>
+<p>Täthetsfunktionens värde vid en viss tidpunkt är inte en sannolikhet, utan beskriver hur sannolikheten är fördelad över tiden. Sannolikheter erhålls som areor under täthetskurvan.</p>
+<p>Täthetsfunktionen är som högst vid medelvärdet, 10 timmar, vilket innebär att tiderna till fel är mest koncentrerade (tätast) omkring detta värde.</p>
+<p>Den gula arean motsvarar sannolikheten att enheten har fått fel senast vid 8 timmar:</p>
+<p><span class="math display">\[
+F(8)
+=
+P(T\leq8)
+=
+\int_0^8 f(t)\,dt
+\approx
+0{,}159.
+\]</span></p>
+<p>Den återstående arean motsvarar sannolikheten att enheten fortfarande fungerar efter 8 timmar:</p>
+<p><span class="math display">\[
+R(8)
+=
+P(T&gt;8)
+=
+\int_8^\infty f(t)\,dt
+=
+1-F(8)
+\approx
+0{,}841.
+\]</span></p>
+<p>Figuren visar därmed sambandet mellan täthetsfunktionen <span class="math inline">\(f(t)\)</span>, fördelningsfunktionen <span class="math inline">\(F(t)\)</span> och funktionssannolikheten <span class="math inline">\(R(t)\)</span>.</p>
+<p>Normalfördelningen tillåter även negativa värden och är därför inte generellt lämplig för tider till fel. I detta exempel är sannolikheten för en negativ tid försumbar eftersom medelvärdet ligger fem standardavvikelser från noll.</p>
+</section>
+</section>
+<section id="exponentialfördelning" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="exponentialfördelning"><span class="header-section-number">3.5</span> Exponentialfördelning</h2>
+<p>Exponentialfördelningen används när felintensiteten kan betraktas som konstant:</p>
+<p><span class="math display">\[
+\lambda(t)=\lambda.
+\]</span></p>
+<p>Det innebär att en enhet som har fungerat länge har samma felintensitet som en enhet som nyligen tagits i drift. Modellen är därför främst lämplig under perioder då fel uppträder slumpmässigt och varken inkörning eller åldrande har någon tydlig påverkan.</p>
+<section id="från-diskret-till-kontinuerlig-tid" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="från-diskret-till-kontinuerlig-tid"><span class="header-section-number">3.5.1</span> Från diskret till kontinuerlig tid</h3>
+<p>Låt varje kast i det diskreta exemplet motsvara ett tidsintervall med längden <span class="math inline">\(\Delta t\)</span>. Vid konstant felintensitet <span class="math inline">\(\lambda\)</span> kan sannolikheten för fel under intervallet skrivas som</p>
+<p><span class="math display">\[
+p=1-e^{-\lambda\Delta t}.
+\]</span></p>
+<p>För ett kort tidsintervall gäller approximationen</p>
+<p><span class="math display">\[
+p\approx\lambda\Delta t.
+\]</span></p>
+<p>När tidsintervallen görs allt kortare övergår den geometriska modellen i en kontinuerlig modell där tiden till fel är exponentialfördelad:</p>
+<p><span class="math display">\[
+T\sim\operatorname{Exp}(\lambda).
+\]</span></p>
+</section>
+<section id="fördelningens-funktioner" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="fördelningens-funktioner"><span class="header-section-number">3.5.2</span> Fördelningens funktioner</h3>
+<p>För exponentialfördelningen gäller</p>
+<p><span class="math display">\[
+F(t)=1-e^{-\lambda t},
+\]</span></p>
+<p><span class="math display">\[
+R(t)=e^{-\lambda t}
+\]</span></p>
+<p>och</p>
+<p><span class="math display">\[
+f(t)=\lambda e^{-\lambda t}.
+\]</span></p>
+<p>Medeltiden till fel är</p>
+<p><span class="math display">\[
+MTTF=\frac{1}{\lambda}.
+\]</span></p>
+<p>För en reparerbar enhet med exponentialfördelade tider mellan fel gäller på motsvarande sätt</p>
+<p><span class="math display">\[
+MTBF=\frac{1}{\lambda}.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/exponentialfordelad-tid-till-fel.png" class="img-fluid figure-img"></p>
+<figcaption>Funktionssannolikhet och felsannolikhet för exponentialfördelad tid till fel</figcaption>
+</figure>
+</div>
+</section>
+<section id="exempel-sannolikheten-att-en-pump-fungerar" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="exempel-sannolikheten-att-en-pump-fungerar"><span class="header-section-number">3.5.3</span> Exempel: sannolikheten att en pump fungerar</h3>
+<p>Fem likadana, icke-reparerbara pumpar har följande observerade tider till fel:</p>
+<p><span class="math display">\[
+7,\ 15,\ 9,\ 3,\ 4\ \text{timmar}.
+\]</span></p>
+<p>Om samtliga tider är fullständigt observerade kan MTTF skattas med det aritmetiska medelvärdet:</p>
+<p><span class="math display">\[
+\widehat{MTTF}
+=
+\frac{7+15+9+3+4}{5}
+=
+7{,}6\ \text{h}.
+\]</span></p>
+<p>Om tiderna antas vara exponentialfördelade skattas felintensiteten som</p>
+<p><span class="math display">\[
+\hat{\lambda}
+=
+\frac{1}{7{,}6}
+\approx
+0{,}132\ \text{h}^{-1}.
+\]</span></p>
+<p>Den skattade sannolikheten att en pump fungerar längre än 5 timmar blir</p>
+<p><span class="math display">\[
+R(5)
+=
+e^{-5/7{,}6}
+\approx
+0{,}518.
+\]</span></p>
+<p>Under antagandet om exponentialfördelade tider till fel är sannolikheten alltså cirka <strong>51,8 %</strong>. Eftersom skattningen endast bygger på fem observationer är osäkerheten stor.</p>
+</section>
+<section id="antaganden-i-pumpexemplet" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="antaganden-i-pumpexemplet"><span class="header-section-number">3.5.4</span> Antaganden i pumpexemplet</h3>
+<p>Beräkningen i pumpexemplet bygger på att</p>
 <ul>
-<li>84 % sannolikhet att den håller i 12 dygn :contentReference<span data-index="2">oaicite:2</span></li>
+<li>pumparna är icke-reparerbara och observeras till sitt första fel,</li>
+<li>pumparnas tider till fel är oberoende,</li>
+<li>tiderna kan beskrivas med samma exponentialfördelning,</li>
+<li>felintensiteten är konstant under den studerade perioden,</li>
+<li>ett inträffat fel kan observeras och klassificeras entydigt.</li>
 </ul>
+<p>För reparerbara enheter kan exponentialfördelningen på motsvarande sätt användas för tider mellan fel, exempelvis under antagandet <em>good as new</em>.</p>
 </section>
 </section>
-<section id="systemtillförlitlighet" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Systemtillförlitlighet</h1>
-<p>Hittills har vi studerat enskilda komponenters funktionssäkerhet.<br>
-I praktiken består system av flera komponenter som samverkar.</p>
-<p>Systemets totala funktionssäkerhet beror därför på:</p>
+<section id="weibullfördelning" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="weibullfördelning"><span class="header-section-number">3.6</span> Weibullfördelning</h2>
+<p>Weibullfördelningen är mer flexibel än exponentialfördelningen eftersom felintensiteten kan minska, vara konstant eller öka med tiden. Fördelningen har skalparametern <span class="math inline">\(\alpha\)</span> och formparametern <span class="math inline">\(\beta\)</span>.</p>
+<p>Felsannolikheten och funktionssannolikheten ges av</p>
+<p><span class="math display">\[
+F(t)
+=
+1-\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right]
+\]</span></p>
+<p>och</p>
+<p><span class="math display">\[
+R(t)
+=
+\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right].
+\]</span></p>
+<p>Täthetsfunktionen är</p>
+<p><span class="math display">\[
+f(t)
+=
+\frac{\beta t^{\beta-1}}{\alpha^\beta}
+\exp\left[-\left(\frac{t}{\alpha}\right)^\beta\right],
+\]</span></p>
+<p>och felintensiteten är</p>
+<p><span class="math display">\[
+\lambda(t)
+=
+\frac{\beta t^{\beta-1}}{\alpha^\beta}.
+\]</span></p>
+<p>Formparametern <span class="math inline">\(\beta\)</span> bestämmer hur felintensiteten förändras:</p>
 <ul>
-<li>varje komponents tillförlitlighet</li>
-<li>hur komponenterna är kopplade</li>
+<li><span class="math inline">\(\beta&lt;1\)</span>: felintensiteten minskar med tiden,</li>
+<li><span class="math inline">\(\beta=1\)</span>: felintensiteten är konstant och Weibullfördelningen övergår i exponentialfördelningen,</li>
+<li><span class="math inline">\(\beta&gt;1\)</span>: felintensiteten ökar med tiden.</li>
 </ul>
-<hr>
+<p>Medeltiden till fel ges av</p>
+<p><span class="math display">\[
+MTTF
+=
+\alpha\Gamma\left(1+\frac{1}{\beta}\right).
+\]</span></p>
+<p>För Weibullfördelade tider mellan fel används samma uttryck för MTBF. Värden på gammafunktionen och samtliga fördelningsfunktioner finns i <a href="./formelsamling.html">Formelsamling i drift och underhåll</a>.</p>
+<section id="exempel-tonerkassett" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="exempel-tonerkassett"><span class="header-section-number">3.6.1</span> Exempel: tonerkassett</h3>
+<p>Anta att tiden till fel för en tonerkassett är Weibullfördelad med <span class="math inline">\(\alpha=16\)</span> dygn och <span class="math inline">\(\beta=6\)</span>. Sannolikheten att kassetten fungerar längre än 12 dygn är</p>
+<p><span class="math display">\[
+R(12)
+=
+\exp\left[-\left(\frac{12}{16}\right)^6\right]
+\approx
+0{,}837.
+\]</span></p>
+<p>Sannolikheten är alltså cirka <strong>83,7 %</strong>.</p>
 </section>
-<section id="typer-av-system" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Typer av system</h1>
-<p>De vanligaste typerna av system är:</p>
+</section>
+<section id="badkarskurvan" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="badkarskurvan"><span class="header-section-number">3.7</span> Badkarskurvan</h2>
+<p>Badkarskurvan är en principiell beskrivning av hur felintensiteten för en population av jämförbara enheter kan variera med enheternas ålder. Kurvan erhålls genom att betrakta felutfallet för många enheter och inte genom att följa en enskild enhet. Den består av tre karakteristiska perioder:</p>
 <ol type="1">
-<li>Seriekopplade system<br>
-</li>
-<li>Parallellkopplade system<br>
-</li>
-<li>Blandade system<br>
-</li>
-<li>Standby-system</li>
+<li><strong>Begynnelseperiod:</strong> Felintensiteten minskar med enheternas ålder. De fel som uppträder tidigt kan exempelvis bero på tillverkningsfel, installationsfel eller andra brister som inte upptäckts före driftsättning.</li>
+<li><strong>Bästperiod:</strong> Felintensiteten är ungefär konstant. Felen uppstår då huvudsakligen slumpmässigt och oberoende av enheternas ålder. Exponentialfördelningen kan i detta fall vara en lämplig modell.</li>
+<li><strong>Slutperiod:</strong> Felintensiteten ökar när komponenter åldras, förslits eller degraderas.</li>
 </ol>
-<hr>
+<p>Alla populationer av enheter uppvisar inte en tydlig badkarskurva. Kurvan bör därför betraktas som en konceptuell modell för vanliga felmönster hos maskinkomponenter. Weibullfördelningens formparameter kan beskriva minskande, konstant eller ökande felintensitet. En enda Weibullfördelning beskriver däremot normalt inte badkarskurvans samtliga tre perioder.</p>
 </section>
-<section id="seriekopplade-system" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> Seriekopplade system</h1>
-<section id="princip" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="princip"><span class="header-section-number">14.1</span> Princip</h2>
-<p>Ett system är seriekopplat om <strong>alla komponenter måste fungera</strong> för att systemet ska fungera.</p>
-<p>Exempel:</p>
-<ul>
-<li>Turbin → Generator → Transformator</li>
-</ul>
-<p>Om en komponent fallerar → hela systemet fallerar.</p>
-<hr>
+<section id="val-av-sannolikhetsfördelning" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="val-av-sannolikhetsfördelning"><span class="header-section-number">3.8</span> Val av sannolikhetsfördelning</h2>
+<p>Valet av fördelning ska grundas på hur enheten fungerar, hur den används och hur observerade data ser ut. Exponentialfördelningen är lämplig när felintensiteten är ungefär konstant. Weibullfördelningen kan även beskriva minskande och ökande felintensitet.</p>
+<p>Normalfördelningen kan användas när tiderna är ungefär symmetriskt fördelade och variationen är liten i förhållande till medelvärdet. Eftersom normalfördelningen även tillåter negativa värden är den ofta mindre naturlig för tider till fel. Positiva och högerskeva tider beskrivs vanligen bättre med exempelvis Weibull- eller lognormalfördelning.</p>
+<p>Fördelningsvalet bör kontrolleras mot data. En parameter som skattats från ett litet antal observationer ska alltid tolkas med försiktighet.</p>
 </section>
-<section id="funktionssäkerhet" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="funktionssäkerhet"><span class="header-section-number">14.2</span> Funktionssäkerhet</h2>
-<p>Systemets funktionssannolikhet ges av:</p>
-<p>R_s = R_1 * R_2 * R_3</p>
-<p>Allmänt:</p>
-<p>R_s = Π R_i</p>
-<hr>
+<section id="felprocesser-för-reparerbara-enheter" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="felprocesser-för-reparerbara-enheter"><span class="header-section-number">3.9</span> Felprocesser för reparerbara enheter</h2>
+<p>För en reparerbar enhet kan flera fel inträffa under observationsperioden. Låt <span class="math inline">\(N(t)\)</span> beteckna antalet fel som har inträffat fram till tiden <span class="math inline">\(t\)</span>. Hur felprocessen modelleras beror bland annat på vilket tillstånd enheten antas ha efter en reparation.</p>
+<p>Tidsskalan behöver definieras för analysen. Tiden <span class="math inline">\(t\)</span> kan exempelvis avse ackumulerad drifttid eller kalendertid. Valet påverkar hur processintensiteten och tiderna mellan fel ska tolkas.</p>
+<section id="förnyelseprocess" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="förnyelseprocess"><span class="header-section-number">3.9.1</span> Förnyelseprocess</h3>
+<p>Om varje reparation återställer enheten till ett skick som motsvarar en ny enhet, <em>good as new</em>, börjar en ny livslängd efter varje reparation. Tiderna mellan fel kan då betraktas som oberoende och likafördelade stokastiska variabler. Följden av fel och efterföljande återställningar bildar då en <strong>förnyelseprocess</strong>.</p>
+<p>Tiderna mellan fel kan exempelvis vara exponential- eller Weibullfördelade. Om de är exponentialfördelade med konstant felintensitet erhålls en homogen Poissonprocess.</p>
 </section>
-<section id="tolkning" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="tolkning"><span class="header-section-number">14.3</span> Tolkning</h2>
-<ul>
-<li>Fler komponenter → lägre tillförlitlighet<br>
-</li>
-<li>Den svagaste komponenten påverkar systemet mest</li>
-</ul>
-<hr>
+<section id="homogen-poissonprocess" class="level3" data-number="3.9.2">
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="homogen-poissonprocess"><span class="header-section-number">3.9.2</span> Homogen Poissonprocess</h3>
+<p>I en <strong>homogen Poissonprocess</strong> (HPP) är processintensiteten (felintensiteten) konstant. Antalet fel under ett tidsintervall beror därför endast på intervallets längd och inte på enhetens ålder eller tidigare fel.</p>
+<p>Om processens konstanta felintensitet är <span class="math inline">\(\nu\)</span> gäller</p>
+<p><span class="math display">\[
+N(t)\sim\operatorname{Poisson}(\nu t).
+\]</span></p>
+<p>Parameteren <span class="math inline">\(\nu\)</span> beskriver det förväntade antalet fel per tidsenhet.</p>
+<p>Tiderna mellan fel är då oberoende och exponentialfördelade, och</p>
+<p><span class="math display">\[
+MTBF=\frac{1}{\nu}.
+\]</span></p>
 </section>
-</section>
-<section id="parallellkopplade-system" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> Parallellkopplade system</h1>
-<section id="princip-1" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="princip-1"><span class="header-section-number">15.1</span> Princip</h2>
-<p>Ett system är parallellkopplat om <strong>minst en komponent fungerar</strong>.</p>
-<p>Exempel:</p>
-<ul>
-<li>två pumpar</li>
-<li>dubbla generatorer</li>
-</ul>
-<hr>
-</section>
-<section id="funktionssäkerhet-1" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="funktionssäkerhet-1"><span class="header-section-number">15.2</span> Funktionssäkerhet</h2>
-<p>Systemets tillförlitlighet:</p>
-<p>R_s = 1 - Π (1 - R_i)</p>
-<hr>
-</section>
-<section id="tolkning-1" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="tolkning-1"><span class="header-section-number">15.3</span> Tolkning</h2>
-<p>Fördelar:</p>
-<ul>
-<li>minskar risken för totalstopp<br>
-</li>
-<li>ökar tillgänglighet</li>
-</ul>
-<p>Nackdelar:</p>
-<ul>
-<li>högre kostnad<br>
-</li>
-<li>mer underhåll</li>
-</ul>
-<hr>
-</section>
-<section id="viktig-aspekt" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="viktig-aspekt"><span class="header-section-number">15.4</span> Viktig aspekt</h2>
-<p>Vid parallella system måste man även beakta:</p>
-<ul>
-<li>kapacitet (full eller reducerad drift)</li>
-<li>redundansnivå</li>
-</ul>
-<hr>
+<section id="icke-homogen-poissonprocess" class="level3" data-number="3.9.3">
+<h3 data-number="3.9.3" class="anchored" data-anchor-id="icke-homogen-poissonprocess"><span class="header-section-number">3.9.3</span> Icke-homogen Poissonprocess</h3>
+<p>I en <strong>icke-homogen Poissonprocess</strong> (NHPP) varierar felintensiteten med tiden. Modellen kan därför beskriva en reparerbar enhet vars felbenägenhet ökar på grund av degradering eller minskar till följd av förbättringar.</p>
+<p>NHPP används ofta när reparationen återställer funktionen men inte gör enheten som ny, så kallad minimal reparation. Tiderna mellan fel är då inte likafördelade, och ett enda konstant värde på MTBF beskriver inte felprocessen fullständigt.</p>
+<p>Om processintensiteten betecknas <span class="math inline">\(\nu(t)\)</span> är det förväntade antalet fel fram till tiden <span class="math inline">\(t\)</span></p>
+<p><span class="math display">\[
+\operatorname{E}[N(t)]
+=
+\int_0^t \nu(u)\,du.
+\]</span></p>
 </section>
 </section>
-<section id="redundans" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> Redundans</h1>
-<p>Redundans innebär att flera komponenter utför samma funktion.</p>
-<p>Syfte:</p>
-<ul>
-<li>minska konsekvensen av fel<br>
-</li>
-<li>öka systemets tillförlitlighet</li>
-</ul>
-<hr>
+<section id="systemtillförlitlighet" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="systemtillförlitlighet"><span class="header-section-number">3.10</span> Systemtillförlitlighet</h2>
+<p>Ett system består ofta av flera komponenter som samverkar. Systemets funktionssäkerhet beror både på komponenternas funktionssäkerhet och på hur de är kopplade.</p>
+<p>Formlerna nedan förutsätter att komponenternas fel är oberoende. Gemensamma felorsaker, beroenden mellan komponenter och begränsad systemkapacitet behöver annars behandlas särskilt.</p>
+<section id="seriekopplat-system" class="level3" data-number="3.10.1">
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="seriekopplat-system"><span class="header-section-number">3.10.1</span> Seriekopplat system</h3>
+<p>Ett system är seriekopplat ur funktionssynpunkt om samtliga komponenter måste fungera för att systemet ska kunna utföra sin krävda funktion. En drivlina bestående av turbin, generator och transformator kan exempelvis betraktas som ett seriekopplat system om ett fel i någon av komponenterna stoppar hela funktionen.</p>
+<p>För ett system med <span class="math inline">\(n\)</span> oberoende komponenter gäller</p>
+<p><span class="math display">\[
+R_{tot}(t)
+=
+\prod_{i=1}^{n}R_i(t).
+\]</span></p>
+<p>Varje ytterligare komponent som måste fungera minskar systemets funktionssannolikhet.</p>
 </section>
-<section id="blandade-system" class="level1" data-number="17">
-<h1 data-number="17"><span class="header-section-number">17</span> Blandade system</h1>
-<p>De flesta verkliga system är en kombination av:</p>
-<ul>
-<li>serie- och parallellkopplingar</li>
-</ul>
-<hr>
-<section id="beräkningsmetod" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="beräkningsmetod"><span class="header-section-number">17.1</span> Beräkningsmetod</h2>
+<section id="parallellkopplat-system" class="level3" data-number="3.10.2">
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="parallellkopplat-system"><span class="header-section-number">3.10.2</span> Parallellkopplat system</h3>
+<p>Ett system är parallellkopplat ur funktionssynpunkt om det räcker att minst en av komponenterna fungerar. För <span class="math inline">\(n\)</span> oberoende komponenter gäller</p>
+<p><span class="math display">\[
+R_{tot}(t)
+=
+1-
+\prod_{i=1}^{n}\left[1-R_i(t)\right].
+\]</span></p>
+<p>Parallellkoppling kan ge redundans och därmed öka systemets funktionssäkerhet. Det måste dock vara tydligt om en enda fungerande komponent har tillräcklig kapacitet för att systemet ska kunna utföra sin krävda funktion. Även gemensamma felorsaker kan minska nyttan av redundansen.</p>
+<p>Ett standby-system kräver dessutom antaganden om bland annat inkoppling, omkopplingstid och om reservkomponenten kan fela medan den väntar. Det kan därför inte alltid behandlas som ett vanligt parallellkopplat system.</p>
+</section>
+<section id="blandat-system" class="level3" data-number="3.10.3">
+<h3 data-number="3.10.3" class="anchored" data-anchor-id="blandat-system"><span class="header-section-number">3.10.3</span> Blandat system</h3>
+<p>Ett blandat system innehåller både serie- och parallellkopplade delar. Analysen genomförs stegvis:</p>
 <ol type="1">
-<li>Identifiera delsystem<br>
-</li>
-<li>Beräkna tillförlitlighet för varje delsystem<br>
-</li>
-<li>Kombinera dessa stegvis</li>
+<li>Identifiera vilka komponenter som måste fungera för att systemets krävda funktion ska kunna utföras.</li>
+<li>Beräkna funktionssannolikheten för varje delsystem.</li>
+<li>Kombinera delsystemen tills systemets totala funktionssannolikhet erhålls.</li>
 </ol>
-<hr>
+</section>
+<section id="exempel-två-krossar-och-en-truck" class="level3" data-number="3.10.4">
+<h3 data-number="3.10.4" class="anchored" data-anchor-id="exempel-två-krossar-och-en-truck"><span class="header-section-number">3.10.4</span> Exempel: två krossar och en truck</h3>
+<p>Ett system består av två parallellkopplade krossar och en truck som är seriekopplad med krossarna. Minst en kross och trucken måste fungera för att systemet ska kunna utföra sin krävda funktion.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Komponent</th>
+<th style="text-align: right;">MTTF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kross 1</td>
+<td style="text-align: right;">1 000 h</td>
+</tr>
+<tr class="even">
+<td>Kross 2</td>
+<td style="text-align: right;">1 000 h</td>
+</tr>
+<tr class="odd">
+<td>Truck</td>
+<td style="text-align: right;">200 h</td>
+</tr>
+</tbody>
+</table>
+<p>Anta att komponenterna har konstanta felintensiteter, att felen är oberoende och att ingen reparation genomförs under den studerade perioden på 50 timmar.</p>
+<p>För en exponentialfördelad tid till fel gäller</p>
+<p><span class="math display">\[
+R(t)=e^{-t/MTTF}.
+\]</span></p>
+<p>Krossarnas funktionssannolikhet efter 50 timmar är</p>
+<p><span class="math display">\[
+R_{K1}(50)=R_{K2}(50)
+=
+e^{-50/1000}
+\approx
+0{,}9512.
+\]</span></p>
+<p>Truckens funktionssannolikhet är</p>
+<p><span class="math display">\[
+R_T(50)
+=
+e^{-50/200}
+\approx
+0{,}7788.
+\]</span></p>
+<p>De parallellkopplade krossarnas gemensamma funktionssannolikhet blir</p>
+<p><span class="math display">\[
+R_K(50)
+=
+1-\left[1-R_{K1}(50)\right]
+\left[1-R_{K2}(50)\right]
+\approx
+0{,}9976.
+\]</span></p>
+<p>Krossdelen är seriekopplad med trucken. Systemets funktionssannolikhet blir därför</p>
+<p><span class="math display">\[
+R_{tot}(50)
+=
+R_K(50)R_T(50)
+\approx
+0{,}9976\cdot0{,}7788
+\approx
+0{,}7769.
+\]</span></p>
+<p>Sannolikheten att systemet fungerar utan fel under de 50 timmarna är alltså cirka <strong>77,7 %</strong>. De parallellkopplade krossarna har mycket hög gemensam funktionssannolikhet. Trucken har därför störst påverkan på systemets resultat.</p>
 </section>
 </section>
-<section id="exempel-blandat-system" class="level1" data-number="18">
-<h1 data-number="18"><span class="header-section-number">18</span> Exempel: blandat system</h1>
-<p>Systemet består av:</p>
+<section id="pythonexempel" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="pythonexempel"><span class="header-section-number">3.11</span> Pythonexempel</h2>
+<p>Diagrammen på sidan skapas av <a href="scripts/tid_till_fel.py"><code>scripts/tid_till_fel.py</code></a>. Skriptet kan köras med</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/tid_till_fel.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Skriptet använder ett fast slumptalsfrö, vilket gör simuleringarna reproducerbara.</p>
+</section>
+<section id="sammanfattning" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="sammanfattning"><span class="header-section-number">3.12</span> Sammanfattning</h2>
 <ul>
-<li>två krossar (parallellkopplade)</li>
-<li>en truck (seriekopplad med krossarna)</li>
-</ul>
-<p>Data:</p>
-<ul>
-<li>Kross 1: MTBF = 1000 h<br>
-</li>
-<li>Kross 2: MTBF = 1000 h<br>
-</li>
-<li>Truck: MTBF = 200 h</li>
-</ul>
-<p>Drifttid: 50 timmar</p>
-<hr>
-<section id="steg-1-beräkna-komponenters-tillförlitlighet" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="steg-1-beräkna-komponenters-tillförlitlighet"><span class="header-section-number">18.1</span> Steg 1: beräkna komponenters tillförlitlighet</h2>
-<p>För exponentialfördelning:</p>
-<p>R(x) = e^(-λx)</p>
-<p>där:</p>
-<p>λ = 1 / MTBF</p>
-<hr>
-<section id="krossar" class="level3" data-number="18.1.1">
-<h3 data-number="18.1.1" class="anchored" data-anchor-id="krossar"><span class="header-section-number">18.1.1</span> Krossar</h3>
-<p>λ = 0.001</p>
-<p>R_k1 = R_k2 ≈ 0.95</p>
-<hr>
-</section>
-<section id="truck" class="level3" data-number="18.1.2">
-<h3 data-number="18.1.2" class="anchored" data-anchor-id="truck"><span class="header-section-number">18.1.2</span> Truck</h3>
-<p>λ = 0.005</p>
-<p>R_t ≈ 0.78</p>
-<hr>
-</section>
-</section>
-<section id="steg-2-parallell-del-krossar" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="steg-2-parallell-del-krossar"><span class="header-section-number">18.2</span> Steg 2: parallell del (krossar)</h2>
-<p>R_p = 1 - (1 - 0.95)(1 - 0.95) = 0.98</p>
-<hr>
-</section>
-<section id="steg-3-serie-med-truck" class="level2" data-number="18.3">
-<h2 data-number="18.3" class="anchored" data-anchor-id="steg-3-serie-med-truck"><span class="header-section-number">18.3</span> Steg 3: serie med truck</h2>
-<p>R_s = 0.78 * 0.98 ≈ 0.76</p>
-<hr>
-</section>
-<section id="resultat" class="level2" data-number="18.4">
-<h2 data-number="18.4" class="anchored" data-anchor-id="resultat"><span class="header-section-number">18.4</span> Resultat</h2>
-<ul>
-<li>Systemets tillförlitlighet ≈ 76 %</li>
-</ul>
-<hr>
-</section>
-<section id="tolkning-2" class="level2" data-number="18.5">
-<h2 data-number="18.5" class="anchored" data-anchor-id="tolkning-2"><span class="header-section-number">18.5</span> Tolkning</h2>
-<p>Trots att krossarna har hög tillförlitlighet:</p>
-<p>Trucken dominerar systemets prestanda</p>
-<hr>
-</section>
-</section>
-<section id="slutsatser" class="level1" data-number="19">
-<h1 data-number="19"><span class="header-section-number">19</span> Slutsatser</h1>
-<ul>
-<li>Systemstruktur påverkar tillförlitlighet kraftigt<br>
-</li>
-<li>Seriekoppling minskar tillförlitlighet<br>
-</li>
-<li>Parallellkoppling ökar tillförlitlighet<br>
-</li>
-<li>En svag komponent kan dominera hela systemet</li>
-</ul>
-<hr>
-</section>
-<section id="sammanfattning" class="level1" data-number="20">
-<h1 data-number="20"><span class="header-section-number">20</span> Sammanfattning</h1>
-<ul>
-<li>System består av flera komponenter<br>
-</li>
-<li>Kopplingsstruktur avgör total funktionssäkerhet<br>
-</li>
-<li>Redundans är ett viktigt verktyg<br>
-</li>
-<li>Analys görs stegvis från komponent → system</li>
+<li>MTTF används för tider till fel hos icke-reparerbara enheter och MTBF för tider mellan fel hos reparerbara enheter.</li>
+<li><span class="math inline">\(F(t)\)</span> beskriver sannolikheten att fel har inträffat, medan <span class="math inline">\(R(t)\)</span> beskriver sannolikheten att enheten fortfarande fungerar.</li>
+<li>Exponentialfördelningen förutsätter konstant felintensitet.</li>
+<li>Weibullfördelningen kan beskriva minskande, konstant eller ökande felintensitet.</li>
+<li>Upprepade fel i reparerbara enheter kan modelleras med en förnyelseprocess, HPP eller NHPP beroende på hur enheten påverkas av reparationerna och hur felintensiteten utvecklas.</li>
+<li>Systemets funktionssäkerhet beror både på komponenterna och på hur de är kopplade.</li>
+<li>Serie- och parallellformlerna förutsätter oberoende fel om inga beroenden modelleras separat.</li>
 </ul>
 
 

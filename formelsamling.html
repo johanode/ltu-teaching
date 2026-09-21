@@ -4227,13 +4227,41 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Innehåll</h2>
    
+  <ul>
+  <li><a href="#tillförlitlighetsanalys" id="toc-tillförlitlighetsanalys" class="nav-link active" data-scroll-target="#tillförlitlighetsanalys"><span class="header-section-number">A.1</span> Tillförlitlighetsanalys</a>
   <ul class="collapse">
-  <li><a href="#tillförlitlighetsanalys" id="toc-tillförlitlighetsanalys" class="nav-link active" data-scroll-target="#tillförlitlighetsanalys"><span class="header-section-number">A.1</span> Tillförlitlighetsanalys</a></li>
-  <li><a href="#tillgänglighetsprestanda" id="toc-tillgänglighetsprestanda" class="nav-link" data-scroll-target="#tillgänglighetsprestanda"><span class="header-section-number">A.2</span> Tillgänglighetsprestanda</a></li>
-  <li><a href="#utrustningens-totala-effektivitet" id="toc-utrustningens-totala-effektivitet" class="nav-link" data-scroll-target="#utrustningens-totala-effektivitet"><span class="header-section-number">A.3</span> Utrustningens totala effektivitet</a></li>
-  <li><a href="#livscykelkostnad-lcc" id="toc-livscykelkostnad-lcc" class="nav-link" data-scroll-target="#livscykelkostnad-lcc"><span class="header-section-number">A.4</span> Livscykelkostnad (LCC)</a></li>
-  <li><a href="#riskanalys" id="toc-riskanalys" class="nav-link" data-scroll-target="#riskanalys"><span class="header-section-number">A.5</span> Riskanalys</a></li>
-  <li><a href="#tabeller" id="toc-tabeller" class="nav-link" data-scroll-target="#tabeller"><span class="header-section-number">A.6</span> Tabeller</a></li>
+  <li><a href="#exponentialfördelning" id="toc-exponentialfördelning" class="nav-link" data-scroll-target="#exponentialfördelning"><span class="header-section-number">A.1.1</span> Exponentialfördelning</a></li>
+  <li><a href="#weibullfördelning" id="toc-weibullfördelning" class="nav-link" data-scroll-target="#weibullfördelning"><span class="header-section-number">A.1.2</span> Weibullfördelning</a></li>
+  <li><a href="#systemtillförlitlighet" id="toc-systemtillförlitlighet" class="nav-link" data-scroll-target="#systemtillförlitlighet"><span class="header-section-number">A.1.3</span> Systemtillförlitlighet</a></li>
+  </ul></li>
+  <li><a href="#tillgänglighetsprestanda" id="toc-tillgänglighetsprestanda" class="nav-link" data-scroll-target="#tillgänglighetsprestanda"><span class="header-section-number">A.2</span> Tillgänglighetsprestanda</a>
+  <ul class="collapse">
+  <li><a href="#konstruktiv-tillgänglighet" id="toc-konstruktiv-tillgänglighet" class="nav-link" data-scroll-target="#konstruktiv-tillgänglighet"><span class="header-section-number">A.2.1</span> Konstruktiv tillgänglighet</a></li>
+  <li><a href="#materialtillgänglighet" id="toc-materialtillgänglighet" class="nav-link" data-scroll-target="#materialtillgänglighet"><span class="header-section-number">A.2.2</span> Materialtillgänglighet</a></li>
+  <li><a href="#operativ-tillgänglighet" id="toc-operativ-tillgänglighet" class="nav-link" data-scroll-target="#operativ-tillgänglighet"><span class="header-section-number">A.2.3</span> Operativ tillgänglighet</a></li>
+  </ul></li>
+  <li><a href="#utrustningens-totala-effektivitet" id="toc-utrustningens-totala-effektivitet" class="nav-link" data-scroll-target="#utrustningens-totala-effektivitet"><span class="header-section-number">A.3</span> Utrustningens totala effektivitet</a>
+  <ul class="collapse">
+  <li><a href="#tak-beräkning" id="toc-tak-beräkning" class="nav-link" data-scroll-target="#tak-beräkning"><span class="header-section-number">A.3.1</span> TAK-beräkning</a></li>
+  <li><a href="#teep" id="toc-teep" class="nav-link" data-scroll-target="#teep"><span class="header-section-number">A.3.2</span> TEEP</a></li>
+  </ul></li>
+  <li><a href="#livscykelkostnad-lcc" id="toc-livscykelkostnad-lcc" class="nav-link" data-scroll-target="#livscykelkostnad-lcc"><span class="header-section-number">A.4</span> Livscykelkostnad (LCC)</a>
+  <ul class="collapse">
+  <li><a href="#realränta" id="toc-realränta" class="nav-link" data-scroll-target="#realränta"><span class="header-section-number">A.4.1</span> Realränta</a></li>
+  <li><a href="#nuvärde-av-ett-enstaka-belopp" id="toc-nuvärde-av-ett-enstaka-belopp" class="nav-link" data-scroll-target="#nuvärde-av-ett-enstaka-belopp"><span class="header-section-number">A.4.2</span> Nuvärde av ett enstaka belopp</a></li>
+  <li><a href="#nuvärdessumma-av-ett-årligt-återkommande-belopp" id="toc-nuvärdessumma-av-ett-årligt-återkommande-belopp" class="nav-link" data-scroll-target="#nuvärdessumma-av-ett-årligt-återkommande-belopp"><span class="header-section-number">A.4.3</span> Nuvärdessumma av ett årligt återkommande belopp</a></li>
+  <li><a href="#nuvärdessumma-av-varierande-årliga-belopp" id="toc-nuvärdessumma-av-varierande-årliga-belopp" class="nav-link" data-scroll-target="#nuvärdessumma-av-varierande-årliga-belopp"><span class="header-section-number">A.4.4</span> Nuvärdessumma av varierande årliga belopp</a></li>
+  </ul></li>
+  <li><a href="#riskanalys" id="toc-riskanalys" class="nav-link" data-scroll-target="#riskanalys"><span class="header-section-number">A.5</span> Riskanalys</a>
+  <ul class="collapse">
+  <li><a href="#riskprioriteringstal" id="toc-riskprioriteringstal" class="nav-link" data-scroll-target="#riskprioriteringstal"><span class="header-section-number">A.5.1</span> Riskprioriteringstal</a></li>
+  </ul></li>
+  <li><a href="#tabeller" id="toc-tabeller" class="nav-link" data-scroll-target="#tabeller"><span class="header-section-number">A.6</span> Tabeller</a>
+  <ul class="collapse">
+  <li><a href="#tabell-1-gammafunktionen" id="toc-tabell-1-gammafunktionen" class="nav-link" data-scroll-target="#tabell-1-gammafunktionen">Tabell 1: Gammafunktionen</a></li>
+  <li><a href="#tabell-2-nuvärdesfaktor-nuv" id="toc-tabell-2-nuvärdesfaktor-nuv" class="nav-link" data-scroll-target="#tabell-2-nuvärdesfaktor-nuv">Tabell 2: Nuvärdesfaktor (NUV)</a></li>
+  <li><a href="#tabell-3-nusummefaktor-nus" id="toc-tabell-3-nusummefaktor-nus" class="nav-link" data-scroll-target="#tabell-3-nusummefaktor-nus">Tabell 3: Nusummefaktor (NUS)</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="../pdf/formelsamling-drift-och-underhall.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -4292,8 +4320,8 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<section id="exponentialfördelning" class="level3">
-<h3 class="anchored" data-anchor-id="exponentialfördelning">Exponentialfördelning</h3>
+<section id="exponentialfördelning" class="level3" data-number="A.1.1">
+<h3 data-number="A.1.1" class="anchored" data-anchor-id="exponentialfördelning"><span class="header-section-number">A.1.1</span> Exponentialfördelning</h3>
 <section id="felsannolikhet" class="level4">
 <h4 class="anchored" data-anchor-id="felsannolikhet">Felsannolikhet</h4>
 <p><span class="math display">\[F(t)=1-e^{-\lambda t}\]</span></p>
@@ -4316,8 +4344,8 @@ window.Quarto = {
 <p><span class="math display">\[MTBF\ \text{eller}\ MTTF=\frac{1}{\lambda}\]</span></p>
 </section>
 </section>
-<section id="weibullfördelning" class="level3">
-<h3 class="anchored" data-anchor-id="weibullfördelning">Weibullfördelning</h3>
+<section id="weibullfördelning" class="level3" data-number="A.1.2">
+<h3 data-number="A.1.2" class="anchored" data-anchor-id="weibullfördelning"><span class="header-section-number">A.1.2</span> Weibullfördelning</h3>
 <p><span class="math inline">\(\alpha\)</span> är skalparametern och <span class="math inline">\(\beta\)</span> är formparametern.</p>
 <section id="felsannolikhet-1" class="level4">
 <h4 class="anchored" data-anchor-id="felsannolikhet-1">Felsannolikhet</h4>
@@ -4352,8 +4380,8 @@ window.Quarto = {
 <p>där <span class="math inline">\(i\)</span> är feltidens rangnummer och <span class="math inline">\(n\)</span> är antalet observerade feltider.</p>
 </section>
 </section>
-<section id="systemtillförlitlighet" class="level3">
-<h3 class="anchored" data-anchor-id="systemtillförlitlighet">Systemtillförlitlighet</h3>
+<section id="systemtillförlitlighet" class="level3" data-number="A.1.3">
+<h3 data-number="A.1.3" class="anchored" data-anchor-id="systemtillförlitlighet"><span class="header-section-number">A.1.3</span> Systemtillförlitlighet</h3>
 <section id="seriekopplat-system" class="level4">
 <h4 class="anchored" data-anchor-id="seriekopplat-system">Seriekopplat system</h4>
 <p><span class="math display">\[R_{tot}=R_1R_2\cdots R_n\]</span></p>
@@ -4417,16 +4445,16 @@ window.Quarto = {
 </table>
 <p>Tillgänglighet beskriver den andel av den krävda tiden under vilken en enhet befinner sig i ett funktionsdugligt tillstånd. Den krävda tiden är summan av tillgänglig och otillgänglig tid.</p>
 <p><span class="math display">\[A=\frac{UT}{UT+DT}\]</span></p>
-<section id="konstruktiv-tillgänglighet" class="level3">
-<h3 class="anchored" data-anchor-id="konstruktiv-tillgänglighet">Konstruktiv tillgänglighet</h3>
+<section id="konstruktiv-tillgänglighet" class="level3" data-number="A.2.1">
+<h3 data-number="A.2.1" class="anchored" data-anchor-id="konstruktiv-tillgänglighet"><span class="header-section-number">A.2.1</span> Konstruktiv tillgänglighet</h3>
 <p><span class="math display">\[A_k=\frac{MTBF}{MTBF+MRT}\]</span></p>
 </section>
-<section id="materialtillgänglighet" class="level3">
-<h3 class="anchored" data-anchor-id="materialtillgänglighet">Materialtillgänglighet</h3>
+<section id="materialtillgänglighet" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="materialtillgänglighet"><span class="header-section-number">A.2.2</span> Materialtillgänglighet</h3>
 <p><span class="math display">\[A_m=\frac{MTBM}{MTBM+MAMT}\]</span></p>
 </section>
-<section id="operativ-tillgänglighet" class="level3">
-<h3 class="anchored" data-anchor-id="operativ-tillgänglighet">Operativ tillgänglighet</h3>
+<section id="operativ-tillgänglighet" class="level3" data-number="A.2.3">
+<h3 data-number="A.2.3" class="anchored" data-anchor-id="operativ-tillgänglighet"><span class="header-section-number">A.2.3</span> Operativ tillgänglighet</h3>
 <p><span class="math display">\[A_o=\frac{MTBM}{MTBM+MDT}\]</span></p>
 <div style="page-break-after: always;"></div>
 </section>
@@ -4449,8 +4477,8 @@ window.Quarto = {
 \text{Anläggningseffektivitet}
 \cdot
 \text{Kvalitetsutbyte}\]</span></p>
-<section id="tak-beräkning" class="level3">
-<h3 class="anchored" data-anchor-id="tak-beräkning">TAK-beräkning</h3>
+<section id="tak-beräkning" class="level3" data-number="A.3.1">
+<h3 data-number="A.3.1" class="anchored" data-anchor-id="tak-beräkning"><span class="header-section-number">A.3.1</span> TAK-beräkning</h3>
 <section id="tillgänglighet" class="level4">
 <h4 class="anchored" data-anchor-id="tillgänglighet">Tillgänglighet</h4>
 <p><span class="math display">\[\text{Tillgänglighet}
@@ -4473,8 +4501,8 @@ window.Quarto = {
 {\text{Processat antal}}\]</span></p>
 </section>
 </section>
-<section id="teep" class="level3">
-<h3 class="anchored" data-anchor-id="teep">TEEP</h3>
+<section id="teep" class="level3" data-number="A.3.2">
+<h3 data-number="A.3.2" class="anchored" data-anchor-id="teep"><span class="header-section-number">A.3.2</span> TEEP</h3>
 <p><span class="math display">\[TEEP=OEE \cdot Loading\]</span></p>
 <p><span class="math display">\[Loading
 =
@@ -4539,23 +4567,23 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<section id="realränta" class="level3">
-<h3 class="anchored" data-anchor-id="realränta">Realränta</h3>
+<section id="realränta" class="level3" data-number="A.4.1">
+<h3 data-number="A.4.1" class="anchored" data-anchor-id="realränta"><span class="header-section-number">A.4.1</span> Realränta</h3>
 <p><span class="math display">\[r_r
 =
 \frac{1+r_n}{1+q}-1
 \approx
 r_n-q\]</span></p>
 </section>
-<section id="nuvärde-av-ett-enstaka-belopp" class="level3">
-<h3 class="anchored" data-anchor-id="nuvärde-av-ett-enstaka-belopp">Nuvärde av ett enstaka belopp</h3>
+<section id="nuvärde-av-ett-enstaka-belopp" class="level3" data-number="A.4.2">
+<h3 data-number="A.4.2" class="anchored" data-anchor-id="nuvärde-av-ett-enstaka-belopp"><span class="header-section-number">A.4.2</span> Nuvärde av ett enstaka belopp</h3>
 <p>För ett framtida belopp <span class="math inline">\(R\)</span> vid år <span class="math inline">\(i\)</span> gäller <span class="math display">\[NV = R \cdot NUV\]</span></p>
 <p>där</p>
 <p><span class="math display">\[NUV=\frac{1}{(1+r)^i}\]</span></p>
 <p>Värden på NUV finns i <a href="#tabell-2-nuvärdesfaktor-nuv">Tabell 2</a></p>
 </section>
-<section id="nuvärdessumma-av-ett-årligt-återkommande-belopp" class="level3">
-<h3 class="anchored" data-anchor-id="nuvärdessumma-av-ett-årligt-återkommande-belopp">Nuvärdessumma av ett årligt återkommande belopp</h3>
+<section id="nuvärdessumma-av-ett-årligt-återkommande-belopp" class="level3" data-number="A.4.3">
+<h3 data-number="A.4.3" class="anchored" data-anchor-id="nuvärdessumma-av-ett-årligt-återkommande-belopp"><span class="header-section-number">A.4.3</span> Nuvärdessumma av ett årligt återkommande belopp</h3>
 <p>För ett årligt belopp <span class="math inline">\(a\)</span> under <span class="math inline">\(n\)</span> år gäller</p>
 <p><span class="math display">\[NV = NUS \cdot a\]</span></p>
 <p>där</p>
@@ -4564,8 +4592,8 @@ r_n-q\]</span></p>
 = \frac{(1+r)^n-1}{r(1+r)^n}\]</span></p>
 <p>Värden på NUS finns i <a href="#tabell-3-nusummefaktor-nus">Tabell 3</a></p>
 </section>
-<section id="nuvärdessumma-av-varierande-årliga-belopp" class="level3">
-<h3 class="anchored" data-anchor-id="nuvärdessumma-av-varierande-årliga-belopp">Nuvärdessumma av varierande årliga belopp</h3>
+<section id="nuvärdessumma-av-varierande-årliga-belopp" class="level3" data-number="A.4.4">
+<h3 data-number="A.4.4" class="anchored" data-anchor-id="nuvärdessumma-av-varierande-årliga-belopp"><span class="header-section-number">A.4.4</span> Nuvärdessumma av varierande årliga belopp</h3>
 <p><span class="math display">\[NV
 =
 \sum_{i=1}^{n}\frac{a_i}{(1+r)^i}\]</span></p>
@@ -4573,8 +4601,8 @@ r_n-q\]</span></p>
 </section>
 <section id="riskanalys" class="level2" data-number="A.5">
 <h2 data-number="A.5" class="anchored" data-anchor-id="riskanalys"><span class="header-section-number">A.5</span> Riskanalys</h2>
-<section id="riskprioriteringstal" class="level3">
-<h3 class="anchored" data-anchor-id="riskprioriteringstal">Riskprioriteringstal</h3>
+<section id="riskprioriteringstal" class="level3" data-number="A.5.1">
+<h3 data-number="A.5.1" class="anchored" data-anchor-id="riskprioriteringstal"><span class="header-section-number">A.5.1</span> Riskprioriteringstal</h3>
 <p>Riskprioriteringstalet beräknas som</p>
 <p><span class="math display">\[RPN=S\cdot O\cdot D\]</span></p>
 <p>där <span class="math inline">\(S\)</span> är felets allvarlighet, <span class="math inline">\(O\)</span> är sannolikheten för förekomst och <span class="math inline">\(D\)</span> är möjligheten att upptäcka felet.</p>
