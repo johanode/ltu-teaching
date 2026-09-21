@@ -12,7 +12,7 @@ En **icke-reparerbar enhet** kan inte återställas till funktionsdugligt skick 
 
 En **reparerbar enhet** kan återställas till funktionsdugligt skick efter ett fel genom reparation, exempelvis utbyte av felaktiga delar. Eftersom samma enhet kan drabbas av flera fel under sin livstid studeras tiden från återställningen efter ett fel till nästa fel (*time between failures*, TBF). Medelvärdet av denna tid betecknas **MTBF** (*Mean Time Between Failures*).
 
-För en icke-reparerbar enhet studeras livslängden $T$ och dess fördelning. Här är det naturligt att beskriva sannolikheten för att enheten fortfarande fungerar vid tiden $t$ med hjälp av funktionssannolikheten $R(t)$.
+För en icke-reparerbar enhet studeras fördelningen för tiden till fel $T$.
 
 För en reparerbar enhet kan analysen göras ur två perspektiv:
 
@@ -127,7 +127,6 @@ Felsannolikheten vid nästa kontroll är alltid 10 procent för en enhet som for
 | $\ldots$ | $\ldots$ | $\ldots$ | $\ldots$ | $\ldots$ | $\ldots$ |
 | 40 | 0,100 | 0,900 | 0,015 | 0,985 | 0,002 |
 
-![Funktionssäkerhet och felsannolikhet för en geometrisk fördelning](images/geometrisk_fordelning_till_forsta_fel.png)
 
 Det förväntade antalet kast fram till felet är
 
@@ -137,7 +136,7 @@ $$
 
 För den tiosidiga tärningen är det förväntade antalet kast alltså tio. Det betyder inte att varje enhet får fel efter tio kast, utan att medelvärdet närmar sig tio när många likadana enheter observeras.
 
-![Simulerad och teoretisk geometrisk fördelning](images/geometrisk-tid-till-fel.png)
+![Simulerad och teoretisk geometrisk fördelning](images/geometrisk_fordelning_till_forsta_fel.png)
 
 ## Kontinuerlig tid till fel
 
@@ -147,13 +146,8 @@ Låt $T$ beteckna tiden till fel för en enhet i en population av jämförbara e
 
 Samma grundläggande funktioner används som i det diskreta exemplet. Skillnaden är att sannolikheten för fel vid ett enskilt kast ersätts av en täthetsfunktion över kontinuerlig tid.
 
-En illustration av sambandet mellan täthetsfunktionen, fördelningsfunktionen och funktionssannolikheten ges i avsnittet [Exempel med normalfördelning](#exempel-med-normalfordelning).
-
-I fortsättningen används därför konsekvent följande notation:
-
-- $f(t)$ för täthetsfunktionen,
-- $F(t)$ för fördelningsfunktionen,
-- $R(t)$ för funktionssannolikheten, det vill säga överlevnadsfunktionen.
+En illustration av sambandet mellan täthetsfunktionen, fördelningsfunktionen och
+funktionssannolikheten ges i avsnittet [Exempel med normalfördelning](#exempel-med-normalfordelning).
 
 ### Täthetsfunktion
 
@@ -650,15 +644,6 @@ $$
 
 Sannolikheten att systemet fungerar utan fel under de 50 timmarna är alltså cirka **77,7 %**. De parallellkopplade krossarna har mycket hög gemensam funktionssannolikhet. Trucken har därför störst påverkan på systemets resultat.
 
-## Pythonexempel
-
-Diagrammen på sidan skapas av [`scripts/tid_till_fel.py`](scripts/tid_till_fel.py). Skriptet kan köras med
-
-```bash
-python scripts/tid_till_fel.py
-```
-
-Skriptet använder ett fast slumptalsfrö, vilket gör simuleringarna reproducerbara.
 
 ## Sammanfattning
 
