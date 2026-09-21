@@ -1,0 +1,679 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Driftsäkerhet",
+    "section": "",
+    "text": "0.1 Kapitel\nDet här materialet ger en grundläggande introduktion till driftsäkerhet. Tyngdpunkten ligger på RAMS, tillgänglighet och de driftsäkerhetsparametrar som används för att beskriva tekniska system.\nDet sista kapitlet behandlar grundläggande sannolikhetsmodeller för funktionssäkerhet samt en introduktion till systemtillförlitlighet.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Driftsäkerhet</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#kapitel",
+    "href": "index.html#kapitel",
+    "title": "Driftsäkerhet",
+    "section": "",
+    "text": "Driftsäkerhet och RAMS\nTillgänglighet\nFunktionssäkerhet och tillförlitlighetsanalys",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Driftsäkerhet</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#förhandsgranska",
+    "href": "index.html#förhandsgranska",
+    "title": "Driftsäkerhet",
+    "section": "0.2 Förhandsgranska",
+    "text": "0.2 Förhandsgranska\nProjektet är utformat som en Quarto book. När filerna ligger i samma mappstruktur som _quarto.yml kör du:\nquarto preview",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Driftsäkerhet</span>"
+    ]
+  },
+  {
+    "objectID": "rams.html",
+    "href": "rams.html",
+    "title": "2  Driftsäkerhet",
+    "section": "",
+    "text": "2.1 RAMS och dess egenskaper\nDriftsäkerhet är ett mått på ett systems förmåga att prestera det som krävs och när det krävs enligt SS-EN 13306:2017 (Underhåll – Underhållsterminologi 2017). Det är en central egenskap hos tekniska system och omfattar flera aspekter som påverkar systemets prestanda över tid.\nDriftsäkerhet omfattar flera centrala egenskaper hos ett system:\nDessa sammanfattas i begreppet RAMS.\nRAMS används för att beskriva ett systems prestanda ur ett driftsäkerhetsperspektiv och inkluderar även:\nI litteraturen används RAMS ofta med S som Safety. I denna framställning används S som Supportability. När S står för Safety behandlas Supportability ofta som en del av Maintainability.\nNedan beskrivs de fyra egenskaperna som ingår i RAMS. De är alla relaterade till varandra och påverkar systemets övergripande driftsäkerhet\nFunktionssäkerheten, underhållsmässigheten och underhållsstödets prestanda påverkar tillsammans enhetens tillgänglighet. Funktionssäkerheten påverkar hur ofta fel inträffar, underhållsmässigheten hur snabbt det tekniska underhållsarbetet kan genomföras och underhållsstödet hur långa väntetider som uppstår.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Driftsäkerhet</span>"
+    ]
+  },
+  {
+    "objectID": "rams.html#rams-och-dess-egenskaper",
+    "href": "rams.html#rams-och-dess-egenskaper",
+    "title": "2  Driftsäkerhet",
+    "section": "",
+    "text": "2.1.1 Funktionssäkerhet\nFunktionssäkerhet är en enhets förmåga att utföra en krävd funktion under givna förhållanden och under ett angivet tidsintervall enligt SS-EN 13306:2017 (Underhåll – Underhållsterminologi 2017). Funktionssäkerheten beskriver därmed hur ofta fel inträffar och hur länge en enhet kan fungera innan ett fel uppstår.\nFunktionssäkerhet kan beskrivas utifrån medeltiden till fel och medeltiden mellan fel:\n\nMTTF (Mean Time To Failure)\nMTBF (Mean Time Between Failures)\n\nMTTF används för enheter som inte repareras, medan MTBF används för reparerbara enheter.\n\n\n2.1.2 Underhållsmässighet\nUnderhållsmässighet beskriver en enhets förmåga att bibehållas i eller återställas till ett tillstånd där den kan utföra sin krävda funktion enligt SS-EN 13306:2017 (Underhåll – Underhållsterminologi 2017). Detta avser underhåll som utförs under givna förhållanden, med fastställda metoder och tillgängliga resurser.\nUnderhållsmässigheten påverkas bland annat av:\n\nåtkomst: hur lätt det är att komma åt enheten för underhåll\nstandardisering: använda standardiserade komponenter och metoder\nmodularisering: använda modulära komponenter som kan bytas ut\n\nUnderhållsmässighet kan mätas med MRT (Mean Repair Time) och MTTR (Mean Time To Restoration). Måtten beskriver den genomsnittliga tiden för reparation respektive återställning av en enhet.\n\n\n2.1.3 Underhållsstödets prestanda\nUnderhållsstödets prestanda, även kallat underhållssäkerhet, beskriver underhållsorganisationens förmåga att tillhandahålla de resurser som krävs för att underhållsaktiviteten ska kunna utföras på rätt plats och vid rätt tidpunkt enligt SS-EN 13306:2017 (Underhåll – Underhållsterminologi 2017).\nUnderhållsstödet omfattar bland annat tillgång till:\n\npersonal med rätt kompetens\nreservdelar och material\nverktyg och underhållsutrustning\nteknisk dokumentation\nplanering och arbetsledning\n\nÄven underhållsorganisationens utformning påverkar underhållsstödets prestanda. Det kan exempelvis handla om intern eller extern underhållspersonal och om resurserna är centralt eller lokalt placerade.\nEtt vanligt mått är MWT (Mean Waiting Time), vilket beskriver den genomsnittliga väntetiden i samband med underhåll. Väntetiden kan exempelvis orsakas av administration, logistik (t.ex. brist på personal eller reservdelar) eller tekniska förhållanden (t.ex. att varm utrustning behöver kylas innan en åtgärd kan genomföras).\n\n\n2.1.4 Tillgänglighet\nTillgänglighet beskriver förmågan hos en enhet att utföra det som krävs när det krävs, förutsatt att nödvändiga externa resurser tillhandahålls (Underhåll – Underhållsterminologi 2017). Att utföra det som krävs innebär att enheten befinner sig i ett tillstånd där den kan utföra sina krävda funktioner, ett så kallat funktionsdugligt tillstånd.\nFör att analysera tillgängligheten behöver växlingen mellan funktionsdugliga och funktionsodugliga tillstånd beskrivas över tid. Denna växling påverkas både av när fel inträffar och av hur lång tid det tar att återställa enheten efter ett fel eller en underhållsåtgärd.\nFelhändelser kan beskrivas med stokastiska processer, exempelvis en homogen eller icke-homogen Poissonprocess (HPP respektive NHPP). Tider till och mellan fel samt reparations- och väntetider kan på motsvarande sätt betraktas som utfall av stokastiska variabler med tillhörande sannolikhetsfördelningar.\nTidsintervallet mellan förebyggande underhållsåtgärder betraktas vanligen som deterministiskt och modelleras därför inte som en stokastisk variabel. Det faktiska genomförandet kan däremot påverkas av exempelvis oväntat slitage, produktionsplanering och tillgång till underhållsresurser.\nDe observerade tiderna kan alltså användas för att beräkna tillgängligheten under den aktuella observationsperioden. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. En matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns nedan: Tillgänglighet som funktion av tiden.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Driftsäkerhet</span>"
+    ]
+  },
+  {
+    "objectID": "rams.html#tillgänglighet-som-funktion-av-tiden",
+    "href": "rams.html#tillgänglighet-som-funktion-av-tiden",
+    "title": "2  Driftsäkerhet",
+    "section": "3.1 Tillgänglighet som funktion av tiden",
+    "text": "3.1 Tillgänglighet som funktion av tiden\nDen matematiska beskrivningen i detta stycke bygger på framställningen i Ben-Daya et al. (2016) (avsnitt 7.4).\nFör en reparerbar enhet kan tillståndet vid tiden \\(t\\) beskrivas med funktionen\n\\[\nX(t)=\n\\begin{cases}\n1, & \\text{om enheten är funktionsduglig vid tiden }t,\\\\\n0, & \\text{om enheten är funktionsoduglig vid tiden }t.\n\\end{cases}\n\\]\nEnheten växlar mellan funktionsdugliga (up state) och funktionsodugliga tillstånd (down state). De efterföljande tillgängliga tidsintervallen (uptime, UT) och otillgängliga tidsintervallen (downtime, DT) kan betecknas\n\\[\nUT_1,DT_1,UT_2,DT_2,\\ldots\n\\]\n\n3.1.1 Punkttillgänglighet\nPunkttillgängligheten \\(A(t)\\) är sannolikheten att enheten befinner sig i ett funktionsdugligt tillstånd vid tidpunkten \\(t\\):\n\\[\nA(t)=P\\{X(t)=1\\},\n\\]\nVäntevärdet för \\(X(t)\\) beskriver det genomsnittliga tillståndet om många likadana enheter observeras vid samma tidpunkt \\(t\\). För en diskret variabel beräknas väntevärdet genom att varje möjligt utfall multipliceras med sin sannolikhet:\n\\[\n\\operatorname{E}[X(t)]\n=\n\\sum_{x\\in\\{0,1\\}}\nxP\\{X(t)=x\\}.\n\\]\nEftersom \\(X(t)\\) endast kan anta värdena 0 och 1 gäller\n\\[\n\\operatorname{E}[X(t)]\n=\n1\\cdot P\\{X(t)=1\\}\n+\n0\\cdot P\\{X(t)=0\\}\n=\nP\\{X(t)=1\\},\n\\]\nVärdet 1 bidrar alltså när enheten fungerar, medan värdet 0 inte bidrar när enheten är funktionsoduglig. Väntevärdet blir därför lika med sannolikheten att enheten fungerar vid tidpunkten \\(t\\).\nPunkttillgängligheten kan därmed även skrivas som\n\\[\nA(t)=\\operatorname{E}[X(t)].\n\\]\nPunkttillgänglighet används när det är relevant att bestämma sannolikheten för att enheten är funktionsduglig vid en bestämd tidpunkt.\n\n\n3.1.2 Intervalltillgänglighet\nDen ackumulerade tillgängliga tiden (cumulative uptime) från tiden \\(0\\) till tiden \\(t\\) definieras som\n\\[\nU(t)=\\int_0^t X(s)\\,ds.\n\\]\nEftersom \\(X(s)=1\\) när enheten fungerar och \\(X(s)=0\\) när den inte fungerar summerar integralen all tillgänglig tid fram till tiden \\(t\\).\nLåt \\(UT[t_1,t_2]\\) beteckna den sammanlagda tillgängliga tiden under intervallet \\([t_1,t_2]\\):\n\\[\nUT[t_1,t_2]\n=\nU(t_2)-U(t_1).\n\\]\nDen sammanlagda otillgängliga tiden under samma intervall betecknas \\(DT[t_1,t_2]\\) och beräknas som intervallets totala längd minus den tillgängliga tiden:\n\\[\nDT[t_1,t_2]\n=\n(t_2-t_1)-UT[t_1,t_2].\n\\]\nIntervalltillgängligheten under tidsintervallet \\([t_1,t_2]\\) är den andel av intervallets totala längd som enheten är funktionsduglig:\n\\[\n\\widetilde{A}(t_1,t_2)\n=\n\\frac{U(t_2)-U(t_1)}{t_2-t_1}.\n\\]\nIntervalltillgängligheten är en stokastisk variabel eftersom det varierar när och hur länge enheten kan utföra krävd funktion under intervallet. För ett observerat tidsintervall beräknas den som\n\\[\n\\widetilde{A}(t_1,t_2)\n=\n\\frac{UT[t_1,t_2]}{t_2-t_1}\n=\n\\frac{UT[t_1,t_2]}\n{UT[t_1,t_2]+DT[t_1,t_2]}.\n\\]\n\n\n3.1.3 Genomsnittlig intervalltillgänglighet\nDen genomsnittliga intervalltillgängligheten är väntevärdet av intervalltillgängligheten under \\([t_1,t_2]\\):\n\\[\nA(t_1,t_2)\n=\n\\operatorname{E}\\!\\left[\\widetilde{A}(t_1,t_2)\\right]\n=\n\\frac{\\operatorname{E}[U(t_2)-U(t_1)]}{t_2-t_1}\n=\n\\frac{\\operatorname{E}[UT[t_1, t_2]]}{t_2-t_1}.\n\\]\nDen genomsnittliga intervalltillgängligheten kan även beräknas som medelvärdet av punkttillgängligheten under intervallet:\n\\[\nA(t_1,t_2)\n=\n\\frac{1}{t_2-t_1}\n\\int_{t_1}^{t_2} A(t)\\,dt.\n\\]\n\n\n3.1.4 Asymptotisk genomsnittlig intervalltillgänglighet\nDen asymptotiska genomsnittliga intervalltillgängligheten är gränsvärdet för den genomsnittliga intervalltillgängligheten när observationsperiodens längd går mot oändligheten:\n\\[\nA_\\infty\n=\n\\lim_{T\\rightarrow\\infty}A(0,T).\n\\]\nAntag att cyklerna \\((UT_i,DT_i)\\) är oberoende och likafördelade mellan cyklerna samt har ändliga väntevärden. Den asymptotiska genomsnittliga intervalltillgängligheten ges då av\n\\[\nA_\\infty\n=\n\\frac{\\operatorname{E}[UT_i]}\n{\\operatorname{E}[UT_i]+\\operatorname{E}[DT_i]}.\n\\]\nLåt\n\\[\n\\overline{UT}=\\operatorname{E}[UT_i]\n\\qquad\\text{och}\\qquad\n\\overline{DT}=\\operatorname{E}[DT_i]\n\\]\nbeteckna medeltiden för de tillgängliga respektive otillgängliga tidsintervallen. Den asymptotiska tillgängligheten kan då skrivas som\n\\[\nA_\\infty\n=\n\\frac{\\overline{UT}}\n{\\overline{UT}+\\overline{DT}}.\n\\]\nDet generella uttrycket för asymptotisk tillgänglighet kan specialiseras genom att bestämma vilka drifttider och orsaker till otillgänglighet som ska ingå i beräkningen. Se även Beräkning av tillgänglighet.\nOm samtliga relevanta orsaker till otillgänglighet inkluderas, såsom avhjälpande och förebyggande underhåll samt tillhörande väntetider, kan den asymptotiska genomsnittliga intervalltillgängligheten uttryckas som operativ tillgänglighet:\n\\[\nA_o\n=\n\\frac{MTBM}\n{MTBM+MDT}\n\\]\ndär MTBM (Mean Time Between Maintenance) är medeltiden mellan underhållsåtgärder och MDT (Mean Down Time) är den genomsnittliga otillgängliga tiden per underhållsåtgärd.\nOm endast fel och reparationstid inkluderas erhålls den konstruktiva tillgängligheten:\n\\[\nA_k\n=\n\\frac{MTBF}{MTBF+MRT}\n\\]\ndär MTBF (Mean Time Between Failures) är medeltiden mellan fel och MRT (Mean Repair Time) är medelreparationstiden.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Driftsäkerhet</span>"
+    ]
+  },
+  {
+    "objectID": "rams.html#driftsäkerhetsparametrar",
+    "href": "rams.html#driftsäkerhetsparametrar",
+    "title": "2  Driftsäkerhet",
+    "section": "3.2 Driftsäkerhetsparametrar",
+    "text": "3.2 Driftsäkerhetsparametrar\nDe följande definitionerna utgår från att de studerade tiderna kan representeras av slumpvariabler med en gemensam sannolikhetsfördelning, exempelvis inom en förnyelseprocess. För en NHPP är felintensiteten tidsberoende, och ett enda konstant värde på MTBF beskriver därför inte processen generellt.\nTider mellan fel, reparationstider och väntetider beskrivna i tidigare avsnitt kan betraktas som slumpvariabler. Parametrar som MTBF (Mean Time Between Failures) och MRT (Mean Repair Time) är då väntevärden för motsvarande slumpmässiga tider.\nFör en icke-negativ slumpvariabel \\(T\\) med täthetsfunktion \\(f_T(t)\\) gäller\n\\[\n\\operatorname{E}[T]\n=\n\\int_0^\\infty t f_T(t)\\,dt.\n\\]\nVäntevärdet kan också uttryckas med hjälp av sannolikheten att tiden överstiger \\(t\\):\n\\[\n\\operatorname{E}[T]\n=\n\\int_0^\\infty P(T&gt;t)\\,dt.\n\\]\nVilken sannolikhetsfördelning som är lämplig beror på vilken typ av tid som studeras och på det observerade datamaterialet.\n\n3.2.1 Tid mellan fel\nLåt \\(T_{\\mathrm{BF}}\\) beteckna tiden mellan fel. MTBF definieras som\n\\[\n\\mathrm{MTBF}\n=\n\\operatorname{E}[T_{\\mathrm{BF}}].\n\\]\nOm \\(f_{\\mathrm{BF}}(t)\\) är täthetsfunktionen för tiden mellan fel och\n\\[\nR(t)\n=\nP(T_{\\mathrm{BF}}&gt;t)\n\\]\när reliability function (också överlevnadsfunktionen / survival function), kan MTBF skrivas som\n\\[\n\\mathrm{MTBF}\n=\n\\int_0^\\infty t f_{\\mathrm{BF}}(t)\\,dt\n=\n\\int_0^\\infty R(t)\\,dt.\n\\]\nOm tiden mellan fel är exponentialfördelad med felbenägenhet \\(\\lambda\\) gäller\n\\[\n\\mathrm{MTBF}\n=\n\\frac{1}{\\lambda}.\n\\]\nOm tiden mellan fel är Weibullfördelad med skalparameter \\(\\alpha\\) och formparameter \\(\\beta\\) gäller\n\\[\n\\mathrm{MTBF}\n=\n\\alpha\\,\n\\Gamma\\!\\left(1+\\frac{1}{\\beta}\\right).\n\\]\n\n\n3.2.2 Reparationstid\nLåt \\(T_{\\mathrm{Rep}}\\) beteckna reparationstiden. MRT definieras som\n\\[\n\\mathrm{MRT}\n=\n\\operatorname{E}[T_{\\mathrm{Rep}}].\n\\]\nOm \\(f_{\\mathrm{Rep}}(t)\\) är reparationstidens täthetsfunktion gäller\n\\[\n\\mathrm{MRT}\n=\n\\int_0^\\infty t f_{\\mathrm{Rep}}(t)\\,dt.\n\\]\nOm \\(M(t)\\) betecknar reparationstidens fördelningsfunktion\n\\[\nM(t)\n=\nP(T_{\\mathrm{Rep}}\\leq t),\n\\]\ndet vill säga sannolikheten att reparationen har slutförts inom tiden \\(t\\). MRT kan då även skrivas som\n\\[\n\\mathrm{MRT}\n=\n\\int_0^\\infty [1-M(t)]\\,dt.\n\\]\nReparationstider är positiva och kan vara högerskeva. Lognormalfördelningen är därför en vanligt förekommande modell för reparationstider, men valet av fördelning behöver prövas mot observerade data.\nOm\n\\[\n\\ln T_{\\mathrm{Rep}}\n\\sim\nN(\\mu,\\sigma^2),\n\\]\när reparationstiden lognormalfördelad och\n\\[\n\\mathrm{MRT}\n=\n\\exp\\!\\left(\\mu+\\frac{\\sigma^2}{2}\\right).\n\\]\nMedianen är i detta fall\n\\[\n\\operatorname{median}(T_{\\mathrm{Rep}})\n=\n\\exp(\\mu),\n\\]\nvilket innebär att MRT normalt är större än medianreparationstiden när fördelningen är högerskev.\n\n\n3.2.3 Övriga driftsäkerhetsparametrar\nPå motsvarande sätt kan övriga parametrar definieras som väntevärden:\n\\[\n\\mathrm{MTBM}\n=\n\\operatorname{E}[T_{\\mathrm{M}}],\n\\]\n\\[\n\\mathrm{MAMT}\n=\n\\operatorname{E}[T_{\\mathrm{AM}}],\n\\]\n\\[\n\\mathrm{MDT}\n=\n\\operatorname{E}[T_{\\mathrm{D}}],\n\\]\noch\n\\[\n\\mathrm{MWT}\n=\n\\operatorname{E}[T_{\\mathrm{Wait}}].\n\\]\nOm den otillgängliga tiden för varje underhållsåtgärd kan delas upp enligt\n\\[\nT_{\\mathrm{D}}\n=\nT_{\\mathrm{AM}}\n+\nT_{\\mathrm{Wait}},\n\\]\nger väntevärdets linearitet\n\\[\n\\mathrm{MDT}\n=\n\\mathrm{MAMT}\n+\n\\mathrm{MWT}.\n\\]\nDetta samband kräver inte att den aktiva underhållstiden och väntetiden är statistiskt oberoende. Det förutsätter däremot att tiderna avser samma population av underhållsåtgärder och samma avgränsning av den otillgängliga tiden.\n\n\n3.2.4 Skattning från observerade data\nOm \\(T_1,T_2,\\ldots,T_n\\) är observerade tider kan väntevärdet skattas med det aritmetiska medelvärdet:\n\\[\n\\widehat{\\operatorname{E}[T]}\n=\n\\frac{1}{n}\\sum_{i=1}^n T_i.\n\\]\nExempelvis skattas MTBF och MRT som\n\\[\n\\widehat{\\mathrm{MTBF}}\n=\n\\frac{1}{n_{\\mathrm{Fail}}}\n\\sum_{i=1}^{n_{\\mathrm{Fail}}}T_{\\mathrm{BF},i}\n\\]\noch\n\\[\n\\widehat{\\mathrm{MRT}}\n=\n\\frac{1}{n_{\\mathrm{Fail}}}\n\\sum_{i=1}^{n_{\\mathrm{Fail}}}T_{\\mathrm{Rep},i}.\n\\]\nDet aritmetiska medelvärdet är en direkt skattning när observationerna utgör fullständigt observerade och jämförbara tidsintervall. Om observationsperioden avslutas innan ett fel eller en reparation har inträffat är observationen censurerad. Då kan metoder för livslängds- och tillförlitlighetsanalys behöva användas i stället för att enbart beräkna medelvärdet av de fullständiga observationerna.\n\n\n\n\nBen-Daya, Mohamed, Uday Kumar, and D. N. Prabhakar Murthy. 2016. Introduction to Maintenance Engineering: Modelling, Optimization and Management. John Wiley & Sons. https://doi.org/10.1002/9781118926581.\n\n\nUnderhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Driftsäkerhet</span>"
+    ]
+  },
+  {
+    "objectID": "tillganglighet.html",
+    "href": "tillganglighet.html",
+    "title": "3  Beräkning av tillgänglighet",
+    "section": "",
+    "text": "3.1 Observerad och förväntad tillgänglighet\nTillgänglighet (availability A) beskriver förmågan hos en enhet att utföra det som krävs när det krävs (Underhåll – Underhållsterminologi 2017). Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.\nTillgänglig och otillgänglig tid bestäms av de händelser och tidsintervall som observeras under en given observationsperiod. De observerade tiderna kan användas för att beräkna tillgängligheten under den aktuella observationsperioden. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. Detta behandlas i avsnittet Tre mått på tillgänglighet. En mer matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns på sidan Tillgänglighet som funktion av tiden.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Beräkning av tillgänglighet</span>"
+    ]
+  },
+  {
+    "objectID": "tillganglighet.html#tillgänglighetsprestanda",
+    "href": "tillganglighet.html#tillgänglighetsprestanda",
+    "title": "3  Beräkning av tillgänglighet",
+    "section": "3.2 Tillgänglighetsprestanda",
+    "text": "3.2 Tillgänglighetsprestanda\nTillgänglighet kan kvantifieras som andelen av krävd tid (required time) under vilken enheten kan utföra det som krävs. Detta benämns tillgänglighetsprestanda i svensk standard för underhåll (SS-EN 13306:2017) (Underhåll – Underhållsterminologi 2017).\n\\[\nA = \\frac{\\text{Tillgänglig tid}}\n{\\text{Tillgänglig tid} + \\text{Otillgänglig tid}}\n= \\frac{\\mathrm{Uptime}}{\\mathrm{Uptime} + \\mathrm{Downtime}}\n\\]\nDet finns många olika varianter av tillgänglighetsprestanda. Anledningen är att det för olika typer av verksamheter inom olika sektorer kan vara relevant att ta fram olika nyckeltal för att följa upp och utveckla verksamheten och dess underhåll.\nTidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den procentandel av tiden, under en given tidsperiod, då en enhet kan utföra det som krävs. Det finns också produktionsbaserad tillgänglighet, som definieras som förhållandet mellan faktisk produktion och krävd produktion. Produktionsbaserad tillgänglighet beskrivs inte vidare i denna guide.\nTidsbaserad tillgänglighet beskrivs också i den svenska standarden SS-EN 15341:2019, Nyckeltal för underhåll (Underhåll – Nyckeltal för underhåll 2022), under Maintenance Key Performance Indicators genom nyckeltalet Time-based availability (M10): \\[\nM10 = \\frac{\\text{Uptime during required time}}{\\text{Required time}}\n\\]\nI M10 ingår beredskapstid (standby time) i tillgänglig tid (uptime) men inte outnyttjad tid (idle time).\nGemensamt för tidsbaserade tillgänglighetsmått är att man måste bestämma vilken tid som ska räknas som krävd tid. I denna guide beskrivs två alternativ: total kalendertid och planerad drifttid.\n\n3.2.1 Tillgänglighet baserad på total kalendertid\nTillgänglighet baserad på kalendertid avser den andel av den totala kalendertiden (24 timmar om dygnet, 365 dagar om året) då en enhet är funktionsduglig.\n\\[\n\\mathrm{Uptime} + \\mathrm{Downtime} = \\mathrm{Total\\ time}\n\\Longrightarrow\nA = \\frac{\\mathrm{Uptime}}{\\mathrm{Total\\ time}}\n\\]\n\n\n3.2.2 Tillgänglighet baserad på planerad driftstid\nDetta mått på tillgänglighet beskriver den andel av den planerade driften då enheten kan utföra det som krävs \\((\\text{Krävd tid}=\\text{Planerad drift})\\). Den tillgängliga tiden omfattar drifttid och beredskapstid.\nI SS-EN 15341 beskrivs även Availability based on operating time (M11), som endast utgår från drifttid (OT) och exkluderar beredskapstid, enligt \\[\nM11 = \\frac{OT}{\\text{Required operating time}}\n\\]\nStandarden för nyckeltal inom underhåll beskriver även ett tredje mått, Availability based on time to restoration (M12) enligt \\[\nM12 = \\frac{OT}{OT+TTR}\n\\] där TTR (time to restoration) är tiden till återställning och omfattar reparationstid och väntetid.\n\n\n3.2.3 Definitioner\n\nFunktionsdugligt tillstånd (up state) är ett tillstånd då en enhet kan utföra krävd funktion, antaget att de externa resurserna tillhandahålls.\nFunktionsodugligt tillstånd (down state) är ett tillstånd då en enhet inte kan utföra krävd funktion på grund av förebyggande underhåll eller ett feltillstånd.\nTillgänglig tid (uptime, UT) är tidsintervallet under vilket en enhet är i ett funktionsdugligt tillstånd.\nOtillgänglig tid (downtime, DT) är tidsintervallet under vilket en enhet är i ett funktionsodugligt tillstånd.\nDrifttid (operating time, OT) är tidsintervallet under vilket en enhet är i drifttillstånd, det vill säga ett tillstånd där enheten utför det som krävs.\nKrävd tid (required time) är det tidsintervall under vilket en enhet måste vara i funktionsdugligt tillstånd.\nBeredskapstid (standby time) är den tid då en enhet är i funktionsdugligt tillstånd men inte i drift under krävd tid.\nOutnyttjad tid (idle time) är den tid då en enhet är i funktionsdugligt tillstånd, men inte är i drift, under ej krävd tid",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Beräkning av tillgänglighet</span>"
+    ]
+  },
+  {
+    "objectID": "tillganglighet.html#tre-mått-på-tillgänglighet-ak-am-ao",
+    "href": "tillganglighet.html#tre-mått-på-tillgänglighet-ak-am-ao",
+    "title": "3  Beräkning av tillgänglighet",
+    "section": "3.3 Tre mått på tillgänglighet (Ak, Am, Ao)",
+    "text": "3.3 Tre mått på tillgänglighet (Ak, Am, Ao)\nUtöver att tillgänglighet kan beräknas baserat på kalendertid eller driftstid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.\nDenna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgänglighet:\n\nKonstruktiv tillgänglighet (\\(A_k\\)) / Inherent availability (\\(A_i\\))\nMaterialtillgänglighet (\\(A_m\\)) / Achieved availability (\\(A_a\\))\nOperativ tillgänglighet (\\(A_o\\)) / Operational availability (\\(A_o\\))\n\n\n3.3.1 Konstruktiv tillgänglighet (Ak)\nDen konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet i SS-EN 13306. Varken väntetider eller förebyggande underhåll ingår.\nDen konstruktiva tillgängligheten beräknas enligt \\[\nA_k=\n\\frac{MTBF}\n{MTBF+MRT}\n\\]\ndär MTBF är medeltiden mellan fel (Mean Time Between Failures) och MRT är medelreparationstiden (Mean Repair Time).\nI ekvationen för konstruktiv tillgänglighet betecknas medelreparationstiden traditionellt ofta med MTTR (Mean Time To Repair). Enligt terminologin i svensk standard betecknas medelreparationstiden emellertid med MRT (Mean Repair Time), medan MTTR står för Mean Time To Restore och inkluderar väntetid.\n\n\n3.3.2 Materialtillgänglighet (Am)\nMaterialtillgänglighet, eller uppnådd tillgänglighet, inkluderar både avhjälpande och förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt\n\\[\nA_m=\n\\frac{MTBM}\n{MTBM+MAMT}\n\\]\ndär MTBM (Mean Time Between Maintenance) är medeltiden mellan underhåll och MAMT (Mean Active Maintenance Time) är medeltiden för aktivt underhåll, såväl förebyggande som avhjälpande (reparation).\n\n\n3.3.3 Operativ tillgänglighet (Ao)\nOperativ tillgänglighet inkluderar både avhjälpande underhåll och förebyggande underhåll där väntetid även ingår.\nDen operativa tillgängligheten beräknas enligt \\[\nA_o\n=\n\\frac{MTBM}\n{MTBM+MDT}\n\\]\ndär MDT (Mean Downtime) är den genomsnittliga otillgängliga tiden per underhållsåtgärd, inklusive väntetid. Den kan också beräknas som \\(MDT = MAMT + MWT\\), där MWT (Mean Waiting Time) är medelväntetiden.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Beräkning av tillgänglighet</span>"
+    ]
+  },
+  {
+    "objectID": "tillganglighet.html#driftsäkerhetsparametrar",
+    "href": "tillganglighet.html#driftsäkerhetsparametrar",
+    "title": "3  Beräkning av tillgänglighet",
+    "section": "3.4 Driftsäkerhetsparametrar",
+    "text": "3.4 Driftsäkerhetsparametrar\nTillgänglighetsmåtten i föregående avsnitt bygger på medeltider för bland annat tider mellan fel, reparationstider och väntetider. Parametrarna är väntevärden för slumpmässiga tider, men skattas i praktiken från observerade tider.\nNedan beskrivs hur parametrarna kan skattas från observerade data. En mer utförlig statistisk beskrivning finns på sidan Statistisk beskrivning av driftsäkerhetsparametrar.\n\n3.4.1 MTBF\nMTBF (Mean Time Between Failures) är medeltiden mellan fel. En skattning av MTBF kan beräknas som det aritmetiska medelvärdet av de observerade tiderna mellan fel:\n\\[\n\\mathrm{MTBF}\n=\n\\frac{1}{n_{\\mathrm{Fail}}}\n\\sum_{i=1}^{n_{\\mathrm{Fail}}} T_i\n=\n\\frac{1}{n_{\\mathrm{Fail}}}\n\\sum_{i=1}^{n_{\\mathrm{Fail}}}\n\\left(\nt_{\\mathrm{Fail},i}\n-\nt_{\\mathrm{Restored},i-1}\n\\right)\n\\]\ndär \\(t_{\\mathrm{Restored},0}=t_0\\) och \\(t_0\\) är observationsperiodens starttid.\nMTBF används för reparerbara enheter. För enheter som inte repareras används i stället MTTF (Mean Time To Failure), medeltid till fel.\nTid mellan fel för kalenderbaserad tillgänglighet inkluderar både tillgänglig tid \\((UT)\\) och förebyggande underhållstid \\((T_{PM})\\). Den kan därför också beräknas enligt\n\\[\n\\mathrm{MTBF}\n=\n\\frac{\\mathrm{UT}+\\sum T_{PM}}{n_{\\mathrm{Fail}}}\n\\]\nFör många system och anläggningar är reparationstiden väldigt kort i förhållande till kalendertiden. En approximation är att beräkna medeltiden av feltiderna för den totala tiden mellan fel \\[\n\\mathrm{MTBF}\n\\approx\n\\frac{1}{n_{Fail}}\\sum_{i=1}^{n_{Fail}} \\left(\nt_{\\mathrm{Fail},\\,i}\n-\nt_{\\mathrm{Fail},\\,i-1}\n\\right)\n=\n\\frac{\\text{Total time}}{n_{Fail}}\n\\]\nPå motsvarande sätt approximeras MTBF även med utgångspunkt i bara tillgänglig tid som\n\\[\n\\mathrm{MTBF}\n\\approx\n\\frac{\\mathrm{UT}}{n_{Fail}}\n\\]\n\n3.4.1.1 Drifttid\nFör tillgänglighet baserad på planerad drift beräknas normalt MTBF som medeltiden för drifttiden \\((OT)\\) mellan fel, dvs utan hänsyn till eventuellt förebyggande underhåll som genomförs under planerad drift, enligt\n\\[\n\\mathrm{MTBF}\n= \\frac{\\mathrm{OT}}{n_{Fail}}\n\\]\n\n\n\n3.4.2 MRT\nMedelreparationstiden beräknas enligt \\[\n\\mathrm{MRT}\n=\n\\frac{1}{n_{Fail}}\\sum_{i=1}^{n_{Fail}} T_{Rep,i}\n=\n\\frac{1}{n_{Fail}}\\sum_{i=1}^{n_{Fail}}\n\\left(\nt_{\\mathrm{Repair\\ end},\\,i}\n-\nt_{\\mathrm{Repair\\ start},\\,i}\n\\right)\n\\]\n\n\n3.4.3 MTBM\nMedeltiden mellan underhåll beräknas som medelvärdet av den tillgängliga tiden mellan underhållsåtgärder\n\\[\n\\mathrm{MTBM}\n=\n\\frac{1}{n_M}\\sum_{i=1}^{n_M} T_{U,i}\n=\n\\frac{1}{n_M}\\sum_{i=1}^{n_M}\n\\left(\nt_{\\mathrm{M\\ start},\\,i}\n-\nt_{\\mathrm{M\\ end},\\,i-1}\n\\right)\n= \\frac{\\mathrm{UT}}{n_M}\n\\]\ndär \\(M\\) (maintenance) är en underhållsåtgärd och \\(n_M = n_{Fail}+ n_{PM}\\) är antalet avhjälpande och förebyggande underhållsåtgärder.\nFör tillgänglighet baserad på krävd tid är den tillgängliga tiden, enligt ovan, summan av drifttid och beredskapstid. MTBM beräknas då vanligen som \\[\n\\mathrm{MTBM}\n= \\frac{\\mathrm{OT}}{n_M}\n\\]\n\n\n3.4.4 MAMT\nDen genomsnittliga aktiva underhållstiden per åtgärd beräknas som \\[\n\\mathrm{MAMT}\n=\n\\frac{1}{n_M}\\sum_{i=1}^{n_M} T_{AM,i}\n=\n\\frac{1}{n_{Fail}+n_{PM}}\n\\left(\n\\displaystyle\\sum_{j=1}^{n_{Fail}} T_{Rep,j}\n+\n\\displaystyle\\sum_{k=1}^{n_{PM}} T_{APM,k}\n\\right)\n\\]\ndär \\(T_{AM,i}\\) är den aktiva underhållstiden för åtgärd \\(i\\), \\(T_{Rep,j}\\) är reparationstiden för fel \\(j\\) och \\(T_{APM,k}\\) är den aktiva förebyggande underhållstiden för åtgärd \\(k\\).\n\n\n3.4.5 MDT\nDen genomsnittliga otillgängliga tiden (nedtiden) per underhållsåtgärd beräknas enligt \\[\n\\mathrm{MDT}\n=\n\\frac{1}{n_M}\\sum_{i=1}^{n_M} T_{Down,i}\n=\n\\frac{1}{n_M}\\sum_{i=1}^{n_M}\n\\left(\nt_{\\mathrm{M\\ end},\\,i}\n-\nt_{\\mathrm{M\\ start},\\,i}\n\\right)\n\\] där \\(T_{\\mathrm{CM},i}\\) är den otillgängliga tiden för den avhjälpande underhållsåtgärden \\(i\\), och \\(T_{\\mathrm{PM},i}\\) är motsvarande tid för den förebyggande underhållsåtgärden.\nVilket också kan beräknas som \\[\n\\mathrm{MDT}\n=\\frac{\\sum_{i=1}^{n_{Fail}} T_{CM, i} + \\sum_{i=1}^{n_{PM}} T_{PM, i}}\n{n_{Fail} + n_{PM}}\n\\]\n\n3.4.5.1 MWT\nMDT kan också beräknas som \\[\nMDT = MAMT + MWT\n\\]\n\\(MWT\\) är medelväntetiden per underhållsåtgärd enligt\n\\[\n\\mathrm{MWT}\n=\n\\frac{1}{n_M}\\sum_{i=1}^{n_M} T_{Wait,i}\n\\]\ndär \\(T_{Wait,i}\\) är den sammanlagda väntetiden under underhållsaktivitet \\(i\\).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Beräkning av tillgänglighet</span>"
+    ]
+  },
+  {
+    "objectID": "tillganglighet.html#exempel-1",
+    "href": "tillganglighet.html#exempel-1",
+    "title": "3  Beräkning av tillgänglighet",
+    "section": "4.1 Exempel 1",
+    "text": "4.1 Exempel 1\nEtt system har följande data:\n\nTillgänglig tid (UT) = 3600 h\nAntal fel = 30\nSumma reparationstid = 150 h\nMedelväntetid avhjälpande underhåll = 3 h\nAntal förebyggande underhåll = 15\nSumma förebyggande underhållstid = 60 h\nMedelväntetid förebyggande underhåll = 1 h\n\nBeräkna den kalenderbaserade tillgängligheten:\n\n\\(A_k\\)\n\\(A_m\\)\n\\(A_o\\)\n\n\n\n4.1.1 a) Beräkna Ak\n\\[\nA_k=\n\\frac{MTBF}{MTBF+MRT}\n\\]\n\n4.1.1.1 Steg 1: MTBF\n\\[\nMTBF=\n\\frac{\\text{UT}+\\sum T_{PM}}{n_{Fail}}\n=\n\\frac{3600+(45+15)}{30}\n=\n122\\ h\n\\]\n\n\n4.1.1.2 Steg 2: MRT\n\\[\nMRT=\n\\frac{\\sum T_{Rep}}{n_{Fail}}\n=\n\\frac{150}{30}\n=\n5\\ h\n\\]\n\n\n4.1.1.3 Steg 3: Ak\n\\[\nA_k=\n\\frac{MTBF}{MTBF+MRT}\n=\n\\frac{122}{122+5}\n=\n0.961\n\\]\nSvar: Den konstruktiva tillgängligheten \\(A_k=96.1\\%\\)\n\n\n\n4.1.2 b) Beräkna Am\n\\[\nA_m=\n\\frac{MTBM}{MTBM+MAMT}\n\\]\n\n4.1.2.1 Steg 1: MTBM\n\\[\nMTBM=\n\\frac{UT}{n_{M}}\n=\n\\frac{3600}{30+15}\n=\n80\\ h\n\\]\ndär antal underhållsaktiviteter \\(n_{M}=n_{Fail}+n_{PM}\\)\n\n\n4.1.2.2 Steg 2: MAMT\n\\[\nMAMT=\n\\frac{\\sum T_{Rep} + \\sum T_{APM}}{n_{M}}\n=\n\\frac{150 + (60-15 \\cdot 1)}{45}\n=\n4.33\\ h\n\\]\ndär summan aktivt förebyggande underhållstid erhålls ur \\[\n\\sum T_{APM} = \\sum T_{PM} - n_{PM} \\cdot MWT_{PM}\n\\]\n\n\n4.1.2.3 Steg 3: Am\n\\[\nA_m=\n\\frac{MTBM}{MTBM+MAMT}\n=\n\\frac{80}{80+4.33}\n=\n0.949\n\\]\nSvar: Materialtillgängligheten är \\(A_m=94.9\\%\\)\n\n\n\n4.1.3 c) Beräkna Ao\n\\[\nA_o=\n\\frac{MTBM}{MTBM+MDT}\n\\]\n\n4.1.3.1 Steg 1: MTBM\n\\[\nMTBM=\n\\frac{UT}{n_{M}}\n=\n\\frac{3600}{45}\n=\n80\\ h\n\\]\n\n\n4.1.3.2 Steg 2: MDT\n\\[\nMDT=\n\\frac{\\sum T_{CM} + \\sum T_{PM}}{n_M}\n=\n\\frac{(150+90) + (45+15)}{45}\n=\n6.667\\ h\n\\]\n\n\n4.1.3.3 Steg 3: Ao\n\\[\nA_o=\n\\frac{MTBM}{MTBM+MDT}\n=\n\\frac{80}{80+6.667}\n=\n0.923\n\\]\nSvar: Den operativa tillgängligheten är \\(A_o=92.3\\%\\)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Beräkning av tillgänglighet</span>"
+    ]
+  },
+  {
+    "objectID": "tillganglighet.html#exempel-2",
+    "href": "tillganglighet.html#exempel-2",
+    "title": "3  Beräkning av tillgänglighet",
+    "section": "4.2 Exempel 2",
+    "text": "4.2 Exempel 2\nNedan är data för fel och förebyggande underhåll för en anläggning med kontinuerlig produktion. Anläggningen driftsattes 2023-11-01 kl 08:00.\na) Beräkna \\(A_k\\), \\(A_o\\) baserat på planerad produktionstid, där planerad produktionstid är total tid minus de förebyggande underhållsstoppen.\nb) Beräkna \\(A_k\\), \\(A_m\\), \\(A_o\\) baserat på kalendertid\n\n\n\n\n\n\n\n\n\n\n\nHändelseID\nTyp\nAnmält datum \\((t_{failure, i})\\)\nAnmält vidare\nArbetet påbörjat\nArbetet slutfört \\((t_{restore, i})\\)\n\n\n\n\n1\nAU\n2024-01-15 03:12:00\n2024-01-15 06:45:00\n2024-01-15 07:20:00\n2024-01-15 08:40:00\n\n\n3\nAU\n2024-04-22 17:54:00\n2024-04-22 19:10:00\n2024-04-22 20:00:00\n2024-04-22 23:15:00\n\n\n4\nAU\n2024-07-31 09:27:00\n2024-07-31 10:05:00\n2024-07-31 11:20:00\n2024-07-31 14:50:00\n\n\n6\nAU\n2024-10-10 13:56:00\n2024-10-10 14:53:00\n2024-10-10 20:46:00\n2024-10-11 04:45:00\n\n\n7\nAU\n2024-11-18 22:41:00\n2024-11-18 23:30:00\n2024-11-19 01:10:00\n2024-11-19 03:20:00\n\n\n8\nAU\n2024-12-04 06:11:00\n2024-12-04 06:41:00\n2024-12-04 15:25:00\n2024-12-04 22:37:00\n\n\n9\nAU\n2025-02-24 14:08:00\n2025-02-24 14:55:00\n2025-02-24 16:10:00\n2025-02-24 19:40:00\n\n\n11\nAU\n2025-05-12 01:59:00\n2025-05-12 02:39:00\n2025-05-14 01:28:00\n2025-05-14 11:19:00\n\n\n12\nAU\n2025-06-03 05:33:00\n2025-06-03 08:20:00\n2025-06-03 09:00:00\n2025-06-03 11:45:00\n\n\n14\nAU\n2025-09-11 18:26:00\n2025-09-11 20:10:00\n2025-09-11 21:00:00\n2025-09-12 00:55:00\n\n\n15\nAU\n2025-10-25 16:53:00\n2025-10-25 17:40:00\n2025-10-27 06:31:00\n2025-10-27 09:00:00\n\n\n16\nAU\n2025-12-20 07:51:00\n2025-12-20 08:40:00\n2025-12-20 10:15:00\n2025-12-20 13:05:00\n\n\n18\nAU\n2026-03-29 12:17:00\n2026-03-29 13:05:00\n2026-03-29 15:00:00\n2026-03-29 17:40:00\n\n\n19\nAU\n2026-04-14 07:21:00\n2026-04-14 08:18:00\n2026-04-15 04:14:00\n2026-04-15 09:34:00\n\n\n20\nAU\n2026-04-21 15:20:00\n2026-04-21 15:59:00\n2026-04-23 11:47:00\n2026-04-23 20:45:00\n\n\n21\nAU\n2026-07-07 01:44:00\n2026-07-07 04:20:00\n2026-07-07 05:10:00\n2026-07-07 07:05:00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHändelseID\nTyp\nAnmält datum\nAnmält vidare\nArbetet påbörjat \\((t_{PM\\ start, i})\\)\nArbetet slutfört \\((t_{PM\\ end, i})\\)\n\n\n\n\n2\nFU\n2024-03-01 08:00:00\n2024-03-01 08:00:00\n2024-03-01 08:00:00\n2024-03-02 08:00:00\n\n\n5\nFU\n2024-09-01 08:00:00\n2024-09-01 08:00:00\n2024-09-01 08:00:00\n2024-09-02 08:00:00\n\n\n10\nFU\n2025-03-01 08:00:00\n2025-03-01 08:00:00\n2025-03-01 08:00:00\n2025-03-02 08:00:00\n\n\n13\nFU\n2025-09-01 08:00:00\n2025-09-01 08:00:00\n2025-09-01 08:00:00\n2025-09-02 08:00:00\n\n\n17\nFU\n2026-03-01 08:00:00\n2026-03-01 08:00:00\n2026-03-01 08:00:00\n2026-03-02 08:00:00\n\n\n22\nFU\n2026-09-01 08:00:00\n2026-09-01 08:00:00\n2026-09-01 08:00:00\n2026-09-02 08:00:00\n\n\n\n\n4.2.1 Uppgift a\n\n4.2.1.1 Steg 1: Tider\nBeräkna tid mellan fel samt reparationstid och nedtid (otillgänglig tid) - Tid mellan fel är den tillgängliga tiden från föregående återställning till nästa fel där förebyggande underhåll som infaller under intervallet exkluderas \\[\nTBF_i\n=\n\\left(\nt_{failure,i}\n-\nt_{restore,i-1}\n\\right)\n-\n\\sum_j\n\\max\\left(\n0,\\,\n\\min(t_{PM\\,end,j},t_{failure,i})\n-\n\\max(t_{PM\\,start,j},t_{restore,i-1})\n\\right)\n\\qquad t_{restore,0} = \\text{2023-11-01 08:00}\n\\] - Reparationstid är tidsintervallet mellan Arbetet slutfört och Arbetet påbörjat - Väntetid är tidsintervallet mellan Arbetet påbörjat och Anmält datum - Nedtid är tidsintervallet mellan Arbetet slutfört och Anmält datum.\n\n\n\n\n\n\n\n\n\n\nHändelseID\nTid mellan fel (TBF) [dygn]\nReparationstid [h]\nVäntetid [h]\nNedtid [h]\n\n\n\n\n1\n74.8\n1.3\n4.1\n5.5\n\n\n3\n97.4\n3.2\n2.1\n5.4\n\n\n4\n99.4\n3.5\n1.9\n5.4\n\n\n6\n70\n8\n6.8\n14.8\n\n\n7\n38.7\n2.2\n2.5\n4.6\n\n\n8\n15.1\n7.2\n9.2\n16.4\n\n\n9\n81.6\n3.5\n2\n5.5\n\n\n11\n75.3\n9.8\n47.5\n57.3\n\n\n12\n19.8\n2.8\n3.4\n6.2\n\n\n14\n99.3\n3.9\n2.6\n6.5\n\n\n15\n43.7\n2.5\n37.6\n40.1\n\n\n16\n54\n2.8\n2.4\n5.2\n\n\n18\n98\n2.7\n2.7\n5.4\n\n\n19\n15.6\n5.3\n20.9\n26.2\n\n\n20\n6.2\n9\n44.4\n53.4\n\n\n21\n74.2\n1.9\n3.4\n5.4\n\n\n\n\n\n4.2.1.2 Steg 2: Konstruktiv tillgänglighet (Ak)\n\\[\nMTBF = \\frac{1}{16} \\sum_{i=1}^{16} TBF_i = 1444.6 h\n\\]\n\\[\nMRT = \\frac{1}{16} \\sum_{i=1}^{16} T_{R,i} = 4.35 h\n\\]\n\\[\nA_k = \\frac{MTBF}{MTBF+MRT}=\\frac{1444.6}{1444.6+4.35} = 0.997\n\\]\nSvar: Konstruktiv tillgänglighet \\(A_k = 99.7\\%\\)\n\n\n4.2.1.3 Steg 3: Operativ tillgänglighet (Ao)\n\\[\nMTBM = MTBF \\Longleftarrow \\text{förebyggande underhåll genomförs under icke krävd tid}\n\\]\n\\[\nMDT = \\frac{1}{16} \\sum_{i=1}^{16} T_{Down,i} = 16.46 h\n\\]\n\\[\nA_o = \\frac{MTBM}{MTBM+MDT}=\\frac{1444.6}{1444.6+16.46} = 0.989\n\\]\nSvar: Operativ tillgänglighet \\(A_o = 98.9\\%\\)\n\n\n\n4.2.2 Uppgift b\n\n4.2.2.1 Steg 1: Tider\nBeräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid (avhjälpande och förebyggande) samt nedtid - Tid mellan fel är \\[\n\\mathrm{TBF_i} = t_{failure, i}-t_{restore, i-1} \\quad \\left(t_{restore, 0}=\\text{2023-11-01 08:00}\\right)\n\\]\n\nTid mellan underhåll är \\[\n\\mathrm{TBM_i} = t_{m, i}-t_{m\\ restore, i-1} \\quad \\left(t_{m\\ restore, 0}=\\text{2023-11-01 08:00}\\right)\n\\]\nAktiv underhållstid (samma som reparationstid för AU) är tidsintervallet mellan Arbetet slutfört och Arbetet påbörjat.\nVäntetid är tidsintervallet mellan Arbetet påbörjat och Anmält datum\nNedtid är tidsintervallet mellan Arbetet slutfört och Anmält datum.\n\n\n\n\n\n\n\n\n\n\n\n\nHändelseID\nTid mellan fel (TBF) [dygn]\nTid mellan underhåll (TBM) [dygn]\nAktiv underhållstid [h]\nVäntetid [h]\nNedtid [h]\n\n\n\n\n1\n74.8\n74.8\n1.3\n4.1\n5.5\n\n\n2\n-\n46\n24\n0\n24\n\n\n3\n98.4\n51.4\n3.2\n2.1\n5.4\n\n\n4\n99.4\n99.4\n3.5\n1.9\n5.4\n\n\n5\n-\n31.7\n24\n0\n24\n\n\n6\n71.0\n38.2\n8\n6.8\n14.8\n\n\n7\n38.7\n38.7\n2.2\n2.5\n4.6\n\n\n8\n15.1\n15.1\n7.2\n9.2\n16.4\n\n\n9\n81.6\n81.6\n3.5\n2\n5.5\n\n\n10\n-\n4.5\n24\n0\n24\n\n\n11\n76.3\n70.7\n9.8\n47.5\n57.3\n\n\n12\n19.8\n19.8\n2.8\n3.4\n6.2\n\n\n13\n-\n89.8\n24\n0\n24\n\n\n14\n100.3\n9.4\n3.9\n2.6\n6.5\n\n\n15\n43.7\n43.7\n2.5\n37.6\n40.1\n\n\n16\n54.0\n54\n2.8\n2.4\n5.2\n\n\n17\n-\n70.8\n24\n0\n24\n\n\n18\n99.0\n27.2\n2.7\n2.7\n5.4\n\n\n19\n15.6\n15.6\n5.3\n20.9\n26.2\n\n\n20\n6.2\n6.2\n9\n44.4\n53.4\n\n\n21\n74.2\n74.2\n1.9\n3.4\n5.4\n\n\n22\n-\n56\n24\n0\n24\n\n\n\n\n\n4.2.2.2 Steg 2: Konstruktiv tillgänglighet (Ak)\n\\[\nMTBF = \\frac{1}{16} \\sum_{i=1}^{16} TBF_i = 1451.98 h\n\\]\n\\[\nMRT = \\frac{1}{16} \\sum_{i=1}^{16} T_{R,i} = 4.35 h\n\\]\n\\[\nA_k = \\frac{MTBF}{MTBF+MRT}=\\frac{1451.98}{1451.98+4.35} = 0.997\n\\]\nSvar: Konstruktiv tillgänglighet \\(A_k = 99.7\\%\\)\n\n\n4.2.2.3 Steg 3: Materialtillgänglighet (Am)\n\\[\nMTBM = \\frac{1}{22} \\sum_{i=1}^{22} TBM_i = 1111.67 h\n\\]\n\\[\nMAMT = \\frac{1}{22} \\sum_{i=1}^{22} T_{M,i} = 9.71 h\n\\]\n\\[\nA_m = \\frac{MTBM}{MTBM+MAMT}=\\frac{1111.67}{1111.67+9.71} = 0.991\n\\]\nSvar: Materialtillgänglighet \\(A_m = 99.1\\%\\)\n\n\n4.2.2.4 Steg 4: Operativ tillgänglighet (Ao)\n\\[\nMTBM = \\frac{1}{22} \\sum_{i=1}^{22} TBM_i = 1111.67 h\n\\]\n\\[\nMDT = \\frac{1}{22} \\sum_{i=1}^{22} T_{Down,i} = 18.51 h\n\\]\n\\[\nA_o = \\frac{MTBM}{MTBM+MDT}=\\frac{1111.67}{1111.67+18.51} = 0.984\n\\]\nSvar: Operativ tillgänglighet \\(A_o = 98.4\\%\\)\n\n\n\n\nUnderhåll – Nyckeltal för underhåll, Pub. L. Nos. SS-EN 15341:2019+A1:2022 (2022). https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/.\n\n\nUnderhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Beräkning av tillgänglighet</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html",
+    "href": "tillforlitlighet.html",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "",
+    "text": "4.1 Icke-reparerbara system\nFunktionssäkerhet beskriver sannolikheten att ett system fungerar utan fel under en given tid och under givna förhållanden.\nMan skiljer mellan två typer av system:\nViktigt mått: - MTTF (Mean Time To Failure)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#icke-reparerbara-system",
+    "href": "tillforlitlighet.html#icke-reparerbara-system",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "",
+    "text": "System som inte repareras efter fel\nExempel: glödlampor, säkringar",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#reparerbara-system",
+    "href": "tillforlitlighet.html#reparerbara-system",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "4.2 Reparerbara system",
+    "text": "4.2 Reparerbara system\n\nSystem som kan repareras och åter tas i drift\nExempel: maskiner, fordon, produktionssystem\n\nViktigt mått: - MTBF (Mean Time Between Failures)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#täthetsfunktion-pdf",
+    "href": "tillforlitlighet.html#täthetsfunktion-pdf",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "6.1 Täthetsfunktion (PDF)",
+    "text": "6.1 Täthetsfunktion (PDF)\n\\[\nf(x)\n\\]\nBeskriver sannolikhetstätheten för fel vid tidpunkt (x).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#fördelningsfunktion-cdf",
+    "href": "tillforlitlighet.html#fördelningsfunktion-cdf",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "6.2 Fördelningsfunktion (CDF)",
+    "text": "6.2 Fördelningsfunktion (CDF)\n\\[\nF(x)\n\\]\nBeskriver sannolikheten att ett fel inträffar före tid (x).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#funktionssannolikhet-reliability-function",
+    "href": "tillforlitlighet.html#funktionssannolikhet-reliability-function",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "6.3 Funktionssannolikhet (Reliability function)",
+    "text": "6.3 Funktionssannolikhet (Reliability function)\n\\[\nR(x)\n\\]\nBeskriver sannolikheten att systemet fortfarande fungerar vid tid (x).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#samband",
+    "href": "tillforlitlighet.html#samband",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "6.4 Samband",
+    "text": "6.4 Samband\n\\[\nR(x) + F(x) = 1\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#felintensitet-hazard-function",
+    "href": "tillforlitlighet.html#felintensitet-hazard-function",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "6.5 Felintensitet (Hazard function)",
+    "text": "6.5 Felintensitet (Hazard function)\n\\[\n\\lambda(x)\n\\]\nBeskriver den momentana risken för fel.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#antagande",
+    "href": "tillforlitlighet.html#antagande",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "7.1 Antagande",
+    "text": "7.1 Antagande\n\nFelintensiteten är konstant:\n\n\\[\n\\lambda(x) = \\lambda\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#funktioner",
+    "href": "tillforlitlighet.html#funktioner",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "7.2 Funktioner",
+    "text": "7.2 Funktioner\nFunktionssannolikhet:\n\\[\nR(x) = e^{-\\lambda x}\n\\]\nFelsannolikhet:\n\\[\nF(x) = 1 - e^{-\\lambda x}\n\\]\nTäthetsfunktion:\n\\[\nf(x) = \\lambda e^{-\\lambda x}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#samband-med-mttf",
+    "href": "tillforlitlighet.html#samband-med-mttf",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "7.3 Samband med MTTF",
+    "text": "7.3 Samband med MTTF\n\\[\nMTTF = \\frac{1}{\\lambda}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#steg-1-medelvärde",
+    "href": "tillforlitlighet.html#steg-1-medelvärde",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "8.1 Steg 1: medelvärde",
+    "text": "8.1 Steg 1: medelvärde\n\\[\nMTTF = \\frac{7 + 15 + 9 + 3 + 4}{5} = 7.6\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#steg-2-felintensitet",
+    "href": "tillforlitlighet.html#steg-2-felintensitet",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "8.2 Steg 2: felintensitet",
+    "text": "8.2 Steg 2: felintensitet\n\\[\n\\lambda = \\frac{1}{7.6} \\approx 0.13\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#steg-3-funktionssannolikhet",
+    "href": "tillforlitlighet.html#steg-3-funktionssannolikhet",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "8.3 Steg 3: funktionssannolikhet",
+    "text": "8.3 Steg 3: funktionssannolikhet\n\\[\nR(5) = e^{-0.13 \\cdot 5} \\approx 0.52\n\\]\nAlltså:\n\n52 % sannolikhet att pumpen fungerar i 5 timmar :contentReferenceoaicite:1",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#begynnelseperiod",
+    "href": "tillforlitlighet.html#begynnelseperiod",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "9.1 1. Begynnelseperiod",
+    "text": "9.1 1. Begynnelseperiod\n\nHöga initiala fel\nFelintensiteten minskar\n\nOrsak: - tillverkningsfel - svaga komponenter",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#slumpmässig-period",
+    "href": "tillforlitlighet.html#slumpmässig-period",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "9.2 2. Slumpmässig period",
+    "text": "9.2 2. Slumpmässig period\n\nKonstant felintensitet\nExponentialfördelning gäller",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#slitageperiod",
+    "href": "tillforlitlighet.html#slitageperiod",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "9.3 3. Slitageperiod",
+    "text": "9.3 3. Slitageperiod\n\nFelintensiteten ökar\nKomponenter åldras",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#teknisk",
+    "href": "tillforlitlighet.html#teknisk",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "10.1 Teknisk",
+    "text": "10.1 Teknisk\n\nElektriska komponenter (generatorer, transformatorer)\nMekaniska komponenter (lager, turbiner)\nInfrastruktur (rör, dammar)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#hård--och-mjukvara",
+    "href": "tillforlitlighet.html#hård--och-mjukvara",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "10.2 Hård- och mjukvara",
+    "text": "10.2 Hård- och mjukvara\n\nHårdvara: fysiska system\nMjukvara:\n\nökande betydelse\nkan både förbättras och försämras över tid",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#mänsklig",
+    "href": "tillforlitlighet.html#mänsklig",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "10.3 Mänsklig",
+    "text": "10.3 Mänsklig\n\nOperatörens påverkan\nBeslutsfattande\nOrganisation och kultur",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#tolkning-av-β",
+    "href": "tillforlitlighet.html#tolkning-av-β",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "12.1 Tolkning av β",
+    "text": "12.1 Tolkning av β\n\nβ &lt; 1 → avtagande felintensitet\n\nβ = 1 → konstant felintensitet (exponentialfall)\n\nβ &gt; 1 → ökande felintensitet (slitage)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#funktioner-1",
+    "href": "tillforlitlighet.html#funktioner-1",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "12.2 Funktioner",
+    "text": "12.2 Funktioner\nFunktionssannolikhet:\n\\[\nR(x) = e^{-(x/\\alpha)^\\beta}\n\\]\nFelsannolikhet:\n\\[\nF(x) = 1 - e^{-(x/\\alpha)^\\beta}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#exempel",
+    "href": "tillforlitlighet.html#exempel",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "12.3 Exempel",
+    "text": "12.3 Exempel\nEn tonerkassett har:\n\nα = 16 dygn\n\nβ = 6\n\nSannolikheten att den fungerar i 12 dygn:\n\\[\nR(12) \\approx 0.84\n\\]\nAlltså:\n\n84 % sannolikhet att den håller i 12 dygn :contentReferenceoaicite:2",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#princip",
+    "href": "tillforlitlighet.html#princip",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "15.1 Princip",
+    "text": "15.1 Princip\nEtt system är seriekopplat om alla komponenter måste fungera för att systemet ska fungera.\nExempel:\n\nTurbin → Generator → Transformator\n\nOm en komponent fallerar → hela systemet fallerar.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#funktionssäkerhet",
+    "href": "tillforlitlighet.html#funktionssäkerhet",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "15.2 Funktionssäkerhet",
+    "text": "15.2 Funktionssäkerhet\nSystemets funktionssannolikhet ges av:\nR_s = R_1 * R_2 * R_3\nAllmänt:\nR_s = Π R_i",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#tolkning",
+    "href": "tillforlitlighet.html#tolkning",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "15.3 Tolkning",
+    "text": "15.3 Tolkning\n\nFler komponenter → lägre tillförlitlighet\n\nDen svagaste komponenten påverkar systemet mest",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#princip-1",
+    "href": "tillforlitlighet.html#princip-1",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "16.1 Princip",
+    "text": "16.1 Princip\nEtt system är parallellkopplat om minst en komponent fungerar.\nExempel:\n\ntvå pumpar\ndubbla generatorer",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#funktionssäkerhet-1",
+    "href": "tillforlitlighet.html#funktionssäkerhet-1",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "16.2 Funktionssäkerhet",
+    "text": "16.2 Funktionssäkerhet\nSystemets tillförlitlighet:\nR_s = 1 - Π (1 - R_i)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#tolkning-1",
+    "href": "tillforlitlighet.html#tolkning-1",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "16.3 Tolkning",
+    "text": "16.3 Tolkning\nFördelar:\n\nminskar risken för totalstopp\n\nökar tillgänglighet\n\nNackdelar:\n\nhögre kostnad\n\nmer underhåll",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#viktig-aspekt",
+    "href": "tillforlitlighet.html#viktig-aspekt",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "16.4 Viktig aspekt",
+    "text": "16.4 Viktig aspekt\nVid parallella system måste man även beakta:\n\nkapacitet (full eller reducerad drift)\nredundansnivå",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#beräkningsmetod",
+    "href": "tillforlitlighet.html#beräkningsmetod",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "18.1 Beräkningsmetod",
+    "text": "18.1 Beräkningsmetod\n\nIdentifiera delsystem\n\nBeräkna tillförlitlighet för varje delsystem\n\nKombinera dessa stegvis",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#steg-1-beräkna-komponenters-tillförlitlighet",
+    "href": "tillforlitlighet.html#steg-1-beräkna-komponenters-tillförlitlighet",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "19.1 Steg 1: beräkna komponenters tillförlitlighet",
+    "text": "19.1 Steg 1: beräkna komponenters tillförlitlighet\nFör exponentialfördelning:\nR(x) = e^(-λx)\ndär:\nλ = 1 / MTBF\n\n\n19.1.1 Krossar\nλ = 0.001\nR_k1 = R_k2 ≈ 0.95\n\n\n\n19.1.2 Truck\nλ = 0.005\nR_t ≈ 0.78",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#steg-2-parallell-del-krossar",
+    "href": "tillforlitlighet.html#steg-2-parallell-del-krossar",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "19.2 Steg 2: parallell del (krossar)",
+    "text": "19.2 Steg 2: parallell del (krossar)\nR_p = 1 - (1 - 0.95)(1 - 0.95) = 0.98",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#steg-3-serie-med-truck",
+    "href": "tillforlitlighet.html#steg-3-serie-med-truck",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "19.3 Steg 3: serie med truck",
+    "text": "19.3 Steg 3: serie med truck\nR_s = 0.78 * 0.98 ≈ 0.76",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#resultat",
+    "href": "tillforlitlighet.html#resultat",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "19.4 Resultat",
+    "text": "19.4 Resultat\n\nSystemets tillförlitlighet ≈ 76 %",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "tillforlitlighet.html#tolkning-2",
+    "href": "tillforlitlighet.html#tolkning-2",
+    "title": "4  Tillförlitlighetsanalys",
+    "section": "19.5 Tolkning",
+    "text": "19.5 Tolkning\nTrots att krossarna har hög tillförlitlighet:\nTrucken dominerar systemets prestanda",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tillförlitlighetsanalys</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html",
+    "href": "formelsamling.html",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "",
+    "text": "B Tillförlitlighetsanalys",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#exponentialfördelning",
+    "href": "formelsamling.html#exponentialfördelning",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "B.1 Exponentialfördelning",
+    "text": "B.1 Exponentialfördelning\n\nFelsannolikhet\n\\[F(t)=1-e^{-\\lambda t}\\]\n\n\nFelfrekvens\n\\[f(t)=\\lambda e^{-\\lambda t}\\]\n\n\nFunktionssannolikhet\n\\[R(t)=e^{-\\lambda t}\\]\n\n\nFelintensitet\n\\[\\lambda(t)=\\lambda\\]\nFör en exponentialfördelning är felintensiteten \\(\\lambda\\) konstant och benämns felbenägenhet.\n\n\nMedelvärde\n\\[MTBF\\ \\text{eller}\\ MTTF=\\frac{1}{\\lambda}\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#weibullfördelning",
+    "href": "formelsamling.html#weibullfördelning",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "B.2 Weibullfördelning",
+    "text": "B.2 Weibullfördelning\n\\(\\alpha\\) är skalparametern och \\(\\beta\\) är formparametern.\n\nFelsannolikhet\n\\[F(t)=1-\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFelfrekvens\n\\[f(t)\n=\n\\frac{\\beta t^{\\beta-1}}{\\alpha^\\beta}\n\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFunktionssannolikhet\n\\[R(t)=\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFelintensitet\n\\[\\lambda(t)=\\frac{\\beta t^{\\beta-1}}{\\alpha^\\beta}\\]\n\n\nMedelvärde\n\\[MTBF\\ \\text{eller}\\ MTTF\n=\n\\alpha\\Gamma\\left(1+\\frac{1}{\\beta}\\right)\\]\nVärden på \\(\\Gamma \\text{-funktionen}\\) finns i Tabell 1\n\n\nEstimat av felsannolikheten\nFör den rangordnade feltiden \\(t_i\\) kan felsannolikheten skattas som\n\\[F(t_i)=\\frac{i-0{,}3}{n+0{,}4}\\]\ndär \\(i\\) är feltidens rangnummer och \\(n\\) är antalet observerade feltider.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#systemtillförlitlighet",
+    "href": "formelsamling.html#systemtillförlitlighet",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "B.3 Systemtillförlitlighet",
+    "text": "B.3 Systemtillförlitlighet\n\nSeriekopplat system\n\\[R_{tot}=R_1R_2\\cdots R_n\\]\n\n\nParallellkopplat system\n\\[R_{tot}\n=\n1-\\left[(1-R_1)(1-R_2)\\cdots(1-R_n)\\right]\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#konstruktiv-tillgänglighet",
+    "href": "formelsamling.html#konstruktiv-tillgänglighet",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "C.1 Konstruktiv tillgänglighet",
+    "text": "C.1 Konstruktiv tillgänglighet\n\\[A_k=\\frac{MTBF}{MTBF+MRT}\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#materialtillgänglighet",
+    "href": "formelsamling.html#materialtillgänglighet",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "C.2 Materialtillgänglighet",
+    "text": "C.2 Materialtillgänglighet\n\\[A_m=\\frac{MTBM}{MTBM+MAMT}\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#operativ-tillgänglighet",
+    "href": "formelsamling.html#operativ-tillgänglighet",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "C.3 Operativ tillgänglighet",
+    "text": "C.3 Operativ tillgänglighet\n\\[A_o=\\frac{MTBM}{MTBM+MDT}\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#tak-beräkning",
+    "href": "formelsamling.html#tak-beräkning",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "D.1 TAK-beräkning",
+    "text": "D.1 TAK-beräkning\n\nTillgänglighet\n\\[\\text{Tillgänglighet}\n=\n\\frac{\\text{Planerad produktionstid}-\\text{Stopptid}}\n{\\text{Planerad produktionstid}}\\]\n\n\nAnläggningseffektivitet\n\\[\\text{Anläggningseffektivitet}\n=\n\\frac{\\text{Processat antal}\\cdot\\text{Teoretisk cykeltid}}\n{\\text{Drifttid}}\\]\n\n\nKvalitetsutbyte\n\\[\\text{Kvalitetsutbyte}\n=\n\\frac{\\text{Processat antal}-\\text{Felaktigt antal}}\n{\\text{Processat antal}}\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#teep",
+    "href": "formelsamling.html#teep",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "D.2 TEEP",
+    "text": "D.2 TEEP\n\\[TEEP=OEE \\cdot Loading\\]\n\\[Loading\n=\n\\frac{\\text{Planerad produktionstid}}\n{\\text{Kalendertid}}\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#realränta",
+    "href": "formelsamling.html#realränta",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "E.1 Realränta",
+    "text": "E.1 Realränta\n\\[r_r\n=\n\\frac{1+r_n}{1+q}-1\n\\approx\nr_n-q\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#nuvärde-av-ett-enstaka-belopp",
+    "href": "formelsamling.html#nuvärde-av-ett-enstaka-belopp",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "E.2 Nuvärde av ett enstaka belopp",
+    "text": "E.2 Nuvärde av ett enstaka belopp\nFör ett framtida belopp \\(R\\) vid år \\(i\\) gäller \\[NV = R \\cdot NUV\\]\ndär\n\\[NUV=\\frac{1}{(1+r)^i}\\]\nVärden på NUV finns i Tabell 2",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#nuvärdessumma-av-ett-årligt-återkommande-belopp",
+    "href": "formelsamling.html#nuvärdessumma-av-ett-årligt-återkommande-belopp",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "E.3 Nuvärdessumma av ett årligt återkommande belopp",
+    "text": "E.3 Nuvärdessumma av ett årligt återkommande belopp\nFör ett årligt belopp \\(a\\) under \\(n\\) år gäller\n\\[NV = NUS \\cdot a\\]\ndär\n\\[NUS\n= \\frac{1-(1+r)^{-n}}{r}\n= \\frac{(1+r)^n-1}{r(1+r)^n}\\]\nVärden på NUS finns i Tabell 3",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#nuvärdessumma-av-varierande-årliga-belopp",
+    "href": "formelsamling.html#nuvärdessumma-av-varierande-årliga-belopp",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "E.4 Nuvärdessumma av varierande årliga belopp",
+    "text": "E.4 Nuvärdessumma av varierande årliga belopp\n\\[NV\n=\n\\sum_{i=1}^{n}\\frac{a_i}{(1+r)^i}\\]",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#riskprioriteringstal",
+    "href": "formelsamling.html#riskprioriteringstal",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "F.1 Riskprioriteringstal",
+    "text": "F.1 Riskprioriteringstal\nRiskprioriteringstalet beräknas som\n\\[RPN=S\\cdot O\\cdot D\\]\ndär \\(S\\) är felets allvarlighet, \\(O\\) är sannolikheten för förekomst och \\(D\\) är möjligheten att upptäcka felet.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#tabell-1-gammafunktionen",
+    "href": "formelsamling.html#tabell-1-gammafunktionen",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "Tabell 1: Gammafunktionen",
+    "text": "Tabell 1: Gammafunktionen\n\n\n\n\\(z\\)\n\\(\\Gamma(z)\\)\n\n\n\n\n0,1\n9,5\n\n\n0,2\n4,6\n\n\n0,3\n3,0\n\n\n0,4\n2,2\n\n\n0,5\n1,8\n\n\n0,6\n1,5\n\n\n0,7\n1,3\n\n\n0,8\n1,2\n\n\n0,9\n1,1\n\n\n1,0\n1,0\n\n\n1,1\n1,0\n\n\n1,2\n0,9\n\n\n1,3\n0,9\n\n\n1,4\n0,9\n\n\n1,5\n0,9\n\n\n1,6\n0,9\n\n\n1,7\n0,9\n\n\n1,8\n0,9\n\n\n1,9\n1,0\n\n\n2,0\n1,0\n\n\n2,1\n1,0\n\n\n2,2\n1,1\n\n\n2,3\n1,2\n\n\n2,4\n1,2\n\n\n2,5\n1,3\n\n\n2,6\n1,4\n\n\n2,7\n1,5\n\n\n2,8\n1,7\n\n\n2,9\n1,8\n\n\n3,0\n2,0",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#tabell-2-nuvärdesfaktor-nuv",
+    "href": "formelsamling.html#tabell-2-nuvärdesfaktor-nuv",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "Tabell 2: Nuvärdesfaktor (NUV)",
+    "text": "Tabell 2: Nuvärdesfaktor (NUV)\nNuvärdesfaktor (NUV) för ett belopp år \\(i\\)\n\n\n\nÅr \\(i\\)\n2 %\n4 %\n6 %\n8 %\n10 %\n\n\n\n\n1\n0,980\n0,962\n0,943\n0,926\n0,909\n\n\n2\n0,961\n0,925\n0,890\n0,857\n0,826\n\n\n3\n0,942\n0,889\n0,840\n0,794\n0,751\n\n\n4\n0,924\n0,855\n0,792\n0,735\n0,683\n\n\n5\n0,906\n0,822\n0,747\n0,681\n0,621\n\n\n6\n0,888\n0,790\n0,705\n0,630\n0,564\n\n\n7\n0,871\n0,760\n0,665\n0,583\n0,513\n\n\n8\n0,853\n0,731\n0,627\n0,540\n0,467\n\n\n9\n0,837\n0,703\n0,592\n0,500\n0,424\n\n\n10\n0,820\n0,676\n0,558\n0,463\n0,386\n\n\n12\n0,788\n0,625\n0,497\n0,397\n0,319\n\n\n14\n0,758\n0,577\n0,442\n0,340\n0,263\n\n\n16\n0,728\n0,534\n0,394\n0,292\n0,218\n\n\n18\n0,700\n0,494\n0,350\n0,250\n0,180\n\n\n20\n0,673\n0,456\n0,312\n0,215\n0,149\n\n\n22\n0,647\n0,422\n0,278\n0,184\n0,123\n\n\n24\n0,622\n0,390\n0,247\n0,158\n0,102\n\n\n26\n0,598\n0,361\n0,220\n0,135\n0,084\n\n\n28\n0,574\n0,333\n0,196\n0,116\n0,069\n\n\n30\n0,552\n0,308\n0,174\n0,099\n0,057\n\n\n32\n0,531\n0,285\n0,155\n0,085\n0,047\n\n\n34\n0,510\n0,264\n0,138\n0,073\n0,039\n\n\n36\n0,490\n0,244\n0,123\n0,063\n0,032\n\n\n38\n0,471\n0,225\n0,109\n0,054\n0,027\n\n\n40\n0,453\n0,208\n0,097\n0,046\n0,022\n\n\n42\n0,435\n0,193\n0,087\n0,039\n0,018\n\n\n44\n0,418\n0,178\n0,077\n0,034\n0,015\n\n\n46\n0,402\n0,165\n0,069\n0,029\n0,012\n\n\n48\n0,387\n0,152\n0,061\n0,025\n0,010\n\n\n50\n0,372\n0,141\n0,054\n0,021\n0,009",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  },
+  {
+    "objectID": "formelsamling.html#tabell-3-nusummefaktor-nus",
+    "href": "formelsamling.html#tabell-3-nusummefaktor-nus",
+    "title": "Appendix A — Formelsamling i drift och underhåll",
+    "section": "Tabell 3: Nusummefaktor (NUS)",
+    "text": "Tabell 3: Nusummefaktor (NUS)\nNusummefaktor (NUS) för årliga belopp under \\(n\\) år\n\n\n\nÅr \\(n\\)\n2 %\n4 %\n6 %\n8 %\n10 %\n\n\n\n\n1\n0,980\n0,962\n0,943\n0,926\n0,909\n\n\n2\n1,942\n1,886\n1,833\n1,783\n1,736\n\n\n3\n2,884\n2,775\n2,673\n2,577\n2,487\n\n\n4\n3,808\n3,630\n3,465\n3,312\n3,170\n\n\n5\n4,713\n4,452\n4,212\n3,993\n3,791\n\n\n6\n5,601\n5,242\n4,917\n4,623\n4,355\n\n\n7\n6,472\n6,002\n5,582\n5,206\n4,868\n\n\n8\n7,325\n6,733\n6,210\n5,747\n5,335\n\n\n9\n8,162\n7,435\n6,802\n6,247\n5,759\n\n\n10\n8,983\n8,111\n7,360\n6,710\n6,145\n\n\n12\n10,575\n9,385\n8,384\n7,536\n6,814\n\n\n14\n12,106\n10,563\n9,295\n8,244\n7,367\n\n\n16\n13,578\n11,652\n10,106\n8,851\n7,824\n\n\n18\n14,992\n12,659\n10,828\n9,372\n8,201\n\n\n20\n16,351\n13,590\n11,470\n9,818\n8,514\n\n\n22\n17,658\n14,451\n12,042\n10,201\n8,772\n\n\n24\n18,914\n15,247\n12,550\n10,529\n8,985\n\n\n26\n20,121\n15,983\n13,003\n10,810\n9,161\n\n\n28\n21,281\n16,663\n13,406\n11,051\n9,307\n\n\n30\n22,396\n17,292\n13,765\n11,258\n9,427\n\n\n32\n23,468\n17,874\n14,084\n11,435\n9,526\n\n\n34\n24,499\n18,411\n14,368\n11,587\n9,609\n\n\n36\n25,489\n18,908\n14,621\n11,717\n9,677\n\n\n38\n26,441\n19,368\n14,846\n11,829\n9,733\n\n\n40\n27,355\n19,793\n15,046\n11,925\n9,779\n\n\n42\n28,235\n20,186\n15,225\n12,007\n9,817\n\n\n44\n29,080\n20,549\n15,383\n12,077\n9,849\n\n\n46\n29,892\n20,885\n15,524\n12,137\n9,875\n\n\n48\n30,673\n21,195\n15,650\n12,189\n9,897\n\n\n50\n31,424\n21,482\n15,762\n12,233\n9,915",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
+    ]
+  }
+]

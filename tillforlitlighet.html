@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Tillförlitlighetsanalys – Driftsäkerhet</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./formelsamling.html" rel="next">
+<link href="./tillganglighet.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tillforlitlighet.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Driftsäkerhet</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tillganglighet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tillforlitlighet.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./formelsamling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Formelsamling i drift och underhåll</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#icke-reparerbara-system" id="toc-icke-reparerbara-system" class="nav-link active" data-scroll-target="#icke-reparerbara-system"><span class="header-section-number">4.1</span> Icke-reparerbara system</a></li>
+  <li><a href="#reparerbara-system" id="toc-reparerbara-system" class="nav-link" data-scroll-target="#reparerbara-system"><span class="header-section-number">4.2</span> Reparerbara system</a></li>
+  <li><a href="#kvantifiering-av-driftsäkerhet" id="toc-kvantifiering-av-driftsäkerhet" class="nav-link" data-scroll-target="#kvantifiering-av-driftsäkerhet"><span class="header-section-number">5</span> Kvantifiering av driftsäkerhet</a></li>
+  <li><a href="#sannolikhetsfunktioner" id="toc-sannolikhetsfunktioner" class="nav-link" data-scroll-target="#sannolikhetsfunktioner"><span class="header-section-number">6</span> Sannolikhetsfunktioner</a>
+  <ul class="collapse">
+  <li><a href="#täthetsfunktion-pdf" id="toc-täthetsfunktion-pdf" class="nav-link" data-scroll-target="#täthetsfunktion-pdf"><span class="header-section-number">6.1</span> Täthetsfunktion (PDF)</a></li>
+  <li><a href="#fördelningsfunktion-cdf" id="toc-fördelningsfunktion-cdf" class="nav-link" data-scroll-target="#fördelningsfunktion-cdf"><span class="header-section-number">6.2</span> Fördelningsfunktion (CDF)</a></li>
+  <li><a href="#funktionssannolikhet-reliability-function" id="toc-funktionssannolikhet-reliability-function" class="nav-link" data-scroll-target="#funktionssannolikhet-reliability-function"><span class="header-section-number">6.3</span> Funktionssannolikhet (Reliability function)</a></li>
+  <li><a href="#samband" id="toc-samband" class="nav-link" data-scroll-target="#samband"><span class="header-section-number">6.4</span> Samband</a></li>
+  <li><a href="#felintensitet-hazard-function" id="toc-felintensitet-hazard-function" class="nav-link" data-scroll-target="#felintensitet-hazard-function"><span class="header-section-number">6.5</span> Felintensitet (Hazard function)</a></li>
+  </ul></li>
+  <li><a href="#exponentialfördelning" id="toc-exponentialfördelning" class="nav-link" data-scroll-target="#exponentialfördelning"><span class="header-section-number">7</span> Exponentialfördelning</a>
+  <ul class="collapse">
+  <li><a href="#antagande" id="toc-antagande" class="nav-link" data-scroll-target="#antagande"><span class="header-section-number">7.1</span> Antagande</a></li>
+  <li><a href="#funktioner" id="toc-funktioner" class="nav-link" data-scroll-target="#funktioner"><span class="header-section-number">7.2</span> Funktioner</a></li>
+  <li><a href="#samband-med-mttf" id="toc-samband-med-mttf" class="nav-link" data-scroll-target="#samband-med-mttf"><span class="header-section-number">7.3</span> Samband med MTTF</a></li>
+  </ul></li>
+  <li><a href="#exempel-sannolikhet-att-fungera" id="toc-exempel-sannolikhet-att-fungera" class="nav-link" data-scroll-target="#exempel-sannolikhet-att-fungera"><span class="header-section-number">8</span> Exempel: sannolikhet att fungera</a>
+  <ul class="collapse">
+  <li><a href="#steg-1-medelvärde" id="toc-steg-1-medelvärde" class="nav-link" data-scroll-target="#steg-1-medelvärde"><span class="header-section-number">8.1</span> Steg 1: medelvärde</a></li>
+  <li><a href="#steg-2-felintensitet" id="toc-steg-2-felintensitet" class="nav-link" data-scroll-target="#steg-2-felintensitet"><span class="header-section-number">8.2</span> Steg 2: felintensitet</a></li>
+  <li><a href="#steg-3-funktionssannolikhet" id="toc-steg-3-funktionssannolikhet" class="nav-link" data-scroll-target="#steg-3-funktionssannolikhet"><span class="header-section-number">8.3</span> Steg 3: funktionssannolikhet</a></li>
+  </ul></li>
+  <li><a href="#badkarskurvan" id="toc-badkarskurvan" class="nav-link" data-scroll-target="#badkarskurvan"><span class="header-section-number">9</span> Badkarskurvan</a>
+  <ul class="collapse">
+  <li><a href="#begynnelseperiod" id="toc-begynnelseperiod" class="nav-link" data-scroll-target="#begynnelseperiod"><span class="header-section-number">9.1</span> 1. Begynnelseperiod</a></li>
+  <li><a href="#slumpmässig-period" id="toc-slumpmässig-period" class="nav-link" data-scroll-target="#slumpmässig-period"><span class="header-section-number">9.2</span> 2. Slumpmässig period</a></li>
+  <li><a href="#slitageperiod" id="toc-slitageperiod" class="nav-link" data-scroll-target="#slitageperiod"><span class="header-section-number">9.3</span> 3. Slitageperiod</a></li>
+  </ul></li>
+  <li><a href="#olika-typer-av-funktionssäkerhet" id="toc-olika-typer-av-funktionssäkerhet" class="nav-link" data-scroll-target="#olika-typer-av-funktionssäkerhet"><span class="header-section-number">10</span> Olika typer av funktionssäkerhet</a>
+  <ul class="collapse">
+  <li><a href="#teknisk" id="toc-teknisk" class="nav-link" data-scroll-target="#teknisk"><span class="header-section-number">10.1</span> Teknisk</a></li>
+  <li><a href="#hård--och-mjukvara" id="toc-hård--och-mjukvara" class="nav-link" data-scroll-target="#hård--och-mjukvara"><span class="header-section-number">10.2</span> Hård- och mjukvara</a></li>
+  <li><a href="#mänsklig" id="toc-mänsklig" class="nav-link" data-scroll-target="#mänsklig"><span class="header-section-number">10.3</span> Mänsklig</a></li>
+  </ul></li>
+  <li><a href="#normalfördelning" id="toc-normalfördelning" class="nav-link" data-scroll-target="#normalfördelning"><span class="header-section-number">11</span> Normalfördelning</a></li>
+  <li><a href="#weibullfördelning" id="toc-weibullfördelning" class="nav-link" data-scroll-target="#weibullfördelning"><span class="header-section-number">12</span> Weibullfördelning</a>
+  <ul class="collapse">
+  <li><a href="#tolkning-av-β" id="toc-tolkning-av-β" class="nav-link" data-scroll-target="#tolkning-av-β"><span class="header-section-number">12.1</span> Tolkning av β</a></li>
+  <li><a href="#funktioner-1" id="toc-funktioner-1" class="nav-link" data-scroll-target="#funktioner-1"><span class="header-section-number">12.2</span> Funktioner</a></li>
+  <li><a href="#exempel" id="toc-exempel" class="nav-link" data-scroll-target="#exempel"><span class="header-section-number">12.3</span> Exempel</a></li>
+  </ul></li>
+  <li><a href="#systemtillförlitlighet" id="toc-systemtillförlitlighet" class="nav-link" data-scroll-target="#systemtillförlitlighet"><span class="header-section-number">13</span> Systemtillförlitlighet</a></li>
+  <li><a href="#typer-av-system" id="toc-typer-av-system" class="nav-link" data-scroll-target="#typer-av-system"><span class="header-section-number">14</span> Typer av system</a></li>
+  <li><a href="#seriekopplade-system" id="toc-seriekopplade-system" class="nav-link" data-scroll-target="#seriekopplade-system"><span class="header-section-number">15</span> Seriekopplade system</a>
+  <ul class="collapse">
+  <li><a href="#princip" id="toc-princip" class="nav-link" data-scroll-target="#princip"><span class="header-section-number">15.1</span> Princip</a></li>
+  <li><a href="#funktionssäkerhet" id="toc-funktionssäkerhet" class="nav-link" data-scroll-target="#funktionssäkerhet"><span class="header-section-number">15.2</span> Funktionssäkerhet</a></li>
+  <li><a href="#tolkning" id="toc-tolkning" class="nav-link" data-scroll-target="#tolkning"><span class="header-section-number">15.3</span> Tolkning</a></li>
+  </ul></li>
+  <li><a href="#parallellkopplade-system" id="toc-parallellkopplade-system" class="nav-link" data-scroll-target="#parallellkopplade-system"><span class="header-section-number">16</span> Parallellkopplade system</a>
+  <ul class="collapse">
+  <li><a href="#princip-1" id="toc-princip-1" class="nav-link" data-scroll-target="#princip-1"><span class="header-section-number">16.1</span> Princip</a></li>
+  <li><a href="#funktionssäkerhet-1" id="toc-funktionssäkerhet-1" class="nav-link" data-scroll-target="#funktionssäkerhet-1"><span class="header-section-number">16.2</span> Funktionssäkerhet</a></li>
+  <li><a href="#tolkning-1" id="toc-tolkning-1" class="nav-link" data-scroll-target="#tolkning-1"><span class="header-section-number">16.3</span> Tolkning</a></li>
+  <li><a href="#viktig-aspekt" id="toc-viktig-aspekt" class="nav-link" data-scroll-target="#viktig-aspekt"><span class="header-section-number">16.4</span> Viktig aspekt</a></li>
+  </ul></li>
+  <li><a href="#redundans" id="toc-redundans" class="nav-link" data-scroll-target="#redundans"><span class="header-section-number">17</span> Redundans</a></li>
+  <li><a href="#blandade-system" id="toc-blandade-system" class="nav-link" data-scroll-target="#blandade-system"><span class="header-section-number">18</span> Blandade system</a>
+  <ul class="collapse">
+  <li><a href="#beräkningsmetod" id="toc-beräkningsmetod" class="nav-link" data-scroll-target="#beräkningsmetod"><span class="header-section-number">18.1</span> Beräkningsmetod</a></li>
+  </ul></li>
+  <li><a href="#exempel-blandat-system" id="toc-exempel-blandat-system" class="nav-link" data-scroll-target="#exempel-blandat-system"><span class="header-section-number">19</span> Exempel: blandat system</a>
+  <ul class="collapse">
+  <li><a href="#steg-1-beräkna-komponenters-tillförlitlighet" id="toc-steg-1-beräkna-komponenters-tillförlitlighet" class="nav-link" data-scroll-target="#steg-1-beräkna-komponenters-tillförlitlighet"><span class="header-section-number">19.1</span> Steg 1: beräkna komponenters tillförlitlighet</a>
+  <ul class="collapse">
+  <li><a href="#krossar" id="toc-krossar" class="nav-link" data-scroll-target="#krossar"><span class="header-section-number">19.1.1</span> Krossar</a></li>
+  <li><a href="#truck" id="toc-truck" class="nav-link" data-scroll-target="#truck"><span class="header-section-number">19.1.2</span> Truck</a></li>
+  </ul></li>
+  <li><a href="#steg-2-parallell-del-krossar" id="toc-steg-2-parallell-del-krossar" class="nav-link" data-scroll-target="#steg-2-parallell-del-krossar"><span class="header-section-number">19.2</span> Steg 2: parallell del (krossar)</a></li>
+  <li><a href="#steg-3-serie-med-truck" id="toc-steg-3-serie-med-truck" class="nav-link" data-scroll-target="#steg-3-serie-med-truck"><span class="header-section-number">19.3</span> Steg 3: serie med truck</a></li>
+  <li><a href="#resultat" id="toc-resultat" class="nav-link" data-scroll-target="#resultat"><span class="header-section-number">19.4</span> Resultat</a></li>
+  <li><a href="#tolkning-2" id="toc-tolkning-2" class="nav-link" data-scroll-target="#tolkning-2"><span class="header-section-number">19.5</span> Tolkning</a></li>
+  </ul></li>
+  <li><a href="#slutsatser" id="toc-slutsatser" class="nav-link" data-scroll-target="#slutsatser"><span class="header-section-number">20</span> Slutsatser</a></li>
+  <li><a href="#sammanfattning" id="toc-sammanfattning" class="nav-link" data-scroll-target="#sammanfattning"><span class="header-section-number">21</span> Sammanfattning</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Funktionssäkerhet beskriver sannolikheten att ett system fungerar utan fel under en given tid och under givna förhållanden.</p>
+<p>Man skiljer mellan två typer av system:</p>
+<section id="icke-reparerbara-system" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="icke-reparerbara-system"><span class="header-section-number">4.1</span> Icke-reparerbara system</h2>
+<ul>
+<li>System som inte repareras efter fel</li>
+<li>Exempel: glödlampor, säkringar</li>
+</ul>
+<p>Viktigt mått: - <strong>MTTF (Mean Time To Failure)</strong></p>
+</section>
+<section id="reparerbara-system" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="reparerbara-system"><span class="header-section-number">4.2</span> Reparerbara system</h2>
+<ul>
+<li>System som kan repareras och åter tas i drift</li>
+<li>Exempel: maskiner, fordon, produktionssystem</li>
+</ul>
+<p>Viktigt mått: - <strong>MTBF (Mean Time Between Failures)</strong></p>
+<hr>
+</section>
+<section id="kvantifiering-av-driftsäkerhet" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Kvantifiering av driftsäkerhet</h1>
+<p>För att analysera driftsäkerhet krävs data:</p>
+<ul>
+<li>Feltider</li>
+<li>Reparationstider</li>
+<li>Väntetider</li>
+</ul>
+<p>Utifrån dessa kan man ställa frågor som:</p>
+<ul>
+<li>Vilken sannolikhetsfördelning beskriver felen?</li>
+<li>Vad är medeltiden till fel?</li>
+<li>Vad är medelreparationstiden?</li>
+</ul>
+<p>:contentReference<span data-index="0">oaicite:0</span></p>
+<hr>
+</section>
+<section id="sannolikhetsfunktioner" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Sannolikhetsfunktioner</h1>
+<p>För att beskriva funktionssäkerhet används flera matematiska funktioner:</p>
+<section id="täthetsfunktion-pdf" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="täthetsfunktion-pdf"><span class="header-section-number">6.1</span> Täthetsfunktion (PDF)</h2>
+<p><span class="math display">\[
+f(x)
+\]</span></p>
+<p>Beskriver sannolikhetstätheten för fel vid tidpunkt (x).</p>
+<hr>
+</section>
+<section id="fördelningsfunktion-cdf" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="fördelningsfunktion-cdf"><span class="header-section-number">6.2</span> Fördelningsfunktion (CDF)</h2>
+<p><span class="math display">\[
+F(x)
+\]</span></p>
+<p>Beskriver sannolikheten att ett fel inträffar före tid (x).</p>
+<hr>
+</section>
+<section id="funktionssannolikhet-reliability-function" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="funktionssannolikhet-reliability-function"><span class="header-section-number">6.3</span> Funktionssannolikhet (Reliability function)</h2>
+<p><span class="math display">\[
+R(x)
+\]</span></p>
+<p>Beskriver sannolikheten att systemet fortfarande fungerar vid tid (x).</p>
+<hr>
+</section>
+<section id="samband" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="samband"><span class="header-section-number">6.4</span> Samband</h2>
+<p><span class="math display">\[
+R(x) + F(x) = 1
+\]</span></p>
+<hr>
+</section>
+<section id="felintensitet-hazard-function" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="felintensitet-hazard-function"><span class="header-section-number">6.5</span> Felintensitet (Hazard function)</h2>
+<p><span class="math display">\[
+\lambda(x)
+\]</span></p>
+<p>Beskriver den momentana risken för fel.</p>
+<hr>
+</section>
+</section>
+<section id="exponentialfördelning" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Exponentialfördelning</h1>
+<p>En av de viktigaste modellerna inom driftsäkerhet.</p>
+<section id="antagande" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="antagande"><span class="header-section-number">7.1</span> Antagande</h2>
+<ul>
+<li>Felintensiteten är konstant:</li>
+</ul>
+<p><span class="math display">\[
+\lambda(x) = \lambda
+\]</span></p>
+<hr>
+</section>
+<section id="funktioner" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="funktioner"><span class="header-section-number">7.2</span> Funktioner</h2>
+<p>Funktionssannolikhet:</p>
+<p><span class="math display">\[
+R(x) = e^{-\lambda x}
+\]</span></p>
+<p>Felsannolikhet:</p>
+<p><span class="math display">\[
+F(x) = 1 - e^{-\lambda x}
+\]</span></p>
+<p>Täthetsfunktion:</p>
+<p><span class="math display">\[
+f(x) = \lambda e^{-\lambda x}
+\]</span></p>
+<hr>
+</section>
+<section id="samband-med-mttf" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="samband-med-mttf"><span class="header-section-number">7.3</span> Samband med MTTF</h2>
+<p><span class="math display">\[
+MTTF = \frac{1}{\lambda}
+\]</span></p>
+<hr>
+</section>
+</section>
+<section id="exempel-sannolikhet-att-fungera" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Exempel: sannolikhet att fungera</h1>
+<p>Vi har fem pumpar med tider till fel:</p>
+<ul>
+<li>7, 15, 9, 3, 4 timmar</li>
+</ul>
+<p>Vi vill beräkna sannolikheten att en pump fungerar i 5 timmar.</p>
+<hr>
+<section id="steg-1-medelvärde" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="steg-1-medelvärde"><span class="header-section-number">8.1</span> Steg 1: medelvärde</h2>
+<p><span class="math display">\[
+MTTF = \frac{7 + 15 + 9 + 3 + 4}{5} = 7.6
+\]</span></p>
+<hr>
+</section>
+<section id="steg-2-felintensitet" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="steg-2-felintensitet"><span class="header-section-number">8.2</span> Steg 2: felintensitet</h2>
+<p><span class="math display">\[
+\lambda = \frac{1}{7.6} \approx 0.13
+\]</span></p>
+<hr>
+</section>
+<section id="steg-3-funktionssannolikhet" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="steg-3-funktionssannolikhet"><span class="header-section-number">8.3</span> Steg 3: funktionssannolikhet</h2>
+<p><span class="math display">\[
+R(5) = e^{-0.13 \cdot 5} \approx 0.52
+\]</span></p>
+<p>Alltså:</p>
+<ul>
+<li>52 % sannolikhet att pumpen fungerar i 5 timmar :contentReference<span data-index="1">oaicite:1</span></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="badkarskurvan" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Badkarskurvan</h1>
+<p>Felintensiteten i många system följer tre faser:</p>
+<section id="begynnelseperiod" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="begynnelseperiod"><span class="header-section-number">9.1</span> 1. Begynnelseperiod</h2>
+<ul>
+<li>Höga initiala fel</li>
+<li>Felintensiteten minskar</li>
+</ul>
+<p>Orsak: - tillverkningsfel - svaga komponenter</p>
+<hr>
+</section>
+<section id="slumpmässig-period" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="slumpmässig-period"><span class="header-section-number">9.2</span> 2. Slumpmässig period</h2>
+<ul>
+<li>Konstant felintensitet</li>
+<li>Exponentialfördelning gäller</li>
+</ul>
+<hr>
+</section>
+<section id="slitageperiod" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="slitageperiod"><span class="header-section-number">9.3</span> 3. Slitageperiod</h2>
+<ul>
+<li>Felintensiteten ökar</li>
+<li>Komponenter åldras</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="olika-typer-av-funktionssäkerhet" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Olika typer av funktionssäkerhet</h1>
+<p>Funktionssäkerhet kan delas in i:</p>
+<section id="teknisk" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="teknisk"><span class="header-section-number">10.1</span> Teknisk</h2>
+<ul>
+<li>Elektriska komponenter (generatorer, transformatorer)</li>
+<li>Mekaniska komponenter (lager, turbiner)</li>
+<li>Infrastruktur (rör, dammar)</li>
+</ul>
+<hr>
+</section>
+<section id="hård--och-mjukvara" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="hård--och-mjukvara"><span class="header-section-number">10.2</span> Hård- och mjukvara</h2>
+<ul>
+<li>Hårdvara: fysiska system</li>
+<li>Mjukvara:
+<ul>
+<li>ökande betydelse</li>
+<li>kan både förbättras och försämras över tid</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="mänsklig" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="mänsklig"><span class="header-section-number">10.3</span> Mänsklig</h2>
+<ul>
+<li>Operatörens påverkan</li>
+<li>Beslutsfattande</li>
+<li>Organisation och kultur</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="normalfördelning" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Normalfördelning</h1>
+<p>Fel kan ibland beskrivas med normalfördelning.</p>
+<p>Egenskaper:</p>
+<ul>
+<li>Symmetrisk fördelning</li>
+<li>Beskrivs med medelvärde och standardavvikelse</li>
+</ul>
+<p>Exempel:</p>
+<ul>
+<li>MTTF ≈ 10 dagar</li>
+<li>Standardavvikelse ≈ 3</li>
+</ul>
+<hr>
+</section>
+<section id="weibullfördelning" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Weibullfördelning</h1>
+<p>En mycket flexibel modell.</p>
+<p>Parametrar:</p>
+<ul>
+<li>α (skala)</li>
+<li>β (form)</li>
+</ul>
+<hr>
+<section id="tolkning-av-β" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="tolkning-av-β"><span class="header-section-number">12.1</span> Tolkning av β</h2>
+<ul>
+<li>β &lt; 1 → avtagande felintensitet<br>
+</li>
+<li>β = 1 → konstant felintensitet (exponentialfall)<br>
+</li>
+<li>β &gt; 1 → ökande felintensitet (slitage)</li>
+</ul>
+<hr>
+</section>
+<section id="funktioner-1" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="funktioner-1"><span class="header-section-number">12.2</span> Funktioner</h2>
+<p>Funktionssannolikhet:</p>
+<p><span class="math display">\[
+R(x) = e^{-(x/\alpha)^\beta}
+\]</span></p>
+<p>Felsannolikhet:</p>
+<p><span class="math display">\[
+F(x) = 1 - e^{-(x/\alpha)^\beta}
+\]</span></p>
+<hr>
+</section>
+<section id="exempel" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="exempel"><span class="header-section-number">12.3</span> Exempel</h2>
+<p>En tonerkassett har:</p>
+<ul>
+<li>α = 16 dygn<br>
+</li>
+<li>β = 6</li>
+</ul>
+<p>Sannolikheten att den fungerar i 12 dygn:</p>
+<p><span class="math display">\[
+R(12) \approx 0.84
+\]</span></p>
+<p>Alltså:</p>
+<ul>
+<li>84 % sannolikhet att den håller i 12 dygn :contentReference<span data-index="2">oaicite:2</span></li>
+</ul>
+</section>
+</section>
+<section id="systemtillförlitlighet" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Systemtillförlitlighet</h1>
+<p>Hittills har vi studerat enskilda komponenters funktionssäkerhet.<br>
+I praktiken består system av flera komponenter som samverkar.</p>
+<p>Systemets totala funktionssäkerhet beror därför på:</p>
+<ul>
+<li>varje komponents tillförlitlighet</li>
+<li>hur komponenterna är kopplade</li>
+</ul>
+<hr>
+</section>
+<section id="typer-av-system" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Typer av system</h1>
+<p>De vanligaste typerna av system är:</p>
+<ol type="1">
+<li>Seriekopplade system<br>
+</li>
+<li>Parallellkopplade system<br>
+</li>
+<li>Blandade system<br>
+</li>
+<li>Standby-system</li>
+</ol>
+<hr>
+</section>
+<section id="seriekopplade-system" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Seriekopplade system</h1>
+<section id="princip" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="princip"><span class="header-section-number">15.1</span> Princip</h2>
+<p>Ett system är seriekopplat om <strong>alla komponenter måste fungera</strong> för att systemet ska fungera.</p>
+<p>Exempel:</p>
+<ul>
+<li>Turbin → Generator → Transformator</li>
+</ul>
+<p>Om en komponent fallerar → hela systemet fallerar.</p>
+<hr>
+</section>
+<section id="funktionssäkerhet" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="funktionssäkerhet"><span class="header-section-number">15.2</span> Funktionssäkerhet</h2>
+<p>Systemets funktionssannolikhet ges av:</p>
+<p>R_s = R_1 * R_2 * R_3</p>
+<p>Allmänt:</p>
+<p>R_s = Π R_i</p>
+<hr>
+</section>
+<section id="tolkning" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="tolkning"><span class="header-section-number">15.3</span> Tolkning</h2>
+<ul>
+<li>Fler komponenter → lägre tillförlitlighet<br>
+</li>
+<li>Den svagaste komponenten påverkar systemet mest</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="parallellkopplade-system" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Parallellkopplade system</h1>
+<section id="princip-1" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="princip-1"><span class="header-section-number">16.1</span> Princip</h2>
+<p>Ett system är parallellkopplat om <strong>minst en komponent fungerar</strong>.</p>
+<p>Exempel:</p>
+<ul>
+<li>två pumpar</li>
+<li>dubbla generatorer</li>
+</ul>
+<hr>
+</section>
+<section id="funktionssäkerhet-1" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="funktionssäkerhet-1"><span class="header-section-number">16.2</span> Funktionssäkerhet</h2>
+<p>Systemets tillförlitlighet:</p>
+<p>R_s = 1 - Π (1 - R_i)</p>
+<hr>
+</section>
+<section id="tolkning-1" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="tolkning-1"><span class="header-section-number">16.3</span> Tolkning</h2>
+<p>Fördelar:</p>
+<ul>
+<li>minskar risken för totalstopp<br>
+</li>
+<li>ökar tillgänglighet</li>
+</ul>
+<p>Nackdelar:</p>
+<ul>
+<li>högre kostnad<br>
+</li>
+<li>mer underhåll</li>
+</ul>
+<hr>
+</section>
+<section id="viktig-aspekt" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="viktig-aspekt"><span class="header-section-number">16.4</span> Viktig aspekt</h2>
+<p>Vid parallella system måste man även beakta:</p>
+<ul>
+<li>kapacitet (full eller reducerad drift)</li>
+<li>redundansnivå</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="redundans" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> Redundans</h1>
+<p>Redundans innebär att flera komponenter utför samma funktion.</p>
+<p>Syfte:</p>
+<ul>
+<li>minska konsekvensen av fel<br>
+</li>
+<li>öka systemets tillförlitlighet</li>
+</ul>
+<hr>
+</section>
+<section id="blandade-system" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Blandade system</h1>
+<p>De flesta verkliga system är en kombination av:</p>
+<ul>
+<li>serie- och parallellkopplingar</li>
+</ul>
+<hr>
+<section id="beräkningsmetod" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="beräkningsmetod"><span class="header-section-number">18.1</span> Beräkningsmetod</h2>
+<ol type="1">
+<li>Identifiera delsystem<br>
+</li>
+<li>Beräkna tillförlitlighet för varje delsystem<br>
+</li>
+<li>Kombinera dessa stegvis</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="exempel-blandat-system" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> Exempel: blandat system</h1>
+<p>Systemet består av:</p>
+<ul>
+<li>två krossar (parallellkopplade)</li>
+<li>en truck (seriekopplad med krossarna)</li>
+</ul>
+<p>Data:</p>
+<ul>
+<li>Kross 1: MTBF = 1000 h<br>
+</li>
+<li>Kross 2: MTBF = 1000 h<br>
+</li>
+<li>Truck: MTBF = 200 h</li>
+</ul>
+<p>Drifttid: 50 timmar</p>
+<hr>
+<section id="steg-1-beräkna-komponenters-tillförlitlighet" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="steg-1-beräkna-komponenters-tillförlitlighet"><span class="header-section-number">19.1</span> Steg 1: beräkna komponenters tillförlitlighet</h2>
+<p>För exponentialfördelning:</p>
+<p>R(x) = e^(-λx)</p>
+<p>där:</p>
+<p>λ = 1 / MTBF</p>
+<hr>
+<section id="krossar" class="level3" data-number="19.1.1">
+<h3 data-number="19.1.1" class="anchored" data-anchor-id="krossar"><span class="header-section-number">19.1.1</span> Krossar</h3>
+<p>λ = 0.001</p>
+<p>R_k1 = R_k2 ≈ 0.95</p>
+<hr>
+</section>
+<section id="truck" class="level3" data-number="19.1.2">
+<h3 data-number="19.1.2" class="anchored" data-anchor-id="truck"><span class="header-section-number">19.1.2</span> Truck</h3>
+<p>λ = 0.005</p>
+<p>R_t ≈ 0.78</p>
+<hr>
+</section>
+</section>
+<section id="steg-2-parallell-del-krossar" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="steg-2-parallell-del-krossar"><span class="header-section-number">19.2</span> Steg 2: parallell del (krossar)</h2>
+<p>R_p = 1 - (1 - 0.95)(1 - 0.95) = 0.98</p>
+<hr>
+</section>
+<section id="steg-3-serie-med-truck" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="steg-3-serie-med-truck"><span class="header-section-number">19.3</span> Steg 3: serie med truck</h2>
+<p>R_s = 0.78 * 0.98 ≈ 0.76</p>
+<hr>
+</section>
+<section id="resultat" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="resultat"><span class="header-section-number">19.4</span> Resultat</h2>
+<ul>
+<li>Systemets tillförlitlighet ≈ 76 %</li>
+</ul>
+<hr>
+</section>
+<section id="tolkning-2" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="tolkning-2"><span class="header-section-number">19.5</span> Tolkning</h2>
+<p>Trots att krossarna har hög tillförlitlighet:</p>
+<p>Trucken dominerar systemets prestanda</p>
+<hr>
+</section>
+</section>
+<section id="slutsatser" class="level1" data-number="20">
+<h1 data-number="20"><span class="header-section-number">20</span> Slutsatser</h1>
+<ul>
+<li>Systemstruktur påverkar tillförlitlighet kraftigt<br>
+</li>
+<li>Seriekoppling minskar tillförlitlighet<br>
+</li>
+<li>Parallellkoppling ökar tillförlitlighet<br>
+</li>
+<li>En svag komponent kan dominera hela systemet</li>
+</ul>
+<hr>
+</section>
+<section id="sammanfattning" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> Sammanfattning</h1>
+<ul>
+<li>System består av flera komponenter<br>
+</li>
+<li>Kopplingsstruktur avgör total funktionssäkerhet<br>
+</li>
+<li>Redundans är ett viktigt verktyg<br>
+</li>
+<li>Analys görs stegvis från komponent → system</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./tillganglighet.html" class="pagination-link" aria-label="Beräkning av tillgänglighet">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./formelsamling.html" class="pagination-link" aria-label="Formelsamling i drift och underhåll">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Formelsamling i drift och underhåll</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

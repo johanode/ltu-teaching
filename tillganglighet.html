@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Beräkning av tillgänglighet – Driftsäkerhet</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./tillforlitlighet.html" rel="next">
+<link href="./rams.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tillganglighet.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Driftsäkerhet</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tillganglighet.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tillforlitlighet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./formelsamling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Formelsamling i drift och underhåll</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#observerad-och-förväntad-tillgänglighet" id="toc-observerad-och-förväntad-tillgänglighet" class="nav-link active" data-scroll-target="#observerad-och-förväntad-tillgänglighet"><span class="header-section-number">3.1</span> Observerad och förväntad tillgänglighet</a></li>
+  <li><a href="#tillgänglighetsprestanda" id="toc-tillgänglighetsprestanda" class="nav-link" data-scroll-target="#tillgänglighetsprestanda"><span class="header-section-number">3.2</span> Tillgänglighetsprestanda</a>
+  <ul class="collapse">
+  <li><a href="#tillgänglighet-baserad-på-total-kalendertid" id="toc-tillgänglighet-baserad-på-total-kalendertid" class="nav-link" data-scroll-target="#tillgänglighet-baserad-på-total-kalendertid"><span class="header-section-number">3.2.1</span> Tillgänglighet baserad på total kalendertid</a></li>
+  <li><a href="#tillgänglighet-baserad-på-planerad-driftstid" id="toc-tillgänglighet-baserad-på-planerad-driftstid" class="nav-link" data-scroll-target="#tillgänglighet-baserad-på-planerad-driftstid"><span class="header-section-number">3.2.2</span> Tillgänglighet baserad på planerad driftstid</a></li>
+  <li><a href="#definitioner" id="toc-definitioner" class="nav-link" data-scroll-target="#definitioner"><span class="header-section-number">3.2.3</span> Definitioner</a></li>
+  </ul></li>
+  <li><a href="#tre-mått-på-tillgänglighet-ak-am-ao" id="toc-tre-mått-på-tillgänglighet-ak-am-ao" class="nav-link" data-scroll-target="#tre-mått-på-tillgänglighet-ak-am-ao"><span class="header-section-number">3.3</span> Tre mått på tillgänglighet (Ak, Am, Ao)</a>
+  <ul class="collapse">
+  <li><a href="#konstruktiv-tillgänglighet-ak" id="toc-konstruktiv-tillgänglighet-ak" class="nav-link" data-scroll-target="#konstruktiv-tillgänglighet-ak"><span class="header-section-number">3.3.1</span> Konstruktiv tillgänglighet (Ak)</a></li>
+  <li><a href="#materialtillgänglighet-am" id="toc-materialtillgänglighet-am" class="nav-link" data-scroll-target="#materialtillgänglighet-am"><span class="header-section-number">3.3.2</span> Materialtillgänglighet (Am)</a></li>
+  <li><a href="#operativ-tillgänglighet-ao" id="toc-operativ-tillgänglighet-ao" class="nav-link" data-scroll-target="#operativ-tillgänglighet-ao"><span class="header-section-number">3.3.3</span> Operativ tillgänglighet (Ao)</a></li>
+  </ul></li>
+  <li><a href="#driftsäkerhetsparametrar" id="toc-driftsäkerhetsparametrar" class="nav-link" data-scroll-target="#driftsäkerhetsparametrar"><span class="header-section-number">3.4</span> Driftsäkerhetsparametrar</a>
+  <ul class="collapse">
+  <li><a href="#mtbf" id="toc-mtbf" class="nav-link" data-scroll-target="#mtbf"><span class="header-section-number">3.4.1</span> MTBF</a></li>
+  <li><a href="#mrt" id="toc-mrt" class="nav-link" data-scroll-target="#mrt"><span class="header-section-number">3.4.2</span> MRT</a></li>
+  <li><a href="#mtbm" id="toc-mtbm" class="nav-link" data-scroll-target="#mtbm"><span class="header-section-number">3.4.3</span> MTBM</a></li>
+  <li><a href="#mamt" id="toc-mamt" class="nav-link" data-scroll-target="#mamt"><span class="header-section-number">3.4.4</span> MAMT</a></li>
+  <li><a href="#mdt" id="toc-mdt" class="nav-link" data-scroll-target="#mdt"><span class="header-section-number">3.4.5</span> MDT</a></li>
+  </ul></li>
+  <li><a href="#beräkningsexempel" id="toc-beräkningsexempel" class="nav-link" data-scroll-target="#beräkningsexempel"><span class="header-section-number">4</span> Beräkningsexempel</a>
+  <ul class="collapse">
+  <li><a href="#exempel-1" id="toc-exempel-1" class="nav-link" data-scroll-target="#exempel-1"><span class="header-section-number">4.1</span> Exempel 1</a>
+  <ul class="collapse">
+  <li><a href="#a-beräkna-ak" id="toc-a-beräkna-ak" class="nav-link" data-scroll-target="#a-beräkna-ak"><span class="header-section-number">4.1.1</span> a) Beräkna Ak</a></li>
+  <li><a href="#b-beräkna-am" id="toc-b-beräkna-am" class="nav-link" data-scroll-target="#b-beräkna-am"><span class="header-section-number">4.1.2</span> b) Beräkna Am</a></li>
+  <li><a href="#c-beräkna-ao" id="toc-c-beräkna-ao" class="nav-link" data-scroll-target="#c-beräkna-ao"><span class="header-section-number">4.1.3</span> c) Beräkna Ao</a></li>
+  </ul></li>
+  <li><a href="#exempel-2" id="toc-exempel-2" class="nav-link" data-scroll-target="#exempel-2"><span class="header-section-number">4.2</span> Exempel 2</a>
+  <ul class="collapse">
+  <li><a href="#uppgift-a" id="toc-uppgift-a" class="nav-link" data-scroll-target="#uppgift-a"><span class="header-section-number">4.2.1</span> Uppgift a</a></li>
+  <li><a href="#uppgift-b" id="toc-uppgift-b" class="nav-link" data-scroll-target="#uppgift-b"><span class="header-section-number">4.2.2</span> Uppgift b</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Beräkning av tillgänglighet</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Tillgänglighet (<em>availability</em> A) beskriver förmågan hos en enhet att utföra det som krävs när det krävs <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>. Definitionen av tillgänglighet förutsätter att nödvändiga externa resurser tillhandahålls. Om vi avgränsar tillgänglighetsberäkningen till en enhet förutsätter vi alltså att de resurser som enheten behöver för att kunna utföra det som krävs tillhandahålls.</p>
+<section id="observerad-och-förväntad-tillgänglighet" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="observerad-och-förväntad-tillgänglighet"><span class="header-section-number">3.1</span> Observerad och förväntad tillgänglighet</h2>
+<p>Tillgänglig och otillgänglig tid bestäms av de händelser och tidsintervall som observeras under en given observationsperiod. De observerade tiderna kan användas för att beräkna tillgängligheten under den aktuella observationsperioden. Genom att representera tiderna med deras väntevärden eller skattade medelvärden kan den förväntade tillgängligheten på lång sikt beskrivas. Detta behandlas i avsnittet <a href="#tre-mått-på-tillgänglighet-ak-am-ao">Tre mått på tillgänglighet</a>. En mer matematisk beskrivning av punkt-, intervall- och asymptotisk tillgänglighet finns på sidan <a href="./rams.html#tillganglighet-som-funktion-av-tiden">Tillgänglighet som funktion av tiden</a>.</p>
+</section>
+<section id="tillgänglighetsprestanda" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="tillgänglighetsprestanda"><span class="header-section-number">3.2</span> Tillgänglighetsprestanda</h2>
+<p>Tillgänglighet kan kvantifieras som andelen av krävd tid (<em>required time</em>) under vilken enheten kan utföra det som krävs. Detta benämns tillgänglighetsprestanda i svensk standard för underhåll (SS-EN 13306:2017) <span class="citation" data-cites="SSEN13306">(<a href="#ref-SSEN13306" role="doc-biblioref">Underhåll – Underhållsterminologi 2017</a>)</span>.</p>
+<p><span class="math display">\[
+A = \frac{\text{Tillgänglig tid}}
+{\text{Tillgänglig tid} + \text{Otillgänglig tid}}
+= \frac{\mathrm{Uptime}}{\mathrm{Uptime} + \mathrm{Downtime}}
+\]</span></p>
+<p>Det finns många olika varianter av tillgänglighetsprestanda. Anledningen är att det för olika typer av verksamheter inom olika sektorer kan vara relevant att ta fram olika nyckeltal för att följa upp och utveckla verksamheten och dess underhåll.</p>
+<p>Tidsbaserad tillgänglighet definieras enligt SS-EN 13306 som den procentandel av tiden, under en given tidsperiod, då en enhet kan utföra det som krävs. Det finns också produktionsbaserad tillgänglighet, som definieras som förhållandet mellan faktisk produktion och krävd produktion. Produktionsbaserad tillgänglighet beskrivs inte vidare i denna guide.</p>
+<p>Tidsbaserad tillgänglighet beskrivs också i den svenska standarden SS-EN 15341:2019, <em>Nyckeltal för underhåll</em> <span class="citation" data-cites="SSEN15341">(<a href="#ref-SSEN15341" role="doc-biblioref">Underhåll – Nyckeltal för underhåll 2022</a>)</span>, under <em>Maintenance Key Performance Indicators</em> genom nyckeltalet <em>Time-based availability</em> (M10): <span class="math display">\[
+M10 = \frac{\text{Uptime during required time}}{\text{Required time}}
+\]</span></p>
+<p>I M10 ingår <a href="#definitioner">beredskapstid</a> (<em>standby time</em>) i tillgänglig tid (<em>uptime</em>) men inte <a href="#definitioner">outnyttjad tid</a> (<em>idle time</em>).</p>
+<p>Gemensamt för tidsbaserade tillgänglighetsmått är att man måste bestämma vilken tid som ska räknas som <a href="#definitioner">krävd tid</a>. I denna guide beskrivs två alternativ: total kalendertid och planerad drifttid.</p>
+<section id="tillgänglighet-baserad-på-total-kalendertid" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="tillgänglighet-baserad-på-total-kalendertid"><span class="header-section-number">3.2.1</span> Tillgänglighet baserad på total kalendertid</h3>
+<p>Tillgänglighet baserad på kalendertid avser den andel av den totala kalendertiden (24 timmar om dygnet, 365 dagar om året) då en enhet är funktionsduglig.</p>
+<p><span class="math display">\[
+\mathrm{Uptime} + \mathrm{Downtime} = \mathrm{Total\ time}
+\Longrightarrow
+A = \frac{\mathrm{Uptime}}{\mathrm{Total\ time}}
+\]</span></p>
+</section>
+<section id="tillgänglighet-baserad-på-planerad-driftstid" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="tillgänglighet-baserad-på-planerad-driftstid"><span class="header-section-number">3.2.2</span> Tillgänglighet baserad på planerad driftstid</h3>
+<p>Detta mått på tillgänglighet beskriver den andel av den planerade driften då enheten kan utföra det som krävs <span class="math inline">\((\text{Krävd tid}=\text{Planerad drift})\)</span>. Den tillgängliga tiden omfattar drifttid och beredskapstid.</p>
+<p>I SS-EN 15341 beskrivs även <em>Availability based on operating time</em> (M11), som endast utgår från drifttid (OT) och exkluderar beredskapstid, enligt <span class="math display">\[
+M11 = \frac{OT}{\text{Required operating time}}
+\]</span></p>
+<p>Standarden för nyckeltal inom underhåll beskriver även ett tredje mått, <em>Availability based on time to restoration</em> (M12) enligt <span class="math display">\[
+M12 = \frac{OT}{OT+TTR}
+\]</span> där TTR (<em>time to restoration</em>) är tiden till återställning och omfattar reparationstid och väntetid.</p>
+</section>
+<section id="definitioner" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="definitioner"><span class="header-section-number">3.2.3</span> Definitioner</h3>
+<ul>
+<li><p><a id="funktionsdugligt-tillstånd"></a><strong>Funktionsdugligt tillstånd</strong> (<em>up state</em>) är ett tillstånd då en enhet kan utföra krävd funktion, antaget att de externa resurserna tillhandahålls.</p></li>
+<li><p><a id="funktionsodugligt-tillstånd"></a><strong>Funktionsodugligt tillstånd</strong> (<em>down state</em>) är ett tillstånd då en enhet inte kan utföra krävd funktion på grund av förebyggande underhåll eller ett feltillstånd.</p></li>
+<li><p><a id="tillgagnglig-tid"></a><strong>Tillgänglig tid</strong> (<em>uptime</em>, UT) är tidsintervallet under vilket en enhet är i ett funktionsdugligt tillstånd.</p></li>
+<li><p><a id="otillgagnglig-tid"></a><strong>Otillgänglig tid</strong> (<em>downtime</em>, DT) är tidsintervallet under vilket en enhet är i ett funktionsodugligt tillstånd.</p></li>
+<li><p><a id="drifttid"></a><strong>Drifttid</strong> (<em>operating time</em>, OT) är tidsintervallet under vilket en enhet är i drifttillstånd, det vill säga ett tillstånd där enheten utför det som krävs.</p></li>
+<li><p><a id="kravd-tid"></a><strong>Krävd tid</strong> (<em>required time</em>) är det tidsintervall under vilket en enhet måste vara i funktionsdugligt tillstånd.</p></li>
+<li><p><a id="beredskapstid"></a><strong>Beredskapstid</strong> (<em>standby time</em>) är den tid då en enhet är i funktionsdugligt tillstånd men inte i drift under krävd tid.</p></li>
+<li><p><a id="outnyttjad-tid"></a><strong>Outnyttjad tid</strong> (<em>idle time</em>) är den tid då en enhet är i funktionsdugligt tillstånd, men inte är i drift, under ej krävd tid</p></li>
+</ul>
+</section>
+</section>
+<section id="tre-mått-på-tillgänglighet-ak-am-ao" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="tre-mått-på-tillgänglighet-ak-am-ao"><span class="header-section-number">3.3</span> Tre mått på tillgänglighet (Ak, Am, Ao)</h2>
+<p>Utöver att tillgänglighet kan beräknas baserat på kalendertid eller driftstid finns det ytterligare indelningar med syfte att beskriva och utvärdera olika orsaker till otillgänglig tid.</p>
+<p>Denna guide kommer att gå igenom tre olika indikatorer (nyckeltal) för tillgänglighet:</p>
+<ul>
+<li><a href="#konstruktiv-tillgänglighet-ak">Konstruktiv tillgänglighet</a> (<span class="math inline">\(A_k\)</span>) / <em>Inherent availability</em> (<span class="math inline">\(A_i\)</span>)</li>
+<li><a href="#materialtillgänglighet-am">Materialtillgänglighet</a> (<span class="math inline">\(A_m\)</span>) / <em>Achieved availability</em> (<span class="math inline">\(A_a\)</span>)</li>
+<li><a href="#operativ-tillgänglighet-ao">Operativ tillgänglighet</a> (<span class="math inline">\(A_o\)</span>) / <em>Operational availability</em> (<span class="math inline">\(A_o\)</span>)</li>
+</ul>
+<section id="konstruktiv-tillgänglighet-ak" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="konstruktiv-tillgänglighet-ak"><span class="header-section-number">3.3.1</span> Konstruktiv tillgänglighet (Ak)</h3>
+<p>Den konstruktiva tillgängligheten eller inre tillgängligheten baseras på den i konstruktionen inbyggda funktionssäkerheten och underhållsmässigheten. Se också inre funktionsäkerhet och inre underhållsmässighet i SS-EN 13306. Varken väntetider eller förebyggande underhåll ingår.</p>
+<p>Den konstruktiva tillgängligheten beräknas enligt <span class="math display">\[
+A_k=
+\frac{MTBF}
+{MTBF+MRT}
+\]</span></p>
+<p>där <a href="#mtbf"><strong>MTBF</strong></a> är medeltiden mellan fel (<em>Mean Time Between Failures</em>) och <a href="#mrt"><strong>MRT</strong></a> är medelreparationstiden (<em>Mean Repair Time</em>).</p>
+<p>I ekvationen för konstruktiv tillgänglighet betecknas medelreparationstiden traditionellt ofta med <strong>MTTR</strong> (<em>Mean Time To Repair</em>). Enligt terminologin i svensk standard betecknas medelreparationstiden emellertid med <strong>MRT</strong> (<em>Mean Repair Time</em>), medan <strong>MTTR</strong> står för <em>Mean Time To Restore</em> och inkluderar väntetid.</p>
+</section>
+<section id="materialtillgänglighet-am" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="materialtillgänglighet-am"><span class="header-section-number">3.3.2</span> Materialtillgänglighet (Am)</h3>
+<p>Materialtillgänglighet, eller uppnådd tillgänglighet, inkluderar både avhjälpande och förebyggande underhåll men exkluderar fortfarande väntetider. Den beräknas enligt</p>
+<p><span class="math display">\[
+A_m=
+\frac{MTBM}
+{MTBM+MAMT}
+\]</span></p>
+<p>där <a href="#mtbm"><strong>MTBM</strong></a> (<em>Mean Time Between Maintenance</em>) är medeltiden mellan underhåll och <a href="#mamt"><strong>MAMT</strong></a> (<em>Mean Active Maintenance Time</em>) är medeltiden för aktivt underhåll, såväl förebyggande som avhjälpande (reparation).</p>
+</section>
+<section id="operativ-tillgänglighet-ao" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="operativ-tillgänglighet-ao"><span class="header-section-number">3.3.3</span> Operativ tillgänglighet (Ao)</h3>
+<p>Operativ tillgänglighet inkluderar både avhjälpande underhåll och förebyggande underhåll där väntetid även ingår.</p>
+<p>Den operativa tillgängligheten beräknas enligt <span class="math display">\[
+A_o
+=
+\frac{MTBM}
+{MTBM+MDT}
+\]</span></p>
+<p>där <a href="#mdt"><strong>MDT</strong></a> (<em>Mean Downtime</em>) är den genomsnittliga otillgängliga tiden per underhållsåtgärd, inklusive väntetid. Den kan också beräknas som <span class="math inline">\(MDT = MAMT + MWT\)</span>, där <a href="#mwt"><strong>MWT</strong></a> (<em>Mean Waiting Time</em>) är medelväntetiden.</p>
+<hr>
+</section>
+</section>
+<section id="driftsäkerhetsparametrar" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="driftsäkerhetsparametrar"><span class="header-section-number">3.4</span> Driftsäkerhetsparametrar</h2>
+<p>Tillgänglighetsmåtten i föregående avsnitt bygger på medeltider för bland annat tider mellan fel, reparationstider och väntetider. Parametrarna är väntevärden för slumpmässiga tider, men skattas i praktiken från observerade tider.</p>
+<p>Nedan beskrivs hur parametrarna kan skattas från observerade data. En mer utförlig statistisk beskrivning finns på sidan <a href="./rams.html#statistisk-beskrivning-av-driftsäkerhetsparametrar">Statistisk beskrivning av driftsäkerhetsparametrar</a>.</p>
+<section id="mtbf" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="mtbf"><span class="header-section-number">3.4.1</span> MTBF</h3>
+<p>MTBF (<em>Mean Time Between Failures</em>) är medeltiden mellan fel. En skattning av MTBF kan beräknas som det aritmetiska medelvärdet av de observerade tiderna mellan fel:</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}} T_i
+=
+\frac{1}{n_{\mathrm{Fail}}}
+\sum_{i=1}^{n_{\mathrm{Fail}}}
+\left(
+t_{\mathrm{Fail},i}
+-
+t_{\mathrm{Restored},i-1}
+\right)
+\]</span></p>
+<p>där <span class="math inline">\(t_{\mathrm{Restored},0}=t_0\)</span> och <span class="math inline">\(t_0\)</span> är observationsperiodens starttid.</p>
+<p>MTBF används för reparerbara enheter. För enheter som inte repareras används i stället MTTF (<em>Mean Time To Failure</em>), medeltid till fel.</p>
+<p>Tid mellan fel för kalenderbaserad tillgänglighet inkluderar både tillgänglig tid <span class="math inline">\((UT)\)</span> och förebyggande underhållstid <span class="math inline">\((T_{PM})\)</span>. Den kan därför också beräknas enligt</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+=
+\frac{\mathrm{UT}+\sum T_{PM}}{n_{\mathrm{Fail}}}
+\]</span></p>
+<p>För många system och anläggningar är reparationstiden väldigt kort i förhållande till kalendertiden. En approximation är att beräkna medeltiden av feltiderna för den totala tiden mellan fel <span class="math display">\[
+\mathrm{MTBF}
+\approx
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} \left(
+t_{\mathrm{Fail},\,i}
+-
+t_{\mathrm{Fail},\,i-1}
+\right)
+=
+\frac{\text{Total time}}{n_{Fail}}
+\]</span></p>
+<p>På motsvarande sätt approximeras MTBF även med utgångspunkt i bara tillgänglig tid som</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+\approx
+\frac{\mathrm{UT}}{n_{Fail}}
+\]</span></p>
+<section id="drifttid" class="level4" data-number="3.4.1.1">
+<h4 data-number="3.4.1.1" class="anchored" data-anchor-id="drifttid"><span class="header-section-number">3.4.1.1</span> Drifttid</h4>
+<p>För tillgänglighet baserad på planerad drift beräknas normalt <strong>MTBF</strong> som medeltiden för drifttiden <span class="math inline">\((OT)\)</span> mellan fel, dvs utan hänsyn till eventuellt förebyggande underhåll som genomförs under planerad drift, enligt</p>
+<p><span class="math display">\[
+\mathrm{MTBF}
+= \frac{\mathrm{OT}}{n_{Fail}}
+\]</span></p>
+</section>
+</section>
+<section id="mrt" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="mrt"><span class="header-section-number">3.4.2</span> MRT</h3>
+<p>Medelreparationstiden beräknas enligt <span class="math display">\[
+\mathrm{MRT}
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}} T_{Rep,i}
+=
+\frac{1}{n_{Fail}}\sum_{i=1}^{n_{Fail}}
+\left(
+t_{\mathrm{Repair\ end},\,i}
+-
+t_{\mathrm{Repair\ start},\,i}
+\right)
+\]</span></p>
+</section>
+<section id="mtbm" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="mtbm"><span class="header-section-number">3.4.3</span> MTBM</h3>
+<p>Medeltiden mellan underhåll beräknas som medelvärdet av den tillgängliga tiden mellan underhållsåtgärder</p>
+<p><span class="math display">\[
+\mathrm{MTBM}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{U,i}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M}
+\left(
+t_{\mathrm{M\ start},\,i}
+-
+t_{\mathrm{M\ end},\,i-1}
+\right)
+= \frac{\mathrm{UT}}{n_M}
+\]</span></p>
+<p>där <span class="math inline">\(M\)</span> (<em>maintenance</em>) är en underhållsåtgärd och <span class="math inline">\(n_M = n_{Fail}+ n_{PM}\)</span> är antalet avhjälpande och förebyggande underhållsåtgärder.</p>
+<p>För tillgänglighet baserad på krävd tid är den tillgängliga tiden, enligt ovan, summan av drifttid och beredskapstid. MTBM beräknas då vanligen som <span class="math display">\[
+\mathrm{MTBM}
+= \frac{\mathrm{OT}}{n_M}
+\]</span></p>
+</section>
+<section id="mamt" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="mamt"><span class="header-section-number">3.4.4</span> MAMT</h3>
+<p>Den genomsnittliga aktiva underhållstiden per åtgärd beräknas som <span class="math display">\[
+\mathrm{MAMT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{AM,i}
+=
+\frac{1}{n_{Fail}+n_{PM}}
+\left(
+\displaystyle\sum_{j=1}^{n_{Fail}} T_{Rep,j}
++
+\displaystyle\sum_{k=1}^{n_{PM}} T_{APM,k}
+\right)
+\]</span></p>
+<p>där <span class="math inline">\(T_{AM,i}\)</span> är den aktiva underhållstiden för åtgärd <span class="math inline">\(i\)</span>, <span class="math inline">\(T_{Rep,j}\)</span> är reparationstiden för fel <span class="math inline">\(j\)</span> och <span class="math inline">\(T_{APM,k}\)</span> är den aktiva förebyggande underhållstiden för åtgärd <span class="math inline">\(k\)</span>.</p>
+</section>
+<section id="mdt" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="mdt"><span class="header-section-number">3.4.5</span> MDT</h3>
+<p>Den genomsnittliga otillgängliga tiden (nedtiden) per underhållsåtgärd beräknas enligt <span class="math display">\[
+\mathrm{MDT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Down,i}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M}
+\left(
+t_{\mathrm{M\ end},\,i}
+-
+t_{\mathrm{M\ start},\,i}
+\right)
+\]</span> där <span class="math inline">\(T_{\mathrm{CM},i}\)</span> är den otillgängliga tiden för den avhjälpande underhållsåtgärden <span class="math inline">\(i\)</span>, och <span class="math inline">\(T_{\mathrm{PM},i}\)</span> är motsvarande tid för den förebyggande underhållsåtgärden.</p>
+<p>Vilket också kan beräknas som <span class="math display">\[
+\mathrm{MDT}
+=\frac{\sum_{i=1}^{n_{Fail}} T_{CM, i} + \sum_{i=1}^{n_{PM}} T_{PM, i}}
+{n_{Fail} + n_{PM}}
+\]</span></p>
+<section id="mwt" class="level4" data-number="3.4.5.1">
+<h4 data-number="3.4.5.1" class="anchored" data-anchor-id="mwt"><span class="header-section-number">3.4.5.1</span> MWT</h4>
+<p>MDT kan också beräknas som <span class="math display">\[
+MDT = MAMT + MWT
+\]</span></p>
+<p><span class="math inline">\(MWT\)</span> är medelväntetiden per underhållsåtgärd enligt</p>
+<p><span class="math display">\[
+\mathrm{MWT}
+=
+\frac{1}{n_M}\sum_{i=1}^{n_M} T_{Wait,i}
+\]</span></p>
+<p>där <span class="math inline">\(T_{Wait,i}\)</span> är den sammanlagda väntetiden under underhållsaktivitet <span class="math inline">\(i\)</span>.</p>
+</section>
+</section>
+</section>
+<section id="beräkningsexempel" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Beräkningsexempel</h1>
+<p>Följande exempel visar hur tillgänglighetsmåtten kan beräknas steg för steg.</p>
+<section id="exempel-1" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="exempel-1"><span class="header-section-number">4.1</span> Exempel 1</h2>
+<p>Ett system har följande data:</p>
+<ul>
+<li>Tillgänglig tid (UT) = 3600 h</li>
+<li>Antal fel = 30</li>
+<li>Summa reparationstid = 150 h</li>
+<li>Medelväntetid avhjälpande underhåll = 3 h</li>
+<li>Antal förebyggande underhåll = 15</li>
+<li>Summa förebyggande underhållstid = 60 h</li>
+<li>Medelväntetid förebyggande underhåll = 1 h</li>
+</ul>
+<p>Beräkna den kalenderbaserade tillgängligheten:</p>
+<ol type="a">
+<li><p><span class="math inline">\(A_k\)</span></p></li>
+<li><p><span class="math inline">\(A_m\)</span></p></li>
+<li><p><span class="math inline">\(A_o\)</span></p></li>
+</ol>
+<hr>
+<section id="a-beräkna-ak" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="a-beräkna-ak"><span class="header-section-number">4.1.1</span> a) Beräkna Ak</h3>
+<p><span class="math display">\[
+A_k=
+\frac{MTBF}{MTBF+MRT}
+\]</span></p>
+<section id="steg-1-mtbf" class="level4" data-number="4.1.1.1">
+<h4 data-number="4.1.1.1" class="anchored" data-anchor-id="steg-1-mtbf"><span class="header-section-number">4.1.1.1</span> Steg 1: MTBF</h4>
+<p><span class="math display">\[
+MTBF=
+\frac{\text{UT}+\sum T_{PM}}{n_{Fail}}
+=
+\frac{3600+(45+15)}{30}
+=
+122\ h
+\]</span></p>
+</section>
+<section id="steg-2-mrt" class="level4" data-number="4.1.1.2">
+<h4 data-number="4.1.1.2" class="anchored" data-anchor-id="steg-2-mrt"><span class="header-section-number">4.1.1.2</span> Steg 2: MRT</h4>
+<p><span class="math display">\[
+MRT=
+\frac{\sum T_{Rep}}{n_{Fail}}
+=
+\frac{150}{30}
+=
+5\ h
+\]</span></p>
+</section>
+<section id="steg-3-ak" class="level4" data-number="4.1.1.3">
+<h4 data-number="4.1.1.3" class="anchored" data-anchor-id="steg-3-ak"><span class="header-section-number">4.1.1.3</span> Steg 3: Ak</h4>
+<p><span class="math display">\[
+A_k=
+\frac{MTBF}{MTBF+MRT}
+=
+\frac{122}{122+5}
+=
+0.961
+\]</span></p>
+<p><strong>Svar:</strong> Den konstruktiva tillgängligheten <span class="math inline">\(A_k=96.1\%\)</span></p>
+</section>
+</section>
+<section id="b-beräkna-am" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="b-beräkna-am"><span class="header-section-number">4.1.2</span> b) Beräkna Am</h3>
+<p><span class="math display">\[
+A_m=
+\frac{MTBM}{MTBM+MAMT}
+\]</span></p>
+<section id="steg-1-mtbm" class="level4" data-number="4.1.2.1">
+<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="steg-1-mtbm"><span class="header-section-number">4.1.2.1</span> Steg 1: MTBM</h4>
+<p><span class="math display">\[
+MTBM=
+\frac{UT}{n_{M}}
+=
+\frac{3600}{30+15}
+=
+80\ h
+\]</span></p>
+<p>där antal underhållsaktiviteter <span class="math inline">\(n_{M}=n_{Fail}+n_{PM}\)</span></p>
+</section>
+<section id="steg-2-mamt" class="level4" data-number="4.1.2.2">
+<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="steg-2-mamt"><span class="header-section-number">4.1.2.2</span> Steg 2: MAMT</h4>
+<p><span class="math display">\[
+MAMT=
+\frac{\sum T_{Rep} + \sum T_{APM}}{n_{M}}
+=
+\frac{150 + (60-15 \cdot 1)}{45}
+=
+4.33\ h
+\]</span></p>
+<p>där summan aktivt förebyggande underhållstid erhålls ur <span class="math display">\[
+\sum T_{APM} = \sum T_{PM} - n_{PM} \cdot MWT_{PM}
+\]</span></p>
+</section>
+<section id="steg-3-am" class="level4" data-number="4.1.2.3">
+<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="steg-3-am"><span class="header-section-number">4.1.2.3</span> Steg 3: Am</h4>
+<p><span class="math display">\[
+A_m=
+\frac{MTBM}{MTBM+MAMT}
+=
+\frac{80}{80+4.33}
+=
+0.949
+\]</span></p>
+<p><strong>Svar:</strong> Materialtillgängligheten är <span class="math inline">\(A_m=94.9\%\)</span></p>
+</section>
+</section>
+<section id="c-beräkna-ao" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="c-beräkna-ao"><span class="header-section-number">4.1.3</span> c) Beräkna Ao</h3>
+<p><span class="math display">\[
+A_o=
+\frac{MTBM}{MTBM+MDT}
+\]</span></p>
+<section id="steg-1-mtbm-1" class="level4" data-number="4.1.3.1">
+<h4 data-number="4.1.3.1" class="anchored" data-anchor-id="steg-1-mtbm-1"><span class="header-section-number">4.1.3.1</span> Steg 1: MTBM</h4>
+<p><span class="math display">\[
+MTBM=
+\frac{UT}{n_{M}}
+=
+\frac{3600}{45}
+=
+80\ h
+\]</span></p>
+</section>
+<section id="steg-2-mdt" class="level4" data-number="4.1.3.2">
+<h4 data-number="4.1.3.2" class="anchored" data-anchor-id="steg-2-mdt"><span class="header-section-number">4.1.3.2</span> Steg 2: MDT</h4>
+<p><span class="math display">\[
+MDT=
+\frac{\sum T_{CM} + \sum T_{PM}}{n_M}
+=
+\frac{(150+90) + (45+15)}{45}
+=
+6.667\ h
+\]</span></p>
+</section>
+<section id="steg-3-ao" class="level4" data-number="4.1.3.3">
+<h4 data-number="4.1.3.3" class="anchored" data-anchor-id="steg-3-ao"><span class="header-section-number">4.1.3.3</span> Steg 3: Ao</h4>
+<p><span class="math display">\[
+A_o=
+\frac{MTBM}{MTBM+MDT}
+=
+\frac{80}{80+6.667}
+=
+0.923
+\]</span></p>
+<p><strong>Svar:</strong> Den operativa tillgängligheten är <span class="math inline">\(A_o=92.3\%\)</span></p>
+</section>
+</section>
+</section>
+<section id="exempel-2" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="exempel-2"><span class="header-section-number">4.2</span> Exempel 2</h2>
+<p>Nedan är data för fel och förebyggande underhåll för en anläggning med kontinuerlig produktion. Anläggningen driftsattes 2023-11-01 kl 08:00.</p>
+<p><a href="#uppgift-a">a)</a> Beräkna <span class="math inline">\(A_k\)</span>, <span class="math inline">\(A_o\)</span> baserat på planerad produktionstid, där planerad produktionstid är total tid minus de förebyggande underhållsstoppen.</p>
+<p><a href="#uppgift-b">b)</a> Beräkna <span class="math inline">\(A_k\)</span>, <span class="math inline">\(A_m\)</span>, <span class="math inline">\(A_o\)</span> baserat på kalendertid</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: left;">Typ</th>
+<th style="text-align: left;">Anmält datum <span class="math inline">\((t_{failure, i})\)</span></th>
+<th style="text-align: left;">Anmält vidare</th>
+<th style="text-align: left;">Arbetet påbörjat</th>
+<th style="text-align: left;">Arbetet slutfört <span class="math inline">\((t_{restore, i})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-01-15 03:12:00</td>
+<td style="text-align: left;">2024-01-15 06:45:00</td>
+<td style="text-align: left;">2024-01-15 07:20:00</td>
+<td style="text-align: left;">2024-01-15 08:40:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-04-22 17:54:00</td>
+<td style="text-align: left;">2024-04-22 19:10:00</td>
+<td style="text-align: left;">2024-04-22 20:00:00</td>
+<td style="text-align: left;">2024-04-22 23:15:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-07-31 09:27:00</td>
+<td style="text-align: left;">2024-07-31 10:05:00</td>
+<td style="text-align: left;">2024-07-31 11:20:00</td>
+<td style="text-align: left;">2024-07-31 14:50:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-10-10 13:56:00</td>
+<td style="text-align: left;">2024-10-10 14:53:00</td>
+<td style="text-align: left;">2024-10-10 20:46:00</td>
+<td style="text-align: left;">2024-10-11 04:45:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-11-18 22:41:00</td>
+<td style="text-align: left;">2024-11-18 23:30:00</td>
+<td style="text-align: left;">2024-11-19 01:10:00</td>
+<td style="text-align: left;">2024-11-19 03:20:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2024-12-04 06:11:00</td>
+<td style="text-align: left;">2024-12-04 06:41:00</td>
+<td style="text-align: left;">2024-12-04 15:25:00</td>
+<td style="text-align: left;">2024-12-04 22:37:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-02-24 14:08:00</td>
+<td style="text-align: left;">2025-02-24 14:55:00</td>
+<td style="text-align: left;">2025-02-24 16:10:00</td>
+<td style="text-align: left;">2025-02-24 19:40:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-05-12 01:59:00</td>
+<td style="text-align: left;">2025-05-12 02:39:00</td>
+<td style="text-align: left;">2025-05-14 01:28:00</td>
+<td style="text-align: left;">2025-05-14 11:19:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-06-03 05:33:00</td>
+<td style="text-align: left;">2025-06-03 08:20:00</td>
+<td style="text-align: left;">2025-06-03 09:00:00</td>
+<td style="text-align: left;">2025-06-03 11:45:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-09-11 18:26:00</td>
+<td style="text-align: left;">2025-09-11 20:10:00</td>
+<td style="text-align: left;">2025-09-11 21:00:00</td>
+<td style="text-align: left;">2025-09-12 00:55:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-10-25 16:53:00</td>
+<td style="text-align: left;">2025-10-25 17:40:00</td>
+<td style="text-align: left;">2025-10-27 06:31:00</td>
+<td style="text-align: left;">2025-10-27 09:00:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2025-12-20 07:51:00</td>
+<td style="text-align: left;">2025-12-20 08:40:00</td>
+<td style="text-align: left;">2025-12-20 10:15:00</td>
+<td style="text-align: left;">2025-12-20 13:05:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-03-29 12:17:00</td>
+<td style="text-align: left;">2026-03-29 13:05:00</td>
+<td style="text-align: left;">2026-03-29 15:00:00</td>
+<td style="text-align: left;">2026-03-29 17:40:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-04-14 07:21:00</td>
+<td style="text-align: left;">2026-04-14 08:18:00</td>
+<td style="text-align: left;">2026-04-15 04:14:00</td>
+<td style="text-align: left;">2026-04-15 09:34:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-04-21 15:20:00</td>
+<td style="text-align: left;">2026-04-21 15:59:00</td>
+<td style="text-align: left;">2026-04-23 11:47:00</td>
+<td style="text-align: left;">2026-04-23 20:45:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">2026-07-07 01:44:00</td>
+<td style="text-align: left;">2026-07-07 04:20:00</td>
+<td style="text-align: left;">2026-07-07 05:10:00</td>
+<td style="text-align: left;">2026-07-07 07:05:00</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: left;">Typ</th>
+<th style="text-align: left;">Anmält datum</th>
+<th style="text-align: left;">Anmält vidare</th>
+<th style="text-align: left;">Arbetet påbörjat <span class="math inline">\((t_{PM\ start, i})\)</span></th>
+<th style="text-align: left;">Arbetet slutfört <span class="math inline">\((t_{PM\ end, i})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2024-03-01 08:00:00</td>
+<td style="text-align: left;">2024-03-01 08:00:00</td>
+<td style="text-align: left;">2024-03-01 08:00:00</td>
+<td style="text-align: left;">2024-03-02 08:00:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2024-09-01 08:00:00</td>
+<td style="text-align: left;">2024-09-01 08:00:00</td>
+<td style="text-align: left;">2024-09-01 08:00:00</td>
+<td style="text-align: left;">2024-09-02 08:00:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2025-03-01 08:00:00</td>
+<td style="text-align: left;">2025-03-01 08:00:00</td>
+<td style="text-align: left;">2025-03-01 08:00:00</td>
+<td style="text-align: left;">2025-03-02 08:00:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2025-09-01 08:00:00</td>
+<td style="text-align: left;">2025-09-01 08:00:00</td>
+<td style="text-align: left;">2025-09-01 08:00:00</td>
+<td style="text-align: left;">2025-09-02 08:00:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2026-03-01 08:00:00</td>
+<td style="text-align: left;">2026-03-01 08:00:00</td>
+<td style="text-align: left;">2026-03-01 08:00:00</td>
+<td style="text-align: left;">2026-03-02 08:00:00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">FU</td>
+<td style="text-align: left;">2026-09-01 08:00:00</td>
+<td style="text-align: left;">2026-09-01 08:00:00</td>
+<td style="text-align: left;">2026-09-01 08:00:00</td>
+<td style="text-align: left;">2026-09-02 08:00:00</td>
+</tr>
+</tbody>
+</table>
+<section id="uppgift-a" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="uppgift-a"><span class="header-section-number">4.2.1</span> Uppgift a</h3>
+<section id="steg-1-tider" class="level4" data-number="4.2.1.1">
+<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="steg-1-tider"><span class="header-section-number">4.2.1.1</span> Steg 1: Tider</h4>
+<p>Beräkna tid mellan fel samt reparationstid och nedtid (otillgänglig tid) - <strong>Tid mellan fel</strong> är den tillgängliga tiden från föregående återställning till nästa fel där förebyggande underhåll som infaller under intervallet exkluderas <span class="math display">\[
+TBF_i
+=
+\left(
+t_{failure,i}
+-
+t_{restore,i-1}
+\right)
+-
+\sum_j
+\max\left(
+0,\,
+\min(t_{PM\,end,j},t_{failure,i})
+-
+\max(t_{PM\,start,j},t_{restore,i-1})
+\right)
+\qquad t_{restore,0} = \text{2023-11-01 08:00}
+\]</span> - <strong>Reparationstid</strong> är tidsintervallet mellan <em>Arbetet slutfört</em> och <em>Arbetet påbörjat</em> - <strong>Väntetid</strong> är tidsintervallet mellan <em>Arbetet påbörjat</em> och <em>Anmält datum</em> - <strong>Nedtid</strong> är tidsintervallet mellan <em>Arbetet slutfört</em> och <em>Anmält datum</em>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 34%">
+<col style="width: 24%">
+<col style="width: 17%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: right;">Tid mellan fel (TBF) [dygn]</th>
+<th style="text-align: right;">Reparationstid [h]</th>
+<th style="text-align: right;">Väntetid [h]</th>
+<th style="text-align: right;">Nedtid [h]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">74.8</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">97.4</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">99.4</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">14.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">4.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">15.1</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">9.2</td>
+<td style="text-align: right;">16.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">81.6</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11</td>
+<td style="text-align: right;">75.3</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">47.5</td>
+<td style="text-align: right;">57.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">19.8</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">6.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: right;">99.3</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">6.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: right;">43.7</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">37.6</td>
+<td style="text-align: right;">40.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">5.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">18</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">19</td>
+<td style="text-align: right;">15.6</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">26.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">44.4</td>
+<td style="text-align: right;">53.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">21</td>
+<td style="text-align: right;">74.2</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="steg-2-konstruktiv-tillgänglighet-ak" class="level4" data-number="4.2.1.2">
+<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="steg-2-konstruktiv-tillgänglighet-ak"><span class="header-section-number">4.2.1.2</span> Steg 2: Konstruktiv tillgänglighet (Ak)</h4>
+<p><span class="math display">\[
+MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1444.6 h
+\]</span></p>
+<p><span class="math display">\[
+MRT = \frac{1}{16} \sum_{i=1}^{16} T_{R,i} = 4.35 h
+\]</span></p>
+<p><span class="math display">\[
+A_k = \frac{MTBF}{MTBF+MRT}=\frac{1444.6}{1444.6+4.35} = 0.997
+\]</span></p>
+<p><strong>Svar:</strong> Konstruktiv tillgänglighet <span class="math inline">\(A_k = 99.7\%\)</span></p>
+</section>
+<section id="steg-3-operativ-tillgänglighet-ao" class="level4" data-number="4.2.1.3">
+<h4 data-number="4.2.1.3" class="anchored" data-anchor-id="steg-3-operativ-tillgänglighet-ao"><span class="header-section-number">4.2.1.3</span> Steg 3: Operativ tillgänglighet (Ao)</h4>
+<p><span class="math display">\[
+MTBM = MTBF \Longleftarrow \text{förebyggande underhåll genomförs under icke krävd tid}
+\]</span></p>
+<p><span class="math display">\[
+MDT = \frac{1}{16} \sum_{i=1}^{16} T_{Down,i} = 16.46 h
+\]</span></p>
+<p><span class="math display">\[
+A_o = \frac{MTBM}{MTBM+MDT}=\frac{1444.6}{1444.6+16.46} = 0.989
+\]</span></p>
+<p><strong>Svar:</strong> Operativ tillgänglighet <span class="math inline">\(A_o = 98.9\%\)</span></p>
+</section>
+</section>
+<section id="uppgift-b" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="uppgift-b"><span class="header-section-number">4.2.2</span> Uppgift b</h3>
+<section id="steg-1-tider-1" class="level4" data-number="4.2.2.1">
+<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="steg-1-tider-1"><span class="header-section-number">4.2.2.1</span> Steg 1: Tider</h4>
+<p>Beräkna tid mellan fel, tid mellan underhåll, aktiv underhållstid (avhjälpande och förebyggande) samt nedtid - <strong>Tid mellan fel</strong> är <span class="math display">\[
+\mathrm{TBF_i} = t_{failure, i}-t_{restore, i-1} \quad \left(t_{restore, 0}=\text{2023-11-01 08:00}\right)
+\]</span></p>
+<ul>
+<li><p><strong>Tid mellan underhåll</strong> är <span class="math display">\[
+\mathrm{TBM_i} = t_{m, i}-t_{m\ restore, i-1} \quad \left(t_{m\ restore, 0}=\text{2023-11-01 08:00}\right)
+\]</span></p></li>
+<li><p><strong>Aktiv underhållstid</strong> (samma som reparationstid för AU) är tidsintervallet mellan <em>Arbetet slutfört</em> och <em>Arbetet påbörjat</em>.</p></li>
+<li><p><strong>Väntetid</strong> är tidsintervallet mellan <em>Arbetet påbörjat</em> och <em>Anmält datum</em></p></li>
+<li><p><strong>Nedtid</strong> är tidsintervallet mellan <em>Arbetet slutfört</em> och <em>Anmält datum</em>.</p></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 23%">
+<col style="width: 28%">
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">HändelseID</th>
+<th style="text-align: left;">Tid mellan fel (TBF) [dygn]</th>
+<th style="text-align: right;">Tid mellan underhåll (TBM) [dygn]</th>
+<th style="text-align: right;">Aktiv underhållstid [h]</th>
+<th style="text-align: right;">Väntetid [h]</th>
+<th style="text-align: right;">Nedtid [h]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">74.8</td>
+<td style="text-align: right;">74.8</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">98.4</td>
+<td style="text-align: right;">51.4</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">99.4</td>
+<td style="text-align: right;">99.4</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">31.7</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">71.0</td>
+<td style="text-align: right;">38.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">14.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">38.7</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">4.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">15.1</td>
+<td style="text-align: right;">15.1</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">9.2</td>
+<td style="text-align: right;">16.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">81.6</td>
+<td style="text-align: right;">81.6</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">76.3</td>
+<td style="text-align: right;">70.7</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">47.5</td>
+<td style="text-align: right;">57.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">19.8</td>
+<td style="text-align: right;">19.8</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">6.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">89.8</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">100.3</td>
+<td style="text-align: right;">9.4</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">6.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">43.7</td>
+<td style="text-align: right;">43.7</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">37.6</td>
+<td style="text-align: right;">40.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">54.0</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">5.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">70.8</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">99.0</td>
+<td style="text-align: right;">27.2</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">15.6</td>
+<td style="text-align: right;">15.6</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: right;">20.9</td>
+<td style="text-align: right;">26.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">6.2</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">44.4</td>
+<td style="text-align: right;">53.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">74.2</td>
+<td style="text-align: right;">74.2</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">5.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="steg-2-konstruktiv-tillgänglighet-ak-1" class="level4" data-number="4.2.2.2">
+<h4 data-number="4.2.2.2" class="anchored" data-anchor-id="steg-2-konstruktiv-tillgänglighet-ak-1"><span class="header-section-number">4.2.2.2</span> Steg 2: Konstruktiv tillgänglighet (Ak)</h4>
+<p><span class="math display">\[
+MTBF = \frac{1}{16} \sum_{i=1}^{16} TBF_i = 1451.98 h
+\]</span></p>
+<p><span class="math display">\[
+MRT = \frac{1}{16} \sum_{i=1}^{16} T_{R,i} = 4.35 h
+\]</span></p>
+<p><span class="math display">\[
+A_k = \frac{MTBF}{MTBF+MRT}=\frac{1451.98}{1451.98+4.35} = 0.997
+\]</span></p>
+<p><strong>Svar:</strong> Konstruktiv tillgänglighet <span class="math inline">\(A_k = 99.7\%\)</span></p>
+</section>
+<section id="steg-3-materialtillgänglighet-am" class="level4" data-number="4.2.2.3">
+<h4 data-number="4.2.2.3" class="anchored" data-anchor-id="steg-3-materialtillgänglighet-am"><span class="header-section-number">4.2.2.3</span> Steg 3: Materialtillgänglighet (Am)</h4>
+<p><span class="math display">\[
+MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.67 h
+\]</span></p>
+<p><span class="math display">\[
+MAMT = \frac{1}{22} \sum_{i=1}^{22} T_{M,i} = 9.71 h
+\]</span></p>
+<p><span class="math display">\[
+A_m = \frac{MTBM}{MTBM+MAMT}=\frac{1111.67}{1111.67+9.71} = 0.991
+\]</span></p>
+<p><strong>Svar:</strong> Materialtillgänglighet <span class="math inline">\(A_m = 99.1\%\)</span></p>
+</section>
+<section id="steg-4-operativ-tillgänglighet-ao" class="level4" data-number="4.2.2.4">
+<h4 data-number="4.2.2.4" class="anchored" data-anchor-id="steg-4-operativ-tillgänglighet-ao"><span class="header-section-number">4.2.2.4</span> Steg 4: Operativ tillgänglighet (Ao)</h4>
+<p><span class="math display">\[
+MTBM = \frac{1}{22} \sum_{i=1}^{22} TBM_i = 1111.67 h
+\]</span></p>
+<p><span class="math display">\[
+MDT = \frac{1}{22} \sum_{i=1}^{22} T_{Down,i} = 18.51 h
+\]</span></p>
+<p><span class="math display">\[
+A_o = \frac{MTBM}{MTBM+MDT}=\frac{1111.67}{1111.67+18.51} = 0.984
+\]</span></p>
+<p><strong>Svar:</strong> Operativ tillgänglighet <span class="math inline">\(A_o = 98.4\%\)</span></p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-SSEN15341" class="csl-entry" role="listitem">
+Underhåll – Nyckeltal för underhåll, Pub. L. Nos. SS-EN 15341:2019+A1:2022 (2022). <a href="https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/">https://www.sis.se/produkter/bildteknik-464b1187/grafisk-teknik/reproduktionsutrustning/ss-en-153412019a12022/</a>.
+</div>
+<div id="ref-SSEN13306" class="csl-entry" role="listitem">
+Underhåll – Underhållsterminologi, Pub. L. Nos. SS-EN 13306:2017 (2017). <a href="https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/">https://www.sis.se/produkter/terminologi-och-dokumentation/ordlistor/tjanster/ss-en-133062017/</a>.
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./rams.html" class="pagination-link" aria-label="Driftsäkerhet">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Driftsäkerhet</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tillforlitlighet.html" class="pagination-link" aria-label="Tillförlitlighetsanalys">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tillförlitlighetsanalys</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
