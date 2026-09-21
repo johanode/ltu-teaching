@@ -4,19 +4,19 @@
     "href": "index.html",
     "title": "Driftsäkerhet och underhåll",
     "section": "",
-    "text": "Driftsäkerhet och underhåll\nDet här materialet ger en grundläggande introduktion till driftsäkerhet. Tyngdpunkten ligger på RAMS, tillgänglighet och de driftsäkerhetsparametrar som används för att beskriva tekniska system.",
+    "text": "Kapitel\nDet här materialet ger en grundläggande introduktion till driftsäkerhet. Tyngdpunkten ligger på RAMS, tillgänglighet och de driftsäkerhetsparametrar som används för att beskriva tekniska system.\nDet sista kapitlet behandlar grundläggande sannolikhetsmodeller för funktionssäkerhet samt en introduktion till systemtillförlitlighet.",
     "crumbs": [
-      "Driftsäkerhet och underhåll"
+      "Kapitel"
     ]
   },
   {
     "objectID": "index.html#kapitel",
     "href": "index.html#kapitel",
     "title": "Driftsäkerhet och underhåll",
-    "section": "Kapitel",
-    "text": "Kapitel\n\nDriftsäkerhet och RAMS\nTillgänglighet\nFunktionssäkerhet och tillförlitlighetsanalys\n\nDet sista kapitlet behandlar grundläggande sannolikhetsmodeller för funktionssäkerhet samt en introduktion till systemtillförlitlighet.",
+    "section": "",
+    "text": "Driftsäkerhet och RAMS\nTillgänglighet\nFunktionssäkerhet och tillförlitlighetsanalys",
     "crumbs": [
-      "Driftsäkerhet och underhåll"
+      "Kapitel"
     ]
   },
   {
@@ -494,183 +494,73 @@
     "href": "formelsamling.html",
     "title": "Appendix A — Formelsamling i drift och underhåll",
     "section": "",
-    "text": "B Tillförlitlighetsanalys",
+    "text": "A.1 Tillförlitlighetsanalys",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
     ]
   },
   {
-    "objectID": "formelsamling.html#exponentialfördelning",
-    "href": "formelsamling.html#exponentialfördelning",
+    "objectID": "formelsamling.html#tillförlitlighetsanalys",
+    "href": "formelsamling.html#tillförlitlighetsanalys",
     "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "B.1 Exponentialfördelning",
-    "text": "B.1 Exponentialfördelning\n\nFelsannolikhet\n\\[F(t)=1-e^{-\\lambda t}\\]\n\n\nFelfrekvens\n\\[f(t)=\\lambda e^{-\\lambda t}\\]\n\n\nFunktionssannolikhet\n\\[R(t)=e^{-\\lambda t}\\]\n\n\nFelintensitet\n\\[\\lambda(t)=\\lambda\\]\nFör en exponentialfördelning är felintensiteten \\(\\lambda\\) konstant och benämns felbenägenhet.\n\n\nMedelvärde\n\\[MTBF\\ \\text{eller}\\ MTTF=\\frac{1}{\\lambda}\\]",
+    "section": "",
+    "text": "Beteckning\nBetydelse\n\n\n\n\n\\(F(t)\\)\nFelsannolikhet vid tiden \\(t\\)\n\n\n\\(f(t)\\)\nFelfrekvens, eller täthetsfunktion för tid till fel\n\n\n\\(R(t)\\)\nFunktionssannolikhet, eller funktionssäkerhet, vid tiden \\(t\\)\n\n\n\\(\\lambda(t)\\)\nFelintensitet\n\n\n\n\nExponentialfördelning\n\nFelsannolikhet\n\\[F(t)=1-e^{-\\lambda t}\\]\n\n\nFelfrekvens\n\\[f(t)=\\lambda e^{-\\lambda t}\\]\n\n\nFunktionssannolikhet\n\\[R(t)=e^{-\\lambda t}\\]\n\n\nFelintensitet\n\\[\\lambda(t)=\\lambda\\]\nFör en exponentialfördelning är felintensiteten \\(\\lambda\\) konstant och benämns felbenägenhet.\n\n\nMedelvärde\n\\[MTBF\\ \\text{eller}\\ MTTF=\\frac{1}{\\lambda}\\]\n\n\n\nWeibullfördelning\n\\(\\alpha\\) är skalparametern och \\(\\beta\\) är formparametern.\n\nFelsannolikhet\n\\[F(t)=1-\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFelfrekvens\n\\[f(t)\n=\n\\frac{\\beta t^{\\beta-1}}{\\alpha^\\beta}\n\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFunktionssannolikhet\n\\[R(t)=\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFelintensitet\n\\[\\lambda(t)=\\frac{\\beta t^{\\beta-1}}{\\alpha^\\beta}\\]\n\n\nMedelvärde\n\\[MTBF\\ \\text{eller}\\ MTTF\n=\n\\alpha\\Gamma\\left(1+\\frac{1}{\\beta}\\right)\\]\nVärden på \\(\\Gamma \\text{-funktionen}\\) finns i Tabell 1\n\n\nEstimat av felsannolikheten\nFör den rangordnade feltiden \\(t_i\\) kan felsannolikheten skattas som\n\\[F(t_i)=\\frac{i-0{,}3}{n+0{,}4}\\]\ndär \\(i\\) är feltidens rangnummer och \\(n\\) är antalet observerade feltider.\n\n\n\nSystemtillförlitlighet\n\nSeriekopplat system\n\\[R_{tot}=R_1R_2\\cdots R_n\\]\n\n\nParallellkopplat system\n\\[R_{tot}\n=\n1-\\left[(1-R_1)(1-R_2)\\cdots(1-R_n)\\right]\\]",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
     ]
   },
   {
-    "objectID": "formelsamling.html#weibullfördelning",
-    "href": "formelsamling.html#weibullfördelning",
+    "objectID": "formelsamling.html#tillgänglighetsprestanda",
+    "href": "formelsamling.html#tillgänglighetsprestanda",
     "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "B.2 Weibullfördelning",
-    "text": "B.2 Weibullfördelning\n\\(\\alpha\\) är skalparametern och \\(\\beta\\) är formparametern.\n\nFelsannolikhet\n\\[F(t)=1-\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFelfrekvens\n\\[f(t)\n=\n\\frac{\\beta t^{\\beta-1}}{\\alpha^\\beta}\n\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFunktionssannolikhet\n\\[R(t)=\\exp\\left[-\\left(\\frac{t}{\\alpha}\\right)^\\beta\\right]\\]\n\n\nFelintensitet\n\\[\\lambda(t)=\\frac{\\beta t^{\\beta-1}}{\\alpha^\\beta}\\]\n\n\nMedelvärde\n\\[MTBF\\ \\text{eller}\\ MTTF\n=\n\\alpha\\Gamma\\left(1+\\frac{1}{\\beta}\\right)\\]\nVärden på \\(\\Gamma \\text{-funktionen}\\) finns i Tabell 1\n\n\nEstimat av felsannolikheten\nFör den rangordnade feltiden \\(t_i\\) kan felsannolikheten skattas som\n\\[F(t_i)=\\frac{i-0{,}3}{n+0{,}4}\\]\ndär \\(i\\) är feltidens rangnummer och \\(n\\) är antalet observerade feltider.",
+    "section": "A.2 Tillgänglighetsprestanda",
+    "text": "A.2 Tillgänglighetsprestanda\n\n\n\n\n\n\n\nBeteckning\nBetydelse\n\n\n\n\n\\(UT\\)\nTillgänglig tid (uptime)\n\n\n\\(DT\\)\nOtillgänglig tid (downtime)\n\n\n\\(MTBF\\)\nMedeltid mellan fel (Mean Time Between Failures)\n\n\n\\(MTTF\\)\nMedeltid till fel (Mean Time To Failure)\n\n\n\\(MRT\\)\nMedelreparationstid (Mean Repair Time)\n\n\n\\(MTBM\\)\nMedeltid mellan underhåll (Mean Time Between Maintenance)\n\n\n\\(MAMT\\)\nMedeltid för aktivt underhåll (Mean Active Maintenance Time)\n\n\n\\(MDT\\)\nGenomsnittlig otillgänglig tid per underhållsåtgärd (Mean Downtime)\n\n\n\nTillgänglighet beskriver den andel av den krävda tiden under vilken en enhet befinner sig i ett funktionsdugligt tillstånd. Den krävda tiden är summan av tillgänglig och otillgänglig tid.\n\\[A=\\frac{UT}{UT+DT}\\]\n\nKonstruktiv tillgänglighet\n\\[A_k=\\frac{MTBF}{MTBF+MRT}\\]\n\n\nMaterialtillgänglighet\n\\[A_m=\\frac{MTBM}{MTBM+MAMT}\\]\n\n\nOperativ tillgänglighet\n\\[A_o=\\frac{MTBM}{MTBM+MDT}\\]",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
     ]
   },
   {
-    "objectID": "formelsamling.html#systemtillförlitlighet",
-    "href": "formelsamling.html#systemtillförlitlighet",
+    "objectID": "formelsamling.html#utrustningens-totala-effektivitet",
+    "href": "formelsamling.html#utrustningens-totala-effektivitet",
     "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "B.3 Systemtillförlitlighet",
-    "text": "B.3 Systemtillförlitlighet\n\nSeriekopplat system\n\\[R_{tot}=R_1R_2\\cdots R_n\\]\n\n\nParallellkopplat system\n\\[R_{tot}\n=\n1-\\left[(1-R_1)(1-R_2)\\cdots(1-R_n)\\right]\\]",
+    "section": "A.3 Utrustningens totala effektivitet",
+    "text": "A.3 Utrustningens totala effektivitet\nUtrustningens totala effektivitet benämns vanligen TAK på svenska och OEE (Overall Equipment Effectiveness) på engelska. Måttet beräknas som\n\\[OEE\n=\n\\text{Availability}\n\\cdot\n\\text{Performance}\n\\cdot\n\\text{Quality}\\]\neller på svenska\n\\[TAK\n=\n\\text{Tillgänglighet}\n\\cdot\n\\text{Anläggningseffektivitet}\n\\cdot\n\\text{Kvalitetsutbyte}\\]\n\nTAK-beräkning\n\nTillgänglighet\n\\[\\text{Tillgänglighet}\n=\n\\frac{\\text{Planerad produktionstid}-\\text{Stopptid}}\n{\\text{Planerad produktionstid}}\\]\n\n\nAnläggningseffektivitet\n\\[\\text{Anläggningseffektivitet}\n=\n\\frac{\\text{Processat antal}\\cdot\\text{Teoretisk cykeltid}}\n{\\text{Drifttid}}\\]\n\n\nKvalitetsutbyte\n\\[\\text{Kvalitetsutbyte}\n=\n\\frac{\\text{Processat antal}-\\text{Felaktigt antal}}\n{\\text{Processat antal}}\\]\n\n\n\nTEEP\n\\[TEEP=OEE \\cdot Loading\\]\n\\[Loading\n=\n\\frac{\\text{Planerad produktionstid}}\n{\\text{Kalendertid}}\\]",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
     ]
   },
   {
-    "objectID": "formelsamling.html#konstruktiv-tillgänglighet",
-    "href": "formelsamling.html#konstruktiv-tillgänglighet",
+    "objectID": "formelsamling.html#livscykelkostnad-lcc",
+    "href": "formelsamling.html#livscykelkostnad-lcc",
     "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "C.1 Konstruktiv tillgänglighet",
-    "text": "C.1 Konstruktiv tillgänglighet\n\\[A_k=\\frac{MTBF}{MTBF+MRT}\\]",
+    "section": "A.4 Livscykelkostnad (LCC)",
+    "text": "A.4 Livscykelkostnad (LCC)\n\n\n\n\n\n\n\nBeteckning\nBetydelse\n\n\n\n\n\\(r_n\\)\nNominell ränta\n\n\n\\(r_r\\)\nRealränta\n\n\n\\(r\\)\nKalkylränta\n\n\n\\(q\\)\nInflation\n\n\n\\(NV\\)\nNuvärde\n\n\n\\(NUV\\)\nNuvärdefaktor\n\n\n\\(NUS\\)\nNuvärdessummafaktor\n\n\n\\(a\\)\nÅrligt återkommande belopp\n\n\n\\(a_i\\)\nÅrligt belopp år \\(i\\)\n\n\n\\(R_i\\)\nBelopp år \\(i\\)\n\n\n\n\nRealränta\n\\[r_r\n=\n\\frac{1+r_n}{1+q}-1\n\\approx\nr_n-q\\]\n\n\nNuvärde av ett enstaka belopp\nFör ett framtida belopp \\(R\\) vid år \\(i\\) gäller \\[NV = R \\cdot NUV\\]\ndär\n\\[NUV=\\frac{1}{(1+r)^i}\\]\nVärden på NUV finns i Tabell 2\n\n\nNuvärdessumma av ett årligt återkommande belopp\nFör ett årligt belopp \\(a\\) under \\(n\\) år gäller\n\\[NV = NUS \\cdot a\\]\ndär\n\\[NUS\n= \\frac{1-(1+r)^{-n}}{r}\n= \\frac{(1+r)^n-1}{r(1+r)^n}\\]\nVärden på NUS finns i Tabell 3\n\n\nNuvärdessumma av varierande årliga belopp\n\\[NV\n=\n\\sum_{i=1}^{n}\\frac{a_i}{(1+r)^i}\\]",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
     ]
   },
   {
-    "objectID": "formelsamling.html#materialtillgänglighet",
-    "href": "formelsamling.html#materialtillgänglighet",
+    "objectID": "formelsamling.html#riskanalys",
+    "href": "formelsamling.html#riskanalys",
     "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "C.2 Materialtillgänglighet",
-    "text": "C.2 Materialtillgänglighet\n\\[A_m=\\frac{MTBM}{MTBM+MAMT}\\]",
+    "section": "A.5 Riskanalys",
+    "text": "A.5 Riskanalys\n\nRiskprioriteringstal\nRiskprioriteringstalet beräknas som\n\\[RPN=S\\cdot O\\cdot D\\]\ndär \\(S\\) är felets allvarlighet, \\(O\\) är sannolikheten för förekomst och \\(D\\) är möjligheten att upptäcka felet.",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
     ]
   },
   {
-    "objectID": "formelsamling.html#operativ-tillgänglighet",
-    "href": "formelsamling.html#operativ-tillgänglighet",
+    "objectID": "formelsamling.html#tabeller",
+    "href": "formelsamling.html#tabeller",
     "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "C.3 Operativ tillgänglighet",
-    "text": "C.3 Operativ tillgänglighet\n\\[A_o=\\frac{MTBM}{MTBM+MDT}\\]",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#tak-beräkning",
-    "href": "formelsamling.html#tak-beräkning",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "D.1 TAK-beräkning",
-    "text": "D.1 TAK-beräkning\n\nTillgänglighet\n\\[\\text{Tillgänglighet}\n=\n\\frac{\\text{Planerad produktionstid}-\\text{Stopptid}}\n{\\text{Planerad produktionstid}}\\]\n\n\nAnläggningseffektivitet\n\\[\\text{Anläggningseffektivitet}\n=\n\\frac{\\text{Processat antal}\\cdot\\text{Teoretisk cykeltid}}\n{\\text{Drifttid}}\\]\n\n\nKvalitetsutbyte\n\\[\\text{Kvalitetsutbyte}\n=\n\\frac{\\text{Processat antal}-\\text{Felaktigt antal}}\n{\\text{Processat antal}}\\]",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#teep",
-    "href": "formelsamling.html#teep",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "D.2 TEEP",
-    "text": "D.2 TEEP\n\\[TEEP=OEE \\cdot Loading\\]\n\\[Loading\n=\n\\frac{\\text{Planerad produktionstid}}\n{\\text{Kalendertid}}\\]",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#realränta",
-    "href": "formelsamling.html#realränta",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "E.1 Realränta",
-    "text": "E.1 Realränta\n\\[r_r\n=\n\\frac{1+r_n}{1+q}-1\n\\approx\nr_n-q\\]",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#nuvärde-av-ett-enstaka-belopp",
-    "href": "formelsamling.html#nuvärde-av-ett-enstaka-belopp",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "E.2 Nuvärde av ett enstaka belopp",
-    "text": "E.2 Nuvärde av ett enstaka belopp\nFör ett framtida belopp \\(R\\) vid år \\(i\\) gäller \\[NV = R \\cdot NUV\\]\ndär\n\\[NUV=\\frac{1}{(1+r)^i}\\]\nVärden på NUV finns i Tabell 2",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#nuvärdessumma-av-ett-årligt-återkommande-belopp",
-    "href": "formelsamling.html#nuvärdessumma-av-ett-årligt-återkommande-belopp",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "E.3 Nuvärdessumma av ett årligt återkommande belopp",
-    "text": "E.3 Nuvärdessumma av ett årligt återkommande belopp\nFör ett årligt belopp \\(a\\) under \\(n\\) år gäller\n\\[NV = NUS \\cdot a\\]\ndär\n\\[NUS\n= \\frac{1-(1+r)^{-n}}{r}\n= \\frac{(1+r)^n-1}{r(1+r)^n}\\]\nVärden på NUS finns i Tabell 3",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#nuvärdessumma-av-varierande-årliga-belopp",
-    "href": "formelsamling.html#nuvärdessumma-av-varierande-årliga-belopp",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "E.4 Nuvärdessumma av varierande årliga belopp",
-    "text": "E.4 Nuvärdessumma av varierande årliga belopp\n\\[NV\n=\n\\sum_{i=1}^{n}\\frac{a_i}{(1+r)^i}\\]",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#riskprioriteringstal",
-    "href": "formelsamling.html#riskprioriteringstal",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "F.1 Riskprioriteringstal",
-    "text": "F.1 Riskprioriteringstal\nRiskprioriteringstalet beräknas som\n\\[RPN=S\\cdot O\\cdot D\\]\ndär \\(S\\) är felets allvarlighet, \\(O\\) är sannolikheten för förekomst och \\(D\\) är möjligheten att upptäcka felet.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#tabell-1-gammafunktionen",
-    "href": "formelsamling.html#tabell-1-gammafunktionen",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "Tabell 1: Gammafunktionen",
-    "text": "Tabell 1: Gammafunktionen\n\n\n\n\\(z\\)\n\\(\\Gamma(z)\\)\n\n\n\n\n0,1\n9,5\n\n\n0,2\n4,6\n\n\n0,3\n3,0\n\n\n0,4\n2,2\n\n\n0,5\n1,8\n\n\n0,6\n1,5\n\n\n0,7\n1,3\n\n\n0,8\n1,2\n\n\n0,9\n1,1\n\n\n1,0\n1,0\n\n\n1,1\n1,0\n\n\n1,2\n0,9\n\n\n1,3\n0,9\n\n\n1,4\n0,9\n\n\n1,5\n0,9\n\n\n1,6\n0,9\n\n\n1,7\n0,9\n\n\n1,8\n0,9\n\n\n1,9\n1,0\n\n\n2,0\n1,0\n\n\n2,1\n1,0\n\n\n2,2\n1,1\n\n\n2,3\n1,2\n\n\n2,4\n1,2\n\n\n2,5\n1,3\n\n\n2,6\n1,4\n\n\n2,7\n1,5\n\n\n2,8\n1,7\n\n\n2,9\n1,8\n\n\n3,0\n2,0",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#tabell-2-nuvärdesfaktor-nuv",
-    "href": "formelsamling.html#tabell-2-nuvärdesfaktor-nuv",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "Tabell 2: Nuvärdesfaktor (NUV)",
-    "text": "Tabell 2: Nuvärdesfaktor (NUV)\nNuvärdesfaktor (NUV) för ett belopp år \\(i\\)\n\n\n\nÅr \\(i\\)\n2 %\n4 %\n6 %\n8 %\n10 %\n\n\n\n\n1\n0,980\n0,962\n0,943\n0,926\n0,909\n\n\n2\n0,961\n0,925\n0,890\n0,857\n0,826\n\n\n3\n0,942\n0,889\n0,840\n0,794\n0,751\n\n\n4\n0,924\n0,855\n0,792\n0,735\n0,683\n\n\n5\n0,906\n0,822\n0,747\n0,681\n0,621\n\n\n6\n0,888\n0,790\n0,705\n0,630\n0,564\n\n\n7\n0,871\n0,760\n0,665\n0,583\n0,513\n\n\n8\n0,853\n0,731\n0,627\n0,540\n0,467\n\n\n9\n0,837\n0,703\n0,592\n0,500\n0,424\n\n\n10\n0,820\n0,676\n0,558\n0,463\n0,386\n\n\n12\n0,788\n0,625\n0,497\n0,397\n0,319\n\n\n14\n0,758\n0,577\n0,442\n0,340\n0,263\n\n\n16\n0,728\n0,534\n0,394\n0,292\n0,218\n\n\n18\n0,700\n0,494\n0,350\n0,250\n0,180\n\n\n20\n0,673\n0,456\n0,312\n0,215\n0,149\n\n\n22\n0,647\n0,422\n0,278\n0,184\n0,123\n\n\n24\n0,622\n0,390\n0,247\n0,158\n0,102\n\n\n26\n0,598\n0,361\n0,220\n0,135\n0,084\n\n\n28\n0,574\n0,333\n0,196\n0,116\n0,069\n\n\n30\n0,552\n0,308\n0,174\n0,099\n0,057\n\n\n32\n0,531\n0,285\n0,155\n0,085\n0,047\n\n\n34\n0,510\n0,264\n0,138\n0,073\n0,039\n\n\n36\n0,490\n0,244\n0,123\n0,063\n0,032\n\n\n38\n0,471\n0,225\n0,109\n0,054\n0,027\n\n\n40\n0,453\n0,208\n0,097\n0,046\n0,022\n\n\n42\n0,435\n0,193\n0,087\n0,039\n0,018\n\n\n44\n0,418\n0,178\n0,077\n0,034\n0,015\n\n\n46\n0,402\n0,165\n0,069\n0,029\n0,012\n\n\n48\n0,387\n0,152\n0,061\n0,025\n0,010\n\n\n50\n0,372\n0,141\n0,054\n0,021\n0,009",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
-    ]
-  },
-  {
-    "objectID": "formelsamling.html#tabell-3-nusummefaktor-nus",
-    "href": "formelsamling.html#tabell-3-nusummefaktor-nus",
-    "title": "Appendix A — Formelsamling i drift och underhåll",
-    "section": "Tabell 3: Nusummefaktor (NUS)",
-    "text": "Tabell 3: Nusummefaktor (NUS)\nNusummefaktor (NUS) för årliga belopp under \\(n\\) år\n\n\n\nÅr \\(n\\)\n2 %\n4 %\n6 %\n8 %\n10 %\n\n\n\n\n1\n0,980\n0,962\n0,943\n0,926\n0,909\n\n\n2\n1,942\n1,886\n1,833\n1,783\n1,736\n\n\n3\n2,884\n2,775\n2,673\n2,577\n2,487\n\n\n4\n3,808\n3,630\n3,465\n3,312\n3,170\n\n\n5\n4,713\n4,452\n4,212\n3,993\n3,791\n\n\n6\n5,601\n5,242\n4,917\n4,623\n4,355\n\n\n7\n6,472\n6,002\n5,582\n5,206\n4,868\n\n\n8\n7,325\n6,733\n6,210\n5,747\n5,335\n\n\n9\n8,162\n7,435\n6,802\n6,247\n5,759\n\n\n10\n8,983\n8,111\n7,360\n6,710\n6,145\n\n\n12\n10,575\n9,385\n8,384\n7,536\n6,814\n\n\n14\n12,106\n10,563\n9,295\n8,244\n7,367\n\n\n16\n13,578\n11,652\n10,106\n8,851\n7,824\n\n\n18\n14,992\n12,659\n10,828\n9,372\n8,201\n\n\n20\n16,351\n13,590\n11,470\n9,818\n8,514\n\n\n22\n17,658\n14,451\n12,042\n10,201\n8,772\n\n\n24\n18,914\n15,247\n12,550\n10,529\n8,985\n\n\n26\n20,121\n15,983\n13,003\n10,810\n9,161\n\n\n28\n21,281\n16,663\n13,406\n11,051\n9,307\n\n\n30\n22,396\n17,292\n13,765\n11,258\n9,427\n\n\n32\n23,468\n17,874\n14,084\n11,435\n9,526\n\n\n34\n24,499\n18,411\n14,368\n11,587\n9,609\n\n\n36\n25,489\n18,908\n14,621\n11,717\n9,677\n\n\n38\n26,441\n19,368\n14,846\n11,829\n9,733\n\n\n40\n27,355\n19,793\n15,046\n11,925\n9,779\n\n\n42\n28,235\n20,186\n15,225\n12,007\n9,817\n\n\n44\n29,080\n20,549\n15,383\n12,077\n9,849\n\n\n46\n29,892\n20,885\n15,524\n12,137\n9,875\n\n\n48\n30,673\n21,195\n15,650\n12,189\n9,897\n\n\n50\n31,424\n21,482\n15,762\n12,233\n9,915",
+    "section": "A.6 Tabeller",
+    "text": "A.6 Tabeller\n\nTabell 1: Gammafunktionen\n\n\n\n\\(z\\)\n\\(\\Gamma(z)\\)\n\n\n\n\n0,1\n9,5\n\n\n0,2\n4,6\n\n\n0,3\n3,0\n\n\n0,4\n2,2\n\n\n0,5\n1,8\n\n\n0,6\n1,5\n\n\n0,7\n1,3\n\n\n0,8\n1,2\n\n\n0,9\n1,1\n\n\n1,0\n1,0\n\n\n1,1\n1,0\n\n\n1,2\n0,9\n\n\n1,3\n0,9\n\n\n1,4\n0,9\n\n\n1,5\n0,9\n\n\n1,6\n0,9\n\n\n1,7\n0,9\n\n\n1,8\n0,9\n\n\n1,9\n1,0\n\n\n2,0\n1,0\n\n\n2,1\n1,0\n\n\n2,2\n1,1\n\n\n2,3\n1,2\n\n\n2,4\n1,2\n\n\n2,5\n1,3\n\n\n2,6\n1,4\n\n\n2,7\n1,5\n\n\n2,8\n1,7\n\n\n2,9\n1,8\n\n\n3,0\n2,0\n\n\n\n\n\n\nTabell 2: Nuvärdesfaktor (NUV)\nNuvärdesfaktor (NUV) för ett belopp år \\(i\\)\n\n\n\nÅr \\(i\\)\n2 %\n4 %\n6 %\n8 %\n10 %\n\n\n\n\n1\n0,980\n0,962\n0,943\n0,926\n0,909\n\n\n2\n0,961\n0,925\n0,890\n0,857\n0,826\n\n\n3\n0,942\n0,889\n0,840\n0,794\n0,751\n\n\n4\n0,924\n0,855\n0,792\n0,735\n0,683\n\n\n5\n0,906\n0,822\n0,747\n0,681\n0,621\n\n\n6\n0,888\n0,790\n0,705\n0,630\n0,564\n\n\n7\n0,871\n0,760\n0,665\n0,583\n0,513\n\n\n8\n0,853\n0,731\n0,627\n0,540\n0,467\n\n\n9\n0,837\n0,703\n0,592\n0,500\n0,424\n\n\n10\n0,820\n0,676\n0,558\n0,463\n0,386\n\n\n12\n0,788\n0,625\n0,497\n0,397\n0,319\n\n\n14\n0,758\n0,577\n0,442\n0,340\n0,263\n\n\n16\n0,728\n0,534\n0,394\n0,292\n0,218\n\n\n18\n0,700\n0,494\n0,350\n0,250\n0,180\n\n\n20\n0,673\n0,456\n0,312\n0,215\n0,149\n\n\n22\n0,647\n0,422\n0,278\n0,184\n0,123\n\n\n24\n0,622\n0,390\n0,247\n0,158\n0,102\n\n\n26\n0,598\n0,361\n0,220\n0,135\n0,084\n\n\n28\n0,574\n0,333\n0,196\n0,116\n0,069\n\n\n30\n0,552\n0,308\n0,174\n0,099\n0,057\n\n\n32\n0,531\n0,285\n0,155\n0,085\n0,047\n\n\n34\n0,510\n0,264\n0,138\n0,073\n0,039\n\n\n36\n0,490\n0,244\n0,123\n0,063\n0,032\n\n\n38\n0,471\n0,225\n0,109\n0,054\n0,027\n\n\n40\n0,453\n0,208\n0,097\n0,046\n0,022\n\n\n42\n0,435\n0,193\n0,087\n0,039\n0,018\n\n\n44\n0,418\n0,178\n0,077\n0,034\n0,015\n\n\n46\n0,402\n0,165\n0,069\n0,029\n0,012\n\n\n48\n0,387\n0,152\n0,061\n0,025\n0,010\n\n\n50\n0,372\n0,141\n0,054\n0,021\n0,009\n\n\n\n\n\n\nTabell 3: Nusummefaktor (NUS)\nNusummefaktor (NUS) för årliga belopp under \\(n\\) år\n\n\n\nÅr \\(n\\)\n2 %\n4 %\n6 %\n8 %\n10 %\n\n\n\n\n1\n0,980\n0,962\n0,943\n0,926\n0,909\n\n\n2\n1,942\n1,886\n1,833\n1,783\n1,736\n\n\n3\n2,884\n2,775\n2,673\n2,577\n2,487\n\n\n4\n3,808\n3,630\n3,465\n3,312\n3,170\n\n\n5\n4,713\n4,452\n4,212\n3,993\n3,791\n\n\n6\n5,601\n5,242\n4,917\n4,623\n4,355\n\n\n7\n6,472\n6,002\n5,582\n5,206\n4,868\n\n\n8\n7,325\n6,733\n6,210\n5,747\n5,335\n\n\n9\n8,162\n7,435\n6,802\n6,247\n5,759\n\n\n10\n8,983\n8,111\n7,360\n6,710\n6,145\n\n\n12\n10,575\n9,385\n8,384\n7,536\n6,814\n\n\n14\n12,106\n10,563\n9,295\n8,244\n7,367\n\n\n16\n13,578\n11,652\n10,106\n8,851\n7,824\n\n\n18\n14,992\n12,659\n10,828\n9,372\n8,201\n\n\n20\n16,351\n13,590\n11,470\n9,818\n8,514\n\n\n22\n17,658\n14,451\n12,042\n10,201\n8,772\n\n\n24\n18,914\n15,247\n12,550\n10,529\n8,985\n\n\n26\n20,121\n15,983\n13,003\n10,810\n9,161\n\n\n28\n21,281\n16,663\n13,406\n11,051\n9,307\n\n\n30\n22,396\n17,292\n13,765\n11,258\n9,427\n\n\n32\n23,468\n17,874\n14,084\n11,435\n9,526\n\n\n34\n24,499\n18,411\n14,368\n11,587\n9,609\n\n\n36\n25,489\n18,908\n14,621\n11,717\n9,677\n\n\n38\n26,441\n19,368\n14,846\n11,829\n9,733\n\n\n40\n27,355\n19,793\n15,046\n11,925\n9,779\n\n\n42\n28,235\n20,186\n15,225\n12,007\n9,817\n\n\n44\n29,080\n20,549\n15,383\n12,077\n9,849\n\n\n46\n29,892\n20,885\n15,524\n12,137\n9,875\n\n\n48\n30,673\n21,195\n15,650\n12,189\n9,897\n\n\n50\n31,424\n21,482\n15,762\n12,233\n9,915",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Formelsamling i drift och underhåll</span>"
